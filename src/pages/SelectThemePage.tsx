@@ -1,5 +1,5 @@
 export default function SelectThemePage() {
-  return(
-    <p>SelectThemePage</p>
-  )
+	return (
+		<p>SelectThemePage</p>
+	);
 }

@@ -1,18 +1,18 @@
-import Theme from './Theme';
+import type Theme from './Theme';
 
 const darkTheme: Theme = {
-  colors: {
-    background: '#000',
-    text: '#FFF',
-    layoutBackground: '#000',
-    primary: '#CED4DA'
-  },
+	colors: {
+		background: '#000',
+		text: '#FFF',
+		layoutBackground: '#000',
+		primary: '#CED4DA',
+	},
 
-  sizes: {
-    layoutWidth: '430px',
-    contentPadding: '3rem',
-    contentBorderRadius: '8rem',
-  },
-}
+	sizes: {
+		layoutWidth: '430px',
+		contentPadding: '3rem',
+		contentBorderRadius: '8rem',
+	},
+};
 
 export default darkTheme;

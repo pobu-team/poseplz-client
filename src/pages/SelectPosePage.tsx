@@ -1,5 +1,5 @@
 export default function SelectPosePage() {
-  return(
-    <p>SelectPosePage</p>
-  )
+	return (
+		<p>SelectPosePage</p>
+	);
 }

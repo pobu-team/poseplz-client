@@ -1,5 +1,5 @@
 export default function MyLikePage() {
-  return(
-    <p>MyLikePage</p>
-  )
+	return (
+		<p>MyLikePage</p>
+	);
 }

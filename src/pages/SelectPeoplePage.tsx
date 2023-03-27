@@ -1,5 +1,5 @@
 export default function SelectPeoplePage() {
-  return(
-    <p>SelectPeoplePage</p>
-  )
+	return (
+		<p>SelectPeoplePage</p>
+	);
 }
