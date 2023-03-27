@@ -1,5 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import {createGlobalStyle} from 'styled-components';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
@@ -18,8 +19,8 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     font-size: 1.6rem;
-    background: ${(props) => props.theme.colors.background};
-    color: ${(props) => props.theme.colors.text}
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text}
   }
   :lang(ko) {
     h1, h2, h3 {

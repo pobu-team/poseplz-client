@@ -1,5 +1,7 @@
 export default function MainPage() {
-  return(
-    <p>MainPage</p>
-  )
+	return (
+		<div>
+      메인
+		</div>
+	);
 }

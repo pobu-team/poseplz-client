@@ -1,5 +1,5 @@
 export default function PoseDetailPage() {
-  return(
-    <p>PoseDetailPage</p>
-  )
+	return (
+		<p>PoseDetailPage</p>
+	);
 }
