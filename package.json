@@ -1,0 +1,47 @@
+{
+  "name": "pobu-pose-recommend",
+  "version": "1.0.0",
+  "description": "",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel --port 8080",
+    "build": "parcel build",
+    "check": "tsc --noEmit",
+    "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/potenday-project/PoBu_pose_recommend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/potenday-project/PoBu_pose_recommend/issues"
+  },
+  "homepage": "https://github.com/potenday-project/PoBu_pose_recommend#readme",
+  "devDependencies": {
+    "@swc/plugin-styled-components": "^1.5.50",
+    "@types/react": "^18.0.29",
+    "@types/react-dom": "^18.0.11",
+    "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "eslint-config-xo": "^0.43.1",
+    "eslint-config-xo-typescript": "^0.56.0",
+    "eslint-plugin-react": "^7.32.2",
+    "parcel": "^2.8.3",
+    "parcel-reporter-static-files-copy": "^1.5.0",
+    "process": "^0.11.10",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0",
+    "styled-components": "^5.3.9",
+    "styled-reset": "^4.4.5",
+    "usehooks-ts": "^2.9.1"
+  }
+}
