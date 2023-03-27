@@ -1,5 +1,5 @@
-import Layout from './components/Layout';
-import HomeLayout from './components/HomeLayout';
+import Layout from './components/layout/Layout';
+import HomeLayout from './components/layout/HomeLayout';
 
 import HomePage from './pages/HomePage';
 import MainPage from './pages/MainPage';

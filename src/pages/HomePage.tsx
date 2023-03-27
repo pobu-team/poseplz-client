@@ -28,6 +28,7 @@ const StartButton = styled.button`
   align-items: center;
   border: none;
   border-radius: 30px;
+  cursor: pointer;
   background-color: ${props => props.theme.colors.primary};
 `;
 

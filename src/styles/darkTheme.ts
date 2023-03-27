@@ -10,7 +10,7 @@ const darkTheme: Theme = {
 
 	sizes: {
 		layoutWidth: '430px',
-		contentPadding: '3rem',
+		contentPadding: '1rem',
 		contentBorderRadius: '8rem',
 	},
 };

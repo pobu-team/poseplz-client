@@ -1,5 +1,6 @@
 import {Outlet} from 'react-router-dom';
 import styled from 'styled-components';
+import Header from '../header/Header';
 
 const Container = styled.div`
   margin: 0 auto;
@@ -10,6 +11,7 @@ const Container = styled.div`
 export default function Layout() {
 	return (
 		<Container>
+			<Header />
 			<main>
 				<Outlet />
 			</main>
