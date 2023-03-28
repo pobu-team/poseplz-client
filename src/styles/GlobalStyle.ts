@@ -12,8 +12,6 @@ const GlobalStyle = createGlobalStyle`
   }
   html {
     font-size: 62.5%;
-    width: 100%;
-    height: 100%;
   }
   body {
     width: 100%;
@@ -22,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     background: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.text}
   }
+
   :lang(ko) {
     h1, h2, h3 {
       word-break: keep-all;
