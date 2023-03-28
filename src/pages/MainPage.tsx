@@ -1,13 +1,7 @@
-import styled from 'styled-components';
-
-const Container = styled.div`
-  position: relative;
-`;
+import Main from '../components/main';
 
 export default function MainPage() {
 	return (
-		<Container>
-      포즈 추천 Start!
-		</Container>
+		<Main />
 	);
 }

@@ -2,14 +2,12 @@ import {useNavigate} from 'react-router-dom';
 
 import styled from 'styled-components';
 
-const Container = styled.div`
+const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  padding-block: 20em 10em;
+  padding-block: 10em 10em;
   padding-inline: ${props => props.theme.sizes.contentPadding};
-  background: ${props => props.theme.colors.layoutBackground};
 `;
 
 const Logo = styled.h1`
