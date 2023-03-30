@@ -2,18 +2,20 @@ import Store from './Store';
 
 import poseData from '../../pose.json';
 
+import type Pose from '../types/Pose';
+
 const {pose} = poseData;
 
 export type SelectStoreSnapshot = {
-	pose: any;
+	pose: Pose[];
 	personNum: string;
-	theme: string;
+	theme: string[];
 };
 
 export default class SelectStore extends Store<SelectStoreSnapshot> {
-	pose = [pose];
+	pose: Pose[] = pose;
 	personNum = '';
-	theme = '';
+	theme: string[] = [];
 
 	constructor() {
 		super();
@@ -22,10 +24,29 @@ export default class SelectStore extends Store<SelectStoreSnapshot> {
 
 	savePersonNum(number: string) {
 		this.personNum = number;
+		this.update();
 	}
 
 	saveTheme(theme: string) {
-		this.theme = theme;
+		if (this.theme.includes(theme)) {
+			return;
+		}
+
+		this.theme = [...this.theme, theme];
+		this.update();
+	}
+
+	removeTheme(theme: string) {
+		this.theme = this.theme.filter(item => item !== theme);
+		this.update();
+	}
+
+	resetPersonNum() {
+		this.personNum = '';
+	}
+
+	resetTheme() {
+		this.theme = [];
 	}
 
 	update() {
