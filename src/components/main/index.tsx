@@ -7,9 +7,9 @@ export default function Main() {
 	return (
 		<div>
 			<StartButton />
-			<PopularPose />
 			<MostSharedPose />
-			<BrandFeature />
+			<PopularPose />
+			{/* <BrandFeature /> */}
 		</div>
 	);
 }

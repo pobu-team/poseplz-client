@@ -1,13 +1,13 @@
 import {useState} from 'react';
 import styled from 'styled-components';
 
-// Type ContainerProps = {
-// 	translate: number;
-// };
+type ContainerProps = {
+	translateX: number;
+};
 
-const Container = styled.div`
-  height: 200px;
-  margin: 20px 10px;
+const Container = styled.div<ContainerProps>`
+  height: 300px;
+  margin: 40px 0 20px 0;
   overflow: hidden;
 
   div:nth-of-type(1){
@@ -29,16 +29,17 @@ const Container = styled.div`
   }
 
   div:nth-of-type(2){
-    transform: translate(calc(-200px * ${props => props.translate}), 0);
+    transform: translate(calc(-150px * ${props => props.translateX}), 0);
     transition: transform 0.5s;
     padding: 20px;
     width: 1200px;
-    height: 150px;
+    height: 100%;
   }
 
   img {
-    height: 130px;
+    height: 100%;
     margin: 5px;
+    border-radius: 20px;
   }
 `;
 
@@ -60,16 +61,18 @@ export default function MostSharedPose() {
 		setTranslateX(translateX - 1);
 	};
 
+	const imgArr = ['1-1', '2-1', '2-5', '2-9', '2-7', '2-11'];
+
 	return (
-		<Container translate={translateX}>
+		<Container translateX={translateX}>
 			<div>
-				<h1>가장 많이 공유된 포즈에요!</h1>
+				<h1>🤩 오늘의 추천 포즈에요!</h1>
 				<button type='button' onClick={handleClickRight}>{'<'}</button>
 				<button type='button' onClick={handleClickLeft}>{'>'}</button>
 			</div>
 			<div>
-				{[1, 2, 3, 4, 5, 6].map(item => (
-					<img key={item} src='/images/sample2.png' alt='sample'/>
+				{[1, 2, 3, 4, 5, 6].map((item, index) => (
+					<img key={item} src={`/images/${imgArr[index]}.png`} alt='??'/>
 				))}
 			</div>
 		</Container>
