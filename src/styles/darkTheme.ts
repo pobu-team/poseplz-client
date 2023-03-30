@@ -4,14 +4,25 @@ const darkTheme: Theme = {
 	colors: {
 		background: '#000',
 		text: '#FFF',
+		reverseText: '#000',
 		layoutBackground: '#000',
-		primary: '#CED4DA',
+		primary: '#BBFF65',
+		startButton: '#333335',
+		border: '#BBFF65',
+		buttonBackground: '#1E1E1F',
+		detailButton: '#1E1E1F',
+		randomButton: '#FFFFFF',
+		arrowBackground: '#BBFF65',
 	},
 
 	sizes: {
 		layoutWidth: '430px',
-		contentPadding: '3rem',
+		contentPadding: '1rem',
 		contentBorderRadius: '8rem',
+	},
+
+	img: {
+		check: 'images/check-dark.png',
 	},
 };
 

@@ -1,0 +1,64 @@
+{
+  "pose": [
+    {
+      "id": "1",
+      "image": [
+        {"id": "1", "theme": "simple", "special": "none", "src": "/images/sample2"},
+        {"id": "2", "theme": "cute", "special": "none", "src": "/images/sample2"},
+        {"id": "3", "theme": "hip", "special": "none", "src": "/images/sample2"},
+        {"id": "4", "theme": "fun", "special": "none", "src": "/images/sample2"},
+        {"id": "5", "theme": "simple", "special": "birthday", "src": "/images/sample2"}
+      ]
+    },
+    {
+      "id": "2",
+      "image": [
+        {"id": "1", "theme": "simple", "special": "none", "src": "/images/sample2"},
+        {"id": "2", "theme": "cute", "special": "none", "src": "/images/sample2"},
+        {"id": "3", "theme": "hip", "special": "none", "src": "/images/sample2"},
+        {"id": "4", "theme": "fun", "special": "none", "src": "/images/sample2"},
+        {"id": "5", "theme": "simple", "special": "birthday", "src": "/images/sample2"}
+      ]
+    },
+    {
+      "id": "3",
+      "image": [
+        {"id": "1", "theme": "simple", "special": "none", "src": "/images/sample2"},
+        {"id": "2", "theme": "cute", "special": "none", "src": "/images/sample2"},
+        {"id": "3", "theme": "hip", "special": "none", "src": "/images/sample2"},
+        {"id": "4", "theme": "fun", "special": "none", "src": "/images/sample2"},
+        {"id": "5", "theme": "simple", "special": "birthday", "src": "/images/sample2"}
+      ]
+    },
+    {
+      "id": "4",
+      "image": [
+        {"id": "1", "theme": "simple", "special": "none", "src": "/images/sample2"},
+        {"id": "2", "theme": "cute", "special": "none", "src": "/images/sample2"},
+        {"id": "3", "theme": "hip", "special": "none", "src": "/images/sample2"},
+        {"id": "4", "theme": "fun", "special": "none", "src": "/images/sample2"},
+        {"id": "5", "theme": "simple", "special": "birthday", "src": "/images/sample2"}
+      ]
+    },
+    {
+      "id": "5",
+      "image": [
+        {"id": "1", "theme": "simple", "special": "none", "src": "/images/sample2"},
+        {"id": "2", "theme": "cute", "special": "none", "src": "/images/sample2"},
+        {"id": "3", "theme": "hip", "special": "none", "src": "/images/sample2"},
+        {"id": "4", "theme": "fun", "special": "none", "src": "/images/sample2"},
+        {"id": "5", "theme": "simple", "special": "birthday", "src": "/images/sample2"}
+      ]
+    },
+    {
+      "id": "6",
+      "image": [
+        {"id": "1", "theme": "simple", "special": "none", "src": "/images/sample2"},
+        {"id": "2", "theme": "cute", "special": "none", "src": "/images/sample2"},
+        {"id": "3", "theme": "hip", "special": "none", "src": "/images/sample2"},
+        {"id": "4", "theme": "fun", "special": "none", "src": "/images/sample2"},
+        {"id": "5", "theme": "simple", "special": "birthday", "src": "/images/sample2"}
+      ]
+    }
+  ]
+}

@@ -2,22 +2,21 @@ import {useNavigate} from 'react-router-dom';
 
 import styled from 'styled-components';
 
-const Container = styled.div`
+const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  padding-block: 20em 10em;
+  padding-block: 10em 10em;
   padding-inline: ${props => props.theme.sizes.contentPadding};
-  background: ${props => props.theme.colors.layoutBackground};
 `;
 
 const Logo = styled.h1`
   display: block;
-  text-align: center;
-  font-weight: 600;
-  font-size: 50px;
   margin-bottom: 1em;
+  
+  img {
+    width: 130px;
+  }
 `;
 
 const StartButton = styled.button`
@@ -28,6 +27,7 @@ const StartButton = styled.button`
   align-items: center;
   border: none;
   border-radius: 30px;
+  cursor: pointer;
   background-color: ${props => props.theme.colors.primary};
 `;
 
@@ -41,7 +41,7 @@ export default function HomePage() {
 	return (
 		<Container>
 			<Logo>
-        포즈를 부탁해!
+				<img src='/images/logo-big.png' alt='logo' />
 			</Logo>
 			<StartButton
 				onClick={handleClickStart}

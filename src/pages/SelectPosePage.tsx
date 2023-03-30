@@ -1,5 +1,7 @@
+import SelectPose from '../components/select/SelectPose';
+
 export default function SelectPosePage() {
 	return (
-		<p>SelectPosePage</p>
+		<SelectPose />
 	);
 }

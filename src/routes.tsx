@@ -1,5 +1,5 @@
-import Layout from './components/Layout';
-import HomeLayout from './components/HomeLayout';
+import Layout from './components/layout/Layout';
+import HomeLayout from './components/layout/HomeLayout';
 
 import HomePage from './pages/HomePage';
 import MainPage from './pages/MainPage';
@@ -8,6 +8,7 @@ import PoseDetailPage from './pages/PoseDetailPage';
 import SelectPeoplePage from './pages/SelectPeoplePage';
 import SelectPosePage from './pages/SelectPosePage';
 import SelectThemePage from './pages/SelectThemePage';
+import BackLayout from './components/layout/BackLayout';
 
 const routes = [
 	{
@@ -17,14 +18,19 @@ const routes = [
 			{path: '/people', element: <SelectPeoplePage />},
 			{path: '/theme', element: <SelectThemePage />},
 			{path: '/pose', element: <SelectPosePage />},
-			{path: '/detail', element: <PoseDetailPage />},
-			{path: '/mypage', element: <MyLikePage />},
 		],
 	},
 	{
 		element: <HomeLayout />,
 		children: [
 			{path: '/', element: <HomePage/>},
+		],
+	},
+	{
+		element: <BackLayout />,
+		children: [
+			{path: '/pose/detail', element: <PoseDetailPage />},
+			{path: '/mypage', element: <MyLikePage />},
 		],
 	},
 ];
