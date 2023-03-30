@@ -9,6 +9,12 @@ const Container = styled.div`
   justify-content: space-between;
   padding-block: 1.5rem;
   padding-inline: ${props => props.theme.sizes.contentPadding};
+
+  button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
 `;
 
 const Logo = styled.button`
@@ -38,7 +44,7 @@ const MyPageButton = styled.button`
   border-radius: 50px;
   cursor: pointer;
 `;
-export default function Header() {
+export default function BackHeader() {
 	const navigate = useNavigate();
 
 	const isDarkMode = useReadLocalStorage('darkMode');
@@ -53,9 +59,13 @@ export default function Header() {
 
 	return (
 		<Container>
-			<ThemeSwitch />
+			<button onClick={() => {
+				navigate('/pose');
+			}}>
+				<img src='/images/back.png' alt='back' />
+			</button>
 			<Logo onClick={handleClickLogo}>
-				<img src={isDarkMode ? '/images/logo-dark.png' : 'images/logo-small.png'} alt='logo'/>
+				<img src={isDarkMode ? '/images/logo-dark.png' : '/images/logo-small.png'} alt='logo'/>
 			</Logo>
 			<MyPageButton onClick={handleClickMyPage}>
 				<img src={isDarkMode ? '/images/mybutton-dark.png' : '/images/mybutton.png'} />

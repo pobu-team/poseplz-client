@@ -12,22 +12,23 @@ type ToggleButtonProps = {
 };
 
 const ToggleButton = styled.button<ToggleButtonProps>`
-  padding-block: 0.5em;
+  padding-block: 0.1em;
   padding-inline: .1em;
+  width: 60px;
   border: 0;
   border-radius: 2em;
   color: #FFFFFF;
-  background-color: #5f5f5f;
+  background-color: #EAEAF2;
   cursor: pointer;
 
-  span:first-of-type {
+  img:first-of-type {
     padding: .3em 0.3em;
     border-radius: 3em;
     color: #000000;
     background-color: #FFFFFF;
     transition: .1s;
   }
-  span:last-of-type {
+  img:last-of-type {
     padding: .3em 0.3em;
     border-radius: 3em;
     transition: .1s;
@@ -35,12 +36,12 @@ const ToggleButton = styled.button<ToggleButtonProps>`
   
   ${props => props.active && css`
     background-color: #3A3A3A;
-    span:first-of-type {
+    img:first-of-type {
       color: #FFFFFF;
       background-color: transparent;
     }
-    span:last-of-type {
-      background-color: #1E1E1E;
+    img:last-of-type {
+      background-color: #FFFFFF;
     }
   `}
 `;
@@ -55,8 +56,8 @@ export default function ThemeSwitch() {
 	return (
 		<Container>
 			<ToggleButton onClick={toggleTheme} active= {isDarkMode}>
-				<span>Light</span>
-				<span>Dark</span>
+				<img src='/images/light.png' alt='light'/>
+				<img src='/images/dark.png' alt='dark'/>
 			</ToggleButton>
 		</Container>
 	);
