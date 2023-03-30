@@ -12,10 +12,11 @@ const Container = styled.main`
 
 const Logo = styled.h1`
   display: block;
-  text-align: center;
-  font-weight: 600;
-  font-size: 50px;
   margin-bottom: 1em;
+  
+  img {
+    width: 130px;
+  }
 `;
 
 const StartButton = styled.button`
@@ -40,7 +41,7 @@ export default function HomePage() {
 	return (
 		<Container>
 			<Logo>
-        포즈를 부탁해!
+				<img src='/images/logo-big.png' alt='logo' />
 			</Logo>
 			<StartButton
 				onClick={handleClickStart}
