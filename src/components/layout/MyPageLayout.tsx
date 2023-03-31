@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import MyPageHeader from '../header/MyPageHeader';
 
 const Container = styled.div`
-  background-color: rgba(0,0,0,0.1);
 	width: 100%;
   max-width: 430px;
   margin: auto;

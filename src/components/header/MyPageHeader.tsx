@@ -25,23 +25,6 @@ const Container = styled.div`
   }
 `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  background-color: ${props => props.theme.colors.background};
-  padding-bottom: 20px;
-
-  button {
-    margin: 4px;
-    border-radius: 10px;
-    width: 80px;
-    height: 40px;
-    border: none;
-    color: ${props => props.theme.colors.text};
-    background-color: ${props => props.theme.colors.buttonBackground};
-  }
-`;
-
 export default function MyPageHeader() {
 	moveHome();
 
@@ -58,13 +41,6 @@ export default function MyPageHeader() {
 				</button>
 				<h1>찜한 포즈</h1>
 			</Container>
-			<ButtonContainer>
-				{[1, 2, 3, 4, 5, 6].map(item => (
-					<button key={item} type='button'>
-						{item}명
-					</button>
-				))}
-			</ButtonContainer>
 		</div>
 	);
 }
