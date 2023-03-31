@@ -33,7 +33,7 @@ type PersonButtonProps = {
 const PersonButton = styled.button<PersonButtonProps>`
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-evenly;
       align-items: center;
       margin: 8px;
       padding: 20px;
@@ -51,7 +51,13 @@ const PersonButton = styled.button<PersonButtonProps>`
     `};
 
     &:disabled {
-    color: lightgray;
+      opacity: 0.5;
+    }
+
+    img {
+      width: 100%;
+      padding: 10px;
+      height: auto;
     }
 `;
 
@@ -69,8 +75,8 @@ const NextButton = styled.button`
     background-color: ${props => props.theme.colors.primary};
     
     &:disabled {
-    color: lightgray;
-  }
+      opacity: 0.5;
+    }
 `;
 
 export default function SelectPeople() {
@@ -117,6 +123,7 @@ export default function SelectPeople() {
 						active={active[item]}
 						disabled={isBtnDisabled[index]}
 					>
+						<img src={`/images/person-${index + 1}.png`} alt='person'/>
 						{item}명
 					</PersonButton>
 				))}

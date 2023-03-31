@@ -2,7 +2,6 @@ import {useState} from 'react';
 
 import styled from 'styled-components';
 
-import poseData from '../../../pose.json';
 import makeRandomImageSrc from '../../utils/random';
 
 type ContainerProps = {
