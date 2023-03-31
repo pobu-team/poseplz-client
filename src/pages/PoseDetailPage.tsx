@@ -9,7 +9,7 @@ export default function PoseDetailPage() {
 	const imageSrc = searchParams.get('imageSrc') ?? undefined;
 
 	const handleClickBack = () => {
-		navigate('/main');
+		navigate('/people');
 	};
 
 	return (

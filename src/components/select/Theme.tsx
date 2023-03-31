@@ -28,6 +28,7 @@ const Button = styled.button<ButtonProps>`
 
       ${props => props.active && css`
 				border: 3px solid ${props => props.theme.colors.border};
+				background-color: ${props => props.theme.colors.background};
 				background-image: url(${props => props.theme.img.check});
 				background-repeat: no-repeat;
 				background-position: right 10px center;
@@ -84,10 +85,10 @@ export default function Theme() {
 				<p>심플한</p>
 			</Button>
 			<Button
-				active={active.hip}
+				active={active.friendly}
 				type='button'
 				onClick={() => {
-					handleClickTheme('hip');
+					handleClickTheme('friendly');
 				}}>
 				<span>🫂</span>
 				<p>친근한</p>

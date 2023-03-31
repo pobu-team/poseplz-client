@@ -9,6 +9,11 @@ const Container = styled.div`
 	background-color: ${props => props.theme.colors.buttonBackground};
 `;
 
+const PoseContainer = styled.div`
+	column-count: 2;
+	column-gap: 0;
+`;
+
 const EmptyContainer = styled.div`
   width: 100%;
 	max-width: 430px;
@@ -38,12 +43,14 @@ export default function MyLike() {
 
 	return (
 		<Container>
-		{...selectedPose.map(imageSrc => {
-			const active: boolean = selectedPose.includes(imageSrc);
-			return (
-				<Pose key={imageSrc} imageSrc={imageSrc} active={active}/>
-			);
-		})}
+			<PoseContainer>
+				{...selectedPose.map(imageSrc => {
+					const active: boolean = selectedPose.includes(imageSrc);
+					return (
+						<Pose key={imageSrc} imageSrc={imageSrc} active={active}/>
+					);
+				})}
+			</PoseContainer>
 		</Container>
 	);
 }

@@ -12,12 +12,12 @@ const Container = styled.div`
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    margin: 5px 0 30px 0;
+    margin: 5px 0 10px 0;
 `;
 
 const Button = styled.button<ButtonProps>`
 			display: flex;
-      margin: 10px;
+      margin: 8px;
       width: 100%;
       height: 60px;
       border: none;
@@ -28,6 +28,7 @@ const Button = styled.button<ButtonProps>`
 
       ${props => props.active && css`
         border: 3px solid ${props => props.theme.colors.border};
+				background-color: ${props => props.theme.colors.background};
 				background-image: url(${props => props.theme.img.check});
 				background-repeat: no-repeat;
 				background-position: right 10px center;
