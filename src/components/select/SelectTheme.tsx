@@ -59,16 +59,21 @@ export default function SelectTheme() {
 	const [{theme}] = useSelectStore();
 
 	const [isDisable, setIsDisable] = useState(true);
+	const [isRandomDisable, setIsRandomDisable] = useState(false);
 
 	useEffect(() => {
 		if (theme.length !== 0) {
 			setIsDisable(false);
+			setIsRandomDisable(true);
 		}
 
 		if (theme.length === 0) {
 			setIsDisable(true);
 		}
 	});
+	const handleClickRandom = () => {
+		navigate('/pose');
+	};
 
 	return (
 		<Container>
@@ -78,7 +83,11 @@ export default function SelectTheme() {
 			<h2>이런 분위기로 찍고싶어!</h2>
 			<Theme />
 			<SubmitBtnContainer>
-				<button type='button'>랜덤</button>
+				<button
+					type='button'
+					onClick={handleClickRandom}
+					disabled={isRandomDisable}
+				>랜덤</button>
 				<button
 					type='button'
 					onClick={() => {
