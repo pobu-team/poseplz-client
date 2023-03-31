@@ -23,8 +23,14 @@ const Container = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+  }
+`;
 
-    button {
+type PersonButtonProps = {
+	active: boolean;
+};
+
+const PersonButton = styled.button<PersonButtonProps>`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -38,19 +44,18 @@ const Container = styled.div`
       color: ${props => props.theme.colors.text};
       background: ${props => props.theme.colors.buttonBackground};
       cursor: pointer;
-      
-      p {
-        display: flex;
-        font-size: 70px;
-      }
-      &:disabled {
-        color: lightgray;
-      }
+
+      ${props => props.active && css`
+      border: 3px solid ${props.theme.colors.primary};
+      background-color: ${props.theme.colors.background};
+    `};
+
+    &:disabled {
+    color: lightgray;
     }
-  }
 `;
 
-const Button = styled.button`
+const NextButton = styled.button`
     margin-top: 10px;
     display: flex;
     width: 350px;
@@ -64,7 +69,7 @@ const Button = styled.button`
     background-color: ${props => props.theme.colors.primary};
     
     &:disabled {
-    color: gray;
+    color: lightgray;
   }
 `;
 
@@ -73,50 +78,55 @@ export default function SelectPeople() {
 
 	const [, store] = useSelectStore();
 
+	const initialState: Record<number, boolean> = {};
+	for (let i = 1; i <= 6; i++) {
+		initialState[i] = false;
+	}
+
+	const [active, setActive] = useState(initialState);
 	const [isBtnDisabled, setIsBtnDisabled] = useState([false, false, false, false, false, false]);
 	const [isNextBtnDisabled, setIsNextBtnDisabled] = useState(true);
 
 	const handleClickPersonNum = (number: number) => {
 		store.savePersonNum(String(number));
 
-		if (isBtnDisabled.includes(true)) {
+		if (active[number]) {
+			setActive(Object.assign(active, {[number]: false}));
 			setIsBtnDisabled(new Array(6).fill(false));
 			setIsNextBtnDisabled(true);
 			return;
 		}
 
-		let isBtnDisabledCopy = [...isBtnDisabled];
-		isBtnDisabledCopy = isBtnDisabledCopy.map((_, index) => (index !== number - 1));
-		setIsBtnDisabled(isBtnDisabledCopy);
+		let newBtnState = [...isBtnDisabled];
+		newBtnState = newBtnState.map((_, index) => (index !== number - 1));
+		setIsBtnDisabled(newBtnState);
+		setActive(Object.assign(active, {[number]: true}));
 		setIsNextBtnDisabled(false);
-		console.log(isBtnDisabledCopy);
 	};
-
-	const iconArr = ['🙋🏻‍♀️', '👨🏻‍🤝‍👩🏻', '👩🏻‍🧑🏻‍👧🏻', '👨🏻‍👩🏻‍👦🏻‍👧🏻', '', ''];
 
 	return (
 		<Container>
 			<h1>몇 명이서 오셨나요?</h1>
 			<div>
 				{[1, 2, 3, 4, 5, 6].map((item, index) => (
-					<button
+					<PersonButton
 						type='button' key={item}
 						onClick={() => {
 							handleClickPersonNum(item);
 						}}
+						active={active[item]}
 						disabled={isBtnDisabled[index]}
 					>
-						<p>{iconArr[index]}</p>
 						{item}명
-					</button>
+					</PersonButton>
 				))}
 			</div>
-			<Button type='button'
+			<NextButton type='button'
 				onClick={() => {
 					navigate('/theme');
 				}}
 				disabled={isNextBtnDisabled}
-			>다음</Button>
+			>다음</NextButton>
 		</Container>
 	);
 }

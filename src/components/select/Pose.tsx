@@ -5,15 +5,17 @@ import {useLocalStorage} from 'usehooks-ts';
 const Container = styled.div`
 		position: relative;
     width: 50%;
+
     img {
-      border-radius: 30px;
+      border-radius: 16px;
       width: 100%;
       height: 100%;
-      padding: 5px;
+      padding: 15px;
     }
+
     button {
       bottom: 20px;
-		  font-size: 25px;
+		  font-size: 35px;
 		  right: 0;
       position: absolute;
       border: none;

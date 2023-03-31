@@ -24,6 +24,7 @@ const Container = styled.div<ContainerProps>`
       flex: 1;
       background: none;
       border: none;
+      color: ${props => props.theme.colors.text};
       cursor: pointer;
     }
   }

@@ -15,7 +15,7 @@ const Container = styled.div`
     align-self: flex-start;
     font-size: 28px;
     font-weight: 600;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
   }
 
   h2 {
@@ -49,7 +49,7 @@ const SubmitBtnContainer = styled.div`
 
   button:disabled,
   button[disabled] {
-    color: gray;
+    color: lightgray;
   }
 `;
 
@@ -69,6 +69,7 @@ export default function SelectTheme() {
 
 		if (theme.length === 0) {
 			setIsDisable(true);
+			setIsRandomDisable(false);
 		}
 	});
 	const handleClickRandom = () => {

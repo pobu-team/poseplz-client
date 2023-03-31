@@ -45,7 +45,7 @@ const ButtonContainer = styled.div`
 		border: none;
 		width: 180px;
 		height: 60px;
-		margin-top: 50px;
+		margin: 50px 4px 0 4px;
 		color: ${props => props.theme.colors.text};
 		background: ${props => props.theme.colors.detailButton};
 	}

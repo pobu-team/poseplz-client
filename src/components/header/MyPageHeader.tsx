@@ -37,6 +37,7 @@ const ButtonContainer = styled.div`
     width: 80px;
     height: 40px;
     border: none;
+    color: ${props => props.theme.colors.text};
     background-color: ${props => props.theme.colors.buttonBackground};
   }
 `;

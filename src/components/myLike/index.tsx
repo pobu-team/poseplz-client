@@ -5,11 +5,21 @@ import Pose from '../select/Pose';
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
+	padding: 20px 0;
+	background-color: ${props => props.theme.colors.buttonBackground};
+`;
+
+const EmptyContainer = styled.div`
+  width: 100%;
+	max-width: 430px;
+	margin: auto;
+  min-height: 100vh;
+	background-color: ${props => props.theme.colors.background};
 `;
 
 const Pharagraph = styled.p`
   display: flex;
-  margin-top: 300px;
+	padding-top: 100px;
   justify-content: center;
   align-items: center;
   font-size: 20px;
@@ -20,7 +30,9 @@ export default function MyLike() {
 
 	if (!selectedPose.length) {
 		return (
-			<Pharagraph>저장한 포즈가 없어요!</Pharagraph>
+			<EmptyContainer>
+				<Pharagraph>저장한 포즈가 없어요!</Pharagraph>
+			</EmptyContainer>
 		);
 	}
 

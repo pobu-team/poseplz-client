@@ -24,6 +24,7 @@ const Container = styled.div<ContainerProps>`
       flex: 1;
       background: none;
       border: none;
+      color: ${props => props.theme.colors.text};
       cursor: pointer;
     }
   }
@@ -61,7 +62,7 @@ export default function PopularPose() {
 		setTranslateX(translateX - 1);
 	};
 
-	const imgArr = ['2-1', '2-5', '2-7', '2-11', '1-1', '2-9'];
+	const imgArr = ['2-10', '3-5', '5-9', '1-1', '2-9', '3-2'];
 
 	return (
 		<Container translateX={translateX}>

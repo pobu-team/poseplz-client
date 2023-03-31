@@ -6,6 +6,7 @@ const defaultTheme = {
 		reverseText: '#FFF',
 		layoutBackground: '#F1F3F5',
 		primary: '#BBFF65',
+		secondary: '#DEFFB4',
 		startButton: '#BBFF65',
 		border: '#BBFF65',
 		buttonBackground: '#F2F2F7',
