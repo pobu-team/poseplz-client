@@ -1,6 +1,7 @@
 const defaultTheme = {
 	colors: {
 		background: '#FFF',
+		black: '#000',
 		text: '#000',
 		reverseText: '#FFF',
 		layoutBackground: '#F1F3F5',

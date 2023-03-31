@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import moveHome from '../../utils/moveHome';
 import shareKaKao from '../../utils/share';
 
 type PoseDetailProps = {
@@ -24,8 +25,8 @@ const Container = styled.div`
 		img {
 			padding: 20px 0;
 			display: flex;
-			width: 50%;
-			height: 100%;
+			max-width: 300px;
+			max-height: 590px;
 		}
 	}
 
@@ -48,19 +49,25 @@ const ButtonContainer = styled.div`
 		color: ${props => props.theme.colors.text};
 		background: ${props => props.theme.colors.detailButton};
 	}
+
+	button:last-child {
+		color: ${props => props.theme.colors.black};
+		background: ${props => props.theme.colors.border};
+	}
 `;
 
 export default function PoseDetail({imageSrc, onClickBack}: PoseDetailProps) {
+	moveHome();
 	return (
 		<Container>
 			<div>
 				<img src={imageSrc} alt={imageSrc} />
 			</div>
 			<ButtonContainer>
+				<button type='button' onClick={onClickBack}>포즈 더 추천받기</button>
 				<button type='button' onClick={() => {
 					shareKaKao(`/pose/detail?imageSrc=${imageSrc ?? ''}`);
 				}}>포즈 공유하기</button>
-				<button type='button' onClick={onClickBack}>홈으로 이동하기</button>
 			</ButtonContainer>
 		</Container>
 	);

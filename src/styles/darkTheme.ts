@@ -3,6 +3,7 @@ import type Theme from './Theme';
 const darkTheme: Theme = {
 	colors: {
 		background: '#000',
+		black: '#000',
 		text: '#FFF',
 		reverseText: '#000',
 		layoutBackground: '#000',
