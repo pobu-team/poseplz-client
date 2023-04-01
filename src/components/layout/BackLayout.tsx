@@ -1,9 +1,10 @@
 import {Outlet} from 'react-router-dom';
+
 import styled from 'styled-components';
+
 import BackHeader from '../header/BackHeader';
 
 const Container = styled.div`
-  background-color: rgba(0,0,0,0.1);
 	width: 100%;
   max-width: 430px;
   margin: auto;

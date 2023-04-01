@@ -1,4 +1,4 @@
-const url = 'http://localhost:8080';
+const url = 'https://pobu.vercel.app';
 
 const shareKaKao = (src: string) => {
 	/* eslint-disable @typescript-eslint/no-unsafe-call */

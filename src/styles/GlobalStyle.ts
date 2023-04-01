@@ -39,6 +39,16 @@ const GlobalStyle = createGlobalStyle`
       word-break: keep-all;
     }
   }
+
+  @media (max-width: 768px) {
+  /* 모바일 화면 스타일 */
+  .nav-menu {
+    display: none;
+  }
+  .nav-toggle {
+    display: block;
+  }
+}
 `;
 
 export default GlobalStyle;

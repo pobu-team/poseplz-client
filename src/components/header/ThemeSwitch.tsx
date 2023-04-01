@@ -2,14 +2,14 @@ import styled, {css} from 'styled-components';
 
 import {useLocalStorage} from 'usehooks-ts';
 
+type ToggleButtonProps = {
+	active: boolean;
+};
+
 const Container = styled.div`
   display: flex;
   align-items: ceneter;
 `;
-
-type ToggleButtonProps = {
-	active: boolean;
-};
 
 const ToggleButton = styled.button<ToggleButtonProps>`
   padding-block: 0.1em;

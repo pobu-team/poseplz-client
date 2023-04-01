@@ -15,7 +15,7 @@ const Container = styled.div`
     align-self: flex-start;
     font-size: 28px;
     font-weight: 600;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
   }
 
   h2 {
@@ -47,9 +47,8 @@ const SubmitBtnContainer = styled.div`
     background-color: ${props => props.theme.colors.border};
   }
 
-  button:disabled,
-  button[disabled] {
-    color: gray;
+  button:disabled {
+		opacity: 0.5;
   }
 `;
 
@@ -59,16 +58,23 @@ export default function SelectTheme() {
 	const [{theme}] = useSelectStore();
 
 	const [isDisable, setIsDisable] = useState(true);
+	const [isRandomDisable, setIsRandomDisable] = useState(false);
 
 	useEffect(() => {
 		if (theme.length !== 0) {
 			setIsDisable(false);
+			setIsRandomDisable(true);
 		}
 
 		if (theme.length === 0) {
 			setIsDisable(true);
+			setIsRandomDisable(false);
 		}
 	});
+
+	const handleClickRandom = () => {
+		navigate('/pose');
+	};
 
 	return (
 		<Container>
@@ -78,7 +84,11 @@ export default function SelectTheme() {
 			<h2>이런 분위기로 찍고싶어!</h2>
 			<Theme />
 			<SubmitBtnContainer>
-				<button type='button'>랜덤</button>
+				<button
+					type='button'
+					onClick={handleClickRandom}
+					disabled={isRandomDisable}
+				>랜덤</button>
 				<button
 					type='button'
 					onClick={() => {

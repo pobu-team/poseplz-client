@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import shareKaKao from '../../utils/share';
 
 type PoseDetailProps = {
@@ -11,24 +12,24 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 	height: 700px;
+	padding: 20px;
+	background-color: ${props => props.theme.colors.detailBackground};
 
   div:first-child {
 		display: flex;
 		border-radius: 10px;
 		align-items: center;
 		justify-content: center;
-		width: 90%;
 		height: 100%;
 		background-color: ${props => props.theme.colors.detailButton};
 		
 		img {
-			padding: 20px 0;
+			padding: 20px 20px;
 			display: flex;
-			width: 50%;
-			height: 100%;
+			max-width: 300px;
+			max-height: 600px;
 		}
 	}
-
 `;
 
 const ButtonContainer = styled.div`
@@ -44,9 +45,14 @@ const ButtonContainer = styled.div`
 		border: none;
 		width: 180px;
 		height: 60px;
-		margin-top: 50px;
+		margin: 50px 4px 0 4px;
 		color: ${props => props.theme.colors.text};
 		background: ${props => props.theme.colors.detailButton};
+	}
+
+	button:last-child {
+		color: ${props => props.theme.colors.black};
+		background: ${props => props.theme.colors.primary};
 	}
 `;
 
@@ -57,10 +63,20 @@ export default function PoseDetail({imageSrc, onClickBack}: PoseDetailProps) {
 				<img src={imageSrc} alt={imageSrc} />
 			</div>
 			<ButtonContainer>
-				<button type='button' onClick={() => {
-					shareKaKao(`/pose/detail?imageSrc=${imageSrc ?? ''}`);
-				}}>포즈 공유하기</button>
-				<button type='button' onClick={onClickBack}>홈으로 이동하기</button>
+				<button
+					type='button'
+					onClick={onClickBack}
+				>
+					포즈 더 추천받기
+				</button>
+				<button
+					type='button'
+					onClick={() => {
+						shareKaKao(`/pose/detail?imageSrc=${imageSrc ?? ''}`);
+					}}
+				>
+					포즈 공유하기
+				</button>
 			</ButtonContainer>
 		</Container>
 	);

@@ -1,5 +1,8 @@
 import {useState} from 'react';
+
 import styled from 'styled-components';
+
+import makeRandomImageSrc from '../../utils/random';
 
 type ContainerProps = {
 	translateX: number;
@@ -24,16 +27,18 @@ const Container = styled.div<ContainerProps>`
       flex: 1;
       background: none;
       border: none;
+      color: ${props => props.theme.colors.text};
       cursor: pointer;
     }
   }
 
   div:nth-of-type(2){
-    transform: translate(calc(-150px * ${props => props.translateX}), 0);
+    display: flex;
+    transform: translate(calc(-130px * ${props => props.translateX}), 0);
     transition: transform 0.5s;
     padding: 20px;
-    width: 1200px;
     height: 100%;
+    width: fit-content;
   }
 
   img {
@@ -42,6 +47,8 @@ const Container = styled.div<ContainerProps>`
     border-radius: 20px;
   }
 `;
+
+const imgArr = makeRandomImageSrc();
 
 export default function PopularPose() {
 	const [translateX, setTranslateX] = useState(1);
@@ -60,8 +67,6 @@ export default function PopularPose() {
 
 		setTranslateX(translateX - 1);
 	};
-
-	const imgArr = ['2-1', '2-5', '2-7', '2-11', '1-1', '2-9'];
 
 	return (
 		<Container translateX={translateX}>

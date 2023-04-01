@@ -1,31 +1,34 @@
 import {Link} from 'react-router-dom';
-import styled from 'styled-components';
-import {useLocalStorage} from 'usehooks-ts';
 
-const Container = styled.div`
-		position: relative;
-    width: 50%;
-    img {
-      border-radius: 30px;
-      width: 100%;
-      height: 100%;
-      padding: 5px;
-    }
-    button {
-      bottom: 20px;
-		  font-size: 25px;
-		  right: 0;
-      position: absolute;
-      border: none;
-      background: none;
-		  cursor: pointer;
-    }
-`;
+import styled from 'styled-components';
+
+import {useLocalStorage} from 'usehooks-ts';
 
 type PoseProps = {
 	imageSrc: string;
 	active: boolean;
 };
+
+const Container = styled.div`
+	position: relative;
+	margin: 10px 5px 10px 5px;
+
+  img {
+		border-radius: 30px;
+		width: 100%;
+		height: auto;
+	}
+
+	button {
+		bottom: 20px;
+		font-size: 35px;
+		right: 0;
+		position: absolute;
+		border: none;
+		background: none;
+		cursor: pointer;
+	}
+`;
 
 export default function Pose({imageSrc, active}: PoseProps) {
 	const linkTo = `/pose/detail?imageSrc=${imageSrc}`;
@@ -53,7 +56,10 @@ export default function Pose({imageSrc, active}: PoseProps) {
 					handleClickLike(imageSrc);
 				}}
 			>
-				{active ? '💗' : '🤍'}
+				<img
+					src={active ? '/images/btn_like_active.svg' : '/images/btn_like_default.svg'}
+					alt='btn_like'
+				/>
 			</button>
 		</Container>
 	);

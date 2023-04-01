@@ -1,6 +1,8 @@
 import {Outlet} from 'react-router-dom';
+
 import styled from 'styled-components';
-import Header from '../header/Header';
+
+import MainHeader from '../header/MainHeader';
 
 const Container = styled.div`
 	width: 100%;
@@ -14,7 +16,7 @@ const Container = styled.div`
 export default function Layout() {
 	return (
 		<Container>
-			<Header />
+			<MainHeader />
 			<main>
 				<Outlet />
 			</main>

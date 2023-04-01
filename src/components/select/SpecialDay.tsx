@@ -1,5 +1,7 @@
 import {useState} from 'react';
+
 import styled, {css} from 'styled-components';
+
 import useSelectStore from '../../hooks/useSelectStore';
 
 type ButtonProps = {
@@ -7,47 +9,56 @@ type ButtonProps = {
 };
 
 const Container = styled.div`
-  	display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    margin: 5px 0 30px 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+	margin: 10px 0;
 `;
 
 const Button = styled.button<ButtonProps>`
+	display: flex;
+	margin: 8px;
+	width: 100%;
+	height: 60px;
+	border: none;
+	border-radius: 16px;
+	background: ${props => props.theme.colors.buttonBackground};
+	text-align: start;
+	cursor: pointer;
+
+	${props => props.active && css`
+		border: 3px solid ${props => props.theme.colors.border};
+		background-color: ${props => props.theme.colors.background};
+		background-image: url(${props => props.theme.img.check});
+		background-repeat: no-repeat;
+		background-position: right 10px center;
+	`};
+
+	div {
+		display: flex;
+		flex: 1;
+		align-items: center;
+		justify-content: center;
+		margin-right: 20px;
+
+		img {
+			padding: 15px;
 			display: flex;
-      margin: 10px;
-      width: 100%;
-      height: 60px;
-      border: none;
-			border-radius: 16px;
-			background: ${props => props.theme.colors.buttonBackground};
-			text-align: start;
-      cursor: pointer;
-
-      ${props => props.active && css`
-        border: 3px solid ${props => props.theme.colors.border};
-				background-image: url(${props => props.theme.img.check});
-				background-repeat: no-repeat;
-				background-position: right 10px center;
-      `};
-
-			span {
-      margin: 7px;
-      width: 40px;
-      height: 50px;
-      font-size: 30px;
-			margin-right: 30px;
-    }
-
-		p {
-			justify-self: center;
-			align-self: center;
-			font-weight: 600;
-			font-size: 17px;
-			color: ${props => props.theme.colors.text}
+			width: 100%;
 		}
+	}
+
+	p {
+		display: flex;
+		flex: 5;
+		justify-self: center;
+		align-self: center;
+		font-weight: 600;
+		font-size: 17px;
+		color: ${props => props.theme.colors.text}
+	}
 `;
 
 export default function SpecialDay() {
@@ -82,7 +93,7 @@ export default function SpecialDay() {
 					handleClickDay('birthday');
 				}}
 			>
-				<span>🎂</span>
+				<div><img src='/images/birthday.png' alt='birthday' /></div>
 				<p>생일 / 기념일</p>
 			</Button>
 			<Button
@@ -92,7 +103,7 @@ export default function SpecialDay() {
 					handleClickDay('holiday');
 				}}
 			>
-				<span>👨🏻‍👩🏻‍👦🏻‍👧🏻</span>
+				<div><img src='/images/holiday.png' alt='holiday' /></div>
 				<p>설날 / 추석 / 가족모임</p>
 			</Button>
 			<Button
@@ -102,7 +113,7 @@ export default function SpecialDay() {
 					handleClickDay('christmas');
 				}}
 			>
-				<span>🎄</span>
+				<div><img src='/images/christmas.png' alt='christmas' /></div>
 				<p>크리스마스 / 연말</p>
 			</Button>
 		</Container>

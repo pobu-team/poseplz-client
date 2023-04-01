@@ -6,11 +6,15 @@ type FilterPoseProps = {
 };
 
 export default function filterPose({filteredPoseByPerson, theme}: FilterPoseProps) {
+	if (!theme.length) {
+		theme = ['simple', 'friendly', 'fun', 'love', 'birthday', 'holiday', 'christmas'];
+	}
+
 	const filterPose = (theme: string) => filteredPoseByPerson[0].image
 		.filter(item => item.theme === theme || item.special === theme);
 
 	const filteredPose = [];
-	// Theme: {birthday, simple}
+
 	for (const x of theme) {
 		filteredPose.push(filterPose(x));
 	}

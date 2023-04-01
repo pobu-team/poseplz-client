@@ -1,8 +1,10 @@
 import {useEffect} from 'react';
+
 import {useNavigate} from 'react-router';
 
 export default function moveHome() {
 	const navigate = useNavigate();
+
 	const preventClose = (e: BeforeUnloadEvent) => {
 		e.preventDefault();
 		e.returnValue = '';

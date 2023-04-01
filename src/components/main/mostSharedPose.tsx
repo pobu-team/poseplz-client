@@ -1,5 +1,8 @@
 import {useState} from 'react';
+
 import styled from 'styled-components';
+
+import makeRandomImageSrc from '../../utils/random';
 
 type ContainerProps = {
 	translateX: number;
@@ -24,16 +27,18 @@ const Container = styled.div<ContainerProps>`
       flex: 1;
       background: none;
       border: none;
+      color: ${props => props.theme.colors.text};
       cursor: pointer;
     }
   }
 
   div:nth-of-type(2){
-    transform: translate(calc(-150px * ${props => props.translateX}), 0);
+    display: flex;
+    transform: translate(calc(-130px * ${props => props.translateX}), 0);
     transition: transform 0.5s;
     padding: 20px;
-    width: 1200px;
     height: 100%;
+    width: fit-content;
   }
 
   img {
@@ -43,8 +48,11 @@ const Container = styled.div<ContainerProps>`
   }
 `;
 
+const imgArr = makeRandomImageSrc();
+
 export default function MostSharedPose() {
 	const [translateX, setTranslateX] = useState(1);
+
 	const handleClickLeft = () => {
 		if (translateX >= 3) {
 			return;
@@ -61,8 +69,6 @@ export default function MostSharedPose() {
 		setTranslateX(translateX - 1);
 	};
 
-	const imgArr = ['1-1', '2-1', '2-5', '2-9', '2-7', '2-11'];
-
 	return (
 		<Container translateX={translateX}>
 			<div>
@@ -71,8 +77,8 @@ export default function MostSharedPose() {
 				<button type='button' onClick={handleClickLeft}>{'>'}</button>
 			</div>
 			<div>
-				{[1, 2, 3, 4, 5, 6].map((item, index) => (
-					<img key={item} src={`/images/${imgArr[index]}.png`} alt='??'/>
+				{[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
+					<img key={item} src={`/images/${imgArr[index]}.png`} alt={imgArr[index]}/>
 				))}
 			</div>
 		</Container>
