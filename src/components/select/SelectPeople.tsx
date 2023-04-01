@@ -71,6 +71,7 @@ const NextButton = styled.button`
   align-items: center;
   border: none;
   border-radius: 10px;
+  font-size: 20px;
   cursor: pointer;
   color: '#000';
   background-color: ${props => props.theme.colors.primary};

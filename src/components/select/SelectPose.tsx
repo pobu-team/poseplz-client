@@ -15,6 +15,7 @@ import type Image from '../../types/Image';
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
+	padding: ${props => props.theme.sizes.contentPadding};
 
 	div:first-child{
 		display: flex;

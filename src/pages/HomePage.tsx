@@ -50,7 +50,7 @@ const Container = styled.main<ContainerProps>`
 			case 2:
 				return '#FF88BE';
 			case 3:
-				return props.theme.colors.primary;
+				return '#1F1E1F';
 			default:
 				return '#1F1E1F';
 		}

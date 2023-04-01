@@ -6,7 +6,7 @@ import useSelectStore from '../../hooks/useSelectStore';
 
 const Container = styled.div`
   height: 100px;
-  margin: 20px 10px;
+  margin: 5px 10px;
 
   button {
     display: flex;

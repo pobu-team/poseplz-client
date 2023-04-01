@@ -20,8 +20,7 @@ const Container = styled.div`
 	}
 
 	button {
-		bottom: 20px;
-		font-size: 35px;
+		bottom: 10px;
 		right: 0;
 		position: absolute;
 		border: none;

@@ -12,16 +12,17 @@ const Container = styled.div`
   align-items: flex-start;
 
   h1 {
-    align-self: flex-start;
+		margin-left: 20px;
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 20px;
   }
 
   h2 {
-      font-size: 20px;
-      font-weight: 600;
-    }
+		margin-left: 20px;
+    font-size: 20px;
+    font-weight: 600;
+  }
 `;
 
 const SubmitBtnContainer = styled.div`
