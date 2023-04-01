@@ -8,7 +8,6 @@ const Container = styled.div`
 
     img {
       border-radius: 30px;
-			border: 2px solid black;
       width: 100%;
 			height: auto;
     }
@@ -55,7 +54,7 @@ export default function Pose({imageSrc, active}: PoseProps) {
 					handleClickLike(imageSrc);
 				}}
 			>
-				{active ? '💗' : '🤍'}
+				<img src={active ? '/images/btn_like_active.svg' : '/images/btn_like_default.svg'} />
 			</button>
 		</Container>
 	);

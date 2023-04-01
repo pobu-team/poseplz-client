@@ -21,10 +21,10 @@ const Container = styled.div`
 			display: flex;
 			font-size: 15px;
 			border-radius: 10px;
-			padding: 8px 14px;
+			padding: 12px 16px;
 			gap: 4px;
 			margin: 6px 4px;
-			color: ${props => props.theme.colors.black};
+			color: ${props => props.theme.colors.text};
 			background-color: ${props => props.theme.colors.secondary};
 		}
 	}

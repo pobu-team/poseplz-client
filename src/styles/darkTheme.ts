@@ -8,7 +8,7 @@ const darkTheme: Theme = {
 		reverseText: '#000',
 		layoutBackground: '#000',
 		primary: '#BBFF65',
-		secondary: '#DEFFB4',
+		secondary: '#333335',
 		startButton: '#333335',
 		border: '#BBFF65',
 		buttonBackground: '#1E1E1F',

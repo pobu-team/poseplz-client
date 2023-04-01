@@ -23,6 +23,7 @@ const ButtonContainer = styled.div`
 
   button.selected {
     border: 2px solid ${props => props.theme.colors.border};
+		background-color: ${props => props.theme.colors.background};
   }
 `;
 
