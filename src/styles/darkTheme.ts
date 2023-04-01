@@ -15,6 +15,7 @@ const darkTheme: Theme = {
 		detailButton: '#1E1E1F',
 		randomButton: '#FFFFFF',
 		arrowBackground: '#BBFF65',
+		detailBackground: '#000',
 	},
 
 	sizes: {

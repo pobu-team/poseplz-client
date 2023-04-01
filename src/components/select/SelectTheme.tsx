@@ -47,9 +47,8 @@ const SubmitBtnContainer = styled.div`
     background-color: ${props => props.theme.colors.border};
   }
 
-  button:disabled,
-  button[disabled] {
-    color: lightgray;
+  button:disabled {
+		opacity: 0.5;
   }
 `;
 

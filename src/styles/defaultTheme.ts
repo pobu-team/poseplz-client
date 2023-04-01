@@ -13,6 +13,7 @@ const defaultTheme = {
 		detailButton: '#FFFFFF',
 		randomButton: '#000000',
 		arrowBackground: '#FFFFFF',
+		detailBackground: '#F2F2F7',
 	},
 
 	sizes: {

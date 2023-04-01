@@ -15,6 +15,7 @@ const Container = styled.div`
 		display: flex;
 		width: 100%;
 		flex-wrap: wrap;
+		margin-bottom: 20px;
 
 		span {
 			display: flex;
@@ -48,6 +49,7 @@ export default function SelectPose() {
 	const imageArr = new Set(filteredPose.reduce((acc, val) => acc.concat(val), []));
 
 	const tagArr = theme.map((item: string) => tag[item]);
+	tagArr.unshift(personNum + '명');
 
 	return (
 		<Container>
