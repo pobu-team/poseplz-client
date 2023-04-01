@@ -17,7 +17,7 @@ const EmptyContainer = styled.div`
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		height: 100vh;
+		height: auto;
 		padding: 50px;
 
 		img {
@@ -34,9 +34,9 @@ const EmptyContainer = styled.div`
 `;
 
 const PoseContainer = styled.div`
+	padding: ${props => props.theme.sizes.contentPadding};
 	column-count: 2;
 	column-gap: 0;
-	margin-top: 20px;
 `;
 
 export default function MyLike() {

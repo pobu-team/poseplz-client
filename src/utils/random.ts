@@ -12,6 +12,8 @@ export default function makeRandomImageSrc() {
 		}
 	}
 
+	console.log(imageArr);
+
 	return imageArr;
 }
 
