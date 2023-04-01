@@ -17,18 +17,22 @@ const EmptyContainer = styled.div`
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		height: auto;
+		align-items: center;
+		height: 100vh;
 		padding: 50px;
 
 		img {
 			display: flex;
-			padding: 100px;
+			width: 107px;
+			height: 124px;
+			margin-bottom: 20px;
 		}
 		
 		p {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			color: ${props => props.theme.colors.noImageText};
 			font-size: 20px;
 		}
 `;

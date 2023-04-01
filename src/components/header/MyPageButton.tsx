@@ -6,8 +6,8 @@ import {useReadLocalStorage} from 'usehooks-ts';
 
 const Button = styled.button`
   display: flex;
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border: 2px solid ${props => props.theme.colors.text};
   justify-content: center;
   align-items: center;

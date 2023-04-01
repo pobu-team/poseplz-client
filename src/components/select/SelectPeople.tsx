@@ -17,7 +17,6 @@ const Container = styled.div`
   align-items: center;
 
   h1 {
-    align-self: flex-start;
     font-size: 25px;
     font-weight: 600;
     margin-bottom: 15px;
@@ -72,6 +71,7 @@ const NextButton = styled.button`
   border: none;
   border-radius: 10px;
   font-size: 20px;
+  font-weight: 600;
   cursor: pointer;
   color: '#000';
   background-color: ${props => props.theme.colors.primary};

@@ -57,15 +57,23 @@ const Container = styled.main<ContainerProps>`
 	}};
   background-image: url(${props => props.currentImage});
   background-repeat: no-repeat;
-  background-size: 100% auto;
+	background-size: contain;
+  background-position: center;
   animation: ${props => props.isAnimating ? fadeOut : fadeIn} 1s ease-in-out;
   animation-fill-mode: forwards;
+
+	@media (max-width: 600px) {
+		max-width: 100%;
+		padding-inline: 10px;
+	}
 `;
 
 const StartButton = styled.button<StartButtonProps>`
   display: flex;
-  width: 90%;
+	width: 350px;
   height: 60px;
+	max-width: 350px;
+  max-height: 60px;
   margin-bottom: 30px;
   font-size: 22px;
   justify-content: center;

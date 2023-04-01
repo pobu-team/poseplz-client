@@ -15,11 +15,12 @@ const Container = styled.div<ContainerProps>`
 
   div:nth-of-type(1){
     display: flex;
+    align-items: center;
     justify-content: space-between;
     
     h1 {
       flex: 30;
-      font-size: 23px;
+      font-size: 21px;
       font-weight: 600;
     }
 
@@ -72,13 +73,13 @@ export default function PopularPose() {
 	return (
 		<Container translateX={translateX}>
 			<div>
-				<h1>😍 500명 이상이 좋아한 포즈에요!</h1>
+				<h1>500명 이상이 좋아한 포즈에요!</h1>
 				<button type='button' onClick={handleClickRight}>{'<'}</button>
 				<button type='button' onClick={handleClickLeft}>{'>'}</button>
 			</div>
 			<div>
 				{[1, 2, 3, 4, 5, 6].map((item, index) => (
-					<img key={item} src={`/images/${imgArr[index]}.png`} alt='??'/>
+					<img key={item} src={`/images/${imgArr[index]}.png`} alt={imgArr[index]}/>
 				))}
 			</div>
 		</Container>

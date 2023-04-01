@@ -16,11 +16,12 @@ const darkTheme: Theme = {
 		randomButton: '#FFFFFF',
 		arrowBackground: '#BBFF65',
 		detailBackground: '#000',
+		noImageText: '#9B9B9B',
 	},
 
 	sizes: {
 		layoutWidth: '430px',
-		contentPadding: '1rem',
+		contentPadding: '1.5rem',
 		contentBorderRadius: '8rem',
 	},
 

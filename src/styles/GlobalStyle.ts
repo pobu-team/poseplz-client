@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     font-size: 1.6rem;
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard-Regular', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;;
     color: ${props => props.theme.colors.text};
     background: ${props => props.theme.colors.background};
   }

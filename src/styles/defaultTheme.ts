@@ -14,11 +14,12 @@ const defaultTheme = {
 		randomButton: '#000000',
 		arrowBackground: '#FFFFFF',
 		detailBackground: '#F2F2F7',
+		noImageText: '#8A8A8A',
 	},
 
 	sizes: {
 		layoutWidth: '430px',
-		contentPadding: '1rem',
+		contentPadding: '1.5rem',
 		contentBorderRadius: '8rem',
 	},
 

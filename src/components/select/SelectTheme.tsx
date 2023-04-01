@@ -12,7 +12,7 @@ const Container = styled.div`
   align-items: flex-start;
 
   h1 {
-		margin-left: 20px;
+		margin: 0 10px;
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 20px;
