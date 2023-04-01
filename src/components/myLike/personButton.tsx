@@ -2,12 +2,16 @@ import {useState} from 'react';
 import styled from 'styled-components';
 
 const ButtonContainer = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
   background-color: ${props => props.theme.colors.background};
-	padding: 0 30px;
-	padding-bottom: 20px;
+	padding: 0 10px 20px;
 
   button {
 		cursor: pointer;
+		justify-content: center;
+		align-items: center;
     margin: 4px;
     border-radius: 10px;
     width: 80px;

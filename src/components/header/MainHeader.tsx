@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-
-import BackButton from './BackButton';
 import HeaderLogo from './HeaderLogo';
 import MyPageButton from './MyPageButton';
+import ThemeSwitch from './ThemeSwitch';
 
 const Container = styled.div`
   display: flex;
@@ -12,10 +11,10 @@ const Container = styled.div`
   padding-inline: ${props => props.theme.sizes.contentPadding};
 `;
 
-export default function BackHeader() {
+export default function MainHeader() {
 	return (
 		<Container>
-			<BackButton />
+			<ThemeSwitch />
 			<HeaderLogo />
 			<MyPageButton />
 		</Container>

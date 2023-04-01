@@ -12,21 +12,22 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 	height: 700px;
+	padding: 20px;
+	background-color: ${props => props.theme.colors.detailBackground};
 
   div:first-child {
 		display: flex;
 		border-radius: 10px;
 		align-items: center;
 		justify-content: center;
-		width: 90%;
 		height: 100%;
 		background-color: ${props => props.theme.colors.detailButton};
 		
 		img {
-			padding: 20px 0;
+			padding: 20px 20px;
 			display: flex;
 			max-width: 300px;
-			max-height: 590px;
+			max-height: 600px;
 		}
 	}
 
@@ -52,7 +53,7 @@ const ButtonContainer = styled.div`
 
 	button:last-child {
 		color: ${props => props.theme.colors.black};
-		background: ${props => props.theme.colors.border};
+		background: ${props => props.theme.colors.primary};
 	}
 `;
 
