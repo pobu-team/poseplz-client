@@ -31,11 +31,12 @@ const Container = styled.div<ContainerProps>`
   }
 
   div:nth-of-type(2){
+    display: flex;
     transform: translate(calc(-130px * ${props => props.translateX}), 0);
     transition: transform 0.5s;
     padding: 20px;
-    width: 1200px;
     height: 100%;
+    width: fit-content;
   }
 
   img {

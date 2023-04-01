@@ -1,9 +1,12 @@
+/* eslint-disable no-constant-condition */
 export default function makeRandomImageSrc() {
 	const imageArr: string[] = [];
-	for (let i = 0; i < 6; i++) {
+
+	while (imageArr.length < 6) {
 		const personId = makeRandomNumber(6);
 		const imageId = makeRandomNumber(12);
 		const imageSrc = personId + '-' + imageId;
+		console.log(imageSrc);
 		if (!imageArr.includes(imageSrc)) {
 			imageArr.push(imageSrc);
 		}

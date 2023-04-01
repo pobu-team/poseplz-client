@@ -33,11 +33,12 @@ const Container = styled.div<ContainerProps>`
   }
 
   div:nth-of-type(2){
+    display: flex;
     transform: translate(calc(-130px * ${props => props.translateX}), 0);
     transition: transform 0.5s;
     padding: 20px;
-    width: 1200px;
     height: 100%;
+    width: fit-content;
   }
 
   img {
@@ -77,7 +78,7 @@ export default function MostSharedPose() {
 			</div>
 			<div>
 				{[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
-					<img key={item} src={`/images/${imgArr[index]}.png`} alt='??'/>
+					<img key={item} src={`/images/${imgArr[index]}.png`} alt={imgArr[index]}/>
 				))}
 			</div>
 		</Container>
