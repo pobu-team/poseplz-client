@@ -1,5 +1,7 @@
 import {Outlet} from 'react-router-dom';
+
 import styled from 'styled-components';
+
 import MyPageHeader from '../header/MyPageHeader';
 
 const Container = styled.div`

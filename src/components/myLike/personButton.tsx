@@ -1,4 +1,5 @@
 import {useState} from 'react';
+
 import styled from 'styled-components';
 
 const ButtonContainer = styled.div`
@@ -34,6 +35,7 @@ type PersonButtonProps = {
 
 export default function PersonButton({selectedPose, setIsPersonNum}: PersonButtonProps) {
 	const [selectedButton, setSelectedButton] = useState<number | undefined>(undefined);
+
 	const [allButton, setAllButton] = useState(true);
 
 	const handleClick = (num: number) => {

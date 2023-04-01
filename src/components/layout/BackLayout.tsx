@@ -1,5 +1,7 @@
 import {Outlet} from 'react-router-dom';
+
 import styled from 'styled-components';
+
 import BackHeader from '../header/BackHeader';
 
 const Container = styled.div`

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import moveHome from '../../utils/moveHome';
+
 import BackButton from './BackButton';
 import ThemeSwitch from './ThemeSwitch';
 
@@ -19,8 +19,6 @@ const Container = styled.div`
 `;
 
 export default function MyPageHeader() {
-	moveHome();
-
 	return (
 		<div>
 			<Container>

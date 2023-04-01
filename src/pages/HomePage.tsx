@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react';
+
 import {useNavigate} from 'react-router';
+
 import styled, {keyframes} from 'styled-components';
 
 type ContainerProps = {
@@ -103,7 +105,10 @@ export default function HomePage() {
 			currentImage={images[currentImageIndex]}
 			isAnimating={isAnimating}
 		>
-			<StartButton onClick={handleClickStart} currentImageIndex={currentImageIndex}>
+			<StartButton
+				onClick={handleClickStart}
+				currentImageIndex={currentImageIndex}
+			>
         Get started
 			</StartButton>
 		</Container>

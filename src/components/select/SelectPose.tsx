@@ -1,11 +1,16 @@
 import styled from 'styled-components';
+
 import {useLocalStorage} from 'usehooks-ts';
+
 import {tag} from '../../constant/tag';
+
 import useSelectStore from '../../hooks/useSelectStore';
-import type Image from '../../types/Image';
-import filterPose from '../../utils/filterPose';
-import moveHome from '../../utils/moveHome';
+
 import Pose from './Pose';
+
+import filterPose from '../../utils/filterPose';
+
+import type Image from '../../types/Image';
 
 const Container = styled.div`
   display: flex;
@@ -36,8 +41,6 @@ const PoseContainer = styled.div`
 `;
 
 export default function SelectPose() {
-	moveHome();
-
 	const [like, _] = useLocalStorage<string[]>('pose-store', []);
 
 	const [{pose, personNum, theme}] = useSelectStore();

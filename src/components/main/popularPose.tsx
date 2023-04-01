@@ -1,5 +1,7 @@
 import {useState} from 'react';
+
 import styled from 'styled-components';
+
 import makeRandomImageSrc from '../../utils/random';
 
 type ContainerProps = {

@@ -1,5 +1,7 @@
 import {Outlet} from 'react-router-dom';
+
 import styled from 'styled-components';
+
 import DetailHeader from '../header/DetailHeader';
 
 const Container = styled.div`

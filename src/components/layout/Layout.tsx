@@ -1,5 +1,7 @@
 import {Outlet} from 'react-router-dom';
+
 import styled from 'styled-components';
+
 import MainHeader from '../header/MainHeader';
 
 const Container = styled.div`

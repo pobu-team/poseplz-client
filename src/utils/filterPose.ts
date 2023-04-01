@@ -14,7 +14,7 @@ export default function filterPose({filteredPoseByPerson, theme}: FilterPoseProp
 		.filter(item => item.theme === theme || item.special === theme);
 
 	const filteredPose = [];
-	// Theme: {birthday, simple}
+
 	for (const x of theme) {
 		filteredPose.push(filterPose(x));
 	}

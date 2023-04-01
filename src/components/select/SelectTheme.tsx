@@ -71,6 +71,7 @@ export default function SelectTheme() {
 			setIsRandomDisable(false);
 		}
 	});
+
 	const handleClickRandom = () => {
 		navigate('/pose');
 	};

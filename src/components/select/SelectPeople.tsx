@@ -1,9 +1,14 @@
-import 'reflect-metadata';
-
 import {useState} from 'react';
+
 import {useNavigate} from 'react-router';
+
 import styled, {css} from 'styled-components';
+
 import useSelectStore from '../../hooks/useSelectStore';
+
+type PersonButtonProps = {
+	active: boolean;
+};
 
 const Container = styled.div`
   padding: 10px;
@@ -26,57 +31,53 @@ const Container = styled.div`
   }
 `;
 
-type PersonButtonProps = {
-	active: boolean;
-};
-
 const PersonButton = styled.button<PersonButtonProps>`
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: center;
-      margin: 8px;
-      padding: 20px;
-      width: 156px;
-      height: 180px;
-      border-radius: 16px;
-      border: none;
-      color: ${props => props.theme.colors.text};
-      background: ${props => props.theme.colors.buttonBackground};
-      cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 8px;
+    padding: 20px;
+    width: 156px;
+    height: 180px;
+    border-radius: 16px;
+    border: none;
+    color: ${props => props.theme.colors.text};
+    background: ${props => props.theme.colors.buttonBackground};
+    cursor: pointer;
 
-      ${props => props.active && css`
-      border: 3px solid ${props.theme.colors.primary};
-      background-color: ${props.theme.colors.background};
-    `};
+    ${props => props.active && css`
+    border: 3px solid ${props.theme.colors.primary};
+    background-color: ${props.theme.colors.background};
+  `};
 
-    &:disabled {
-      opacity: 0.5;
-    }
+  &:disabled {
+    opacity: 0.5;
+  }
 
-    img {
-      width: 100%;
-      padding: 10px;
-      height: auto;
-    }
+  img {
+    width: 100%;
+    padding: 10px;
+    height: auto;
+  }
 `;
 
 const NextButton = styled.button`
-    margin-top: 10px;
-    display: flex;
-    width: 350px;
-    height: 50px;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    color: '#000';
-    background-color: ${props => props.theme.colors.primary};
-    
-    &:disabled {
-      opacity: 0.5;
-    }
+  margin-top: 10px;
+  display: flex;
+  width: 350px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: '#000';
+  background-color: ${props => props.theme.colors.primary};
+  
+  &:disabled {
+    opacity: 0.5;
+  }
 `;
 
 export default function SelectPeople() {
@@ -90,7 +91,9 @@ export default function SelectPeople() {
 	}
 
 	const [active, setActive] = useState(initialState);
+
 	const [isBtnDisabled, setIsBtnDisabled] = useState([false, false, false, false, false, false]);
+
 	const [isNextBtnDisabled, setIsNextBtnDisabled] = useState(true);
 
 	const handleClickPersonNum = (number: number) => {

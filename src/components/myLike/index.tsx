@@ -1,8 +1,11 @@
 import {useState} from 'react';
+
 import styled from 'styled-components';
+
 import {useLocalStorage, useReadLocalStorage} from 'usehooks-ts';
-import Pose from '../select/Pose';
+
 import PersonButton from './personButton';
+import Pose from '../select/Pose';
 
 const Container = styled.div`
   display: flex;
@@ -38,7 +41,9 @@ const PoseContainer = styled.div`
 
 export default function MyLike() {
 	const [selectedPose, _] = useLocalStorage<string[]>('pose-store', []);
+
 	const isDarkMode = useReadLocalStorage('darkMode');
+
 	const [personNum, setIsPersonNum] = useState(selectedPose);
 
 	return (
@@ -54,7 +59,10 @@ export default function MyLike() {
 				})}
 				</PoseContainer>)
 				: (<EmptyContainer>
-					<img src={isDarkMode ? '/images/no-image-dark.png' : 'images/no-image.png'} alt='noImage' />
+					<img
+						src={isDarkMode ? '/images/no-image-dark.png' : 'images/no-image.png'}
+						alt='noImage'
+					/>
 					<p>찜한 포즈가 없어요</p>
 				</EmptyContainer>
 				)}

@@ -1,5 +1,7 @@
 import {useNavigate} from 'react-router';
+
 import styled from 'styled-components';
+
 import {useReadLocalStorage} from 'usehooks-ts';
 
 const Logo = styled.button`
@@ -30,7 +32,10 @@ export default function HeaderLogo() {
 
 	return (
 		<Logo onClick={handleClickLogo}>
-			<img src={isDarkMode ? '/images/logo-dark.png' : '/images/logo-small.png'} alt='logo'/>
+			<img
+				src={isDarkMode ? '/images/logo-dark.png' : '/images/logo-small.png'}
+				alt='logo'
+			/>
 		</Logo>
 	);
 }
