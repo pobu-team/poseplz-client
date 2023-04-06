@@ -31,30 +31,13 @@ const fadeOut = keyframes`
 `;
 
 const Container = styled.main<ContainerProps>`
+  margin: auto;
   display: flex;
+	height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  width: 100%;
-  max-width: 430px;
-  margin: auto;
-  min-height: 100vh;
   padding-inline: ${props => props.theme.sizes.contentPadding};
-  background-color: ${props => {
-		const currentImageIndex = images.indexOf(props.currentImage);
-		switch (currentImageIndex) {
-			case 0:
-				return '#FFE027';
-			case 1:
-				return '#BBFF65';
-			case 2:
-				return '#FF88BE';
-			case 3:
-				return '#1F1E1F';
-			default:
-				return '#1F1E1F';
-		}
-	}};
   background-image: url(${props => props.currentImage});
   background-repeat: no-repeat;
 	background-size: contain;
@@ -62,20 +45,18 @@ const Container = styled.main<ContainerProps>`
   animation: ${props => props.isAnimating ? fadeOut : fadeIn} 1s ease-in-out;
   animation-fill-mode: forwards;
 
-	@media (max-width: 600px) {
+	@media (max-width: 460px) {
 		max-width: 100%;
-		padding-inline: 10px;
-	}
+	}	
 `;
 
 const StartButton = styled.button<StartButtonProps>`
   display: flex;
-	width: 350px;
-  height: 60px;
-	max-width: 350px;
-  max-height: 60px;
-  margin-bottom: 30px;
-  font-size: 22px;
+	width: 40vh;
+	height: 7.5vh;
+	font-size: 2.5vh;
+	padding: 0;
+  margin-bottom: 5vh;
   justify-content: center;
   align-items: center;
   border: none;
