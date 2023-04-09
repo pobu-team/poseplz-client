@@ -22,7 +22,7 @@ export default function BackButton() {
 			navigate(-1);
 		}}>
 			<img
-				src={isDarkMode ? '/images/back-dark.png' : '/images/back.png'}
+				src={isDarkMode ? '/images/icon_back_D.svg' : '/images/icon_back_L.svg'}
 				alt='back'
 			/>
 		</Button>

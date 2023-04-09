@@ -6,12 +6,13 @@ import {useReadLocalStorage} from 'usehooks-ts';
 
 const Button = styled.button`
   display: flex;
-  width: 40px;
-  height: 40px;
-  border: 2px solid ${props => props.theme.colors.text};
   justify-content: center;
   align-items: center;
   background: none;
+	max-width: 36px;
+	max-height: 36px;
+	padding: 0;
+	border: none;
   border-radius: 50px;
   cursor: pointer;
 `;
@@ -27,7 +28,7 @@ export default function MyPageButton() {
 
 	return (
 		<Button onClick={handleClickMyPage}>
-			<img src={isDarkMode ? '/images/mybutton-dark.png' : '/images/mybutton.png'} />
+			<img src={isDarkMode ? '/images/icon_mylike_D.svg' : '/images/icon_mylike_L.svg'} />
 		</Button>
 	);
 }
