@@ -11,13 +11,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
-  @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-  }
-
   html {
     font-size: 62.5%;
   }
@@ -25,13 +18,13 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     font-size: 1.6rem;
-    font-family: 'Pretendard-Regular', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     color: ${props => props.theme.colors.text};
     background: ${props => props.theme.colors.background};
   }
 
   p, button, span {
-    font-family: 'Pretendard-Regular';
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   }
 
   :lang(ko) {
@@ -40,15 +33,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  @media (max-width: 768px) {
-  /* 모바일 화면 스타일 */
-  .nav-menu {
-    display: none;
+  *{
+    box-sizing: border-box;
+    outline: none;
   }
-  .nav-toggle {
-    display: block;
-  }
-}
 `;
 
 export default GlobalStyle;

@@ -21,7 +21,7 @@ const darkTheme: Theme = {
 
 	sizes: {
 		layoutWidth: '430px',
-		contentPadding: '1.5rem',
+		contentPadding: '2.4rem',
 		contentBorderRadius: '8rem',
 	},
 
