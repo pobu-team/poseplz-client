@@ -20,8 +20,8 @@ const Container = styled.div<ContainerProps>`
     
     h1 {
       flex: 30;
-      font-size: 21px;
-      font-weight: 600;
+      font-size: 24px;
+      font-weight: bold;
     }
 
     button {
@@ -38,7 +38,7 @@ const Container = styled.div<ContainerProps>`
     display: flex;
     transform: translate(calc(-130px * ${props => props.translateX}), 0);
     transition: transform 0.5s;
-    padding: 20px;
+    padding: 20px 0;
     height: 100%;
     width: fit-content;
   }
@@ -46,7 +46,7 @@ const Container = styled.div<ContainerProps>`
   img {
     height: 100%;
     margin: 5px;
-    border-radius: 20px;
+    border-radius: 10px;
   }
 `;
 
@@ -73,7 +73,7 @@ export default function PopularPose() {
 	return (
 		<Container translateX={translateX}>
 			<div>
-				<h1>500명 이상이 좋아한 포즈에요!</h1>
+				<h1>500명 이상이 저장했어요!</h1>
 				<button type='button' onClick={handleClickRight}>{'<'}</button>
 				<button type='button' onClick={handleClickLeft}>{'>'}</button>
 			</div>

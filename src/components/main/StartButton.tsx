@@ -5,39 +5,46 @@ import styled from 'styled-components';
 import useSelectStore from '../../hooks/useSelectStore';
 
 const Container = styled.div`
-  height: 80px;
-  margin: 5px 10px;
+  height: 120px;
 
   button {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 100%;
     border-radius: 60px 60px 0px 60px;
-    font-size: 25px;
-    font-weight: 600;
+    font-size: 2.4rem;
     cursor: pointer;
-    text-align: start;
-    padding: 30px;
+    padding: 40px;
     border: 2px solid ${props => props.theme.colors.border};
     background-color: ${props => props.theme.colors.startButton};
 
+    @media screen and (max-width: 340px) {
+        padding: 30px;
+      }
+
     span {
       display: flex;
-      color: ${props => props.theme.colors.text}
+      font-weight: bold;
+      color: ${props => props.theme.colors.text};
+      
+      @media screen and (max-width: 340px) {
+          font-size: 0.7em;
+      }
     }
 
     img {
-      display: flex;
-      width: 50px;
-      height: 50px;
-      padding: 15px;
-      background-color: ${props => props.theme.colors.arrowBackground};
-      border-radius: 50px;
+      @media screen and (max-width: 340px) {
+          width: 50px;
+          height: 50px;
+      }
     }
   }
+  
+  @media screen and (max-width: 340px) {
+          height: 100px;
+      }
 `;
 
 export default function StartButton() {
@@ -55,7 +62,7 @@ export default function StartButton() {
 		<Container>
 			<button type='button' onClick={handleClickStart}>
 				<span>포즈 추천 Go!</span>
-				<img src='/images/arrow.png' alt='arrow'/>
+				<img src='/images/btn_start.svg' alt='arrow'/>
 			</button>
 		</Container>
 	);
