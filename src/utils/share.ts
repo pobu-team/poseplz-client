@@ -1,3 +1,5 @@
+import Kakao from '../types/kakao';
+
 const url = 'https://pobu.vercel.app';
 
 const shareKaKao = (src: string) => {
@@ -7,7 +9,7 @@ const shareKaKao = (src: string) => {
 		content: {
 			title: '포즈를 부탁해',
 			description: '이 포즈 어때?',
-			imageUrl: `https://github.com/himyne/PoBu_pose_recommend/tree/main/static/images${src}`,
+			imageUrl: `https://raw.githubusercontent.com/himyne/PoBu_pose_recommend/main/static/images${src}`,
 			link: {
 				mobileWebUrl: url + src,
 				webUrl: url + src,

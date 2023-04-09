@@ -9,12 +9,12 @@
         {"id": "4", "theme": "friendly", "special": "birthday", "src": "/images/1-4.png"},
         {"id": "5", "theme": "friendly", "special": "holiday", "src": "/images/1-5.png"},
         {"id": "6", "theme": "friendly", "special": "christmas", "src": "/images/1-6.png"},
-        {"id": "10", "theme": "fun", "special": "birthday", "src": "/images/1-7.png"},
-        {"id": "11", "theme": "fun", "special": "christmas", "src": "/images/1-8.png"},
-        {"id": "12", "theme": "fun", "special": "holiday", "src": "/images/1-9.png"},
-        {"id": "13", "theme": "love", "special": "birthday", "src": "/images/1-10.png"},
-        {"id": "14", "theme": "love", "special": "christmas", "src": "/images/1-11.png"},
-        {"id": "15", "theme": "love", "special": "holiday", "src": "/images/1-12.png"}
+        {"id": "7", "theme": "fun", "special": "birthday", "src": "/images/1-7.png"},
+        {"id": "8", "theme": "fun", "special": "christmas", "src": "/images/1-8.png"},
+        {"id": "9", "theme": "fun", "special": "holiday", "src": "/images/1-9.png"},
+        {"id": "10", "theme": "love", "special": "birthday", "src": "/images/1-10.png"},
+        {"id": "11", "theme": "love", "special": "christmas", "src": "/images/1-11.png"},
+        {"id": "12", "theme": "love", "special": "holiday", "src": "/images/1-12.png"}
       ]
     },
     {
@@ -26,12 +26,12 @@
         {"id": "4", "theme": "friendly", "special": "birthday", "src": "/images/2-4.png"},
         {"id": "5", "theme": "friendly", "special": "holiday", "src": "/images/2-5.png"},
         {"id": "6", "theme": "friendly", "special": "christmas", "src": "/images/2-6.png"},
-        {"id": "10", "theme": "fun", "special": "birthday", "src": "/images/2-7.png"},
-        {"id": "11", "theme": "fun", "special": "christmas", "src": "/images/2-8.png"},
-        {"id": "12", "theme": "fun", "special": "holiday", "src": "/images/2-9.png"},
-        {"id": "13", "theme": "love", "special": "birthday", "src": "/images/2-10.png"},
-        {"id": "14", "theme": "love", "special": "christmas", "src": "/images/2-11.png"},
-        {"id": "15", "theme": "love", "special": "holiday", "src": "/images/2-12.png"}
+        {"id": "7", "theme": "fun", "special": "birthday", "src": "/images/2-7.png"},
+        {"id": "8", "theme": "fun", "special": "christmas", "src": "/images/2-8.png"},
+        {"id": "9", "theme": "fun", "special": "holiday", "src": "/images/2-9.png"},
+        {"id": "10", "theme": "love", "special": "birthday", "src": "/images/2-10.png"},
+        {"id": "11", "theme": "love", "special": "christmas", "src": "/images/2-11.png"},
+        {"id": "12", "theme": "love", "special": "holiday", "src": "/images/2-12.png"}
       ]
     },
     {
@@ -43,12 +43,10 @@
         {"id": "4", "theme": "friendly", "special": "birthday", "src": "/images/3-4.png"},
         {"id": "5", "theme": "friendly", "special": "holiday", "src": "/images/3-5.png"},
         {"id": "6", "theme": "friendly", "special": "christmas", "src": "/images/3-6.png"},
-        {"id": "10", "theme": "fun", "special": "birthday", "src": "/images/3-7.png"},
-        {"id": "11", "theme": "fun", "special": "christmas", "src": "/images/3-8.png"},
-        {"id": "12", "theme": "fun", "special": "holiday", "src": "/images/3-9.png"},
-        {"id": "13", "theme": "love", "special": "birthday", "src": "/images/3-10.png"},
-        {"id": "14", "theme": "love", "special": "christmas", "src": "/images/3-11.png"},
-        {"id": "15", "theme": "love", "special": "holiday", "src": "/images/3-12.png"}
+        {"id": "7", "theme": "fun", "special": "birthday", "src": "/images/3-7.png"},
+        {"id": "8", "theme": "fun", "special": "christmas", "src": "/images/3-8.png"},
+        {"id": "9", "theme": "fun", "special": "holiday", "src": "/images/3-9.png"},
+        {"id": "10", "theme": "love", "special": "birthday", "src": "/images/3-10.png"}
       ]
     },
     {
@@ -57,15 +55,13 @@
         {"id": "1", "theme": "simple", "special": "birthday", "src": "/images/4-1.png"},
         {"id": "2", "theme": "simple", "special": "holiday", "src": "/images/4-2.png"},
         {"id": "3", "theme": "simple", "special": "christmas", "src": "/images/4-3.png"},
-        {"id": "4", "theme": "friendly", "special": "birthday", "src": "/images/4-4.png"},
         {"id": "5", "theme": "friendly", "special": "holiday", "src": "/images/4-5.png"},
         {"id": "6", "theme": "friendly", "special": "christmas", "src": "/images/4-6.png"},
-        {"id": "10", "theme": "fun", "special": "birthday", "src": "/images/4-7.png"},
-        {"id": "11", "theme": "fun", "special": "christmas", "src": "/images/4-8.png"},
-        {"id": "12", "theme": "fun", "special": "holiday", "src": "/images/4-9.png"},
-        {"id": "13", "theme": "love", "special": "birthday", "src": "/images/4-10.png"},
-        {"id": "14", "theme": "love", "special": "christmas", "src": "/images/4-11.png"},
-        {"id": "15", "theme": "love", "special": "holiday", "src": "/images/4-12.png"}
+        {"id": "7", "theme": "fun", "special": "birthday", "src": "/images/4-7.png"},
+        {"id": "8", "theme": "fun", "special": "christmas", "src": "/images/4-8.png"},
+        {"id": "9", "theme": "fun", "special": "holiday", "src": "/images/4-9.png"},
+        {"id": "10", "theme": "love", "special": "birthday", "src": "/images/4-10.png"},
+        {"id": "11", "theme": "love", "special": "christmas", "src": "/images/4-11.png"}
       ]
     },
     {
@@ -77,12 +73,11 @@
         {"id": "4", "theme": "friendly", "special": "birthday", "src": "/images/5-4.png"},
         {"id": "5", "theme": "friendly", "special": "holiday", "src": "/images/5-5.png"},
         {"id": "6", "theme": "friendly", "special": "christmas", "src": "/images/5-6.png"},
-        {"id": "10", "theme": "fun", "special": "birthday", "src": "/images/5-7.png"},
-        {"id": "11", "theme": "fun", "special": "christmas", "src": "/images/5-8.png"},
-        {"id": "12", "theme": "fun", "special": "holiday", "src": "/images/5-9.png"},
-        {"id": "13", "theme": "love", "special": "birthday", "src": "/images/5-10.png"},
-        {"id": "14", "theme": "love", "special": "christmas", "src": "/images/5-11.png"},
-        {"id": "15", "theme": "love", "special": "holiday", "src": "/images/5-12.png"}
+        {"id": "7", "theme": "fun", "special": "birthday", "src": "/images/5-7.png"},
+        {"id": "8", "theme": "fun", "special": "christmas", "src": "/images/5-8.png"},
+        {"id": "9", "theme": "fun", "special": "holiday", "src": "/images/5-9.png"},
+        {"id": "10", "theme": "love", "special": "birthday", "src": "/images/5-10.png"},
+        {"id": "11", "theme": "love", "special": "christmas", "src": "/images/5-11.png"}
       ]
     },
     {
@@ -92,14 +87,11 @@
         {"id": "2", "theme": "simple", "special": "holiday", "src": "/images/6-2.png"},
         {"id": "3", "theme": "simple", "special": "christmas", "src": "/images/6-3.png"},
         {"id": "4", "theme": "friendly", "special": "birthday", "src": "/images/6-4.png"},
-        {"id": "5", "theme": "friendly", "special": "holiday", "src": "/images/6-5.png"},
         {"id": "6", "theme": "friendly", "special": "christmas", "src": "/images/6-6.png"},
-        {"id": "10", "theme": "fun", "special": "birthday", "src": "/images/6-7.png"},
-        {"id": "10", "theme": "fun", "special": "birthday", "src": "/images/6-8.png"},
-        {"id": "12", "theme": "fun", "special": "holiday", "src": "/images/6-9.png"},
-        {"id": "13", "theme": "love", "special": "birthday", "src": "/images/6-10.png"},
-        {"id": "14", "theme": "love", "special": "christmas", "src": "/images/6-11.png"},
-        {"id": "15", "theme": "love", "special": "holiday", "src": "/images/6-12.png"}
+        {"id": "7", "theme": "fun", "special": "birthday", "src": "/images/6-7.png"},
+        {"id": "8", "theme": "fun", "special": "birthday", "src": "/images/6-8.png"},
+        {"id": "9", "theme": "fun", "special": "holiday", "src": "/images/6-9.png"},
+        {"id": "12", "theme": "love", "special": "holiday", "src": "/images/6-12.png"}
       ]
     }
   ]
