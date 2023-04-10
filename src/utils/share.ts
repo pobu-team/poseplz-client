@@ -1,5 +1,3 @@
-import Kakao from '../types/kakao';
-
 const url = 'https://pobu.vercel.app';
 
 const shareKaKao = (src: string) => {
