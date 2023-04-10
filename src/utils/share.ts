@@ -1,5 +1,10 @@
 const url = 'https://pobu.vercel.app';
 
+function slicePath(path: string) {
+	const arr = path.split('/');
+	return arr[arr.length - 1];
+}
+
 const shareKaKao = (src: string) => {
 	/* eslint-disable @typescript-eslint/no-unsafe-call */
 	Kakao.Share.sendDefault({
@@ -7,7 +12,7 @@ const shareKaKao = (src: string) => {
 		content: {
 			title: '포즈를 부탁해',
 			description: '이 포즈 어때?',
-			imageUrl: `https://raw.githubusercontent.com/himyne/PoBu_pose_recommend/main/static/images${src}`,
+			imageUrl: `https://raw.githubusercontent.com/himyne/PoBu_pose_recommend/main/static/images${slicePath(src)}`,
 			link: {
 				mobileWebUrl: url + src,
 				webUrl: url + src,
