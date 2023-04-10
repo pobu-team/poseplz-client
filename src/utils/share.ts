@@ -12,7 +12,7 @@ const shareKaKao = (src: string) => {
 		content: {
 			title: '포즈를 부탁해',
 			description: '이 포즈 어때?',
-			imageUrl: `https://raw.githubusercontent.com/himyne/PoBu_pose_recommend/main/static/images${slicePath(src)}`,
+			imageUrl: `https://raw.githubusercontent.com/himyne/PoBu_pose_recommend/main/static/images/${slicePath(src)}`,
 			link: {
 				mobileWebUrl: url + src,
 				webUrl: url + src,
