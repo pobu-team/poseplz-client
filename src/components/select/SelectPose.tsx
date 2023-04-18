@@ -11,6 +11,7 @@ import Pose from './Pose';
 import filterPose from '../../utils/filterPose';
 
 import type Image from '../../types/Image';
+import {useParams} from 'react-router';
 
 const Container = styled.div`
   display: flex;
@@ -44,16 +45,24 @@ const PoseContainer = styled.div`
 export default function SelectPose() {
 	const [like, _] = useLocalStorage<string[]>('pose-store', []);
 
-	const [{pose, personNum, theme}] = useSelectStore();
+	const [{pose}] = useSelectStore();
 
-	const filteredPoseByPerson = pose.filter(item => (item.id === personNum));
+	const {id = '', theme} = useParams();
 
-	const filteredPose: Image[][] = filterPose({filteredPoseByPerson, theme});
+	let themeArr = theme?.split('&') ?? [];
+
+	if (theme === 'random') {
+		themeArr = [];
+	}
+
+	const filteredPoseByPerson = pose.filter(item => (item.id === id));
+
+	const filteredPose: Image[][] = filterPose({filteredPoseByPerson, themeArr});
 
 	const imageArr = new Set(filteredPose.reduce((acc, val) => acc.concat(val), []));
 
-	const tagArr = theme.map((item: string) => tag[item]);
-	tagArr.unshift(personNum + '명');
+	const tagArr = themeArr.map((item: string) => tag[item]);
+	tagArr.unshift(id + '명');
 
 	return (
 		<Container>

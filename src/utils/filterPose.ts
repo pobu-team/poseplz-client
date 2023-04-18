@@ -2,12 +2,12 @@ import type Pose from '../types/Pose';
 
 type FilterPoseProps = {
 	filteredPoseByPerson: Pose[];
-	theme: string[];
+	themeArr: string[];
 };
 
-export default function filterPose({filteredPoseByPerson, theme}: FilterPoseProps) {
-	if (!theme.length) {
-		theme = ['simple', 'friendly', 'fun', 'love', 'birthday', 'holiday', 'christmas'];
+export default function filterPose({filteredPoseByPerson, themeArr}: FilterPoseProps) {
+	if (!themeArr.length) {
+		themeArr = ['simple', 'friendly', 'fun', 'love', 'birthday', 'holiday', 'christmas'];
 	}
 
 	const filterPose = (theme: string) => filteredPoseByPerson[0].image
@@ -15,7 +15,7 @@ export default function filterPose({filteredPoseByPerson, theme}: FilterPoseProp
 
 	const filteredPose = [];
 
-	for (const x of theme) {
+	for (const x of themeArr) {
 		filteredPose.push(filterPose(x));
 	}
 

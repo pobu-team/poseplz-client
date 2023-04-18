@@ -29,8 +29,8 @@ const routes = [
 		element: <BackLayout />,
 		children: [
 			{path: '/people', element: <SelectPeoplePage />},
-			{path: '/theme', element: <SelectThemePage />},
-			{path: '/pose', element: <SelectPosePage />},
+			{path: '/theme/:id', element: <SelectThemePage />},
+			{path: '/pose/:id/:theme', element: <SelectPosePage />},
 		],
 	},
 	{

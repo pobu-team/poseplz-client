@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const ButtonContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: flex-start;
   background-color: ${props => props.theme.colors.background};
 	padding: 0 10px 20px;
 

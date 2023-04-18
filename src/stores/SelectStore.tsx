@@ -22,11 +22,6 @@ export default class SelectStore extends Store<SelectStoreSnapshot> {
 		this.takeSnapshot();
 	}
 
-	savePersonNum(number: string) {
-		this.personNum = number;
-		this.update();
-	}
-
 	saveTheme(theme: string) {
 		if (this.theme.includes(theme)) {
 			return;
@@ -39,10 +34,6 @@ export default class SelectStore extends Store<SelectStoreSnapshot> {
 	removeTheme(theme: string) {
 		this.theme = this.theme.filter(item => item !== theme);
 		this.update();
-	}
-
-	resetPersonNum() {
-		this.personNum = '';
 	}
 
 	resetTheme() {

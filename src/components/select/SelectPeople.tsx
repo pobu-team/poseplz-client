@@ -4,8 +4,6 @@ import {useNavigate} from 'react-router';
 
 import styled, {css} from 'styled-components';
 
-import useSelectStore from '../../hooks/useSelectStore';
-
 type PersonButtonProps = {
 	active: boolean;
 	index: number;
@@ -97,15 +95,12 @@ const NextButton = styled.button`
 
 export default function SelectPeople() {
 	const navigate = useNavigate();
-
-	const [,store] = useSelectStore();
-
-	console.log(store.personNum);
+	const [personNum, setPersonNum] = useState('');
 
 	const [_, setIsNextBtnDisabled] = useState(true);
 
 	const handleClickPersonNum = (number: number) => {
-		store.savePersonNum(String(number));
+		setPersonNum(String(number));
 		setIsNextBtnDisabled(false);
 	};
 
@@ -121,7 +116,7 @@ export default function SelectPeople() {
 						onClick={() => {
 							handleClickPersonNum(item);
 						}}
-						active={store.personNum === String(item)}
+						active={personNum === String(item)}
 					>
 						<img src={`/images/person-${index + 1}.png`} alt='person'/>
 						{item}명
@@ -130,10 +125,12 @@ export default function SelectPeople() {
 			</div>
 			<NextButton type='button'
 				onClick={() => {
-					navigate('/theme');
+					navigate(`/theme/${personNum}`);
 				}}
-				disabled={store.personNum === ''}
-			>다음</NextButton>
+				disabled={personNum === ''}
+			>
+        다음
+			</NextButton>
 		</Container>
 	);
 }

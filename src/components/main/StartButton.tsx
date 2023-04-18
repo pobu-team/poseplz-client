@@ -53,9 +53,8 @@ export default function StartButton() {
 	const [, store] = useSelectStore();
 
 	const handleClickStart = () => {
-		navigate('/people');
 		store.resetTheme();
-		store.resetPersonNum();
+		navigate('/people');
 	};
 
 	return (

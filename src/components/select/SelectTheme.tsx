@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router';
+import {useNavigate, useParams} from 'react-router';
 import styled from 'styled-components';
 import useSelectStore from '../../hooks/useSelectStore';
 import SpecialDay from './SpecialDay';
@@ -55,6 +55,7 @@ const SubmitBtnContainer = styled.div`
 
 export default function SelectTheme() {
 	const navigate = useNavigate();
+	const {id = ''} = useParams();
 
 	const [{theme}] = useSelectStore();
 
@@ -73,8 +74,10 @@ export default function SelectTheme() {
 		}
 	});
 
+	const themeUrl = theme.join('&');
+
 	const handleClickRandom = () => {
-		navigate('/pose');
+		navigate(`/pose/${id}/random`);
 	};
 
 	return (
@@ -93,7 +96,7 @@ export default function SelectTheme() {
 				<button
 					type='button'
 					onClick={() => {
-						navigate('/pose');
+						navigate(`/pose/${id}/${themeUrl}`);
 					}}
 					disabled={isDisable}
 				>다음</button>
