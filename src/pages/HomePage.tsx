@@ -44,10 +44,6 @@ const Container = styled.main<ContainerProps>`
   background-position: center;
   animation: ${props => props.isAnimating ? fadeOut : fadeIn} 1s ease-in-out;
   animation-fill-mode: forwards;
-
-	@media (max-width: 460px) {
-		max-width: 100%;
-	}	
 `;
 
 const StartButton = styled.button<StartButtonProps>`
