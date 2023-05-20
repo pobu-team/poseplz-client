@@ -4,7 +4,7 @@
   "description": "",
   "source": "index.html",
   "scripts": {
-    "start": "parcel --port 8080",
+    "start": "parcel --port 3000",
     "build": "parcel build",
     "check": "tsc --noEmit",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx ."
@@ -22,27 +22,33 @@
   "homepage": "https://github.com/potenday-project/PoBu_pose_recommend#readme",
   "devDependencies": {
     "@swc/plugin-styled-components": "^1.5.50",
+    "@types/node": "^18.16.3",
     "@types/react": "^18.0.29",
     "@types/react-dom": "^18.0.11",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
+    "buffer": "^5.7.1",
     "eslint": "^8.36.0",
-    "eslint-config-xo": "^0.43.1",
-    "eslint-config-xo-typescript": "^0.56.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "parcel": "^2.8.3",
     "parcel-reporter-static-files-copy": "^1.5.0",
     "process": "^0.11.10",
     "typescript": "^5.0.2"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.9.0",
     "react-router-dom": "^6.9.0",
+    "recoil": "^0.7.7",
     "styled-components": "^5.1.26",
     "styled-reset": "^4.4.5",
+    "tsyringe": "^4.7.0",
     "usehooks-ts": "^2.9.1",
     "usestore-ts": "0.0.3"
   }
