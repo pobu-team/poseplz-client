@@ -4,7 +4,14 @@ import styled from 'styled-components';
 
 import {useReadLocalStorage} from 'usehooks-ts';
 
+const Container = styled.div`
+	flex: 1;
+	display: flex;
+	justify-content: center;
+`
+
 const Logo = styled.button`
+	flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,12 +19,13 @@ const Logo = styled.button`
   max-height: 28px;
   border: none;
   background: none;
-	margin-right: 20px;
   cursor: pointer;
 
-	@media screen and (max-width: 340px) {
-    margin-right: 0;
-  }
+	img {
+		@media screen and (max-width: 340px) {
+			width: 5rem;
+		}
+	}
 `;
 
 export default function HeaderLogo() {
@@ -30,11 +38,13 @@ export default function HeaderLogo() {
 	};
 
 	return (
-		<Logo onClick={handleClickLogo}>
-			<img
-				src={isDarkMode ? '/images/logo_D.svg' : '/images/logo.svg'}
-				alt='logo'
-			/>
-		</Logo>
+		<Container>
+			<Logo onClick={handleClickLogo}>
+				<img
+					src={isDarkMode ? '/images/logo_D.svg' : '/images/logo.svg'}
+					alt='logo'
+					/>
+			</Logo>
+		</Container>
 	);
 }

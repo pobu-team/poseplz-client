@@ -7,11 +7,13 @@ type ToggleButtonProps = {
 };
 
 const Container = styled.div`
-  display: flex;
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
 `;
 
 const ToggleButton = styled.button<ToggleButtonProps>`
-  align-items: ceneter;
   border: none;
   background: none;
   max-width: 72px;
@@ -19,6 +21,12 @@ const ToggleButton = styled.button<ToggleButtonProps>`
   padding: 0;
   margin: 0;
   cursor: pointer;
+
+	img {
+		@media screen and (max-width: 340px) {
+			width: 5rem;
+		}
+	}
 `;
 
 export default function ThemeSwitch() {

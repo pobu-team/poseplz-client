@@ -4,9 +4,14 @@ import styled from 'styled-components';
 
 import {useReadLocalStorage} from 'usehooks-ts';
 
+const Container = styled.div`
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
+`
+
 const Button = styled.button`
   display: flex;
-  justify-content: center;
   align-items: center;
   background: none;
 	max-width: 36px;
@@ -15,6 +20,12 @@ const Button = styled.button`
 	border: none;
   border-radius: 50px;
   cursor: pointer;
+
+	img {
+		@media screen and (max-width: 340px) {
+			width: 2.5rem;
+		}
+	}
 `;
 
 export default function MyPageButton() {
@@ -27,8 +38,10 @@ export default function MyPageButton() {
 	};
 
 	return (
-		<Button onClick={handleClickMyPage}>
-			<img src={isDarkMode ? '/images/icon_mylike_D.svg' : '/images/icon_mylike_L.svg'} />
-		</Button>
+		<Container>
+			<Button onClick={handleClickMyPage}>
+				<img src={isDarkMode ? '/images/icon_mylike_D.svg' : '/images/icon_mylike_L.svg'} />
+			</Button>
+		</Container>
 	);
 }

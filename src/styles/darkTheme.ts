@@ -23,6 +23,7 @@ const darkTheme: Theme = {
 		layoutWidth: '430px',
 		contentPadding: '2.4rem',
 		contentBorderRadius: '8rem',
+		smallContentPadding: '1.2rem',
 	},
 
 	img: {

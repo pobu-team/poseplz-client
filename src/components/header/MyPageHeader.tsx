@@ -1,31 +1,43 @@
 import styled from 'styled-components';
 
 import BackButton from './BackButton';
-import ThemeSwitch from './ThemeSwitch';
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-block: 3rem;
-  background-color: ${props => props.theme.colors.background};
-  padding-inline: ${props => props.theme.sizes.contentPadding};
+const Container = styled.h1`
+    line-height: 1.4;
+    letter-spacing: -.3px;
+    font-size: 18px;
+    font-weight: 700;
+    position: -webkit-sticky;
+    position: sticky;
+    display: block;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    padding: 12px 0;
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    text-align: center;
 
-  h1 {
-    margin: 0 auto;
-    font-size: 24px;
-    font-weight: 600;
+  button {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: #fff;
   }
 `;
 
 export default function MyPageHeader() {
 	return (
-		<div>
 			<Container>
 				<BackButton />
-				<h1>찜한 포즈</h1>
-				<ThemeSwitch />
+				찜한 포즈
 			</Container>
-		</div>
 	);
 }
