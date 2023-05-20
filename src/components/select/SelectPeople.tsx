@@ -1,25 +1,33 @@
-import {useState} from 'react';
+import { useState } from 'react';
 
-import {useNavigate} from 'react-router';
+import { useNavigate } from 'react-router';
 
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type PersonButtonProps = {
-	active: boolean;
-	index: number;
+  active: boolean;
+  index: number;
 };
 
 const Container = styled.div`
-  padding: ${props => props.theme.sizes.contentPadding};
+  padding-inline: ${(props) => props.theme.sizes.contentPadding};
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 340px){
+      padding: 1.2rem;
+    }
 
   h1 {
     font-size: 1.8em;
     font-weight: bold;
     letter-spacing: -0.67px;
     line-height: 1.36;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
+
+    @media screen and (max-width: 340px){
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
   }
   
   div {
@@ -29,27 +37,28 @@ const Container = styled.div`
     grid-column-gap: 10px;
     width: 100%;
   }
-
-  @media screen and (max-width: 300px){
-      font-size: 13px;
-    }
   
 `;
 
 const PersonButton = styled.button<PersonButtonProps>`
-    padding: 30px 25px 15px;
+    padding: 3rem 2.5rem 1.5rem;
     margin-bottom: 16px;
     width: 100%;
     border-radius: 16px;
     border: none;
-    font-size: 1.1em;
+    font-size: 1.7rem;
     font-weight: 600;
-    color: ${props => props.theme.colors.text};
-    background: ${props => props.theme.colors.buttonBackground};
+    color: ${(props) => props.theme.colors.text};
+    background: ${(props) => props.theme.colors.buttonBackground};
     cursor: pointer;
 
+    @media screen and (max-width: 340px) {
+      padding: 2rem 1.5rem 1rem;
+      font-size: 1.5rem;
+    }
+
     
-    ${props => props.active && css`
+    ${(props) => props.active && css`
     border: 3px solid ${props.theme.colors.primary};
     background-color: ${props.theme.colors.background};
     `};
@@ -58,25 +67,9 @@ const PersonButton = styled.button<PersonButtonProps>`
       width: 100%;
       margin-bottom: 15px;
     };
-
-    ${props => props.index === 1 && css`
-      padding: 25px 40px 15px;
-      img {
-        margin-bottom: 25px;
-      }
-    `};
-
-    ${props => props.index >= 5 && css`
-      img{
-        margin-bottom: 5px;
-      }  
-    `};
 `;
 
 const NextButton = styled.button`
-  margin-top: 10px;
-  display: flex;
-  width: 100%;
   height: 2.6em;
   justify-content: center;
   align-items: center;
@@ -86,7 +79,12 @@ const NextButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   color: '#000';
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${(props) => props.theme.colors.primary};
+
+  @media screen and (max-height: 812px) {
+      padding: 2rem 1.5rem 1rem;
+      font-size: 1.5rem;
+    }
   
   &:disabled {
     opacity: 0.5;
@@ -94,43 +92,45 @@ const NextButton = styled.button`
 `;
 
 export default function SelectPeople() {
-	const navigate = useNavigate();
-	const [personNum, setPersonNum] = useState('');
+  const navigate = useNavigate();
+  const [personNum, setPersonNum] = useState('');
 
-	const [_, setIsNextBtnDisabled] = useState(true);
+  const [_, setIsNextBtnDisabled] = useState(true);
 
-	const handleClickPersonNum = (number: number) => {
-		setPersonNum(String(number));
-		setIsNextBtnDisabled(false);
-	};
+  const handleClickPersonNum = (number: number) => {
+    setPersonNum(String(number));
+    setIsNextBtnDisabled(false);
+  };
 
-	return (
-		<Container>
-			<h1>몇 명이서 오셨나요?</h1>
-			<div>
-				{[1, 2, 3, 4, 5, 6].map((item, index) => (
-					<PersonButton
-						type='button'
-						key={item}
-						index={item}
-						onClick={() => {
-							handleClickPersonNum(item);
-						}}
-						active={personNum === String(item)}
-					>
-						<img src={`/images/person-${index + 1}.png`} alt='person'/>
-						{item}명
-					</PersonButton>
-				))}
-			</div>
-			<NextButton type='button'
-				onClick={() => {
-					navigate(`/theme/${personNum}`);
-				}}
-				disabled={personNum === ''}
-			>
+  return (
+    <Container>
+        <h1>몇 명이서 오셨나요?</h1>
+        <div>
+          {[1, 2, 3, 4, 5, 6].map((item, index) => (
+            <PersonButton
+              type="button"
+              key={item}
+              index={item}
+              onClick={() => {
+                handleClickPersonNum(item);
+              }}
+              active={personNum === String(item)}
+              >
+              <img src={`/images/person-${index + 1}.png`} alt="person" />
+              {item}
+              명
+            </PersonButton>
+          ))}
+        </div>
+      <NextButton
+        type="button"
+        onClick={() => {
+          navigate(`/theme/${personNum}`);
+        }}
+        disabled={personNum === ''}
+      >
         다음
-			</NextButton>
-		</Container>
-	);
+      </NextButton>
+    </Container>
+  );
 }
