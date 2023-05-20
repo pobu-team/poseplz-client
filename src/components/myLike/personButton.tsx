@@ -3,11 +3,13 @@ import {useState} from 'react';
 import styled from 'styled-components';
 
 const ButtonContainer = styled.div`
-	display: flex;
+	display: block;
 	flex-wrap: wrap;
 	justify-content: flex-start;
   background-color: ${props => props.theme.colors.background};
-	padding: 0 10px 20px;
+	padding: 10px 10px 20px;
+	position: sticky;
+	z-index: 10;
 
   button {
 		cursor: pointer;
@@ -20,6 +22,9 @@ const ButtonContainer = styled.div`
     border: none;
     color: ${props => props.theme.colors.text};
     background-color: ${props => props.theme.colors.buttonBackground};
+		@media screen and (max-width: 400px) {
+			margin: 2px;
+		}
   }
 
   button.selected {

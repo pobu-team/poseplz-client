@@ -6,7 +6,7 @@ import SpecialDay from './SpecialDay';
 import Theme from './Theme';
 
 const Container = styled.div`
-  padding: 10px;
+  padding: ${(props) => props.theme.sizes.contentPadding};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
