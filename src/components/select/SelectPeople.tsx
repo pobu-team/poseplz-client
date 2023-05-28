@@ -2,12 +2,9 @@ import { useState } from 'react';
 
 import { useNavigate } from 'react-router';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-type PersonButtonProps = {
-  active: boolean;
-  index: number;
-};
+import SquareButton from '../../ui/SquareButton';
 
 const Container = styled.div`
   padding-inline: ${(props) => props.theme.sizes.contentPadding};
@@ -38,35 +35,6 @@ const Container = styled.div`
     width: 100%;
   }
   
-`;
-
-const PersonButton = styled.button<PersonButtonProps>`
-    padding: 3rem 2.5rem 1.5rem;
-    margin-bottom: 16px;
-    width: 100%;
-    border-radius: 16px;
-    border: none;
-    font-size: 1.7rem;
-    font-weight: 600;
-    color: ${(props) => props.theme.colors.text};
-    background: ${(props) => props.theme.colors.buttonBackground};
-    cursor: pointer;
-
-    @media screen and (max-width: 340px) {
-      padding: 2rem 1.5rem 1rem;
-      font-size: 1.5rem;
-    }
-
-    
-    ${(props) => props.active && css`
-    border: 3px solid ${props.theme.colors.primary};
-    background-color: ${props.theme.colors.background};
-    `};
-    
-    img {
-      width: 100%;
-      margin-bottom: 15px;
-    };
 `;
 
 const NextButton = styled.button`
@@ -104,24 +72,18 @@ export default function SelectPeople() {
 
   return (
     <Container>
-        <h1>몇 명이서 오셨나요?</h1>
-        <div>
-          {[1, 2, 3, 4, 5, 6].map((item, index) => (
-            <PersonButton
-              type="button"
-              key={item}
-              index={item}
-              onClick={() => {
-                handleClickPersonNum(item);
-              }}
-              active={personNum === String(item)}
-              >
-              <img src={`/images/person-${index + 1}.png`} alt="person" />
-              {item}
-              명
-            </PersonButton>
-          ))}
-        </div>
+      <h1>몇 명이서 오셨나요?</h1>
+      <div>
+        {[1, 2, 3, 4, 5, 6].map((item, index) => (
+          <SquareButton
+            key={item}
+            text={`${item}명`}
+            imgSrc={`/images/person-${index + 1}.png`}
+            active={personNum === String(item)}
+            onClickFunc={() => handleClickPersonNum(item)}
+          />
+        ))}
+      </div>
       <NextButton
         type="button"
         onClick={() => {
