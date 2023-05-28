@@ -16,7 +16,6 @@ const Container = styled.h1`
     padding: 12px 0;
     width: 100%;
     height: 50px;
-    background: #fff;
     text-align: center;
 
   button {
@@ -29,15 +28,15 @@ const Container = styled.h1`
     width: 40px;
     height: 40px;
     border: none;
-    background-color: #fff;
   }
 `;
 
 export default function MyPageHeader() {
-	return (
-			<Container>
-				<BackButton />
-				찜한 포즈
-			</Container>
-	);
+  
+  return (
+    <Container>
+      <BackButton />
+      찜한 포즈
+    </Container>
+  );
 }

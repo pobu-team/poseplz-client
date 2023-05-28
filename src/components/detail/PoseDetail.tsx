@@ -13,7 +13,7 @@ const Container = styled.div`
 	align-items: center;
 	height: 700px;
 	padding: 20px;
-	background-color: ${props => props.theme.colors.detailBackground};
+	background-color: ${(props) => props.theme.colors.detailBackground};
 
   div:first-child {
 		display: flex;
@@ -21,7 +21,7 @@ const Container = styled.div`
 		align-items: center;
 		justify-content: center;
 		height: 100%;
-		background-color: ${props => props.theme.colors.detailButton};
+		background-color: ${(props) => props.theme.colors.detailButton};
 		
 		img {
 			padding: 20px 20px;
@@ -46,38 +46,38 @@ const ButtonContainer = styled.div`
 		width: 180px;
 		height: 60px;
 		margin: 50px 4px 0 4px;
-		color: ${props => props.theme.colors.text};
-		background: ${props => props.theme.colors.detailButton};
+		color: ${(props) => props.theme.colors.text};
+		background: ${(props) => props.theme.colors.detailButton};
 	}
 
 	button:last-child {
-		color: ${props => props.theme.colors.black};
-		background: ${props => props.theme.colors.primary};
+		color: ${(props) => props.theme.colors.black};
+		background: ${(props) => props.theme.colors.primary};
 	}
 `;
 
-export default function PoseDetail({imageSrc, onClickBack}: PoseDetailProps) {
-	return (
-		<Container>
-			<div>
-				<img src={imageSrc} alt={imageSrc} />
-			</div>
-			<ButtonContainer>
-				<button
-					type='button'
-					onClick={onClickBack}
-				>
-					포즈 더 추천받기
-				</button>
-				<button
-					type='button'
-					onClick={() => {
-						shareKaKao(`/pose/detail?imageSrc=${imageSrc ?? ''}`);
-					}}
-				>
-					포즈 공유하기
-				</button>
-			</ButtonContainer>
-		</Container>
-	);
+export default function PoseDetail({ imageSrc, onClickBack }: PoseDetailProps) {
+  return (
+    <Container>
+      <div>
+        <img src={imageSrc} alt={imageSrc} />
+      </div>
+      <ButtonContainer>
+        <button
+          type="button"
+          onClick={onClickBack}
+        >
+          포즈 더 추천받기
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            shareKaKao(`/pose/detail?imageSrc=${imageSrc ?? ''}`);
+          }}
+        >
+          포즈 공유하기
+        </button>
+      </ButtonContainer>
+    </Container>
+  );
 }

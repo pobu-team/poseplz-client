@@ -2,9 +2,9 @@ import Store from './Store';
 
 import poseData from '../../pose.json';
 
-import type Pose from '../types/Pose';
+import type Pose from '../types/PoseType';
 
-const {pose} = poseData;
+const { pose } = poseData;
 
 export type SelectStoreSnapshot = {
 	pose: Pose[];
@@ -13,43 +13,45 @@ export type SelectStoreSnapshot = {
 };
 
 export default class SelectStore extends Store<SelectStoreSnapshot> {
-	pose: Pose[] = pose;
-	personNum = '';
-	theme: string[] = [];
+  pose: Pose[] = pose;
 
-	constructor() {
-		super();
-		this.takeSnapshot();
-	}
+  personNum = '';
 
-	saveTheme(theme: string) {
-		if (this.theme.includes(theme)) {
-			return;
-		}
+  theme: string[] = [];
 
-		this.theme = [...this.theme, theme];
-		this.update();
-	}
+  constructor() {
+    super();
+    this.takeSnapshot();
+  }
 
-	removeTheme(theme: string) {
-		this.theme = this.theme.filter(item => item !== theme);
-		this.update();
-	}
+  saveTheme(theme: string) {
+    if (this.theme.includes(theme)) {
+      return;
+    }
 
-	resetTheme() {
-		this.theme = [];
-	}
+    this.theme = [...this.theme, theme];
+    this.update();
+  }
 
-	update() {
-		this.takeSnapshot();
-		this.publish();
-	}
+  removeTheme(theme: string) {
+    this.theme = this.theme.filter((item) => item !== theme);
+    this.update();
+  }
 
-	takeSnapshot() {
-		this.snapshot = {
-			pose: this.pose,
-			personNum: this.personNum,
-			theme: this.theme,
-		};
-	}
+  resetTheme() {
+    this.theme = [];
+  }
+
+  update() {
+    this.takeSnapshot();
+    this.publish();
+  }
+
+  takeSnapshot() {
+    this.snapshot = {
+      pose: this.pose,
+      personNum: this.personNum,
+      theme: this.theme,
+    };
+  }
 }

@@ -9,18 +9,18 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-block: 1rem;
-  padding-inline: ${props => props.theme.sizes.contentPadding};
+  padding-inline: ${(props) => props.theme.sizes.contentPadding};
 	@media screen and (max-width: 340px){
       padding-inline: 1.2rem;
   }
 `;
 
 export default function BackHeader() {
-	return (
-		<Container>
-			<BackButton />
-			<HeaderLogo />
-			<MyPageButton />
-		</Container>
-	);
+  return (
+    <Container>
+      <BackButton />
+      <HeaderLogo />
+      <MyPageButton />
+    </Container>
+  );
 }

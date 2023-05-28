@@ -9,7 +9,7 @@ const Container = styled.header`
   align-items: center;
   justify-content: space-between;
   padding-block: 1rem;
-  padding-inline: ${props => props.theme.sizes.contentPadding};
+  padding-inline: ${(props) => props.theme.sizes.contentPadding};
 
 	@media screen and (max-width: 340px){
 		padding-inline: 1.2rem;
@@ -17,11 +17,11 @@ const Container = styled.header`
 `;
 
 export default function MainHeader() {
-	return (
-		<Container>
-			<ThemeSwitch />
-			<HeaderLogo />
-			<MyPageButton />
-		</Container>
-	);
+  return (
+    <Container>
+      <ThemeSwitch />
+      <HeaderLogo />
+      <MyPageButton />
+    </Container>
+  );
 }

@@ -1,14 +1,14 @@
-import {useNavigate} from 'react-router';
+import { useNavigate } from 'react-router';
 
 import styled from 'styled-components';
 
-import {useReadLocalStorage} from 'usehooks-ts';
+import { useReadLocalStorage } from 'usehooks-ts';
 
 const Container = styled.div`
 	flex: 1;
 	display: flex;
 	justify-content: center;
-`
+`;
 
 const Logo = styled.button`
 	flex: 1;
@@ -29,22 +29,22 @@ const Logo = styled.button`
 `;
 
 export default function HeaderLogo() {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	const isDarkMode = useReadLocalStorage('darkMode');
+  const isDarkMode = useReadLocalStorage('darkMode');
 
-	const handleClickLogo = () => {
-		navigate('/');
-	};
+  const handleClickLogo = () => {
+    navigate('/');
+  };
 
-	return (
-		<Container>
-			<Logo onClick={handleClickLogo}>
-				<img
-					src={isDarkMode ? '/images/logo_D.svg' : '/images/logo.svg'}
-					alt='logo'
-					/>
-			</Logo>
-		</Container>
-	);
+  return (
+    <Container>
+      <Logo onClick={handleClickLogo}>
+        <img
+          src={isDarkMode ? '/images/logo_D.svg' : '/images/logo.svg'}
+          alt="logo"
+        />
+      </Logo>
+    </Container>
+  );
 }

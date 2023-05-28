@@ -1,6 +1,6 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import {useLocalStorage} from 'usehooks-ts';
+import { useLocalStorage } from 'usehooks-ts';
 
 type ToggleButtonProps = {
 	active: boolean;
@@ -30,17 +30,17 @@ const ToggleButton = styled.button<ToggleButtonProps>`
 `;
 
 export default function ThemeSwitch() {
-	const [isDarkMode, setThemeMode] = useLocalStorage('darkMode', false);
+  const [isDarkMode, setThemeMode] = useLocalStorage('darkMode', false);
 
-	const toggleTheme = () => {
-		setThemeMode(!isDarkMode);
-	};
+  const toggleTheme = () => {
+    setThemeMode(!isDarkMode);
+  };
 
-	return (
-		<Container>
-			<ToggleButton onClick={toggleTheme} active= {isDarkMode}>
-				<img src={isDarkMode ? '/images/toggle_dark.svg' : '/images/toggle_light.svg'} alt='light'/>
-			</ToggleButton>
-		</Container>
-	);
+  return (
+    <Container>
+      <ToggleButton onClick={toggleTheme} active={isDarkMode}>
+        <img src={isDarkMode ? '/images/toggle_dark.svg' : '/images/toggle_light.svg'} alt="light" />
+      </ToggleButton>
+    </Container>
+  );
 }

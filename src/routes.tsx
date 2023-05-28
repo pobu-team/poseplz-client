@@ -13,38 +13,38 @@ import MyPageLayout from './components/layout/MyPageLayout';
 import DetailLayout from './components/layout/DetailLayout';
 
 const routes = [
-	{
-		element: <Layout />,
-		children: [
-			{path: '/main', element: <MainPage />},
-		],
-	},
-	{
-		element: <HomeLayout />,
-		children: [
-			{path: '/', element: <HomePage/>},
-		],
-	},
-	{
-		element: <BackLayout />,
-		children: [
-			{path: '/people', element: <SelectPeoplePage />},
-			{path: '/theme/:id', element: <SelectThemePage />},
-			{path: '/pose/:id/:theme', element: <SelectPosePage />},
-		],
-	},
-	{
-		element: <DetailLayout />,
-		children: [
-			{path: '/pose/detail', element: <PoseDetailPage />},
-		],
-	},
-	{
-		element: <MyPageLayout />,
-		children: [
-			{path: '/mypage', element: <MyLikePage />},
-		],
-	},
+  {
+    element: <Layout />,
+    children: [
+      { path: '/main', element: <MainPage /> },
+    ],
+  },
+  {
+    element: <HomeLayout />,
+    children: [
+      { path: '/', element: <HomePage /> },
+    ],
+  },
+  {
+    element: <BackLayout />,
+    children: [
+      { path: '/people', element: <SelectPeoplePage /> },
+      { path: '/theme/:id', element: <SelectThemePage /> },
+      { path: '/pose/:id/:theme', element: <SelectPosePage /> },
+    ],
+  },
+  {
+    element: <DetailLayout />,
+    children: [
+      { path: '/pose/detail', element: <PoseDetailPage /> },
+    ],
+  },
+  {
+    element: <MyPageLayout />,
+    children: [
+      { path: '/mypage', element: <MyLikePage /> },
+    ],
+  },
 ];
 
 export default routes;

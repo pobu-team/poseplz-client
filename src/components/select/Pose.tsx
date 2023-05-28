@@ -1,8 +1,8 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import {useLocalStorage} from 'usehooks-ts';
+import { useLocalStorage } from 'usehooks-ts';
 
 type PoseProps = {
 	imageSrc: string;
@@ -29,37 +29,37 @@ const Container = styled.div`
 	}
 `;
 
-export default function Pose({imageSrc, active}: PoseProps) {
-	const linkTo = `/pose/detail?imageSrc=${imageSrc}`;
+export default function Pose({ imageSrc, active }: PoseProps) {
+  const linkTo = `/pose/detail?imageSrc=${imageSrc}`;
 
-	const [like, setLike] = useLocalStorage<string[]>('pose-store', []);
+  const [like, setLike] = useLocalStorage<string[]>('pose-store', []);
 
-	const handleClickLike = (imageSrc: string) => {
-		if (like.includes(imageSrc)) {
-			const removedLike = like.filter(item => item !== imageSrc);
-			setLike(removedLike);
-			return;
-		}
+  const handleClickLike = (imageSrc: string) => {
+    if (like.includes(imageSrc)) {
+      const removedLike = like.filter((item) => item !== imageSrc);
+      setLike(removedLike);
+      return;
+    }
 
-		setLike([...like, imageSrc]);
-	};
+    setLike([...like, imageSrc]);
+  };
 
-	return (
-		<Container>
-			<Link to={linkTo}>
-				<img src={imageSrc} alt={imageSrc} />
-			</Link>
-			<button
-				type='button'
-				onClick={() => {
-					handleClickLike(imageSrc);
-				}}
-			>
-				<img
-					src={active ? '/images/btn_like_active.svg' : '/images/btn_like_default.svg'}
-					alt='btn_like'
-				/>
-			</button>
-		</Container>
-	);
+  return (
+    <Container>
+      <Link to={linkTo}>
+        <img src={imageSrc} alt={imageSrc} />
+      </Link>
+      <button
+        type="button"
+        onClick={() => {
+          handleClickLike(imageSrc);
+        }}
+      >
+        <img
+          src={active ? '/images/btn_like_active.svg' : '/images/btn_like_default.svg'}
+          alt="btn_like"
+        />
+      </button>
+    </Container>
+  );
 }

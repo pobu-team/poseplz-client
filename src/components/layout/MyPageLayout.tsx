@@ -1,4 +1,4 @@
-import {Outlet} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -14,12 +14,12 @@ const Container = styled.div`
 `;
 
 export default function MyPageLayout() {
-	return (
-		<Container>
-			<MyPageHeader />
-			<main>
-				<Outlet />
-			</main>
-		</Container>
-	);
+  return (
+    <Container>
+      <MyPageHeader />
+      <main>
+        <Outlet />
+      </main>
+    </Container>
+  );
 }

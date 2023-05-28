@@ -1,23 +1,23 @@
-import type Pose from '../types/Pose';
+import type Pose from '../types/PoseType';
 
 type FilterPoseProps = {
 	filteredPoseByPerson: Pose[];
-	themeArr: string[];
+	themeArr: number[];
 };
 
-export default function filterPose({filteredPoseByPerson, themeArr}: FilterPoseProps) {
-	if (!themeArr.length) {
-		themeArr = ['simple', 'friendly', 'fun', 'love', 'birthday', 'holiday', 'christmas'];
-	}
+export default function filterPose({ filteredPoseByPerson, themeArr }: FilterPoseProps) {
+  if (!themeArr.length) {
+    themeArr = ['simple', 'friendly', 'fun', 'love', 'birthday', 'holiday', 'christmas'];
+  }
 
-	const filterPose = (theme: string) => filteredPoseByPerson[0].image
-		.filter(item => item.theme === theme || item.special === theme);
+  const filterPose = (theme: string) => filteredPoseByPerson[0].image
+    .filter((item) => item.theme === theme || item.special === theme);
 
-	const filteredPose = [];
+  const filteredPose = [];
 
-	for (const x of themeArr) {
-		filteredPose.push(filterPose(x));
-	}
+  for (const x of themeArr) {
+    filteredPose.push(filterPose(x));
+  }
 
-	return filteredPose;
+  return filteredPose;
 }

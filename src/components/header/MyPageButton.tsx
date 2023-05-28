@@ -1,14 +1,14 @@
-import {useNavigate} from 'react-router';
+import { useNavigate } from 'react-router';
 
 import styled from 'styled-components';
 
-import {useReadLocalStorage} from 'usehooks-ts';
+import { useReadLocalStorage } from 'usehooks-ts';
 
 const Container = styled.div`
 	flex: 1;
 	display: flex;
 	justify-content: flex-end;
-`
+`;
 
 const Button = styled.button`
   display: flex;
@@ -29,19 +29,19 @@ const Button = styled.button`
 `;
 
 export default function MyPageButton() {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	const isDarkMode = useReadLocalStorage('darkMode');
+  const isDarkMode = useReadLocalStorage('darkMode');
 
-	const handleClickMyPage = () => {
-		navigate('/mypage');
-	};
+  const handleClickMyPage = () => {
+    navigate('/mypage');
+  };
 
-	return (
-		<Container>
-			<Button onClick={handleClickMyPage}>
-				<img src={isDarkMode ? '/images/icon_mylike_D.svg' : '/images/icon_mylike_L.svg'} />
-			</Button>
-		</Container>
-	);
+  return (
+    <Container>
+      <Button onClick={handleClickMyPage}>
+        <img src={isDarkMode ? '/images/icon_mylike_D.svg' : '/images/icon_mylike_L.svg'} />
+      </Button>
+    </Container>
+  );
 }

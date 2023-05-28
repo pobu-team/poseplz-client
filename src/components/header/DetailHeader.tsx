@@ -31,10 +31,10 @@ const Container = styled.h1`
 `;
 
 export default function MyPageHeader() {
-	return (
-			<Container>
-				<BackButton />
-				이 포즈로 사진을 찍어보세요!
-			</Container>
-	);
+  return (
+    <Container>
+      <BackButton />
+      이 포즈로 사진을 찍어보세요!
+    </Container>
+  );
 }

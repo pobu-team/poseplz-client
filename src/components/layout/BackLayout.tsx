@@ -1,4 +1,4 @@
-import {Outlet} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -14,12 +14,12 @@ const Container = styled.div`
 `;
 
 export default function BackLayout() {
-	return (
-		<Container>
-			<BackHeader />
-			<main>
-				<Outlet />
-			</main>
-		</Container>
-	);
+  return (
+    <Container>
+      <BackHeader />
+      <main>
+        <Outlet />
+      </main>
+    </Container>
+  );
 }

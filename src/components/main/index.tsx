@@ -15,6 +15,7 @@ const Container = styled.div`
 export default function Main() {
   const recommendPoses = makeRandomImageSrc();
   const mostSharedPoses = makeRandomImageSrc();
+
   return (
     <Container>
       <StartButton />

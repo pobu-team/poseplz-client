@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const GlobalStyle = createGlobalStyle`
@@ -19,8 +19,8 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-size: 1.6rem;
     font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-    color: ${props => props.theme.colors.text};
-    background: ${props => props.theme.colors.background};
+    color: ${(props) => props.theme.colors.text};
+    background: ${(props) => props.theme.colors.background};
   }
 
   p, button, span {
