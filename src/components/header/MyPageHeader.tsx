@@ -32,7 +32,6 @@ const Container = styled.h1`
 `;
 
 export default function MyPageHeader() {
-  
   return (
     <Container>
       <BackButton />
