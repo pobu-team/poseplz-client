@@ -33,12 +33,12 @@ export default function PoseSlider({ title, imgArr }: {
     };
   }, []);
 
-  const handleClick = (index: number) => {
+  const handleClick = (item: string) => {
     if (!isClick) {
       return;
     }
 
-    navigate(`/pose/detail?imageSrc=/images/${imgArr[index]}.png`);
+    navigate(`/pose/detail?imageSrc=https://server.poseplz.com${item}`);
   };
 
   return (
@@ -48,14 +48,14 @@ export default function PoseSlider({ title, imgArr }: {
       </Header>
       <Container>
         <Content ref={ref}>
-          {[1, 2, 3, 4, 5, 6].map((item, index) => (
+          {imgArr.map((item, index) => (
             <a
-              key={item}
+              key={item+index}
               onClick={() => {
-                handleClick(index);
+                handleClick(item);
               }}
             >
-              <img src={`/images/${imgArr[index]}.png`} alt={imgArr[index]} />
+              <img src={`https://server.poseplz.com${item}`} alt={item} />
             </a>
           ))}
         </Content>
