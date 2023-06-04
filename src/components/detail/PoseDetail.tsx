@@ -60,7 +60,7 @@ export default function PoseDetail({ imageSrc, onClickBack }: PoseDetailProps) {
   return (
     <Container>
       <div>
-        <img src={imageSrc} alt={imageSrc} />
+        <img src={`https://server.poseplz.com/api/v1/files/${imageSrc}`} alt={imageSrc} />
       </div>
       <ButtonContainer>
         <button
