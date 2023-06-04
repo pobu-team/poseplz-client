@@ -1,22 +1,18 @@
 import styled from 'styled-components';
 
-import {useLocalStorage} from 'usehooks-ts';
-
-import {tag} from '../../constant/tag';
-
-import useSelectStore from '../../hooks/useSelectStore';
-
+import { useLocalStorage } from 'usehooks-ts';
+import { useParams } from 'react-router';
+import { useRecoilValue } from 'recoil';
 import Pose from './Pose';
 
-import filterPose from '../../utils/filterPose';
+import { PoseSelector } from '../../recoil/poseState';
 
-import type Image from '../../types/Image';
-import {useParams} from 'react-router';
+import PoseType from '../../types/PoseType';
 
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-	padding: ${props => props.theme.sizes.contentPadding};
+	padding: ${(props) => props.theme.sizes.contentPadding};
 
 	div:first-child{
 		display: flex;
@@ -31,8 +27,8 @@ const Container = styled.div`
 			padding: 12px 16px;
 			gap: 4px;
 			margin: 6px 4px;
-			color: ${props => props.theme.colors.text};
-			background-color: ${props => props.theme.colors.secondary};
+			color: ${(props) => props.theme.colors.text};
+			background-color: ${(props) => props.theme.colors.secondary};
 		}
 	}
 `;
@@ -43,42 +39,45 @@ const PoseContainer = styled.div`
 `;
 
 export default function SelectPose() {
-	const [like, _] = useLocalStorage<string[]>('pose-store', []);
+  const [like, _] = useLocalStorage<string[]>('pose-store', []);
 
-	const [{pose}] = useSelectStore();
+  const { id = '', theme } = useParams();
+  const tagIdArr = theme?.split('&').map((tag) => tag) ?? [];
+  const tagArr = [id];
+  const poseArr = useRecoilValue(PoseSelector(tagIdArr));
+  // const pose = useRecoilValue(RecommendPoseSelector(['31817144344412582']));
+  // console.log(pose);
 
-	const {id = '', theme} = useParams();
+  if (id === 'random' && theme === 'random') {
 
-	let themeArr = theme?.split('&') ?? [];
+  }
 
-	if (theme === 'random') {
-		themeArr = [];
-	}
+  // const filteredPoseByPerson = pose.filter((item) => (item.id === id));
 
-	const filteredPoseByPerson = pose.filter(item => (item.id === id));
+  // const filteredPose: Image[][] = filterPose({ filteredPoseByPerson, themeIdArr });
 
-	const filteredPose: Image[][] = filterPose({filteredPoseByPerson, themeArr});
+  // const imageArr = new Set(filteredPose.reduce((acc, val) => acc.concat(val), []));
 
-	const imageArr = new Set(filteredPose.reduce((acc, val) => acc.concat(val), []));
+  // const tagArr = themeIdArr.map((item: string) => tag[item]);
+  // tagArr.unshift(`${id}명`);
 
-	const tagArr = themeArr.map((item: string) => tag[item]);
-	tagArr.unshift(id + '명');
-
-	return (
-		<Container>
-			<div>
-				{tagArr.map((tag: string) => (
-					<span key={tag}>#{tag}</span>
-				))}
-			</div>
-			<PoseContainer>
-				{[...imageArr].map((image: Image) => {
-					const active: boolean = like.includes(image.src);
-					return (
-						<Pose key={image.id} imageSrc={image.src} active={active}/>
-					);
-				})}
-			</PoseContainer>
-		</Container>
-	);
+  return (
+    <Container>
+      <div>
+        {tagArr.map((tag) => (
+          <span key={tag}>
+            #
+            {tag}명
+          </span>
+        ))}
+      </div>
+      <PoseContainer>
+        {poseArr.map((pose: PoseType) => {
+          const fileId: string = pose.thumbnailImageUrl.split('/').pop() || '';
+          const active: boolean = like.includes(fileId);
+          return <Pose key={pose.poseId} imageSrc={fileId} active={active} />
+        })}
+      </PoseContainer>
+    </Container>
+  );
 }

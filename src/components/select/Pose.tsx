@@ -47,7 +47,7 @@ export default function Pose({ imageSrc, active }: PoseProps) {
   return (
     <Container>
       <Link to={linkTo}>
-        <img src={imageSrc} alt={imageSrc} />
+        <img src={`https://server.poseplz.com/api/v1/files/${imageSrc}`} alt={imageSrc} />
       </Link>
       <button
         type="button"

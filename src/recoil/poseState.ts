@@ -9,10 +9,18 @@ export const PoseSelector = selectorFamily({
   },
 });
 
-export const RecommendPoseSelector = selector({
-  key: 'RecommendPoseSelector',
+export const AllPoseSelector = selector({
+  key: 'AllPoseSelector',
   get: async () => {
     const { data } = await apiService.fetchAllPose();
     return data;
   }
 })
+
+// export const RecommendPoseSelector = selectorFamily({
+//   key: 'RecommendPoseSelector',
+//   get: (tagIds: string[]) => async () => {
+//     const { data } = await apiService.recommendPose(tagIds);
+//     return data;
+//   }
+// })
