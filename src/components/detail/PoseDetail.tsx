@@ -72,7 +72,7 @@ export default function PoseDetail({ imageSrc, onClickBack }: PoseDetailProps) {
         <button
           type="button"
           onClick={() => {
-            shareKaKao(`/pose/detail?imageSrc=${imageSrc ?? ''}`);
+            shareKaKao(imageSrc ?? '');
           }}
         >
           포즈 공유하기
