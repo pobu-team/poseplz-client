@@ -7,7 +7,7 @@ const shareKaKao = (src: string) => {
     content: {
       title: '포즈를 부탁해',
       description: '이 포즈 어때?',
-      imageUrl: `https://server.poseplz.com/api/v1/files${src}`,
+      imageUrl: `https://server.poseplz.com/api/v1/files/${src}`,
       link: {
         mobileWebUrl: url + src,
         webUrl: url + src,
