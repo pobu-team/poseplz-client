@@ -38,7 +38,7 @@ export default function PoseSlider({ title, imgArr }: {
       return;
     }
 
-    navigate(`/pose/detail?imageSrc=https://server.poseplz.com${item}`);
+    navigate(`/pose/detail?imageSrc=${item}`);
   };
 
   return (

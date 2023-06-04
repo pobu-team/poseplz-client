@@ -1,16 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 
-import useSelectStore from '../../hooks/useSelectStore';
-
 import { Container } from './StartButton.styles';
 
 export default function StartButton() {
   const navigate = useNavigate();
 
-  const [, store] = useSelectStore();
-
   const handleClickStart = () => {
-    store.resetTheme();
     navigate('/people');
   };
 
