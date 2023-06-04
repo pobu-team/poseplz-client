@@ -1,10 +1,10 @@
 import { atom, selector } from 'recoil';
 import { apiService } from '../service/ApiService';
 
-export const TagState = atom<number[]>({
-  key: 'TagState',
-  default: [],
-});
+// export const TagState = atom<number[]>({
+//   key: 'TagState',
+//   default: [],
+// });
 
 export const TagSelector = selector({
   key: 'TagSelector',

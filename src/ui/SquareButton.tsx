@@ -5,12 +5,12 @@ type ButtonProps = {
 };
 
 const Button = styled.button<ButtonProps>`
-    padding: 3rem 2.5rem 1.5rem;
+    padding: 3rem 2.5rem 2rem;
     margin-bottom: 16px;
     width: 100%;
     border-radius: 16px;
     border: none;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     font-weight: 600;
     color: ${(props) => props.theme.colors.text};
     background: ${(props) => props.theme.colors.buttonBackground};
@@ -21,15 +21,15 @@ const Button = styled.button<ButtonProps>`
       font-size: 1.5rem;
     }
 
-    
     ${(props) => props.active && css`
-    border: 3px solid ${props.theme.colors.primary};
-    background-color: ${props.theme.colors.background};
+      border: 3px solid ${props.theme.colors.primary};
+      background-color: ${props.theme.colors.background};
+      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
     `};
     
     img {
       width: 100%;
-      margin-bottom: 15px;
+      margin-bottom: 5px;
     };
 `;
 
