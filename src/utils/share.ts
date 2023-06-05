@@ -17,8 +17,8 @@ const shareKaKao = (src: string) => {
       {
         title: '포즈 보러 가기',
         link: {
-          mobileWebUrl: url + '/detail/?imageSrc=' + src,
-          webUrl: url + '/detail/?imageSrc=' + src,
+          mobileWebUrl: url + '/pose/detail/?imageSrc=' + src,
+          webUrl: url + '/pose/detail/?imageSrc=' + src,
         },
       },
     ],
