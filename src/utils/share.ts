@@ -1,4 +1,4 @@
-const url = 'https://pobu.vercel.app';
+const url = 'https://www.poseplz.com';
 
 const shareKaKao = (src: string) => {
   /* eslint-disable @typescript-eslint/no-unsafe-call */
@@ -17,8 +17,8 @@ const shareKaKao = (src: string) => {
       {
         title: '포즈 보러 가기',
         link: {
-          mobileWebUrl: url + src,
-          webUrl: url + src,
+          mobileWebUrl: url + '/detail/?imageSrc=' + src,
+          webUrl: url + '/detail/?imageSrc=' + src,
         },
       },
     ],
