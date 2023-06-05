@@ -34,6 +34,9 @@ export default function PoseSlider({ title, imgArr }: {
   }, []);
 
   const handleClick = (item: string) => {
+    if(!isClick) {
+      return;
+    }
     const fileId = item.split('/').pop();
     navigate(`/pose/detail?imageSrc=${fileId}`);
   };
