@@ -14,7 +14,7 @@ const Container = styled.div`
 	margin: 10px 5px 10px 5px;
 
   img {
-		border-radius: 30px;
+		border-radius: 10px;
 		width: 100%;
 		height: auto;
 	}
