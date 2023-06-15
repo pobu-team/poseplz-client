@@ -3,18 +3,18 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 const ButtonContainer = styled.div`
-	display: block;
-	flex-wrap: wrap;
-	justify-content: flex-start;
+  display: block;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   background-color: ${(props) => props.theme.colors.background};
-	padding: 10px 10px 20px;
-	position: sticky;
-	z-index: 10;
+  padding: 10px 10px 20px;
+  position: sticky;
+  z-index: 10;
 
   button {
-		cursor: pointer;
-		justify-content: center;
-		align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
     margin: 4px;
     border-radius: 10px;
     width: 80px;
@@ -22,37 +22,42 @@ const ButtonContainer = styled.div`
     border: none;
     color: ${(props) => props.theme.colors.text};
     background-color: ${(props) => props.theme.colors.buttonBackground};
-		@media screen and (max-width: 400px) {
-			margin: 2px;
-		}
+    @media screen and (max-width: 400px) {
+      margin: 2px;
+    }
   }
 
   button.selected {
     border: 2px solid ${(props) => props.theme.colors.border};
-		background-color: ${(props) => props.theme.colors.background};
+    background-color: ${(props) => props.theme.colors.background};
   }
 `;
 
 type PersonButtonProps = {
-	selectedPose: string[];
-	setIsPersonNum: (value: string[]) => void;
+  like: string[];
+  setIsPersonNum: (value: string[]) => void;
 };
 
-export default function PersonButton({ selectedPose, setIsPersonNum }: PersonButtonProps) {
-  const [selectedButton, setSelectedButton] = useState<number | undefined>(undefined);
+export default function PersonButton({
+  like,
+  setIsPersonNum,
+}: PersonButtonProps) {
+  const [selectedButton, setSelectedButton] = useState<number | undefined>(
+    undefined,
+  );
 
   const [allButton, setAllButton] = useState(true);
 
   const handleClick = (num: number) => {
     setSelectedButton(num);
-    const filteredPose = selectedPose.filter((src: string) => src[8] === String(num));
+    const filteredPose = like.filter((poseId: string) => poseId.slice(-2) === `${String(num)}인`);
     setIsPersonNum(filteredPose);
     setAllButton(false);
   };
 
   const handleClickAll = () => {
     setSelectedButton(undefined);
-    setIsPersonNum(selectedPose);
+    setIsPersonNum(like);
     setAllButton(true);
   };
 
@@ -78,7 +83,6 @@ export default function PersonButton({ selectedPose, setIsPersonNum }: PersonBut
           명
         </button>
       ))}
-
     </ButtonContainer>
   );
 }

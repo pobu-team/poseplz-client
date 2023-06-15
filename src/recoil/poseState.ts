@@ -14,8 +14,16 @@ export const AllPoseSelector = selector({
   get: async () => {
     const { data } = await apiService.fetchAllPose();
     return data;
-  }
-})
+  },
+});
+
+export const PoseWithIdSelector = selectorFamily({
+  key: 'PoseWithIdSelector',
+  get: (poseId: string) => async () => {
+    const { data } = await apiService.fetchPoseWithId(poseId);
+    return data;
+  },
+});
 
 // export const RecommendPoseSelector = selectorFamily({
 //   key: 'RecommendPoseSelector',

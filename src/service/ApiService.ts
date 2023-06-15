@@ -18,9 +18,20 @@ export default class ApiService {
   }
 
   async fetchAllPose() {
-    const { data } = await this.instance.get(`/poses`);
+    const { data } = await this.instance.get('/poses?page=0&size=100');
     return data;
   }
+
+  async fetchPoseWithId(poseId: string) {
+    const { data } = await this.instance.get(`/poses/${poseId}`);
+    return data;
+  }
+  // async recommendPose(tagIds: string[]) {
+  //   const { data } = await this.instance.post(`/poses/recommend`, {
+  //     tagIds
+  //   });
+  //   return data;
+  // }
 }
 
 export const apiService = new ApiService();
