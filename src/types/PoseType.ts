@@ -1,6 +1,13 @@
-interface PoseType {
+import Tag from "./Tag";
+
+export interface PoseType {
 	poseId: string;
 	thumbnailImageUrl: string;
 }
 
-export default PoseType;
+export interface PoseInfo {
+  poseId: string;
+  thumbnailImageUrl: string;
+  imageUrl: string;
+  tags: Tag[];
+}

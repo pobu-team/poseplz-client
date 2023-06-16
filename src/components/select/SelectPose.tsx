@@ -5,52 +5,62 @@ import { useParams } from 'react-router';
 import { useRecoilValue } from 'recoil';
 import Pose from './Pose';
 
-import { PoseSelector } from '../../recoil/poseState';
+import { AllPoseSelector, PoseSelector } from '../../recoil/poseState';
 
-import PoseType from '../../types/PoseType';
+import { PoseType } from '../../types/PoseType';
 
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-	padding: ${(props) => props.theme.sizes.contentPadding};
+  padding: ${(props) => props.theme.sizes.contentPadding};
 
-	div:first-child{
-		display: flex;
-		width: 100%;
-		flex-wrap: wrap;
-		margin-bottom: 20px;
+  div:first-child {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
 
-		span {
-			display: flex;
-			font-size: 15px;
-			border-radius: 10px;
-			padding: 12px 16px;
-			gap: 4px;
-			margin: 6px 4px;
-			color: ${(props) => props.theme.colors.text};
-			background-color: ${(props) => props.theme.colors.secondary};
-		}
-	}
+    span {
+      display: flex;
+      font-size: 15px;
+      border-radius: 10px;
+      padding: 12px 16px;
+      gap: 4px;
+      margin: 6px 4px;
+      color: ${(props) => props.theme.colors.text};
+      background-color: ${(props) => props.theme.colors.secondary};
+    }
+  }
 `;
 
 const PoseContainer = styled.div`
-	column-count: 2;
-	column-gap: 5px;
+  column-count: 2;
+  column-gap: 5px;
 `;
 
 export default function SelectPose() {
   const [like, _] = useLocalStorage<string[]>('pose-store', []);
 
+  const likePoseIdArr = like.map((item) => item.slice(0, -3));
+
+  let poseArr;
+  let tagArr;
+
   const { id = '', theme } = useParams();
-  const tagIdArr = theme?.split('&').map((tag) => tag) ?? [];
-  const tagArr = [id];
-  const poseArr = useRecoilValue(PoseSelector(tagIdArr));
+  if (id === 'random') {
+    poseArr = useRecoilValue(AllPoseSelector);
+    tagArr = ['1~6'];
+  } else {
+    const tagIdArr = theme?.split('&').map((tag) => tag) ?? [];
+    tagArr = [id];
+    poseArr = useRecoilValue(PoseSelector(tagIdArr));
+  }
   // const pose = useRecoilValue(RecommendPoseSelector(['31817144344412582']));
   // console.log(pose);
 
-  if (id === 'random' && theme === 'random') {
+  // if (id === 'random' && theme === 'random') {
 
-  }
+  // }
 
   // const filteredPoseByPerson = pose.filter((item) => (item.id === id));
 
@@ -67,15 +77,17 @@ export default function SelectPose() {
         {tagArr.map((tag) => (
           <span key={tag}>
             #
-            {tag}명
+            {tag}
+            명
           </span>
         ))}
       </div>
       <PoseContainer>
         {poseArr.map((pose: PoseType) => {
-          const fileId: string = pose.thumbnailImageUrl.split('/').pop() || '';
-          const active: boolean = like.includes(fileId);
-          return <Pose key={pose.poseId} imageSrc={fileId} active={active} />
+          const active: boolean = likePoseIdArr.includes(pose.poseId);
+          return (
+            <Pose key={pose.poseId} poseId={pose.poseId} active={active} />
+          );
         })}
       </PoseContainer>
     </Container>
