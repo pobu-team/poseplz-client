@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 
-export const ButtonContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-column-gap: 16px;
-  width: 100%;
-  margin-bottom: 30px;
-`;
-
 export const Container = styled.div`
   padding: ${(props) => props.theme.sizes.contentPadding};
   display: flex;
@@ -20,18 +11,27 @@ export const Container = styled.div`
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 20px;
+    @media screen and (max-width: 340px){
+      font-size: 18px;
+    }
   }
+`;
 
-  h2 {
-    margin-left: 20px;
-    font-size: 20px;
-    font-weight: 600;
-  }
+export const ButtonContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-column-gap: 16px;
+  width: 100%;
+  margin-bottom: 30px;
 `;
 
 export const SubmitBtnContainer = styled.div`
   display: flex;
-  width: 100%;
+  bottom: 0;
+  width: 86%;
+  position: fixed;
+  max-width: 385px;
 
   button {
     border-radius: 10px;
@@ -40,6 +40,10 @@ export const SubmitBtnContainer = styled.div`
     border: none;
     font-size: 20px;
     font-weight: 600;
+    
+    @media screen and (max-width: 340px){
+      font-size: 16px;
+    }
   }
 
   button:first-child {
