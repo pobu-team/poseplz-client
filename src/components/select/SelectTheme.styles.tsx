@@ -29,9 +29,10 @@ export const ButtonContainer = styled.div`
 export const SubmitBtnContainer = styled.div`
   display: flex;
   bottom: 0;
-  width: 86%;
-  position: fixed;
-  max-width: 385px;
+  position: sticky;
+  width: 100%;
+  background-color: ${(props) => props.theme.colors.background};
+  margin-bottom: 15px;
 
   button {
     border-radius: 10px;
@@ -40,6 +41,7 @@ export const SubmitBtnContainer = styled.div`
     border: none;
     font-size: 20px;
     font-weight: 600;
+    color: '#000';
     
     @media screen and (max-width: 340px){
       font-size: 16px;
