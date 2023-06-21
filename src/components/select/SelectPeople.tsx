@@ -8,18 +8,15 @@ import { ButtonContainer, Container, SubmitBtnContainer } from './SelectTheme.st
 
 export default function SelectPeople() {
   const navigate = useNavigate();
-  const [personNum, setPersonNum] = useState('');
-
-  const [_, setIsNextBtnDisabled] = useState(true);
+  const [personNum, setPersonNum] = useState(0);
 
   const handleClickPersonNum = (number: number) => {
-    setPersonNum(String(number));
-    setIsNextBtnDisabled(false);
+    setPersonNum(number);
   };
 
   const handleClickRandom = () => {
-    navigate(`/theme/random`);
-  }
+    navigate('/theme/random');
+  };
 
   return (
     <Container>
@@ -30,7 +27,7 @@ export default function SelectPeople() {
             key={item}
             text={`${item}명`}
             imgSrc={`/images/person-${index + 1}.png`}
-            active={personNum === String(item)}
+            active={personNum === item}
             onClickFunc={() => handleClickPersonNum(item)}
           />
         ))}
@@ -47,8 +44,8 @@ export default function SelectPeople() {
           onClick={() => {
             navigate(`/theme/${personNum}`);
           }}
-          disabled={personNum === ''}
-          >
+          disabled={personNum === 0}
+        >
           다음
         </button>
       </SubmitBtnContainer>
