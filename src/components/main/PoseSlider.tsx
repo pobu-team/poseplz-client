@@ -34,7 +34,7 @@ export default function PoseSlider({ title, imgArr }: {
   }, []);
 
   const handleClick = (item: string) => {
-    if(!isClick) {
+    if (!isClick) {
       return;
     }
     const fileId = item.split('/').pop();
@@ -50,7 +50,7 @@ export default function PoseSlider({ title, imgArr }: {
         <Content ref={ref}>
           {imgArr.map((item, index) => (
             <a
-              key={item+index}
+              key={item + index}
               onClick={() => {
                 handleClick(item);
               }}

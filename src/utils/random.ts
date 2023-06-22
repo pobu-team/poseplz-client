@@ -1,4 +1,4 @@
-import PoseType from "../types/PoseType";
+import { PoseType } from '../types/PoseType';
 
 export default function makeRandomImageSrc(array: PoseType[], count: number) {
   const shuffled = array.slice();
@@ -7,16 +7,16 @@ export default function makeRandomImageSrc(array: PoseType[], count: number) {
 
   while (currentIndex > 0 && count > 0) {
     const randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
+    currentIndex -= 1;
 
     [shuffled[currentIndex], shuffled[randomIndex]] = [
       shuffled[randomIndex],
-      shuffled[currentIndex]
+      shuffled[currentIndex],
     ];
 
     result.push(shuffled[currentIndex]);
-    count--;
+    count -= 1;
   }
 
-  return result.map(v => v.thumbnailImageUrl);
+  return result.map((v) => v.thumbnailImageUrl);
 }

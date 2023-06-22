@@ -1,8 +1,8 @@
 import type Pose from '../types/PoseType';
 
 type FilterPoseProps = {
-	filteredPoseByPerson: Pose[];
-	themeArr: number[];
+  filteredPoseByPerson: Pose[];
+  themeArr: number[];
 };
 
 export default function filterPose({ filteredPoseByPerson, themeArr }: FilterPoseProps) {

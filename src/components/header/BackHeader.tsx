@@ -10,7 +10,7 @@ const Container = styled.div`
   justify-content: space-between;
   padding-block: 1rem;
   padding-inline: ${(props) => props.theme.sizes.contentPadding};
-	@media screen and (max-width: 340px){
+  @media screen and (max-width: 340px){
       padding-inline: 1.2rem;
   }
 `;
