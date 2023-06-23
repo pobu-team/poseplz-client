@@ -1,16 +1,16 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { useLocalStorage } from 'usehooks-ts';
 
 type ToggleButtonProps = {
-	active: boolean;
+  active: boolean;
 };
 
 const Container = styled.div`
-	flex: 1;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 `;
 
 const ToggleButton = styled.button<ToggleButtonProps>`
@@ -22,11 +22,11 @@ const ToggleButton = styled.button<ToggleButtonProps>`
   margin: 0;
   cursor: pointer;
 
-	img {
-		@media screen and (max-width: 340px) {
-			width: 5rem;
-		}
-	}
+  img {
+    @media screen and (max-width: 340px) {
+      width: 5rem;
+    }
+  }
 `;
 
 export default function ThemeSwitch() {

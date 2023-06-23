@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router';
 import styled, { keyframes } from 'styled-components';
 
 type ContainerProps = {
-	currentImage: string;
-	isAnimating: boolean;
+  currentImage: string;
+  isAnimating: boolean;
 };
 
 type StartButtonProps = {
-	currentImageIndex: number;
+  currentImageIndex: number;
 };
 
 const images = [
@@ -33,14 +33,14 @@ const fadeOut = keyframes`
 const Container = styled.main<ContainerProps>`
   margin: auto;
   display: flex;
-	height: 100vh;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   padding-inline: ${(props) => props.theme.sizes.contentPadding};
   background-image: url(${(props) => props.currentImage});
   background-repeat: no-repeat;
-	background-size: contain;
+  background-size: contain;
   background-position: center;
   animation: ${(props) => (props.isAnimating ? fadeOut : fadeIn)} 1s ease-in-out;
   animation-fill-mode: forwards;
@@ -48,10 +48,10 @@ const Container = styled.main<ContainerProps>`
 
 const StartButton = styled.button<StartButtonProps>`
   display: flex;
-	width: 40vh;
-	height: 7.5vh;
-	font-size: 2.5vh;
-	padding: 0;
+  width: 40vh;
+  height: 7.5vh;
+  font-size: 2.5vh;
+  padding: 0;
   margin-bottom: 5vh;
   justify-content: center;
   align-items: center;

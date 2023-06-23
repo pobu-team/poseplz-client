@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import { Container } from './StartButton.styles';
+import Container from './StartButton.styles';
 
 export default function StartButton() {
   const navigate = useNavigate();

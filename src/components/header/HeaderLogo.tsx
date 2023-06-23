@@ -5,13 +5,13 @@ import styled from 'styled-components';
 import { useReadLocalStorage } from 'usehooks-ts';
 
 const Container = styled.div`
-	flex: 1;
-	display: flex;
-	justify-content: center;
+  flex: 1;
+  display: flex;
+  justify-content: center;
 `;
 
 const Logo = styled.button`
-	flex: 1;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,11 +21,11 @@ const Logo = styled.button`
   background: none;
   cursor: pointer;
 
-	img {
-		@media screen and (max-width: 340px) {
-			width: 5rem;
-		}
-	}
+  img {
+    @media screen and (max-width: 340px) {
+      width: 5rem;
+    }
+  }
 `;
 
 export default function HeaderLogo() {

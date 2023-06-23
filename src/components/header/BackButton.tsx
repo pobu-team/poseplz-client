@@ -5,14 +5,14 @@ import styled from 'styled-components';
 import { useReadLocalStorage } from 'usehooks-ts';
 
 const Container = styled.div`
-	flex: 1;
-	justify-content: flex-start;
+  flex: 1;
+  justify-content: flex-start;
 `;
 
 const Button = styled.button`
-	display: flex;
+  display: flex;
   border: none;
-	background: none;
+  background: none;
   margin-right: 1rem;
   cursor: pointer;
 `;

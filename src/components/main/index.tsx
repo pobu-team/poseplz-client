@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-
+import { useRecoilValue } from 'recoil';
 import PoseSlider from './PoseSlider';
 import StartButton from './StartButton';
 import makeRandomImageSrc from '../../utils/random';
 import { AllPoseSelector, PoseSelector } from '../../recoil/poseState';
-import { useRecoilValue } from 'recoil';
 
 const Container = styled.div`
   padding: ${(props) => props.theme.sizes.contentPadding};
@@ -18,7 +17,7 @@ export default function Main() {
   const allData = useRecoilValue(AllPoseSelector);
   const recommendPoses = makeRandomImageSrc(allData, 6);
   const onePersonData = useRecoilValue(PoseSelector(['31817144344412582']));
-  const onePersonPoses = makeRandomImageSrc(onePersonData, 6)
+  const onePersonPoses = makeRandomImageSrc(onePersonData, 6);
   const funnyData = useRecoilValue(PoseSelector(['32448601534804195']));
   const funnyPoses = makeRandomImageSrc(funnyData, 6);
 

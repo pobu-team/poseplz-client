@@ -1,6 +1,6 @@
 export default function dragScroll({ ref, setIsClick }: {
-	ref: React.RefObject<HTMLDivElement>;
-	setIsClick: (value: boolean) => void;
+  ref: React.RefObject<HTMLDivElement>;
+  setIsClick: (value: boolean) => void;
 }) {
   let isDragStart = false;
   let prevPageX = 0;

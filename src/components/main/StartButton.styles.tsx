@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+const Container = styled.div`
   height: 120px;
 
   button {
@@ -42,3 +42,5 @@ export const Container = styled.div`
           height: 100px;
   }
 `;
+
+export default Container;
