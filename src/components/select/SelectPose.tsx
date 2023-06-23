@@ -55,21 +55,6 @@ export default function SelectPose() {
     tagArr = [id];
     poseArr = useRecoilValue(PoseSelector(tagIdArr));
   }
-  // const pose = useRecoilValue(RecommendPoseSelector(['31817144344412582']));
-  // console.log(pose);
-
-  // if (id === 'random' && theme === 'random') {
-
-  // }
-
-  // const filteredPoseByPerson = pose.filter((item) => (item.id === id));
-
-  // const filteredPose: Image[][] = filterPose({ filteredPoseByPerson, themeIdArr });
-
-  // const imageArr = new Set(filteredPose.reduce((acc, val) => acc.concat(val), []));
-
-  // const tagArr = themeIdArr.map((item: string) => tag[item]);
-  // tagArr.unshift(`${id}명`);
 
   return (
     <Container>
