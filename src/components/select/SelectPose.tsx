@@ -1,13 +1,10 @@
 import styled from 'styled-components';
-
 import { useLocalStorage } from 'usehooks-ts';
 import { useParams } from 'react-router';
 import { useRecoilValue } from 'recoil';
-import Pose from './Pose';
-
 import { AllPoseSelector, PoseSelector } from '../../recoil/poseState';
-
 import { PoseType } from '../../types/PoseType';
+import Pose from './Pose';
 
 const Container = styled.div`
   display: flex;
@@ -61,6 +58,8 @@ export default function SelectPose() {
   // if (id === 'random' && theme === 'random') {
 
   // }
+
+  // conflict test
 
   // const filteredPoseByPerson = pose.filter((item) => (item.id === id));
 
