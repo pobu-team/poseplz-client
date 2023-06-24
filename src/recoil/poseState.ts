@@ -24,11 +24,3 @@ export const PoseWithIdSelector = selectorFamily({
     return data;
   },
 });
-
-// export const RecommendPoseSelector = selectorFamily({
-//   key: 'RecommendPoseSelector',
-//   get: (tagIds: string[]) => async () => {
-//     const { data } = await apiService.recommendPose(tagIds);
-//     return data;
-//   }
-// })
