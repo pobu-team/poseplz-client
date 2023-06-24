@@ -1,10 +1,13 @@
 import styled from 'styled-components';
+
 import { useLocalStorage } from 'usehooks-ts';
 import { useParams } from 'react-router';
 import { useRecoilValue } from 'recoil';
-import { AllPoseSelector, PoseSelector } from '../../recoil/poseState';
-import { PoseType } from '../../types/PoseType';
 import Pose from './Pose';
+
+import { AllPoseSelector, PoseSelector } from '../../recoil/poseState';
+
+import { PoseType } from '../../types/PoseType';
 
 const Container = styled.div`
   display: flex;
@@ -52,8 +55,6 @@ export default function SelectPose() {
     tagArr = [id];
     poseArr = useRecoilValue(PoseSelector(tagIdArr));
   }
-
-  // conflict test
 
   return (
     <Container>
