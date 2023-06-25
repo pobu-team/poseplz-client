@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import MyPageHeader from '../header/MyPageHeader';
 
+import NavigationBar from '../footer/NavigationBar';
+
 const Container = styled.div`
   width: 100%;
   max-width: 430px;
@@ -19,6 +21,7 @@ export default function MyPageLayout() {
       <main>
         <Outlet />
       </main>
+      <NavigationBar />
     </Container>
   );
 }

@@ -1,16 +1,29 @@
 import styled from 'styled-components';
+
 import { useRecoilValue } from 'recoil';
+
 import PoseSlider from './PoseSlider';
-import StartButton from './StartButton';
 import makeRandomImageSrc from '../../utils/random';
+
 import { AllPoseSelector, PoseSelector } from '../../recoil/poseState';
+
+import Heading from './Heading';
+import Banner from './Banner';
+import Category from './Category';
 
 const Container = styled.div`
   padding: ${(props) => props.theme.sizes.contentPadding};
+  margin-bottom: 16px;
 
   @media screen and (max-width: 340px){
     padding: 1.2rem;
   }
+`;
+
+const RoundDiv = styled.div`
+  height: 20px;
+  border-radius: 40px 40px 0 0;
+  background-color: ${(props) => props.theme.colors.containerBackground};
 `;
 
 export default function Main() {
@@ -22,11 +35,16 @@ export default function Main() {
   const funnyPoses = makeRandomImageSrc(funnyData, 6);
 
   return (
-    <Container>
-      <StartButton />
+    <div>
+      <Container>
+        <Heading />
+        <Banner />
+        <Category />
+      </Container>
+      <RoundDiv />
       <PoseSlider title="오늘의 추천 포즈에요!" imgArr={recommendPoses} />
-      <PoseSlider title="혼자 촬영할 때는 이런 포즈!" imgArr={onePersonPoses} />
+      <PoseSlider title="혼자 찍을 때 이 포즈 추천해요" imgArr={onePersonPoses} />
       <PoseSlider title="재미있게 찍고 싶다면?" imgArr={funnyPoses} />
-    </Container>
+    </div>
   );
 }

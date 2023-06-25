@@ -17,6 +17,9 @@ const darkTheme: Theme = {
     arrowBackground: '#BBFF65',
     detailBackground: '#000',
     noImageText: '#9B9B9B',
+    mainBackground: '#0f0f10',
+    bannerBackground: '#333335',
+    containerBackground: '#1f1e1f',
   },
 
   sizes: {

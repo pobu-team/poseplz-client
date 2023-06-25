@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 300px;
-  margin: 0 0 20px 0;
   max-width: 1200px;
   overflow: scroll;
   cursor: grab;
@@ -17,12 +16,12 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 30px;
   
     h1 {
       font-size: 2.4rem;
       text-overflow: ellipsis;
-      font-weight: 600;
+      letter-spacing: -0.48px;
+      font-weight: bold;
       @media screen and (max-width: 340px) {
         font-size: 1.8rem;
       }
@@ -43,9 +42,12 @@ export const Content = styled.div`
     display: none;
   }
   
-  a {
+  button {
     height: 90%;
     cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
 
     img {
       height: 100%;

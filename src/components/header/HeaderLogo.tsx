@@ -5,13 +5,12 @@ import styled from 'styled-components';
 import { useReadLocalStorage } from 'usehooks-ts';
 
 const Container = styled.div`
-  flex: 1;
   display: flex;
+  flex: 1;
   justify-content: center;
 `;
 
 const Logo = styled.button`
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
