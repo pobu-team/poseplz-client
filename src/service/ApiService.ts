@@ -26,12 +26,39 @@ export default class ApiService {
     const { data } = await this.instance.get(`/poses/${poseId}`);
     return data;
   }
+
+  async fetchTagGroups(peopleCount: number) {
+    const { data } = await this.instance.get('/tag-groups', {
+      params: { peopleCount },
+    });
+    return data;
+  }
+
+  async fetchTagGroup(tagGroupId: string) {
+    const { data } = await this.instance.get(`/tag-groups/${tagGroupId}`);
+    return data;
+  }
+
+  async addSelectedPoseInfo({ tagGroupIds, peopleCount }: {
+    tagGroupIds: string;
+    peopleCount: number;
+  }) {
+    const { data } = await this.instance.post('/poses/recommend', {
+      tagGroupIds, peopleCount,
+    });
+    return data;
+  }
   // async recommendPose(tagIds: string[]) {
   //   const { data } = await this.instance.post(`/poses/recommend`, {
   //     tagIds
   //   });
   //   return data;
   // }
+
+  async fetchCount() {
+    const { data } = await this.instance.get('/poses/count');
+    return data;
+  }
 }
 
 export const apiService = new ApiService();

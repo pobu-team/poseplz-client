@@ -15,6 +15,9 @@ const defaultTheme = {
     arrowBackground: '#FFFFFF',
     detailBackground: '#F2F2F7',
     noImageText: '#8A8A8A',
+    mainBackground: '#f2f2f7',
+    bannerBackground: '#dfdfe9',
+    containerBackground: '#ffffff',
   },
 
   sizes: {

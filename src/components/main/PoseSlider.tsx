@@ -1,8 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import dragScroll from '../../utils/dragScroll';
 import { Container, Content, Header } from './PoseSlider.styles';
+
+const OuterContainer = styled.div`
+  background-color: ${(props) => props.theme.colors.containerBackground};
+  padding: ${(props) => props.theme.sizes.contentPadding};
+  margin-bottom: 12px;
+`;
 
 export default function PoseSlider({ title, imgArr }: {
   title: string;
@@ -42,24 +49,25 @@ export default function PoseSlider({ title, imgArr }: {
   };
 
   return (
-    <div>
+    <OuterContainer>
       <Header>
         <h1>{title}</h1>
       </Header>
       <Container>
         <Content ref={ref}>
-          {imgArr.map((item, index) => (
-            <a
-              key={item + index}
+          {imgArr.map((item) => (
+            <button
+              key={item}
+              type="button"
               onClick={() => {
                 handleClick(item);
               }}
             >
               <img src={`https://server.poseplz.com${item}`} alt={item} />
-            </a>
+            </button>
           ))}
         </Content>
       </Container>
-    </div>
+    </OuterContainer>
   );
 }
