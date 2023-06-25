@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import HeaderLogo from './HeaderLogo';
-import MyPageButton from './MyPageButton';
 import ThemeSwitch from './ThemeSwitch';
 
 const Container = styled.header`
   display: flex;
+  position: relative;
   width: 100%;
   align-items: center;
   justify-content: space-between;
@@ -21,7 +21,6 @@ export default function MainHeader() {
     <Container>
       <ThemeSwitch />
       <HeaderLogo />
-      <MyPageButton />
     </Container>
   );
 }

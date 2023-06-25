@@ -7,8 +7,7 @@ type ToggleButtonProps = {
 };
 
 const Container = styled.div`
-  flex: 1;
-  display: flex;
+  position: absolute;
   align-items: center;
   justify-content: flex-start;
 `;
