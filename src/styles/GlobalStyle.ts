@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
