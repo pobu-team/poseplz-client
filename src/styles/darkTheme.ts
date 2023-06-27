@@ -9,7 +9,7 @@ const darkTheme: Theme = {
     layoutBackground: '#000',
     primary: '#BBFF65',
     secondary: '#333335',
-    startButton: '#333335',
+    startButton: '#1F1E1F',
     border: '#BBFF65',
     buttonBackground: '#1E1E1F',
     detailButton: '#1E1E1F',
@@ -31,6 +31,7 @@ const darkTheme: Theme = {
 
   img: {
     check: 'images/check-dark.png',
+    splash: 'images/bg_splash_dark.png',
   },
 };
 
