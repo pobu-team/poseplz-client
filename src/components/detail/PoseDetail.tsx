@@ -11,8 +11,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 700px;
-  padding: 20px;
+  height: 100%;
+  padding: 24px;
   background-color: ${(props) => props.theme.colors.detailBackground};
 
   div:first-child {
@@ -20,6 +20,7 @@ const Container = styled.div`
     border-radius: 10px;
     align-items: center;
     justify-content: center;
+    width: 100%;
     height: 100%;
     background-color: ${(props) => props.theme.colors.detailButton};
     
@@ -34,9 +35,9 @@ const Container = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
-  width: 90%;
+  width: 100%;
   justify-content: space-between;
-
+  
   button{
     cursor: pointer;
     font-size: 17px;
@@ -44,10 +45,16 @@ const ButtonContainer = styled.div`
     border-radius: 10px;
     border: none;
     width: 180px;
+    padding: 0;
     height: 60px;
-    margin: 50px 4px 0 4px;
+    margin: 30px 0;
     color: ${(props) => props.theme.colors.text};
     background: ${(props) => props.theme.colors.detailButton};
+
+    @media screen and (max-width: 340px) {
+      font-size: 13px;
+      height: 50px;
+    }
   }
 
   button:last-child {

@@ -2,31 +2,29 @@ import styled from 'styled-components';
 
 import BackButton from './BackButton';
 
-const Container = styled.h1`
+const Container = styled.header`
+  display: flex;
+  position: relative;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1rem;
+  padding-inline: ${(props) => props.theme.sizes.contentPadding};
+
+  @media screen and (max-width: 340px){
+    padding-inline: 1.2rem;
+  }
+
+  h1 {
+    width: 100%;
+    justify-content: center;
     line-height: 1.4;
     letter-spacing: -.3px;
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 700;
-    position: -webkit-sticky;
-    position: sticky;
-    display: block;
-    z-index: 10;
-    top: 0;
-    padding: 12px 0;
-    width: 100%;
-    height: 50px;
-    text-align: center;
-
-  button {
-    position: absolute;
-    top: 5px;
-    left: 5px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    border: none;
+    flex: 1;
+    padding: 12px 0;
   }
 `;
 
@@ -34,7 +32,9 @@ export default function MyPageHeader() {
   return (
     <Container>
       <BackButton />
-      이 포즈로 사진을 찍어보세요!
+      <h1>
+        이 포즈로 사진을 찍어보세요!
+      </h1>
     </Container>
   );
 }
