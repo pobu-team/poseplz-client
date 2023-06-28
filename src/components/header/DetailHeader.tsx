@@ -25,6 +25,11 @@ const Container = styled.header`
     display: flex;
     flex: 1;
     padding: 12px 0;
+
+    @media screen and (max-width: 340px) {
+      font-size: 18px;
+      padding: 0;
+    }
   }
 `;
 

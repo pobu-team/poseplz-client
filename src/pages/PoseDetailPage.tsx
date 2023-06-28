@@ -9,7 +9,7 @@ export default function PoseDetailPage() {
 
   const [searchParams] = useSearchParams();
 
-  const imageSrc = searchParams.get('imageSrc') ?? undefined;
+  const poseId = searchParams.get('poseId') ?? undefined;
 
   const handleClickBack = () => {
     navigate('/people');
@@ -17,7 +17,7 @@ export default function PoseDetailPage() {
 
   return (
     <PoseDetail
-      imageSrc={imageSrc}
+      poseId={poseId}
       onClickBack={handleClickBack}
     />
   );
