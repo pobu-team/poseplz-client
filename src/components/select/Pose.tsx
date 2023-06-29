@@ -35,15 +35,14 @@ const Container = styled.div`
 export default function Pose({ poseId, active }: PoseProps) {
   const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
 
-  const fileId = poseInfo.imageUrl.split('/').pop();
-  const linkTo = `/pose/detail?imageSrc=${fileId}`;
+  const linkTo = `/pose/detail?poseId=${poseInfo.poseId}`;
 
   const [likes, setLikes] = useLocalStorage<string[]>('pose-store', []);
 
   const handleClickLike = (pose: PoseInfo) => {
     const personNum = pose.tags.filter((tag) => tag.type === 'NUMBER_OF_PEOPLE')[0].name;
     if (likes.includes(pose.poseId + personNum)) {
-      const removedLike = likes.filter((like) => like !== pose.poseId);
+      const removedLike = likes.filter((like) => like !== (pose.poseId + personNum));
       setLikes(removedLike);
       return;
     }

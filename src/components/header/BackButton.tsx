@@ -5,15 +5,26 @@ import styled from 'styled-components';
 import { useReadLocalStorage } from 'usehooks-ts';
 
 const Container = styled.div`
-  flex: 1;
+  position: absolute;
+  align-items: center;
   justify-content: flex-start;
+  
+  div {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    padding: 8px 11px;
+  }
 `;
 
 const Button = styled.button`
-  display: flex;
   border: none;
   background: none;
-  margin-right: 1rem;
+  max-width: 32px;
+  max-height: 32px;
+  padding: 0;
+  margin: 0;
   cursor: pointer;
 `;
 
@@ -28,10 +39,12 @@ export default function BackButton() {
         navigate(-1);
       }}
       >
-        <img
-          src={isDarkMode ? '/images/icon_back_D.svg' : '/images/icon_back_L.svg'}
-          alt="back"
-        />
+        <div>
+          <img
+            src={isDarkMode ? '/images/icon_back_D.svg' : '/images/icon_back_L.svg'}
+            alt="back"
+          />
+        </div>
       </Button>
     </Container>
   );

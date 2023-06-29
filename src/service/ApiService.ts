@@ -13,7 +13,7 @@ export default class ApiService {
   }
 
   async fetchPose(tagId: string[]) {
-    const { data } = await this.instance.get(`/poses?tagIds=${tagId}`);
+    const { data } = await this.instance.get(`/poses?tagIds=${tagId}&page=0&size=100`);
     return data;
   }
 
@@ -22,12 +22,16 @@ export default class ApiService {
     return data;
   }
 
-  async fetchPoseWithId(poseId: string) {
+  async fetchPoseWithId(poseId?: string) {
     const { data } = await this.instance.get(`/poses/${poseId}`);
     return data;
   }
 
-  async fetchTagGroups(peopleCount: number) {
+  async fetchTagGroups(peopleCount?: number) {
+    if (!peopleCount) {
+      const { data } = await this.instance.get('/tag-groups');
+      return data;
+    }
     const { data } = await this.instance.get('/tag-groups', {
       params: { peopleCount },
     });
@@ -48,12 +52,16 @@ export default class ApiService {
     });
     return data;
   }
-  // async recommendPose(tagIds: string[]) {
-  //   const { data } = await this.instance.post(`/poses/recommend`, {
-  //     tagIds
-  //   });
-  //   return data;
-  // }
+
+  async recommendPose({ tagGroupIds, peopleCount }: {
+    tagGroupIds: string[];
+    peopleCount: number;
+  }) {
+    const { data } = await this.instance.post('/poses/recommend', {
+      tagGroupIds, peopleCount,
+    });
+    return data;
+  }
 
   async fetchCount() {
     const { data } = await this.instance.get('/poses/count');

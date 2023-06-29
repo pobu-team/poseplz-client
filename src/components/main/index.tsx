@@ -42,9 +42,9 @@ export default function Main() {
         <Category />
       </Container>
       <RoundDiv />
-      <PoseSlider title="오늘의 추천 포즈에요!" imgArr={recommendPoses} />
-      <PoseSlider title="혼자 찍을 때 이 포즈 추천해요" imgArr={onePersonPoses} />
-      <PoseSlider title="재미있게 찍고 싶다면?" imgArr={funnyPoses} />
+      <PoseSlider title="오늘의 추천 포즈에요!" poseArr={recommendPoses} />
+      <PoseSlider title="혼자 찍을 때 이 포즈 추천해요" poseArr={onePersonPoses} />
+      <PoseSlider title="재미있게 찍고 싶다면?" poseArr={funnyPoses} />
     </div>
   );
 }

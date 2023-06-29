@@ -1,83 +1,71 @@
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
+import { useNavigate } from 'react-router';
+import { ButtonContainer, PoseContainer, TagButtonContainer } from './PoseDetail.styles';
+
+import { PoseWithIdSelector } from '../../recoil/poseState';
+
+import { PoseInfo } from '../../types/PoseType';
+import { Tag } from '../../types/Tag';
+
+import sortTag from '../../utils/sortTag';
 import shareKaKao from '../../utils/share';
 
+import TagButton from '../../ui/TagButton';
+
 type PoseDetailProps = {
-  imageSrc: string | undefined;
-  onClickBack: () => void;
+  poseId: (string | undefined);
 };
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 700px;
-  padding: 20px;
-  background-color: ${(props) => props.theme.colors.detailBackground};
+  padding-inline: ${(props) => props.theme.sizes.contentPadding};
 
-  div:first-child {
-    display: flex;
-    border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    background-color: ${(props) => props.theme.colors.detailButton};
-    
-    img {
-      padding: 20px 20px;
-      display: flex;
-      max-width: 300px;
-      max-height: 600px;
-    }
+  @media screen and (max-width: 340px) {
+    padding: 1.2rem;
   }
 `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  width: 90%;
-  justify-content: space-between;
+export default function PoseDetail({ poseId }: PoseDetailProps) {
+  const navigate = useNavigate();
 
-  button{
-    cursor: pointer;
-    font-size: 17px;
-    font-weight: 600;
-    border-radius: 10px;
-    border: none;
-    width: 180px;
-    height: 60px;
-    margin: 50px 4px 0 4px;
-    color: ${(props) => props.theme.colors.text};
-    background: ${(props) => props.theme.colors.detailButton};
-  }
+  const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
 
-  button:last-child {
-    color: ${(props) => props.theme.colors.black};
-    background: ${(props) => props.theme.colors.primary};
-  }
-`;
+  const tagArr = poseInfo.tags.map((tag: Tag) => tag.selectorName);
 
-export default function PoseDetail({ imageSrc, onClickBack }: PoseDetailProps) {
+  sortTag(tagArr);
+
   return (
     <Container>
-      <div>
-        <img src={`https://server.poseplz.com/api/v1/files/${imageSrc}`} alt={imageSrc} />
-      </div>
-      <ButtonContainer>
-        <button
-          type="button"
-          onClick={onClickBack}
-        >
-          포즈 더 추천받기
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            shareKaKao(imageSrc ?? '');
-          }}
-        >
-          포즈 공유하기
-        </button>
-      </ButtonContainer>
+      <TagButtonContainer>
+        {tagArr.map((tagName: string) => (
+          <TagButton
+            key={tagName}
+            tagName={tagName}
+          />
+        ))}
+      </TagButtonContainer>
+      <PoseContainer>
+        <div>
+          <img src={`https://server.poseplz.com${poseInfo.imageUrl}`} alt={poseInfo.imageUrl} />
+        </div>
+        <ButtonContainer>
+          <button
+            type="button"
+            onClick={() => navigate('/people')}
+          >
+            포즈 더 추천받기
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              shareKaKao(poseInfo.imageUrl, poseInfo.poseId);
+            }}
+          >
+            포즈 공유하기
+          </button>
+        </ButtonContainer>
+      </PoseContainer>
     </Container>
   );
 }

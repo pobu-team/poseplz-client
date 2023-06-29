@@ -2,8 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { useRecoilValue } from 'recoil';
 import dragScroll from '../../utils/dragScroll';
 import { Container, Content, Header } from './PoseSlider.styles';
+import { PoseWithIdSelector } from '../../recoil/poseState';
+import { PoseInfo } from '../../types/PoseType';
 
 const OuterContainer = styled.div`
   background-color: ${(props) => props.theme.colors.containerBackground};
@@ -11,9 +14,9 @@ const OuterContainer = styled.div`
   margin-bottom: 12px;
 `;
 
-export default function PoseSlider({ title, imgArr }: {
+export default function PoseSlider({ title, poseArr }: {
   title: string;
-  imgArr: string[];
+  poseArr: string[];
 }) {
   const navigate = useNavigate();
 
@@ -40,12 +43,12 @@ export default function PoseSlider({ title, imgArr }: {
     };
   }, []);
 
-  const handleClick = (item: string) => {
+  const handleClick = (poseId: string) => {
     if (!isClick) {
       return;
     }
-    const fileId = item.split('/').pop();
-    navigate(`/pose/detail?imageSrc=${fileId}`);
+
+    navigate(`/pose/detail?poseId=${poseId}`);
   };
 
   return (
@@ -55,17 +58,19 @@ export default function PoseSlider({ title, imgArr }: {
       </Header>
       <Container>
         <Content ref={ref}>
-          {imgArr.map((item) => (
-            <button
-              key={item}
-              type="button"
-              onClick={() => {
-                handleClick(item);
-              }}
-            >
-              <img src={`https://server.poseplz.com${item}`} alt={item} />
-            </button>
-          ))}
+          {poseArr.map((poseId: string) => {
+            const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
+            const imageSrc = poseInfo.imageUrl;
+            return (
+              <button
+                key={poseId}
+                type="button"
+                onClick={() => handleClick(poseId)}
+              >
+                <img src={`https://server.poseplz.com${imageSrc}`} alt={imageSrc} />
+              </button>
+            );
+          })}
         </Content>
       </Container>
     </OuterContainer>
