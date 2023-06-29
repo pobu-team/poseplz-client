@@ -30,7 +30,6 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
   const navigate = useNavigate();
 
   const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
-  const imageSrc = poseInfo.imageUrl.split('/').pop();
 
   const tagArr = poseInfo.tags.map((tag: Tag) => tag.selectorName);
 
@@ -48,7 +47,7 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
       </TagButtonContainer>
       <PoseContainer>
         <div>
-          <img src={`https://server.poseplz.com/api/v1/files/${imageSrc}`} alt={imageSrc} />
+          <img src={`https://server.poseplz.com${poseInfo.imageUrl}`} alt={poseInfo.imageUrl} />
         </div>
         <ButtonContainer>
           <button
@@ -60,7 +59,7 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
           <button
             type="button"
             onClick={() => {
-              shareKaKao(imageSrc ?? '');
+              shareKaKao(poseInfo.imageUrl, poseInfo.poseId);
             }}
           >
             포즈 공유하기
