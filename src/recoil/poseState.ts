@@ -19,16 +19,27 @@ export const AllPoseSelector = selector({
 
 export const PoseWithIdSelector = selectorFamily({
   key: 'PoseWithIdSelector',
-  get: (poseId: string) => async () => {
+  get: (poseId?: string) => async () => {
     const { data } = await apiService.fetchPoseWithId(poseId);
     return data;
   },
 });
 
-// export const RecommendPoseSelector = selectorFamily({
-//   key: 'RecommendPoseSelector',
-//   get: (tagIds: string[]) => async () => {
-//     const { data } = await apiService.recommendPose(tagIds);
-//     return data;
-//   }
-// })
+export const tagGroupsSelector = selectorFamily({
+  key: 'tagGroupsSelector',
+  get: (peopleCount?: number) => async () => {
+    const { data } = await apiService.fetchTagGroups(peopleCount);
+    return data;
+  },
+});
+
+export const recommendSelector = selectorFamily({
+  key: 'recommendSelector',
+  get: ({ tagGroupIds, peopleCount } : {
+    tagGroupIds: string[];
+    peopleCount: number;
+  }) => async () => {
+    const { data } = await apiService.recommendPose({ tagGroupIds, peopleCount });
+    return data;
+  },
+});

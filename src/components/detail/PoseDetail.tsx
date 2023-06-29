@@ -1,6 +1,7 @@
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
+import { useNavigate } from 'react-router';
 import { ButtonContainer, PoseContainer, TagButtonContainer } from './PoseDetail.styles';
 
 import { PoseWithIdSelector } from '../../recoil/poseState';
@@ -15,7 +16,6 @@ import TagButton from '../../ui/TagButton';
 
 type PoseDetailProps = {
   poseId: (string | undefined);
-  onClickBack: () => void;
 };
 
 const Container = styled.div`
@@ -26,7 +26,9 @@ const Container = styled.div`
   }
 `;
 
-export default function PoseDetail({ poseId, onClickBack }: PoseDetailProps) {
+export default function PoseDetail({ poseId }: PoseDetailProps) {
+  const navigate = useNavigate();
+
   const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
   const imageSrc = poseInfo.imageUrl.split('/').pop();
 
@@ -51,7 +53,7 @@ export default function PoseDetail({ poseId, onClickBack }: PoseDetailProps) {
         <ButtonContainer>
           <button
             type="button"
-            onClick={onClickBack}
+            onClick={() => navigate('/people')}
           >
             포즈 더 추천받기
           </button>

@@ -1,4 +1,4 @@
-interface Tag {
+export interface Tag {
   tagId: string;
   type: string;
   name: string;
@@ -9,4 +9,9 @@ interface Tag {
   description?: string;
 }
 
-export default Tag;
+export interface TagGroup {
+  tagGroupId: string;
+  name: string;
+  peopleCounts: number[];
+  tags: Tag[];
+}

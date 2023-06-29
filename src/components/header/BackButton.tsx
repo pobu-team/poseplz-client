@@ -15,10 +15,6 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     padding: 8px 11px;
-
-    img {
-      display: flex;
-    }
   }
 `;
 

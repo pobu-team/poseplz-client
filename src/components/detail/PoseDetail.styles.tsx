@@ -13,7 +13,7 @@ export const PoseContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: 488px;
     background-color: ${(props) => props.theme.colors.detailButton};
     
     img {
