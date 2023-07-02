@@ -28,7 +28,7 @@ export default function NavigationBar() {
       <StartButton />
       <Button
         text="마이페이지"
-        imgSrc={(location.pathname === '/main') ? 'mypage_disable' : 'mypage_active'}
+        imgSrc={(location.pathname === '/mypage') ? 'mypage_active' : 'mypage_disable'}
         onClickFunc={() => navigate('/mypage')}
       />
     </Container>

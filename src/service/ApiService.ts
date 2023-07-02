@@ -12,8 +12,23 @@ export default class ApiService {
     return data;
   }
 
+  async fetchPeopleTags() {
+    const { data } = await this.instance.get('/tags?tagType=NUMBER_OF_PEOPLE');
+    return data;
+  }
+
+  async fetchAtmosphereTags() {
+    const { data } = await this.instance.get('/tags?tagType=ATMOSPHERE_OF_POSE');
+    return data;
+  }
+
   async fetchPose(tagId: string[]) {
     const { data } = await this.instance.get(`/poses?tagIds=${tagId}&page=0&size=100`);
+    return data;
+  }
+
+  async fetchPopularPose() {
+    const { data } = await this.instance.get('/poses?preparedPoseQuery=POPULAR&page=0&size=100');
     return data;
   }
 

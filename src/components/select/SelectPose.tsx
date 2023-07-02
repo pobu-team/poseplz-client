@@ -1,13 +1,8 @@
 import styled from 'styled-components';
-
-import { useLocalStorage } from 'usehooks-ts';
 import { useParams } from 'react-router';
 import { useRecoilValue } from 'recoil';
-import Pose from './Pose';
-
 import { AllPoseSelector, PoseSelector } from '../../recoil/poseState';
-
-import { PoseType } from '../../types/PoseType';
+import PoseList from '../common/PoseList';
 
 const Container = styled.div`
   display: flex;
@@ -33,16 +28,7 @@ const Container = styled.div`
   }
 `;
 
-const PoseContainer = styled.div`
-  column-count: 2;
-  column-gap: 5px;
-`;
-
 export default function SelectPose() {
-  const [like, _] = useLocalStorage<string[]>('pose-store', []);
-
-  const likePoseIdArr = like.map((item) => item.slice(0, -3));
-
   let poseArr;
   let tagArr;
 
@@ -67,14 +53,7 @@ export default function SelectPose() {
           </span>
         ))}
       </div>
-      <PoseContainer>
-        {poseArr.map((pose: PoseType) => {
-          const active: boolean = likePoseIdArr.includes(pose.poseId);
-          return (
-            <Pose key={pose.poseId} poseId={pose.poseId} active={active} />
-          );
-        })}
-      </PoseContainer>
+      <PoseList poses={poseArr} />
     </Container>
   );
 }

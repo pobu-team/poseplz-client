@@ -11,6 +11,9 @@ import SelectThemePage from './pages/SelectThemePage';
 import BackLayout from './components/layout/BackLayout';
 import MyPageLayout from './components/layout/MyPageLayout';
 import DetailLayout from './components/layout/DetailLayout';
+import CATEGORY from './types/CategoryType';
+import CategoryLayout from './components/layout/CategoryLayout';
+import CategoryPage from './pages/CategoryPage';
 
 const routes = [
   {
@@ -31,6 +34,14 @@ const routes = [
       { path: '/people', element: <SelectPeoplePage /> },
       { path: '/theme/:id', element: <SelectThemePage /> },
       { path: '/pose/:id/:theme', element: <SelectPosePage /> },
+    ],
+  },
+  {
+    element: <CategoryLayout />,
+    children: [
+      { path: '/category/people', element: <CategoryPage category={CATEGORY.PEOPLE} /> },
+      { path: '/category/theme', element: <CategoryPage category={CATEGORY.THEME} /> },
+      { path: '/category/popular', element: <CategoryPage category={CATEGORY.POPULAR} /> },
     ],
   },
   {

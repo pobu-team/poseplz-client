@@ -1,33 +1,36 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const CategoryContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
-  div {
+`;
+
+const CategoryLink = styled(Link)`
+  display: flex;
+  justify-content: center;
+  width: 110px;
+  height: 100px;
+  border-radius: 16px;
+  background-color: ${(props) => props.theme.colors.containerBackground};
+  text-decoration: none;
+
+  button {
     display: flex;
     justify-content: center;
-    width: 110px;
-    height: 100px;
-    border-radius: 16px;
-    background-color: ${(props) => props.theme.colors.containerBackground};
-    
-    button {
+    align-items: center;
+    flex-direction: column;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: ${(props) => props.theme.colors.text};
+
+    img {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background: none;
-      border: none;
-      font-size: 14px;
-      font-weight: 600;
-      color: ${(props) => props.theme.colors.text};
-    
-      img {
-        display: flex;
-        margin-bottom: 10px;
-      }
+      margin-bottom: 10px;
     }
   }
 `;
@@ -35,24 +38,24 @@ const CategoryContainer = styled.div`
 export default function Category() {
   return (
     <CategoryContainer>
-      <div>
+      <CategoryLink to="/category/people">
         <button type="button">
           <img src="/images/pose_person.svg" alt="인원별포즈" />
           인원별포즈
         </button>
-      </div>
-      <div>
+      </CategoryLink>
+      <CategoryLink to="/category/theme">
         <button type="button">
           <img src="/images/pose_theme.svg" alt="테마별포즈" />
           테마별포즈
         </button>
-      </div>
-      <div>
+      </CategoryLink>
+      <CategoryLink to="/category/popular">
         <button type="button">
           <img src="/images/pose_popular.svg" alt="인기포즈" />
           인기포즈
         </button>
-      </div>
+      </CategoryLink>
     </CategoryContainer>
   );
 }
