@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import BackHeader from '../header/BackHeader';
+import LogoHeader from '../header/LogoHeader';
 
 const Container = styled.div`
   width: 100%;
@@ -15,7 +15,7 @@ const Container = styled.div`
 export default function BackLayout() {
   return (
     <Container>
-      <BackHeader />
+      <LogoHeader />
       <main>
         <Outlet />
       </main>

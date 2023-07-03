@@ -1,8 +1,6 @@
 import { Outlet } from 'react-router-dom';
-
 import styled from 'styled-components';
-
-import DetailHeader from '../header/DetailHeader';
+import TitleHeader from '../header/TitleHeader';
 
 const Container = styled.div`
   background-color: ${(props) => props.theme.colors.detailBackground};
@@ -16,7 +14,7 @@ const Container = styled.div`
 export default function DetailLayout() {
   return (
     <Container>
-      <DetailHeader />
+      <TitleHeader title="이 포즈로 사진을 찍어보세요!" />
       <main>
         <Outlet />
       </main>
