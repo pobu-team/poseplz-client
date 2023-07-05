@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import useFetchCategoryPoses from '../../hooks/useFetchCategoryPoses';
 import { ALL_PEOPLE_TAG, COMIC_TAG } from '../../constant/tagId';
 import CATEGORY from '../../types/CategoryType';
 import PoseList from '../common/PoseList';
@@ -19,7 +18,6 @@ const PoseContainer = styled.div`
 export default function CategoryPose({ category }: {category:CATEGORY}) {
   const initialState = category === CATEGORY.PEOPLE ? ALL_PEOPLE_TAG : COMIC_TAG;
   const [selectedTagId, setSelectedTagId] = useState(initialState);
-  const poses = useFetchCategoryPoses(category, selectedTagId);
 
   return (
     <Container>
@@ -29,7 +27,9 @@ export default function CategoryPose({ category }: {category:CATEGORY}) {
         category={category}
       />
       <PoseContainer>
-        <PoseList poses={poses} />
+        <React.Suspense fallback={<div>loading...</div>}>
+          <PoseList category={category} selectedTagId={selectedTagId} />
+        </React.Suspense>
       </PoseContainer>
       <TopButton />
     </Container>
