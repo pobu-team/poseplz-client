@@ -4,8 +4,9 @@ import Button from './Button';
 import StartButton from './StartButton';
 
 const Container = styled.div`
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  max-width: 430px;
   width: 100%;
   display: flex;
   flex-direction: row;
