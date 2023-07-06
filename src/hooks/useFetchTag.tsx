@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
-import TagSelector from '../recoil/tagState';
-import Tag from '../types/Tag';
+import { TagSelector } from '../recoil/tagState';
+import { Tag } from '../types/Tag';
 
 export default function useFetchTag(id: string, theme: string) {
   const tags = useRecoilValue(TagSelector);

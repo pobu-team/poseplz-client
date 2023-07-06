@@ -1,10 +1,19 @@
 import { selector, selectorFamily } from 'recoil';
 import { apiService } from '../service/ApiService';
+import { PoseType } from '../types/PoseType';
 
 export const PoseSelector = selectorFamily({
   key: 'PoseSelector',
   get: (tagIdArr: string[]) => async () => {
     const { data } = await apiService.fetchPose(tagIdArr);
+    return data;
+  },
+});
+
+export const PopularPoseSelector = selector<PoseType[]>({
+  key: 'PopularPoseSelector',
+  get: async () => {
+    const { data } = await apiService.fetchPopularPose();
     return data;
   },
 });

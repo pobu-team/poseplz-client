@@ -1,10 +1,7 @@
 import { Outlet } from 'react-router-dom';
-
 import styled from 'styled-components';
-
-import MyPageHeader from '../header/MyPageHeader';
-
 import NavigationBar from '../footer/NavigationBar';
+import TitleHeader from '../header/TitleHeader';
 
 const Container = styled.div`
   width: 100%;
@@ -17,7 +14,7 @@ const Container = styled.div`
 export default function MyPageLayout() {
   return (
     <Container>
-      <MyPageHeader />
+      <TitleHeader title="찜한 포즈" />
       <main>
         <Outlet />
       </main>

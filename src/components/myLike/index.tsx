@@ -33,7 +33,7 @@ const EmptyContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: ${(props) => props.theme.colors.noImageText};
+    color: ${(props) => props.theme.colors.disabledText};
     font-size: 20px;
   }
 `;

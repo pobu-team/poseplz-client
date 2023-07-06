@@ -37,7 +37,7 @@ export default function Button({ text, imgSrc, onClickFunc } : {
   return (
     <ButtonContainer>
       <button type="button" onClick={onClickFunc}>
-        <img src={isDarkMode ? `images/${imgSrc}_D.svg` : `images/${imgSrc}_L.svg`} alt={text} />
+        <img src={isDarkMode ? `/images/${imgSrc}_D.svg` : `/images/${imgSrc}_L.svg`} alt={text} />
         {text}
       </button>
     </ButtonContainer>

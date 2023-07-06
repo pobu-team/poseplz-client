@@ -63,6 +63,6 @@ export const ButtonContainer = styled.div`
 export const TagButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin-bottom: 8px;
+  margin-block: 1.6rem;
   flex-wrap: wrap;
 `;

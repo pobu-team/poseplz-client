@@ -8,12 +8,7 @@ const Container = styled.header`
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding-block: 1rem;
-  padding-inline: ${(props) => props.theme.sizes.contentPadding};
-
-  @media screen and (max-width: 340px){
-    padding-inline: 1.2rem;
-  }
+  padding: ${(props) => props.theme.sizes.smallContentPadding};
 
   h1 {
     width: 100%;
@@ -24,22 +19,20 @@ const Container = styled.header`
     font-weight: 700;
     display: flex;
     flex: 1;
-    padding: 12px 0;
 
     @media screen and (max-width: 340px) {
       font-size: 18px;
-      padding: 0;
     }
   }
 `;
 
-export default function MyPageHeader() {
+export default function TitleHeader({ title }: {
+  title: string
+}) {
   return (
     <Container>
       <BackButton />
-      <h1>
-        이 포즈로 사진을 찍어보세요!
-      </h1>
+      <h1>{title}</h1>
     </Container>
   );
 }
