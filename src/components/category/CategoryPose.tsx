@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { ALL_PEOPLE_TAG, COMIC_TAG } from '../../constant/tagId';
 import CATEGORY from '../../types/CategoryType';
-import PoseList from '../common/PoseList';
 import TopButton from './TopButton';
 import CategoryButtons from './CategoryButtons';
+import CategoryPoseList from './CategoryPoseList';
 
 const Container = styled.div`
   position: relative;
@@ -28,7 +28,7 @@ export default function CategoryPose({ category }: {category:CATEGORY}) {
       />
       <PoseContainer>
         <React.Suspense fallback={<div>loading...</div>}>
-          <PoseList category={category} selectedTagId={selectedTagId} />
+          <CategoryPoseList category={category} selectedTagId={selectedTagId} />
         </React.Suspense>
       </PoseContainer>
       <TopButton />
