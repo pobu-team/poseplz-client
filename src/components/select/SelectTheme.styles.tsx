@@ -60,7 +60,7 @@ export const SubmitBtnContainer = styled.div`
     cursor: pointer;
     flex: 1.5;
     margin-left: 5px;
-    color: "#000";
+    color: ${(props) => props.theme.colors.black};
     background-color: ${(props) => props.theme.colors.border};
   }
 

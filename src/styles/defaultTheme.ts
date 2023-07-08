@@ -17,6 +17,8 @@ const defaultTheme = {
     disabledText: '#8A8A8A',
     mainBackground: '#f2f2f7',
     bannerBackground: '#dfdfe9',
+    categoryBackground: '#eaeaf2',
+    myPageHeader: '#ffffff',
     containerBackground: '#ffffff',
   },
 
