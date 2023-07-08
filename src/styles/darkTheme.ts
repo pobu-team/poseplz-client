@@ -32,7 +32,6 @@ const darkTheme: Theme = {
   },
 
   img: {
-    check: 'images/check-dark.png',
     splash: 'images/bg_splash_dark.png',
   },
 };

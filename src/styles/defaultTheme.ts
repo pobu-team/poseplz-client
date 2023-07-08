@@ -30,7 +30,6 @@ const defaultTheme = {
   },
 
   img: {
-    check: 'images/check.png',
     splash: 'images/bg_splash_light.png',
   },
 };
