@@ -6,7 +6,7 @@ const ButtonContainer = styled.div`
   display: block;
   flex-wrap: wrap;
   justify-content: flex-start;
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: ${(props) => props.theme.colors.myPageHeader};
   padding: 10px 10px 20px;
   position: sticky;
   z-index: 10;

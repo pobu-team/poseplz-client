@@ -21,6 +21,8 @@ const Logo = styled.button`
   cursor: pointer;
 
   img {
+    width: 67px;
+    height: 28px;
     @media screen and (max-width: 340px) {
       width: 5rem;
     }
