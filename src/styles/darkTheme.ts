@@ -19,6 +19,8 @@ const darkTheme: Theme = {
     disabledText: '#9B9B9B',
     mainBackground: '#0f0f10',
     bannerBackground: '#333335',
+    categoryBackground: '#333335',
+    myPageHeader: '#0f0f10',
     containerBackground: '#1f1e1f',
   },
 
@@ -30,7 +32,6 @@ const darkTheme: Theme = {
   },
 
   img: {
-    check: 'images/check-dark.png',
     splash: 'images/bg_splash_dark.png',
   },
 };

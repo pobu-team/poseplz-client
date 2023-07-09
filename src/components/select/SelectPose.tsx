@@ -1,8 +1,17 @@
+import React from 'react';
+
 import styled from 'styled-components';
+
 import { useParams } from 'react-router';
+
 import { useRecoilValue } from 'recoil';
-import { AllPoseSelector, PoseSelector } from '../../recoil/poseState';
+import { PoseSelector } from '../../recoil/poseState';
+
 import PoseList from '../common/PoseList';
+import EmptyPose from '../common/EmptyPose';
+
+import useRecommendPose from '../../hooks/useRecommendPose';
+import useFetchTagGroup from '../../hooks/useFetchTagGroup';
 
 const Container = styled.div`
   display: flex;
@@ -28,18 +37,26 @@ const Container = styled.div`
   }
 `;
 
+const EmptyPoseContainer = styled.div`
+  width: 100%;
+  margin-top: 100px;
+`;
+
 export default function SelectPose() {
   let poseArr;
-  let tagArr;
+  let tagArr = [''];
 
-  const { id = '', theme } = useParams();
+  const { id = '', theme = '' } = useParams();
+  const allTagData = useFetchTagGroup(theme);
+
   if (id === 'random') {
-    poseArr = useRecoilValue(AllPoseSelector);
-    tagArr = ['1~6'];
-  } else {
-    const tagIdArr = theme?.split('&').map((tag) => tag) ?? [];
-    tagArr = [id];
-    poseArr = useRecoilValue(PoseSelector(tagIdArr));
+    const tagGroupIds = allTagData.tags.map((tag) => (tag.tagId));
+    poseArr = useRecoilValue(PoseSelector(tagGroupIds));
+    tagArr = [allTagData.name];
+  }
+  if (id !== 'random') {
+    poseArr = useRecommendPose({ tagGroupIds: [theme], peopleCount: Number(id) });
+    tagArr = [`${id}인`, allTagData.name];
   }
 
   return (
@@ -49,11 +66,19 @@ export default function SelectPose() {
           <span key={tag}>
             #
             {tag}
-            명
           </span>
         ))}
       </div>
-      <PoseList poses={poseArr} />
+      {poseArr.length ? (
+        <React.Suspense fallback={<div>loading...</div>}>
+          <PoseList poses={poseArr} />
+        </React.Suspense>
+
+      ) : (
+        <EmptyPoseContainer>
+          <EmptyPose text="추천된" />
+        </EmptyPoseContainer>
+      )}
     </Container>
   );
 }

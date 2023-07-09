@@ -2,16 +2,22 @@ import { useState } from 'react';
 
 import { useNavigate } from 'react-router';
 
+import { ButtonContainer, Container, SubmitBtnContainer } from './SelectTheme.styles';
+
+import useFetchCategoryTags from '../../hooks/useFetchCategoryTags';
+
 import SquareButton from '../../ui/SquareButton';
 
-import { ButtonContainer, Container, SubmitBtnContainer } from './SelectTheme.styles';
+import CATEGORY from '../../types/CategoryType';
 
 export default function SelectPeople() {
   const navigate = useNavigate();
-  const [personNum, setPersonNum] = useState(0);
+  const [personNum, setPersonNum] = useState('');
+  const personNumData = useFetchCategoryTags(CATEGORY.PEOPLE);
+  const personNumArr = [...personNumData].slice(1);
 
-  const handleClickPersonNum = (number: number) => {
-    setPersonNum(number);
+  const handleClickPersonNum = (name: string) => {
+    setPersonNum(name);
   };
 
   const handleClickRandom = () => {
@@ -22,13 +28,13 @@ export default function SelectPeople() {
     <Container>
       <h1>몇 명이서 오셨나요?</h1>
       <ButtonContainer>
-        {[1, 2, 3, 4, 5, 6].map((item, index) => (
+        {personNumArr.map((person) => (
           <SquareButton
-            key={item}
-            text={`${item}명`}
-            imgSrc={`/images/person-${index + 1}.png`}
-            active={personNum === item}
-            onClickFunc={() => handleClickPersonNum(item)}
+            key={person.tagId}
+            text={`${person.selectorName}`}
+            imgSrc={`/images/person-${(person.description || '')}.png`}
+            active={personNum === person.description}
+            onClickFunc={() => handleClickPersonNum(person.description || '')}
           />
         ))}
       </ButtonContainer>
@@ -44,7 +50,7 @@ export default function SelectPeople() {
           onClick={() => {
             navigate(`/theme/${personNum}`);
           }}
-          disabled={personNum === 0}
+          disabled={personNum === ''}
         >
           다음
         </button>

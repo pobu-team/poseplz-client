@@ -22,8 +22,9 @@ export default class ApiService {
     return data;
   }
 
-  async fetchPose(tagId: string[]) {
-    const { data } = await this.instance.get(`/poses?tagIds=${tagId}&page=0&size=100`);
+  async fetchPose(tagIds: string[]) {
+    const queryString = tagIds.join('&tagIds=');
+    const { data } = await this.instance.get(`/poses?tagIds=${queryString}&page=0&size=100`);
     return data;
   }
 
