@@ -42,6 +42,14 @@ export const tagGroupsSelector = selectorFamily({
   },
 });
 
+export const tagGroupIdSelector = selectorFamily({
+  key: 'tagGroupIdSelector',
+  get: (tagGroupId: string) => async () => {
+    const { data } = await apiService.fetchTagGroup(tagGroupId);
+    return data;
+  },
+});
+
 export const recommendSelector = selectorFamily({
   key: 'recommendSelector',
   get: ({ tagGroupIds, peopleCount } : {

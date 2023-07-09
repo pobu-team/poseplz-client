@@ -19,6 +19,7 @@ const Button = styled.button<ButtonProps>`
     @media screen and (max-width: 340px) {
       padding: 2rem 1.5rem 1rem;
       font-size: 1.5rem;
+      height: 140px;
     }
 
     ${(props) => props.active && css`
@@ -29,7 +30,13 @@ const Button = styled.button<ButtonProps>`
     
     img {
       width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: contain;
       margin-bottom: 5px;
+
+      @media screen and (max-width: 340px) {
+      height: 80px;
+    }
     };
 `;
 

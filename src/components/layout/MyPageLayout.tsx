@@ -9,12 +9,19 @@ const Container = styled.div`
   margin: auto;
   min-height: 100vh;
   max-height: fit-content;
+  background-color: ${(props) => props.theme.colors.categoryBackground};
+`;
+
+const HeaderContainer = styled.div`
+  background-color: ${(props) => props.theme.colors.myPageHeader};
 `;
 
 export default function MyPageLayout() {
   return (
     <Container>
-      <TitleHeader title="찜한 포즈" />
+      <HeaderContainer>
+        <TitleHeader title="찜한 포즈" />
+      </HeaderContainer>
       <main>
         <Outlet />
       </main>

@@ -14,7 +14,9 @@ type PoseProps = {
 
 const Container = styled.div`
   position: relative;
-  margin: 10px 5px 10px 5px;
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 5px;
 
   img {
     border-radius: 10px;

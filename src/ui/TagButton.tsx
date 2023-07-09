@@ -14,7 +14,8 @@ const Container = styled.div`
     border: none;
     border-radius: 10px;
     background: none;
-    background-color: #d2d2df;
+    color: ${(props) => props.theme.colors.text};
+    background-color: ${(props) => props.theme.colors.bannerBackground};
   }
 `;
 

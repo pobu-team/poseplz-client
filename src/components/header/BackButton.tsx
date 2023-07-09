@@ -16,6 +16,11 @@ const Container = styled.div`
     justify-content: center;
     padding: 8px 11px;
   }
+  
+  img {
+    width: 9px;
+    height: 16px;
+  }
 `;
 
 const Button = styled.button`
