@@ -13,6 +13,7 @@ import sortTag from '../../utils/sortTag';
 import shareKaKao from '../../utils/share';
 
 import TagButton from '../../ui/TagButton';
+import addGaEvent from '../../utils/addGaEvent';
 
 type PoseDetailProps = {
   poseId: (string | undefined);
@@ -52,7 +53,10 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
         <ButtonContainer>
           <button
             type="button"
-            onClick={() => navigate('/people')}
+            onClick={() => {
+              navigate('/people');
+              addGaEvent('More Recommend');
+            }}
           >
             포즈 더 추천받기
           </button>
@@ -60,6 +64,7 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
             type="button"
             onClick={() => {
               shareKaKao(poseInfo.imageUrl, poseInfo.poseId);
+              addGaEvent('Share Pose');
             }}
           >
             포즈 공유하기

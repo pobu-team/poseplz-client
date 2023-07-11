@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import useDragScroll from '../../hooks/useDragScroll';
 import useFetchCategoryTags from '../../hooks/useFetchCategoryTags';
 import CATEGORY from '../../types/CategoryType';
+import addGaEvent from '../../utils/addGaEvent';
 
 const ButtonContainer = styled.div`
   overflow: scroll;
@@ -40,9 +41,10 @@ export default function CategoryButtons({ selectedTagId, setSelectedTagId, categ
   const ref = useRef<HTMLDivElement>(null);
   const isClick = useDragScroll(ref);
   const tags = useFetchCategoryTags(category);
-  const handleClick = (tagId: string) => {
+  const handleClick = (tagId: string, selectorName: string) => {
     if (!isClick) return;
     setSelectedTagId(tagId);
+    addGaEvent(selectorName);
   };
 
   return (
@@ -51,7 +53,7 @@ export default function CategoryButtons({ selectedTagId, setSelectedTagId, categ
         <CategoryButton
           key={tag.tagId}
           type="button"
-          onClick={() => handleClick(tag.tagId)}
+          onClick={() => handleClick(tag.tagId, tag.selectorName)}
           active={selectedTagId === tag.tagId}
         >
           {tag.selectorName}

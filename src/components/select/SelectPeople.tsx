@@ -9,6 +9,7 @@ import useFetchCategoryTags from '../../hooks/useFetchCategoryTags';
 import SquareButton from '../../ui/SquareButton';
 
 import CATEGORY from '../../types/CategoryType';
+import addGaEvent from '../../utils/addGaEvent';
 
 export default function SelectPeople() {
   const navigate = useNavigate();
@@ -18,10 +19,12 @@ export default function SelectPeople() {
 
   const handleClickPersonNum = (name: string) => {
     setPersonNum(name);
+    addGaEvent(`People Select - ${name}`);
   };
 
   const handleClickRandom = () => {
     navigate('/theme/random');
+    addGaEvent('People Skip');
   };
 
   return (
@@ -49,6 +52,7 @@ export default function SelectPeople() {
           type="button"
           onClick={() => {
             navigate(`/theme/${personNum}`);
+            addGaEvent('People Next');
           }}
           disabled={personNum === ''}
         >

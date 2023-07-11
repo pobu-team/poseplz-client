@@ -26,7 +26,7 @@ export default function NavigationBar() {
 
   const handleMyPageClick = () => {
     navigate('/mypage');
-    addGaEvent('GNB Home');
+    addGaEvent('GNB My Page');
   };
 
   return (

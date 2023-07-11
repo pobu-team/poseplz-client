@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
-import useTracking from '../hooks/useTracking';
 import addGaEvent from '../utils/addGaEvent';
 
 const Container = styled.main`
@@ -35,7 +34,6 @@ const StartButton = styled.button`
 
 export default function HomePage() {
   const navigate = useNavigate();
-  const initialized = useTracking();
 
   const handleClickStart = () => {
     navigate('/main');
