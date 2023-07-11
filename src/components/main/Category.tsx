@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import addGaEvent from '../../utils/addGaEvent';
 
 const CategoryContainer = styled.div`
   display: flex;
@@ -38,19 +39,28 @@ const CategoryLink = styled(Link)`
 export default function Category() {
   return (
     <CategoryContainer>
-      <CategoryLink to="/category/people">
+      <CategoryLink
+        to="/category/people"
+        onClick={() => { addGaEvent('Category People'); }}
+      >
         <button type="button">
           <img src="/images/pose_person.svg" alt="인원별포즈" />
           인원별포즈
         </button>
       </CategoryLink>
-      <CategoryLink to="/category/theme">
+      <CategoryLink
+        to="/category/theme"
+        onClick={() => { addGaEvent('Category Theme'); }}
+      >
         <button type="button">
           <img src="/images/pose_theme.svg" alt="테마별포즈" />
           테마별포즈
         </button>
       </CategoryLink>
-      <CategoryLink to="/category/popular">
+      <CategoryLink
+        to="/category/popular"
+        onClick={() => { addGaEvent('Category Popular'); }}
+      >
         <button type="button">
           <img src="/images/pose_popular.svg" alt="인기포즈" />
           인기포즈
