@@ -44,7 +44,7 @@ export default function CategoryButtons({ selectedTagId, setSelectedTagId, categ
   const handleClick = (tagId: string, selectorName: string) => {
     if (!isClick) return;
     setSelectedTagId(tagId);
-    addGaEvent(selectorName);
+    addGaEvent(`Category Tab - ${selectorName}`);
   };
 
   return (
