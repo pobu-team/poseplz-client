@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
+import useTracking from '../hooks/useTracking';
 
 const Container = styled.main`
   margin: auto;
@@ -33,6 +34,7 @@ const StartButton = styled.button`
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const initialized = useTracking();
 
   const handleClickStart = () => {
     navigate('/main');
