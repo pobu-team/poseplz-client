@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import ReactGA from 'react-ga4';
-
 import { useLocalStorage } from 'usehooks-ts';
+import addGaEvent from '../../utils/addGaEvent';
 
 type ToggleButtonProps = {
   active: boolean;
@@ -33,12 +32,8 @@ export default function ThemeSwitch() {
   const [isDarkMode, setThemeMode] = useLocalStorage('darkMode', false);
 
   const toggleTheme = () => {
+    addGaEvent('Darkmode Toggle');
     setThemeMode(!isDarkMode);
-    ReactGA.event({
-      category: 'Main Event',
-      action: 'darkmode toggle',
-      label: `isDarkMode: ${isDarkMode}`,
-    });
   };
 
   return (

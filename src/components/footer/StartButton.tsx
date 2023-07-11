@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
+import addGaEvent from '../../utils/addGaEvent';
 
 const ButtonContainer = styled.div`
   width: 100%;
@@ -28,9 +29,14 @@ const ButtonContainer = styled.div`
 export default function StartButton() {
   const navigate = useNavigate();
 
+  const handleButtonClick = () => {
+    navigate('/people');
+    addGaEvent('GNB Pose Recommend');
+  };
+
   return (
     <ButtonContainer>
-      <button type="button" onClick={() => navigate('/people')}>
+      <button type="button" onClick={handleButtonClick}>
         <img src="/images/btn_posestart.svg" alt="포즈 추천" />
       </button>
     </ButtonContainer>

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useLocation, useNavigate } from 'react-router';
 import Button from './Button';
 import StartButton from './StartButton';
+import addGaEvent from '../../utils/addGaEvent';
 
 const Container = styled.div`
   position: fixed;
@@ -16,21 +17,30 @@ const Container = styled.div`
 
 export default function NavigationBar() {
   const navigate = useNavigate();
-
   const location = useLocation();
+
+  const handleHomeButton = () => {
+    navigate('/main');
+    addGaEvent('GNB Home');
+  };
+
+  const handleMyPageClick = () => {
+    navigate('/mypage');
+    addGaEvent('GNB Home');
+  };
 
   return (
     <Container>
       <Button
         text="홈"
         imgSrc={(location.pathname === '/main') ? 'home_active' : 'home_disable'}
-        onClickFunc={() => navigate('/main')}
+        onClickFunc={handleHomeButton}
       />
       <StartButton />
       <Button
         text="마이페이지"
         imgSrc={(location.pathname === '/mypage') ? 'mypage_active' : 'mypage_disable'}
-        onClickFunc={() => navigate('/mypage')}
+        onClickFunc={handleMyPageClick}
       />
     </Container>
   );

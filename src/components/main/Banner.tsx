@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import addGaEvent from '../../utils/addGaEvent';
 
 const BannerContainer = styled.a`
   color: black;
@@ -53,7 +54,10 @@ const BannerContainer = styled.a`
 
 export default function Banner() {
   return (
-    <BannerContainer href="https://www.instagram.com/poseplz.official">
+    <BannerContainer
+      href="https://www.instagram.com/poseplz.official"
+      onClick={() => { addGaEvent('Instagram Banner'); }}
+    >
       <div>
         <strong>
           귀염뽀짝 포부즈를 소개합니다

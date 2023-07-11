@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 import useTracking from '../hooks/useTracking';
+import addGaEvent from '../utils/addGaEvent';
 
 const Container = styled.main`
   margin: auto;
@@ -38,6 +39,7 @@ export default function HomePage() {
 
   const handleClickStart = () => {
     navigate('/main');
+    addGaEvent('Start Button');
   };
 
   return (
