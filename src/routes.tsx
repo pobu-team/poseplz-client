@@ -32,7 +32,7 @@ const routes = [
     element: <BackLayout />,
     children: [
       { path: '/people', element: <SelectPeoplePage /> },
-      { path: '/theme/:id', element: <SelectThemePage /> },
+      { path: '/theme/:peopleNum', element: <SelectThemePage /> },
       { path: '/pose/:id/:theme', element: <SelectPosePage /> },
     ],
   },
