@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import styled from 'styled-components';
+import addGaEvent from '../../utils/addGaEvent';
 
 const ButtonContainer = styled.div`
   display: block;
@@ -53,12 +54,14 @@ export default function PersonButton({
     const filteredPose = like.filter((poseId: string) => poseId.slice(-2) === `${String(num)}인`);
     setIsPersonNum(filteredPose);
     setAllButton(false);
+    addGaEvent(`MyPage People Filter - ${num}`);
   };
 
   const handleClickAll = () => {
     setSelectedButton(undefined);
     setIsPersonNum(like);
     setAllButton(true);
+    addGaEvent('MyPage People Filter - all');
   };
 
   return (

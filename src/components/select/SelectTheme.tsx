@@ -8,6 +8,7 @@ import { ButtonContainer, Container, SubmitBtnContainer } from './SelectTheme.st
 import useFetchTagGroups from '../../hooks/useFetchTagGroups';
 
 import themeImageId from '../../constant/tag';
+import addGaEvent from '../../utils/addGaEvent';
 
 export default function SelectTheme() {
   const navigate = useNavigate();
@@ -16,13 +17,14 @@ export default function SelectTheme() {
 
   const [clickedTheme, setClickedTheme] = useState('');
 
-  const { id = '' } = useParams();
+  const { peopleNum = '' } = useParams();
 
-  const { themeObj } = useFetchTagGroups(Number(id));
+  const { themeObj } = useFetchTagGroups(Number(peopleNum));
 
   const handleClickTheme = (theme: string) => {
     setClickedTheme(theme);
     setIsDisable(false);
+    addGaEvent(`Theme Select : ${peopleNum}명 - ${theme}`);
   };
 
   return (
@@ -42,7 +44,10 @@ export default function SelectTheme() {
       <SubmitBtnContainer>
         <button
           type="button"
-          onClick={() => navigate(`/pose/${id}/${themeObj[clickedTheme]}`)}
+          onClick={() => {
+            navigate(`/pose/${peopleNum}/${themeObj[clickedTheme]}`);
+            addGaEvent('Theme Next');
+          }}
           disabled={isDisable}
         >
           결과보기

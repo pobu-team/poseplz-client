@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useReadLocalStorage } from 'usehooks-ts';
+import addGaEvent from '../../utils/addGaEvent';
 
 const Container = styled.div`
   position: absolute;
@@ -35,6 +36,7 @@ export default function TopButton() {
       top: 0,
       behavior: 'smooth',
     });
+    addGaEvent('Top Button');
   };
 
   return (
