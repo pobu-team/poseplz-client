@@ -13,7 +13,10 @@ const router = createBrowserRouter(routes);
 export default function App() {
   const isDarkMode = useReadLocalStorage('darkMode');
   const theme = isDarkMode ? darkTheme : defaultTheme;
-  ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_TRAKING_ID ?? '');
+
+  if (!window.location.href.includes('localhost')) {
+    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_TRAKING_ID ?? '');
+  }
 
   return (
     <ThemeProvider theme={theme}>
