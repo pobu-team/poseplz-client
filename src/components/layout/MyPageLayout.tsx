@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import NavigationBar from '../footer/NavigationBar';
 import TitleHeader from '../header/TitleHeader';
-import useTracking from '../../hooks/useTracking';
 
 const Container = styled.div`
   width: 100%;
@@ -18,8 +17,6 @@ const HeaderContainer = styled.div`
 `;
 
 export default function MyPageLayout() {
-  useTracking();
-
   return (
     <Container>
       <HeaderContainer>

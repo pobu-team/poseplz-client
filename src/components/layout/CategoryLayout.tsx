@@ -2,7 +2,6 @@ import { Outlet, useMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import NavigationBar from '../footer/NavigationBar';
 import TitleHeader from '../header/TitleHeader';
-import useTracking from '../../hooks/useTracking';
 
 const Container = styled.div`
   width: 100%;
@@ -19,7 +18,6 @@ const HeaderContainer = styled.div`
 `;
 
 export default function Layout() {
-  useTracking();
   const isPeople = useMatch('/category/people');
   const isTheme = useMatch('/category/theme');
   // eslint-disable-next-line no-nested-ternary
