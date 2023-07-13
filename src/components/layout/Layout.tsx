@@ -1,11 +1,7 @@
 import { Outlet } from 'react-router-dom';
-
 import styled from 'styled-components';
-
 import MainHeader from '../header/MainHeader';
-
 import NavigationBar from '../footer/NavigationBar';
-import useTracking from '../../hooks/useTracking';
 
 const Container = styled.div`
   width: 100%;
@@ -19,8 +15,6 @@ const Container = styled.div`
 `;
 
 export default function Layout() {
-  useTracking();
-
   return (
     <Container>
       <MainHeader />
