@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import TitleHeader from '../header/TitleHeader';
+import useTracking from '../../hooks/useTracking';
 
 const Container = styled.div`
   background-color: ${(props) => props.theme.colors.detailBackground};
@@ -12,6 +13,8 @@ const Container = styled.div`
 `;
 
 export default function DetailLayout() {
+  useTracking();
+
   return (
     <Container>
       <TitleHeader title="이 포즈로 사진을 찍어보세요!" />
