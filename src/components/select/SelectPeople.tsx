@@ -52,7 +52,7 @@ export default function SelectPeople() {
           type="button"
           onClick={() => {
             navigate(`/theme/${personNum}`);
-            addGaEvent('People Next');
+            addGaEvent(`People Next - ${personNum}`);
           }}
           disabled={personNum === ''}
         >

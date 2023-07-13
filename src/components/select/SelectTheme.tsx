@@ -46,7 +46,7 @@ export default function SelectTheme() {
           type="button"
           onClick={() => {
             navigate(`/pose/${peopleNum}/${themeObj[clickedTheme]}`);
-            addGaEvent('Theme Next');
+            addGaEvent(`Theme Next: ${peopleNum}명 - ${clickedTheme}`);
           }}
           disabled={isDisable}
         >

@@ -6,6 +6,7 @@ import { useLocalStorage } from 'usehooks-ts';
 import { useRecoilValue } from 'recoil';
 import { PoseWithIdSelector } from '../../recoil/poseState';
 import { PoseInfo } from '../../types/PoseType';
+import addGaEvent from '../../utils/addGaEvent';
 
 type PoseProps = {
   poseId: string;
@@ -50,6 +51,7 @@ export default function Pose({ poseId, active }: PoseProps) {
     }
 
     setLikes([...likes, pose.poseId + personNum]);
+    addGaEvent(`like - ${pose.poseId}`);
   };
 
   return (
