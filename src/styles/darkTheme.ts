@@ -22,6 +22,7 @@ const darkTheme: Theme = {
     categoryBackground: '#333335',
     myPageHeader: '#0f0f10',
     containerBackground: '#1f1e1f',
+    splashBackground: '#F2F2F7',
   },
 
   sizes: {

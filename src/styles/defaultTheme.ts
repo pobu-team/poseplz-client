@@ -20,6 +20,7 @@ const defaultTheme = {
     categoryBackground: '#eaeaf2',
     myPageHeader: '#ffffff',
     containerBackground: '#ffffff',
+    splashBackground: '#F9FFEA',
   },
 
   sizes: {

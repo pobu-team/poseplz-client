@@ -11,7 +11,6 @@ const Container = styled.div`
   position: relative;
   max-height: fit-content;
   background-color: ${(props) => props.theme.colors.mainBackground};
-;
 `;
 
 export default function Layout() {
