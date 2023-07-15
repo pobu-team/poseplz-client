@@ -17,6 +17,7 @@ const darkTheme: Theme = {
     arrowBackground: '#BBFF65',
     detailBackground: '#000',
     disabledText: '#9B9B9B',
+    navDisabledText: '#707075',
     mainBackground: '#0f0f10',
     bannerBackground: '#333335',
     categoryBackground: '#333335',

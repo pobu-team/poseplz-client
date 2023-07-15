@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useReadLocalStorage } from 'usehooks-ts';
-import addGaEvent from '../../utils/addGaEvent';
+import addGaEvent from '../utils/addGaEvent';
 
 const Container = styled.div`
   position: absolute;
@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const Button = styled.button`
   position: fixed;
-  bottom: 8rem;
+  bottom: 9rem;
   z-index: 99;
   background-color: transparent;
   border: none;
@@ -20,10 +20,11 @@ const Button = styled.button`
   height: 4.8rem;
   cursor: pointer;
 
-  img {
+  object {
     width: 4.8rem;
     height: 4.8rem;
     filter: drop-shadow( 0 2px 4px 0 rgba(0, 0, 0, 0.1));
+    pointer-events: none;
   }
 `;
 
@@ -42,9 +43,9 @@ export default function TopButton() {
   return (
     <Container>
       <Button onClick={handleTopButtonClick}>
-        <img
-          src={isDarkMode ? '/images/icon_top_dark.svg' : '/images/icon_top_light.svg'}
-          alt="상단 이동 버튼"
+        <object
+          data={isDarkMode ? '/images/icon_top_dark.svg' : '/images/icon_top_light.svg'}
+          aria-label="상단 이동 버튼"
         />
       </Button>
     </Container>

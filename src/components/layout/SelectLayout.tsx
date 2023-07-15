@@ -10,7 +10,7 @@ const Container = styled.div`
   max-height: fit-content;
 `;
 
-export default function BackLayout() {
+export default function SelectLayout() {
   return (
     <Container>
       <LogoHeader />

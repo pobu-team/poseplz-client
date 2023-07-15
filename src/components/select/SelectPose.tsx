@@ -12,6 +12,7 @@ import EmptyPose from '../common/EmptyPose';
 
 import useRecommendPose from '../../hooks/useRecommendPose';
 import useFetchTagGroup from '../../hooks/useFetchTagGroup';
+import TopButton from '../../ui/TopButton';
 
 const Container = styled.div`
   display: flex;
@@ -79,6 +80,7 @@ export default function SelectPose() {
           <EmptyPose text="추천된" />
         </EmptyPoseContainer>
       )}
+      <TopButton />
     </Container>
   );
 }

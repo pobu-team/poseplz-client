@@ -11,6 +11,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   background-color: ${(props) => props.theme.colors.containerBackground};
 `;
@@ -18,6 +19,8 @@ const Container = styled.div`
 export default function NavigationBar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const homeActive = location.pathname === '/main';
+  const myPageActive = location.pathname === '/mypage';
 
   const handleHomeButton = () => {
     navigate('/main');
@@ -33,14 +36,16 @@ export default function NavigationBar() {
     <Container>
       <Button
         text="홈"
-        imgSrc={(location.pathname === '/main') ? 'home_active' : 'home_disable'}
+        imgSrc={homeActive ? 'home_active' : 'home_disable'}
         onClickFunc={handleHomeButton}
+        active={homeActive}
       />
       <StartButton />
       <Button
         text="마이페이지"
-        imgSrc={(location.pathname === '/mypage') ? 'mypage_active' : 'mypage_disable'}
+        imgSrc={myPageActive ? 'mypage_active' : 'mypage_disable'}
         onClickFunc={handleMyPageClick}
+        active={myPageActive}
       />
     </Container>
   );
