@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 import { useReadLocalStorage } from 'usehooks-ts';
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled.div<{ active: boolean}>`
   width: 100%;
-  height: 64px;
+  height: 7.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@ const ButtonContainer = styled.div`
     align-items: center;
     border: none;
     text-align: center;
-    color: ${(props) => props.theme.colors.text};
+    color: ${(props) => (props.active ? props.theme.colors.text : props.theme.colors.navDisabledText)};
     background-color: ${(props) => props.theme.colors.containerBackground};
     font-size: 11px;
     font-weight: 700;
@@ -27,15 +27,18 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export default function Button({ text, imgSrc, onClickFunc } : {
+export default function Button({
+  text, imgSrc, onClickFunc, active,
+} : {
   text: string;
   imgSrc: string;
   onClickFunc: () =>void;
+  active: boolean;
 }) {
   const isDarkMode = useReadLocalStorage('darkMode');
 
   return (
-    <ButtonContainer>
+    <ButtonContainer active={active}>
       <button type="button" onClick={onClickFunc}>
         <img src={isDarkMode ? `/images/${imgSrc}_D.svg` : `/images/${imgSrc}_L.svg`} alt={text} />
         {text}

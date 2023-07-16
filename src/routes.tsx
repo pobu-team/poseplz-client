@@ -8,12 +8,13 @@ import PoseDetailPage from './pages/PoseDetailPage';
 import SelectPeoplePage from './pages/SelectPeoplePage';
 import SelectPosePage from './pages/SelectPosePage';
 import SelectThemePage from './pages/SelectThemePage';
-import BackLayout from './components/layout/BackLayout';
 import MyPageLayout from './components/layout/MyPageLayout';
 import DetailLayout from './components/layout/DetailLayout';
 import CATEGORY from './types/CategoryType';
 import CategoryLayout from './components/layout/CategoryLayout';
 import CategoryPage from './pages/CategoryPage';
+import SelectLayout from './components/layout/SelectLayout';
+import SelectResultLayout from './components/layout/SelectResultLayout';
 
 const routes = [
   {
@@ -29,10 +30,15 @@ const routes = [
     ],
   },
   {
-    element: <BackLayout />,
+    element: <SelectLayout />,
     children: [
       { path: '/people', element: <SelectPeoplePage /> },
       { path: '/theme/:peopleNum', element: <SelectThemePage /> },
+    ],
+  },
+  {
+    element: <SelectResultLayout />,
+    children: [
       { path: '/pose/:id/:theme', element: <SelectPosePage /> },
     ],
   },

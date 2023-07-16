@@ -50,13 +50,13 @@ export const ButtonContainer = styled.div`
     @media screen and (max-width: 340px) {
       font-size: 13px;
       height: 50px;
-      width: 120px;
     }
   }
 
   button:last-child {
     color: ${(props) => props.theme.colors.black};
     background: ${(props) => props.theme.colors.primary};
+    margin-left: 1.2rem;
   }
 `;
 

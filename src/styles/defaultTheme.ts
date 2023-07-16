@@ -15,11 +15,13 @@ const defaultTheme = {
     arrowBackground: '#FFFFFF',
     detailBackground: '#F2F2F7',
     disabledText: '#8A8A8A',
+    navDisabledText: '#BDBDC8',
     mainBackground: '#f2f2f7',
     bannerBackground: '#dfdfe9',
     categoryBackground: '#eaeaf2',
     myPageHeader: '#ffffff',
     containerBackground: '#ffffff',
+    splashBackground: '#F9FFEA',
   },
 
   sizes: {

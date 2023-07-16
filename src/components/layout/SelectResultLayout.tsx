@@ -1,25 +1,26 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import MainHeader from '../header/MainHeader';
+import LogoHeader from '../header/LogoHeader';
 import NavigationBar from '../footer/NavigationBar';
+import TopButton from '../../ui/TopButton';
 
 const Container = styled.div`
   width: 100%;
   max-width: 430px;
-  min-height: 100vh;
   margin: auto;
-  position: relative;
+  min-height: 100vh;
   max-height: fit-content;
-  background-color: ${(props) => props.theme.colors.mainBackground};
+  position: relative;
 `;
 
-export default function Layout() {
+export default function SelectResultLayout() {
   return (
     <Container>
-      <MainHeader />
+      <LogoHeader />
       <main>
         <Outlet />
       </main>
+      <TopButton />
       <NavigationBar />
     </Container>
   );
