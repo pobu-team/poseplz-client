@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import styled from 'styled-components';
 import addGaEvent from '../../utils/addGaEvent';
 
@@ -28,16 +28,19 @@ const ButtonContainer = styled.div`
 
 export default function StartButton() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const isResult = location.pathname.startsWith('/pose/');
 
   const handleButtonClick = () => {
     navigate('/people');
-    addGaEvent('GNB Pose Recommend');
+    const eventName = isResult ? 'GNB Recommend again' : 'GNB Pose Recommend';
+    addGaEvent(eventName);
   };
 
   return (
     <ButtonContainer>
       <button type="button" onClick={handleButtonClick}>
-        <img src="/images/btn_posestart.svg" alt="포즈 추천" />
+        <img src={isResult ? '/images/btn_poserestart.svg' : '/images/btn_posestart.svg'} alt="포즈 추천" />
       </button>
     </ButtonContainer>
   );

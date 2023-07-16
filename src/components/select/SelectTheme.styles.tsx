@@ -38,6 +38,7 @@ export const SubmitBtnContainer = styled.div`
     border-radius: 10px;
     height: 58px;
     padding: 0px;
+    margin-block: 1rem;
     border: none;
     font-size: 20px;
     font-weight: 600;

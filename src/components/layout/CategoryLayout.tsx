@@ -2,6 +2,7 @@ import { Outlet, useMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import NavigationBar from '../footer/NavigationBar';
 import TitleHeader from '../header/TitleHeader';
+import TopButton from '../../ui/TopButton';
 
 const Container = styled.div`
   width: 100%;
@@ -31,6 +32,7 @@ export default function Layout() {
       <main>
         <Outlet />
       </main>
+      <TopButton />
       <NavigationBar />
     </Container>
   );

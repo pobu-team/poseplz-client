@@ -32,6 +32,10 @@ const Container = styled.div`
     border: none;
     background: none;
     cursor: pointer;
+  
+    object {
+      pointer-events: none;
+    }
   }
 `;
 
@@ -68,13 +72,13 @@ export default function Pose({ poseId, active }: PoseProps) {
           handleClickLike(poseInfo);
         }}
       >
-        <img
-          src={
+        <object
+          data={
             active
               ? '/images/btn_like_active.svg'
               : '/images/btn_like_default.svg'
           }
-          alt="btn_like"
+          aria-label="btn_like"
         />
       </button>
     </Container>
