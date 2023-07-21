@@ -4,6 +4,9 @@ import styled from 'styled-components';
 
 import { useLocalStorage } from 'usehooks-ts';
 import { useRecoilValue } from 'recoil';
+import {
+  useEffect, useLayoutEffect, useRef, useState,
+} from 'react';
 import { PoseWithIdSelector } from '../../recoil/poseState';
 import { PoseInfo } from '../../types/PoseType';
 import addGaEvent from '../../utils/addGaEvent';
@@ -16,13 +19,13 @@ type PoseProps = {
 const Container = styled.div`
   position: relative;
   width: 100%;
-  display: inline-block;
   margin-bottom: 5px;
 
   img {
     border-radius: 10px;
     width: 100%;
     height: auto;
+    object-fit: contain;
   }
 
   button {
@@ -35,9 +38,18 @@ const Container = styled.div`
   }
 `;
 
+const Skeleton = styled.div`
+  width: 100%;
+  margin-bottom: 5px;
+  height: 54rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.1);
+`;
+
 export default function Pose({ poseId, active }: PoseProps) {
   const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
-
+  const [isLoading, setIsLoading] = useState(true);
+  const imgRef = useRef<HTMLImageElement>(null);
   const linkTo = `/pose/detail?poseId=${poseInfo.poseId}`;
 
   const [likes, setLikes] = useLocalStorage<string[]>('pose-store', []);
@@ -56,10 +68,15 @@ export default function Pose({ poseId, active }: PoseProps) {
 
   return (
     <Container>
+      {isLoading && (<Skeleton />)}
       <Link to={linkTo}>
         <img
+          ref={imgRef}
           src={`https://server.poseplz.com${poseInfo.imageUrl}`}
           alt={poseInfo.imageUrl}
+          onLoad={() => {
+            setIsLoading(false);
+          }}
         />
       </Link>
       <button
