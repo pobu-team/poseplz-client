@@ -12,6 +12,7 @@ import EmptyPose from '../common/EmptyPose';
 
 import useRecommendPose from '../../hooks/useRecommendPose';
 import useFetchTagGroup from '../../hooks/useFetchTagGroup';
+import Loading from '../common/Loading';
 
 const Container = styled.div`
   display: flex;
@@ -70,7 +71,7 @@ export default function SelectPose() {
         ))}
       </div>
       {poseArr.length ? (
-        <React.Suspense fallback={<div>loading...</div>}>
+        <React.Suspense fallback={<Loading />}>
           <PoseList poses={poseArr} />
         </React.Suspense>
 

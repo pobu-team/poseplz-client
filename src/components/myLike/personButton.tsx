@@ -1,37 +1,32 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import styled from 'styled-components';
 import addGaEvent from '../../utils/addGaEvent';
+import useDragScroll from '../../hooks/useDragScroll';
 
 const ButtonContainer = styled.div`
-  display: block;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  background-color: ${(props) => props.theme.colors.myPageHeader};
-  padding: 10px 10px 20px;
-  position: sticky;
-  z-index: 10;
+  width: 100%;
+  overflow: scroll;
+  white-space: nowrap;
+  scroll-snap-type: none;
+  -webkit-overflow-scrolling: touch;
+  background-color: ${(props) => props.theme.colors.containerBackground};
 
-  button {
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    margin: 4px;
-    border-radius: 10px;
-    width: 80px;
-    height: 40px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+const CategoryButton = styled.button<{active: boolean}>`
+    background-color: ${(props) => props.theme.colors.containerBackground};
     border: none;
-    color: ${(props) => props.theme.colors.text};
-    background-color: ${(props) => props.theme.colors.buttonBackground};
-    @media screen and (max-width: 400px) {
-      margin: 2px;
-    }
-  }
-
-  button.selected {
-    border: 2px solid ${(props) => props.theme.colors.border};
-    background-color: ${(props) => props.theme.colors.background};
-  }
+    border-bottom: ${(props) => (props.active ? `2px solid ${props.theme.colors.text}` : 'none')};
+    font-size: 1.6rem;
+    padding-block: ${(props) => props.theme.sizes.smallContentPadding};
+    padding-inline: 1.6rem;
+    color: ${(props) => (props.active ? props.theme.colors.text : props.theme.colors.disabledText)};
+    font-weight: 600;
+    line-height: 1.63;
+    cursor: pointer;
 `;
 
 type PersonButtonProps = {
@@ -48,8 +43,11 @@ export default function PersonButton({
   );
 
   const [allButton, setAllButton] = useState(true);
+  const ref = useRef<HTMLDivElement>(null);
+  const isClick = useDragScroll(ref);
 
   const handleClick = (num: number) => {
+    if (!isClick) return;
     setSelectedButton(num);
     const filteredPose = like.filter((poseId: string) => poseId.slice(-2) === `${String(num)}인`);
     setIsPersonNum(filteredPose);
@@ -58,6 +56,7 @@ export default function PersonButton({
   };
 
   const handleClickAll = () => {
+    if (!isClick) return;
     setSelectedButton(undefined);
     setIsPersonNum(like);
     setAllButton(true);
@@ -65,26 +64,26 @@ export default function PersonButton({
   };
 
   return (
-    <ButtonContainer>
-      <button
+    <ButtonContainer ref={ref}>
+      <CategoryButton
         type="button"
         onClick={handleClickAll}
-        className={allButton ? 'selected' : ''}
+        active={allButton}
       >
         전체
-      </button>
+      </CategoryButton>
       {[1, 2, 3, 4, 5, 6].map((item) => (
-        <button
+        <CategoryButton
           key={item}
           type="button"
           onClick={() => {
             handleClick(item);
           }}
-          className={selectedButton === item ? 'selected' : ''}
+          active={selectedButton === item}
         >
           {item}
           명
-        </button>
+        </CategoryButton>
       ))}
     </ButtonContainer>
   );

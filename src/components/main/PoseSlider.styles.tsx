@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   height: 29rem;
@@ -24,7 +24,7 @@ export const Header = styled.div`
     }
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<{active: boolean}>`
   height: 100%;
   width: auto;
   align-items: center;
@@ -45,20 +45,22 @@ export const Content = styled.div`
     border: none;
     background: none;
     padding: 0;
-    
-    // 스켈레톤 UI
-    div {
-      width: 18rem;
+
+    img {
+      width: 9.7rem;
       height: 100%;
-      margin-right: 5px;
+      margin-right: 2px;
       border-radius: 8px;
       background: rgba(0, 0, 0, 0.1);
     }
-    img {
-      height: 100%;
-      border-radius: 8px;
-      width: auto;
-      margin-right: 2px;
-    }
+    
+    ${(props) => props.active && css`
+      img {
+        height: 100%;
+        border-radius: 8px;
+        width: auto;
+        margin-right: 2px;
+      }
+    `}
   }
 `;

@@ -35,7 +35,7 @@ export default function PoseSlider({ title, poseArr }: {
         <h1>{title}</h1>
       </Header>
       <Container>
-        <Content ref={ref}>
+        <Content ref={ref} active={!isLoading}>
           {poseArr.map((poseId: string) => {
             const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
             const imageSrc = poseInfo.imageUrl;
@@ -45,7 +45,6 @@ export default function PoseSlider({ title, poseArr }: {
                 type="button"
                 onClick={() => handleClick(poseId)}
               >
-                {isLoading && <div />}
                 <img src={`https://server.poseplz.com${imageSrc}`} alt={imageSrc} onLoad={() => setIsLoading(false)} />
               </button>
             );

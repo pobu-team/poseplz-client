@@ -5,6 +5,7 @@ import CATEGORY from '../../types/CategoryType';
 import TopButton from './TopButton';
 import CategoryButtons from './CategoryButtons';
 import CategoryPoseList from './CategoryPoseList';
+import Loading from '../common/Loading';
 
 const Container = styled.div`
   position: relative;
@@ -27,7 +28,7 @@ export default function CategoryPose({ category }: {category:CATEGORY}) {
         category={category}
       />
       <PoseContainer>
-        <React.Suspense fallback={<div>loading...</div>}>
+        <React.Suspense fallback={<div />}>
           <CategoryPoseList category={category} selectedTagId={selectedTagId} />
         </React.Suspense>
       </PoseContainer>

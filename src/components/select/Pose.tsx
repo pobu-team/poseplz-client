@@ -1,14 +1,15 @@
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { useLocalStorage } from 'usehooks-ts';
+
 import { useRecoilValue } from 'recoil';
-import {
-  useEffect, useLayoutEffect, useRef, useState,
-} from 'react';
 import { PoseWithIdSelector } from '../../recoil/poseState';
+
 import { PoseInfo } from '../../types/PoseType';
+
 import addGaEvent from '../../utils/addGaEvent';
 
 type PoseProps = {
@@ -16,16 +17,31 @@ type PoseProps = {
   active: boolean;
 };
 
-const Container = styled.div`
+const Container = styled.div<{active: boolean}>`
   position: relative;
   width: 100%;
   margin-bottom: 5px;
 
-  img {
-    border-radius: 10px;
+  a {
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 54rem;
+    ${(props) => props.active && css`
+        width: 100%;
+        height: auto;
+      `}
+    img {
+      width: 100%;
+      height: 54rem;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.1);
+      ${(props) => props.active && css`
+        width: 100%;
+        border-radius: 10px;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      `}
+    }
   }
 
   button {
@@ -36,14 +52,6 @@ const Container = styled.div`
     background: none;
     cursor: pointer;
   }
-`;
-
-const Skeleton = styled.div`
-  width: 100%;
-  margin-bottom: 5px;
-  height: 54rem;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.1);
 `;
 
 export default function Pose({ poseId, active }: PoseProps) {
@@ -67,8 +75,7 @@ export default function Pose({ poseId, active }: PoseProps) {
   };
 
   return (
-    <Container>
-      {isLoading && (<Skeleton />)}
+    <Container active={!isLoading}>
       <Link to={linkTo}>
         <img
           ref={imgRef}

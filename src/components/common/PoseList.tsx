@@ -18,6 +18,26 @@ const PoseContainer = styled.div`
   padding: .3rem;
 `;
 
+function HalfPoseContainer({ direction, likePoseIdArr }: {
+  direction: PoseType[];
+  likePoseIdArr: string[];
+}) {
+  return (
+    <>
+      {direction.map((pose: PoseType) => {
+        const active: boolean = likePoseIdArr.includes(pose.poseId);
+        return (
+          <Pose
+            key={pose.poseId}
+            poseId={pose.poseId}
+            active={active}
+          />
+        );
+      })}
+    </>
+  );
+}
+
 export default function PoseList({ poses }: { poses: PoseType[]}) {
   const [like, _] = useLocalStorage<string[]>('pose-store', []);
   const likePoseIdArr = like.map((item) => item.slice(0, -3));
@@ -27,28 +47,10 @@ export default function PoseList({ poses }: { poses: PoseType[]}) {
   return (
     <Container>
       <PoseContainer>
-        {leftPoses.map((pose: PoseType) => {
-          const active: boolean = likePoseIdArr.includes(pose.poseId);
-          return (
-            <Pose
-              key={pose.poseId}
-              poseId={pose.poseId}
-              active={active}
-            />
-          );
-        })}
+        <HalfPoseContainer direction={leftPoses} likePoseIdArr={likePoseIdArr} />
       </PoseContainer>
       <PoseContainer>
-        {rightPoses.map((pose: PoseType) => {
-          const active: boolean = likePoseIdArr.includes(pose.poseId);
-          return (
-            <Pose
-              key={pose.poseId}
-              poseId={pose.poseId}
-              active={active}
-            />
-          );
-        })}
+        <HalfPoseContainer direction={rightPoses} likePoseIdArr={likePoseIdArr} />
       </PoseContainer>
     </Container>
   );
