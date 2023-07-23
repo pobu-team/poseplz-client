@@ -9,6 +9,7 @@ import { PoseSelector } from '../../recoil/poseState';
 
 import PoseList from '../common/PoseList';
 import EmptyPose from '../common/EmptyPose';
+import Loading from '../common/Loading';
 
 import useRecommendPose from '../../hooks/useRecommendPose';
 import useFetchTagGroup from '../../hooks/useFetchTagGroup';
@@ -71,7 +72,7 @@ export default function SelectPose() {
         ))}
       </div>
       {poseArr.length ? (
-        <React.Suspense fallback={<div>loading...</div>}>
+        <React.Suspense fallback={<Loading />}>
           <PoseList poses={poseArr} />
         </React.Suspense>
 
