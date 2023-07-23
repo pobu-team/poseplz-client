@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  height: 300px;
+  height: 29rem;
+  margin-top: 1.5rem;
+  align-items: center;
   max-width: 1200px;
   overflow: scroll;
   cursor: grab;
@@ -28,13 +30,14 @@ export const Header = styled.div`
     }
 `;
 
-export const Content = styled.div`
-  height: 300px;
+export const Content = styled.div<{active: boolean}>`
+  height: 100%;
   width: auto;
   align-items: center;
   white-space: nowrap;
   display: flex;
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: hidden;
   scroll-snap-type: none;
   -webkit-overflow-scrolling: touch;
 
@@ -43,17 +46,27 @@ export const Content = styled.div`
   }
   
   button {
-    height: 90%;
+    height: 100%;
     cursor: pointer;
     border: none;
     background: none;
     padding: 0;
 
     img {
+      width: 9.7rem;
       height: 100%;
+      margin-right: 2px;
       border-radius: 8px;
-      width: auto;
-      margin: 2px;
+      background: rgba(0, 0, 0, 0.1);
     }
+      
+    ${(props) => props.active && css`
+      img {
+        height: 100%;
+        border-radius: 8px;
+        width: auto;
+        margin-right: 2px;
+      }
+    `}
   }
 `;

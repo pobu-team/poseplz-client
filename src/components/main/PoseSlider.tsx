@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
@@ -19,6 +19,7 @@ export default function PoseSlider({ title, poseArr }: {
 }) {
   const navigate = useNavigate();
   const ref = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const isClick = useDragScroll(ref);
 
   const handleClick = (poseId: string) => {
@@ -34,7 +35,7 @@ export default function PoseSlider({ title, poseArr }: {
         <h1>{title}</h1>
       </Header>
       <Container>
-        <Content ref={ref}>
+        <Content ref={ref} active={!isLoading}>
           {poseArr.map((poseId: string) => {
             const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
             const imageSrc = poseInfo.imageUrl;
@@ -44,7 +45,11 @@ export default function PoseSlider({ title, poseArr }: {
                 type="button"
                 onClick={() => handleClick(poseId)}
               >
-                <img src={`https://server.poseplz.com${imageSrc}`} alt={imageSrc} />
+                <img
+                  src={`https://server.poseplz.com${imageSrc}`}
+                  alt={imageSrc}
+                  onLoad={() => setIsLoading(false)}
+                />
               </button>
             );
           })}

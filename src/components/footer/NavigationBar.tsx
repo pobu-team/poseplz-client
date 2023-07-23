@@ -42,7 +42,7 @@ export default function NavigationBar() {
       />
       <StartButton />
       <Button
-        text="마이페이지"
+        text="찜한포즈"
         imgSrc={myPageActive ? 'mypage_active' : 'mypage_disable'}
         onClickFunc={handleMyPageClick}
         active={myPageActive}
