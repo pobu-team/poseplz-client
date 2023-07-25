@@ -1,13 +1,13 @@
 import { useState } from 'react';
-
 import styled from 'styled-components';
-
 import { useLocalStorage } from 'usehooks-ts';
+import { useRecoilValue } from 'recoil';
 
 import PersonButton from './personButton';
-
 import Pose from '../select/Pose';
 import EmptyPose from '../common/EmptyPose';
+import { isLoggedInAtom } from '../../recoil/loginState';
+import LogIn from './LogIn';
 
 const Container = styled.div`
   display: flex;
@@ -24,8 +24,25 @@ const PoseContainer = styled.div`
 
 export default function MyLike() {
   const [like, _] = useLocalStorage<string[]>('pose-store', []);
-
   const [poseIds, setPoseIds] = useState(like);
+  const isLoggedIn = useRecoilValue(isLoggedInAtom);
+
+  const likePoseList = poseIds.length ? (
+    <PoseContainer>
+      {...poseIds.map((poseId: string) => {
+        const active: boolean = like.includes(poseId);
+        return (
+          <Pose
+            key={poseId}
+            poseId={poseId}
+            active={active}
+          />
+        );
+      })}
+    </PoseContainer>
+  ) : (
+    <EmptyPose text="찜한" />
+  );
 
   return (
     <Container>
@@ -33,22 +50,9 @@ export default function MyLike() {
         like={like}
         setIsPersonNum={setPoseIds}
       />
-      {poseIds.length ? (
-        <PoseContainer>
-          {...poseIds.map((poseId: string) => {
-            const active: boolean = like.includes(poseId);
-            return (
-              <Pose
-                key={poseId}
-                poseId={poseId}
-                active={active}
-              />
-            );
-          })}
-        </PoseContainer>
-      ) : (
-        <EmptyPose text="찜한" />
-      )}
+      {isLoggedIn
+        ? likePoseList
+        : <LogIn />}
     </Container>
   );
 }

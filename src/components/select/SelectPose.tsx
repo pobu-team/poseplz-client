@@ -14,6 +14,8 @@ import Loading from '../common/Loading';
 import useRecommendPose from '../../hooks/useRecommendPose';
 import useFetchTagGroup from '../../hooks/useFetchTagGroup';
 import TopButton from '../../ui/TopButton';
+import LoginModal from '../../ui/LoginModal';
+import { isLogInModalShowingAtom } from '../../recoil/loginState';
 
 const Container = styled.div`
   display: flex;
@@ -61,6 +63,8 @@ export default function SelectPose() {
     tagArr = [`${id}인`, allTagData.name];
   }
 
+  const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
+
   return (
     <Container>
       <div>
@@ -82,6 +86,7 @@ export default function SelectPose() {
         </EmptyPoseContainer>
       )}
       <TopButton />
+      {isLogInModalShowing && <LoginModal />}
     </Container>
   );
 }

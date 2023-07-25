@@ -22,6 +22,8 @@ const defaultTheme = {
     myPageHeader: '#ffffff',
     containerBackground: '#ffffff',
     splashBackground: '#F9FFEA',
+    message: '#1f1e1f',
+    subMessage: '#8A8A8A',
   },
 
   sizes: {

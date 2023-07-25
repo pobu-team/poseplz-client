@@ -15,6 +15,7 @@ import CategoryLayout from './components/layout/CategoryLayout';
 import CategoryPage from './pages/CategoryPage';
 import SelectLayout from './components/layout/SelectLayout';
 import SelectResultLayout from './components/layout/SelectResultLayout';
+import ErrorPage from './pages/ErrorPage';
 
 const routes = [
   {
@@ -22,6 +23,7 @@ const routes = [
     children: [
       { path: '/main', element: <MainPage /> },
     ],
+    errorElement: <ErrorPage />,
   },
   {
     element: <HomeLayout />,
