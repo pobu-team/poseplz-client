@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/potenday-project/PoBu_pose_recommend#readme",
   "devDependencies": {
+    "@parcel/packager-raw-url": "^2.8.3",
+    "@parcel/transformer-webmanifest": "^2.8.3",
     "@swc/plugin-styled-components": "^1.5.50",
     "@types/node": "^18.16.3",
     "@types/react": "^18.0.29",
