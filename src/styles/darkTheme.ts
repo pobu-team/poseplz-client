@@ -24,6 +24,8 @@ const darkTheme: Theme = {
     myPageHeader: '#0f0f10',
     containerBackground: '#1f1e1f',
     splashBackground: '#F2F2F7',
+    message: '#ffffff',
+    subMessage: '#9B9B9B',
   },
 
   sizes: {
