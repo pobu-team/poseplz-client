@@ -26,7 +26,7 @@ export default function CategoryPose({ category }: {category:CATEGORY}) {
         category={category}
       />
       <PoseContainer>
-        <React.Suspense fallback={<div>loading...</div>}>
+        <React.Suspense fallback={<div>Loading...</div>}>
           <CategoryPoseList category={category} selectedTagId={selectedTagId} />
         </React.Suspense>
       </PoseContainer>
