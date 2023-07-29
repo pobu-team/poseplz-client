@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
+import { useReadLocalStorage } from 'usehooks-ts';
 import { isLogInModalShowingAtom } from '../recoil/loginState';
 
 const Backdrop = styled.div`
@@ -15,7 +16,7 @@ const Modal = styled.div`
   bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.modalBackground};
   border-radius: 2.4rem;
   width: 90vw;
   max-width: 375px;
@@ -72,7 +73,6 @@ const ModalContent = styled.div`
 
     object {
       margin-right: 0.8rem;
-      pointer-events: none;
     }
 
     @media screen and (max-width: 340px) {
@@ -82,7 +82,15 @@ const ModalContent = styled.div`
   }
 `;
 
+const KakaoLogo = styled.div`
+  background-image: url("/images/Logo_Kakaotalk.svg");
+  margin-right: 0.8rem;
+  width: 26px;
+  height: 24px;
+`;
+
 export default function LoginModal() {
+  const isDarkMode = useReadLocalStorage('darkMode');
   const setIsLogInModalShowing = useSetRecoilState(isLogInModalShowingAtom);
 
   return (
@@ -99,7 +107,10 @@ export default function LoginModal() {
               setIsLogInModalShowing(false);
             }}
           >
-            <object data="/images/close_popup_L.svg" aria-label="close" />
+            <object
+              data={isDarkMode ? '/images/close_popup_D.svg' : '/images/close_popup_L.svg'}
+              aria-label="close"
+            />
           </CloseButton>
           <ModalContent>
             <h2>
@@ -108,10 +119,7 @@ export default function LoginModal() {
               사용해보세요!
             </h2>
             <button type="button">
-              <object
-                data="/images/Logo_Kakaotalk.svg"
-                aria-label="카카오 로고"
-              />
+              <KakaoLogo />
               카카오톡 로그인하기
             </button>
           </ModalContent>
