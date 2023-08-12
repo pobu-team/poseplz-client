@@ -4,7 +4,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useRef, useState } from 'react';
 import { PoseWithIdSelector } from '../../recoil/poseState';
 import { PoseInfo } from '../../types/PoseType';
-import { isLogInModalShowingAtom } from '../../recoil/loginState';
+import { isLogInModalShowingAtom, isLoggedInAtom } from '../../recoil/loginState';
 
 type PoseProps = {
   poseId: string;
@@ -56,11 +56,16 @@ const Container = styled.div<{active: boolean}>`
 export default function Pose({ poseId, active }: PoseProps) {
   const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
   const [isLoading, setIsLoading] = useState(true);
+  const isLoggedIn = useRecoilValue(isLoggedInAtom);
   const setIsLogInModalShowing = useSetRecoilState(isLogInModalShowingAtom);
   const imgRef = useRef<HTMLImageElement>(null);
   const linkTo = `/pose/detail?poseId=${poseInfo.poseId}`;
 
   const handleClickLike = () => {
+    if (isLoggedIn) {
+      // TODO : 계정마다 찜한포즈 추가
+      return;
+    }
     setIsLogInModalShowing(true);
   };
 
