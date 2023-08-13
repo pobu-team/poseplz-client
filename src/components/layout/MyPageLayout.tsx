@@ -13,6 +13,9 @@ const Container = styled.div`
 `;
 
 const HeaderContainer = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 99;
   background-color: ${(props) => props.theme.colors.myPageHeader};
 `;
 

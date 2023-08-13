@@ -6,6 +6,9 @@ import useDragScroll from '../../hooks/useDragScroll';
 
 const ButtonContainer = styled.div`
   width: 100%;
+  position: sticky;
+  top: 5.76rem;
+  z-index: 99;
   overflow: scroll;
   white-space: nowrap;
   scroll-snap-type: none;

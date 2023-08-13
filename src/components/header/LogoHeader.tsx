@@ -6,6 +6,10 @@ import HeaderLogo from './HeaderLogo';
 const Container = styled.div`
   display: flex;
   position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background-color: ${(props) => props.theme.colors.background};
   width: 100%;
   align-items: center;
   justify-content: space-between;

@@ -1,24 +1,42 @@
-import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import styled, { css } from 'styled-components';
 import HeaderLogo from './HeaderLogo';
 import ThemeSwitch from './ThemeSwitch';
 
-const Container = styled.header`
+const Container = styled.header<{scroll: boolean}>`
   display: flex;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 99;
   width: 100%;
   align-items: center;
   justify-content: space-between;
   padding-block: 1rem;
+  background-color: ${(props) => props.theme.colors.background};
   padding-inline: ${(props) => props.theme.sizes.contentPadding};
 
   @media screen and (max-width: 340px){
     padding-inline: 1.2rem;
   }
+
+  ${(props) => props.scroll && css`
+    background-color: ${(prop) => prop.theme.colors.mainBackground};
+  `}
 `;
 
 export default function MainHeader() {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const updateScroll = () => {
+    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', updateScroll);
+  }, []);
+
   return (
-    <Container>
+    <Container scroll={scrollPosition < 30}>
       <ThemeSwitch />
       <HeaderLogo />
     </Container>
