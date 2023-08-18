@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { useLocalStorage } from 'usehooks-ts';
 import { useRecoilValue } from 'recoil';
-
-import PersonButton from './personButton';
+import { useReadLocalStorage } from 'usehooks-ts';
 import Pose from '../select/Pose';
-import EmptyPose from '../common/EmptyPose';
-import { isLoggedInAtom } from '../../recoil/loginState';
 import LogIn from './LogIn';
+import PersonButton from './personButton';
+import EmptyPose from '../common/EmptyPose';
+import { fetchLikesSelector } from '../../recoil/likeState';
 
 const Container = styled.div`
   display: flex;
@@ -23,22 +22,21 @@ const PoseContainer = styled.div`
 `;
 
 export default function MyLike() {
-  const [like, _] = useLocalStorage<string[]>('pose-store', []);
-  const [poseIds, setPoseIds] = useState(like);
-  const isLoggedIn = useRecoilValue(isLoggedInAtom);
+  const storedAccessToken = useReadLocalStorage('accessToken') as string;
+  const initialLikePose = useRecoilValue(fetchLikesSelector(storedAccessToken));
+  const [likePoseIdArr, setLikePoseIdArr] = useState(initialLikePose);
+  const isLoggedIn = storedAccessToken && storedAccessToken.length > 0;
 
-  const likePoseList = poseIds.length ? (
+  const likePoseList = likePoseIdArr.length ? (
     <PoseContainer>
-      {...poseIds.map((poseId: string) => {
-        const active: boolean = like.includes(poseId);
-        return (
-          <Pose
-            key={poseId}
-            poseId={poseId}
-            active={active}
-          />
-        );
-      })}
+      {...likePoseIdArr.map((poseId: string) => (
+        <Pose
+          key={poseId}
+          poseId={poseId}
+          likePoseIdArr={likePoseIdArr}
+          setLikePoseIdArr={setLikePoseIdArr}
+        />
+      ))}
     </PoseContainer>
   ) : (
     <EmptyPose text="찜한" />
@@ -47,8 +45,8 @@ export default function MyLike() {
   return (
     <Container>
       <PersonButton
-        like={like}
-        setIsPersonNum={setPoseIds}
+        like={initialLikePose}
+        setIsPersonNum={setLikePoseIdArr}
       />
       {isLoggedIn
         ? likePoseList

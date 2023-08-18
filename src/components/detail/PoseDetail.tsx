@@ -48,7 +48,7 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
       </TagButtonContainer>
       <PoseContainer>
         <div>
-          <img src={`https://server.poseplz.com${poseInfo.imageUrl}`} alt={poseInfo.imageUrl} />
+          <img src={`${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`} alt={poseInfo.imageUrl} />
         </div>
         <ButtonContainer>
           <button
