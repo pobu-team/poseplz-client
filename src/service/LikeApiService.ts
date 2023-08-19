@@ -10,12 +10,13 @@ class LikeApiService {
   async addLike(poseId: string, token: string) {
     const { data } = await this.instance.post(
       `/archived-poses/${poseId}`,
+      {},
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        withCredentials: true,
       },
-      { withCredentials: true },
     );
     return data;
   }
