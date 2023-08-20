@@ -18,12 +18,15 @@ const darkTheme: Theme = {
     detailBackground: '#000',
     disabledText: '#9B9B9B',
     navDisabledText: '#707075',
-    mainBackground: '#0f0f10',
+    mainBackground: '#0F0F10',
     bannerBackground: '#333335',
     categoryBackground: '#333335',
-    myPageHeader: '#0f0f10',
-    containerBackground: '#1f1e1f',
+    myPageHeader: '#0F0F10',
+    containerBackground: '#1F1E1F',
     splashBackground: '#F2F2F7',
+    message: '#FFFFFF',
+    subMessage: '#9B9B9B',
+    modalBackground: '#0F0F10',
   },
 
   sizes: {
