@@ -1,5 +1,6 @@
 import { useSetRecoilState } from 'recoil';
 import { useReadLocalStorage } from 'usehooks-ts';
+import { useEffect, useState } from 'react';
 import { isLogInModalShowingAtom } from '../../recoil/loginState';
 import likeApiService from '../../service/LikeApiService';
 
@@ -12,7 +13,11 @@ type LikeButtonProps = {
 export default function LikeButton({ likePoseIdArr, poseId, setLikePoseIdArr }: LikeButtonProps) {
   const setIsLogInModalShowing = useSetRecoilState(isLogInModalShowingAtom);
   const storedAccessToken = useReadLocalStorage('accessToken') as string;
-  const active = likePoseIdArr.includes(poseId);
+  const [active, setActive] = useState(likePoseIdArr.includes(poseId));
+
+  useEffect(() => {
+    setActive(likePoseIdArr.includes(poseId));
+  }, [likePoseIdArr]);
 
   const handleClickLike = async () => {
     if (!storedAccessToken || storedAccessToken.length <= 0) {
@@ -22,11 +27,10 @@ export default function LikeButton({ likePoseIdArr, poseId, setLikePoseIdArr }: 
 
     if (active) {
       await likeApiService.deleteLike(poseId, storedAccessToken);
-      setLikePoseIdArr(likePoseIdArr.filter((id) => id !== poseId));
     } else {
       await likeApiService.addLike(poseId, storedAccessToken);
-      setLikePoseIdArr([...likePoseIdArr, poseId]);
     }
+    setLikePoseIdArr(likePoseIdArr);
   };
 
   return (

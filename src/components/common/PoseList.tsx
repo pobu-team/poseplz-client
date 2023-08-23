@@ -1,7 +1,6 @@
 import { useReadLocalStorage } from 'usehooks-ts';
 import styled from 'styled-components';
-import { useRecoilValue } from 'recoil';
-import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 import { PoseType } from '../../types/PoseType';
 import Pose from '../select/Pose';
 import { fetchLikesSelector } from '../../recoil/likeState';
@@ -41,8 +40,7 @@ function HalfPoseContainer({ direction, likePoseIdArr, setLikePoseIdArr }: {
 }
 export default function PoseList({ poses }: {poses:PoseType[]}) {
   const storedAccessToken = useReadLocalStorage('accessToken') as string;
-  const initialLikePose = useRecoilValue(fetchLikesSelector(storedAccessToken));
-  const [likePoseIdArr, setLikePoseIdArr] = useState(initialLikePose);
+  const [likePoseIdArr, setLikePoseIdArr] = useRecoilState(fetchLikesSelector(storedAccessToken));
   const leftPoses = poses.filter((v, index) => index % 2 === 0).reverse();
   const rightPoses = poses.filter((v, index) => index % 2 !== 0).reverse();
 
