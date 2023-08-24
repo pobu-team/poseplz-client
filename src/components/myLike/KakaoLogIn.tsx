@@ -14,7 +14,7 @@ export default function KakaoLogIn() {
     if (data) {
       setStoredAccessToken(data.accessToken);
     }
-    navigate('/mypage');
+    navigate(-1);
   }, []);
 
   return (

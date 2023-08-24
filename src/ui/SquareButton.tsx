@@ -27,7 +27,7 @@ const Button = styled.button<ButtonProps>`
       background-color: ${props.theme.colors.background};
       box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
     `};
-    
+
     img {
       width: 100%;
       aspect-ratio: 1/1;

@@ -68,6 +68,7 @@ const routes = [
   {
     path: '/kakao/auth',
     element: <KakaoLogIn />,
+    errorElement: <ErrorPage />,
   },
 ];
 

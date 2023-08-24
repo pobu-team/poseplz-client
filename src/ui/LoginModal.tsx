@@ -93,6 +93,11 @@ export default function LoginModal() {
   const isDarkMode = useReadLocalStorage('darkMode');
   const setIsLogInModalShowing = useSetRecoilState(isLogInModalShowingAtom);
 
+  const handleLogin = () => {
+    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
+    window.location.href = kakaoURL;
+  };
+
   return (
     <>
       { ReactDOM.createPortal(
@@ -118,7 +123,7 @@ export default function LoginModal() {
               <br />
               사용해보세요!
             </h2>
-            <button type="button">
+            <button type="button" onClick={handleLogin}>
               <KakaoLogo />
               카카오톡 로그인하기
             </button>
