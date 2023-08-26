@@ -41,6 +41,11 @@ const Container = styled.div`
 export default function LogIn() {
   const isDarkMode = useReadLocalStorage('darkMode');
 
+  const handleLogin = () => {
+    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
+    window.location.href = kakaoURL;
+  };
+
   return (
     <Container>
       <img
@@ -52,7 +57,12 @@ export default function LogIn() {
         <br />
         스크랩 하실 수 있어요!
       </p>
-      <button type="button">로그인하기</button>
+      <button
+        type="button"
+        onClick={handleLogin}
+      >
+        로그인하기
+      </button>
     </Container>
   );
 }

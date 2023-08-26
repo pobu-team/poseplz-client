@@ -1,4 +1,3 @@
-import { useLocalStorage } from 'usehooks-ts';
 import styled from 'styled-components';
 import { PoseType } from '../../types/PoseType';
 import Pose from '../select/Pose';
@@ -18,38 +17,47 @@ const PoseContainer = styled.div`
   padding: .3rem;
 `;
 
-function HalfPoseContainer({ direction, likePoseIdArr }: {
+function HalfPoseContainer({ direction, likePoseIdArr, setLikePoseIdArr }: {
   direction: PoseType[];
   likePoseIdArr: string[];
+  setLikePoseIdArr: (value: string[]) => void;
 }) {
   return (
     <>
-      {direction.map((pose: PoseType) => {
-        const active: boolean = likePoseIdArr.includes(pose.poseId);
-        return (
-          <Pose
-            key={pose.poseId}
-            poseId={pose.poseId}
-            active={active}
-          />
-        );
-      })}
+      {direction.map((pose: PoseType) => (
+        <Pose
+          key={pose.poseId}
+          poseId={pose.poseId}
+          likePoseIdArr={likePoseIdArr}
+          setLikePoseIdArr={setLikePoseIdArr}
+        />
+      ))}
     </>
   );
 }
-export default function PoseList({ poses }: {poses:PoseType[]}) {
-  const [like, _] = useLocalStorage<string[]>('pose-store', []);
-  const likePoseIdArr = like.map((item) => item.slice(0, -3));
+export default function PoseList({ poses, likePoseIdArr, setLikePoseIdArr }: {
+  poses:PoseType[],
+  likePoseIdArr: string[];
+  setLikePoseIdArr: (value: string[]) => void;
+}) {
   const leftPoses = poses.filter((v, index) => index % 2 === 0).reverse();
   const rightPoses = poses.filter((v, index) => index % 2 !== 0).reverse();
 
   return (
     <Container>
       <PoseContainer>
-        <HalfPoseContainer direction={leftPoses} likePoseIdArr={likePoseIdArr} />
+        <HalfPoseContainer
+          direction={leftPoses}
+          likePoseIdArr={likePoseIdArr}
+          setLikePoseIdArr={setLikePoseIdArr}
+        />
       </PoseContainer>
       <PoseContainer>
-        <HalfPoseContainer direction={rightPoses} likePoseIdArr={likePoseIdArr} />
+        <HalfPoseContainer
+          direction={rightPoses}
+          likePoseIdArr={likePoseIdArr}
+          setLikePoseIdArr={setLikePoseIdArr}
+        />
       </PoseContainer>
     </Container>
   );

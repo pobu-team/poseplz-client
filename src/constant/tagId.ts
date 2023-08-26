@@ -1,2 +1,3 @@
 export const ALL_PEOPLE_TAG = '000';
-export const COMIC_TAG = '31821982290260624';
+export const ONE_PERSON_TAG = process.env.REACT_APP_ONE_PERSON_POSE_TAG || '31817144344412582';
+export const COMIC_TAG = process.env.REACT_APP_COMIC_POSE_TAG || '32448601534804195';

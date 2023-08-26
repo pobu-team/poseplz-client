@@ -28,7 +28,7 @@ export default function NavigationBar() {
   };
 
   const handleMyPageClick = () => {
-    navigate('/mypage');
+    window.location.href = '/mypage';
     addGaEvent('GNB My Page');
   };
 

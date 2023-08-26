@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { useRef, useState } from 'react';
 import { PoseWithIdSelector } from '../../recoil/poseState';
 import { PoseInfo } from '../../types/PoseType';
-import { isLogInModalShowingAtom } from '../../recoil/loginState';
+import LikeButton from './LikeButton';
 
 type PoseProps = {
   poseId: string;
-  active: boolean;
+  likePoseIdArr: string[];
+  setLikePoseIdArr: (value: string[]) => void;
 };
 
 const Container = styled.div<{active: boolean}>`
@@ -46,51 +47,36 @@ const Container = styled.div<{active: boolean}>`
     border: none;
     background: none;
     cursor: pointer;
-  
+
     object {
       pointer-events: none;
     }
   }
 `;
 
-export default function Pose({ poseId, active }: PoseProps) {
+export default function Pose({ poseId, likePoseIdArr, setLikePoseIdArr }: PoseProps) {
   const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
   const [isLoading, setIsLoading] = useState(true);
-  const setIsLogInModalShowing = useSetRecoilState(isLogInModalShowingAtom);
   const imgRef = useRef<HTMLImageElement>(null);
   const linkTo = `/pose/detail?poseId=${poseInfo.poseId}`;
-
-  const handleClickLike = () => {
-    setIsLogInModalShowing(true);
-  };
 
   return (
     <Container active={!isLoading}>
       <Link to={linkTo}>
         <img
           ref={imgRef}
-          src={`https://server.poseplz.com${poseInfo.imageUrl}`}
+          src={`${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`}
           alt={poseInfo.imageUrl}
           onLoad={() => {
             setIsLoading(false);
           }}
         />
       </Link>
-      <button
-        type="button"
-        onClick={() => {
-          handleClickLike();
-        }}
-      >
-        <object
-          data={
-            active
-              ? '/images/btn_like_active.svg'
-              : '/images/btn_like_default.svg'
-          }
-          aria-label="btn_like"
-        />
-      </button>
+      <LikeButton
+        likePoseIdArr={likePoseIdArr}
+        poseId={poseId}
+        setLikePoseIdArr={setLikePoseIdArr}
+      />
     </Container>
   );
 }

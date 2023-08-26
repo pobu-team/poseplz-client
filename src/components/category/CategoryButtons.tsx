@@ -18,6 +18,10 @@ const ButtonContainer = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+
+  @media screen and (max-width: 340px) {
+    top: 4.9rem
+  }
 `;
 
 const CategoryButton = styled.button<{active: boolean}>`

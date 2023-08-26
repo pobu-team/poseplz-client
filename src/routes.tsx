@@ -16,6 +16,7 @@ import CategoryPage from './pages/CategoryPage';
 import SelectLayout from './components/layout/SelectLayout';
 import SelectResultLayout from './components/layout/SelectResultLayout';
 import ErrorPage from './pages/ErrorPage';
+import KakaoLogIn from './components/myLike/KakaoLogIn';
 
 const routes = [
   {
@@ -63,6 +64,11 @@ const routes = [
     children: [
       { path: '/mypage', element: <MyLikePage /> },
     ],
+  },
+  {
+    path: '/kakao/auth',
+    element: <KakaoLogIn />,
+    errorElement: <ErrorPage />,
   },
 ];
 

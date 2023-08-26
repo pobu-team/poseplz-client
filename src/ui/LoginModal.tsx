@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom';
 import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { useReadLocalStorage } from 'usehooks-ts';
 import { isLogInModalShowingAtom } from '../recoil/loginState';
 
 const Backdrop = styled.div`
@@ -33,8 +32,12 @@ const CloseButton = styled.button`
   padding: 0;
   cursor: pointer;
 
-  object {
-    pointer-events: none;
+  svg {
+    width: 4rem;
+    height: 4rem;
+    padding: .8rem;
+    background-color: ${(props) => props.theme.colors.modalCloseButtonBackground};
+    border-radius: 50%;
   }
 `;
 
@@ -90,8 +93,12 @@ const KakaoLogo = styled.div`
 `;
 
 export default function LoginModal() {
-  const isDarkMode = useReadLocalStorage('darkMode');
   const setIsLogInModalShowing = useSetRecoilState(isLogInModalShowingAtom);
+
+  const handleLogin = () => {
+    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
+    window.location.href = kakaoURL;
+  };
 
   return (
     <>
@@ -107,10 +114,10 @@ export default function LoginModal() {
               setIsLogInModalShowing(false);
             }}
           >
-            <object
-              data={isDarkMode ? '/images/close_popup_D.svg' : '/images/close_popup_L.svg'}
-              aria-label="close"
-            />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M5.33301 17.5556L17.5552 5.33339L18.6663 6.4445L6.44411 18.6667L5.33301 17.5556Z" fill="#888888" />
+              <path d="M18.6663 17.5556L6.44417 5.33337L5.33306 6.44448L17.5552 18.6667L18.6663 17.5556Z" fill="#888888" />
+            </svg>
           </CloseButton>
           <ModalContent>
             <h2>
@@ -118,7 +125,7 @@ export default function LoginModal() {
               <br />
               사용해보세요!
             </h2>
-            <button type="button">
+            <button type="button" onClick={handleLogin}>
               <KakaoLogo />
               카카오톡 로그인하기
             </button>
