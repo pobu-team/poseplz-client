@@ -46,7 +46,7 @@ export default function PoseSlider({ title, poseArr }: {
                 onClick={() => handleClick(poseId)}
               >
                 <img
-                  src={`https://server.poseplz.com${imageSrc}`}
+                  src={`${process.env.REACT_APP_API_BASE_URL}${imageSrc}`}
                   alt={imageSrc}
                   onLoad={() => setIsLoading(false)}
                 />

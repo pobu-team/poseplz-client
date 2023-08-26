@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 const PoseContainer = styled.div`
-  padding: ${(props) => props.theme.sizes.contentPadding};  
+  padding: ${(props) => props.theme.sizes.contentPadding};
 `;
 
 export default function CategoryPose({ category }: {category:CATEGORY}) {

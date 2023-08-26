@@ -10,6 +10,7 @@ import { AllPoseSelector, PoseSelector } from '../../recoil/poseState';
 import Heading from './Heading';
 import Banner from './Banner';
 import Category from './Category';
+import { COMIC_TAG, ONE_PERSON_TAG } from '../../constant/tagId';
 
 const Container = styled.div`
   padding: ${(props) => props.theme.sizes.contentPadding};
@@ -29,9 +30,9 @@ const RoundDiv = styled.div`
 export default function Main() {
   const allData = useRecoilValue(AllPoseSelector);
   const recommendPoses = makeRandomImageSrc(allData, 6);
-  const onePersonData = useRecoilValue(PoseSelector(['31817144344412582']));
+  const onePersonData = useRecoilValue(PoseSelector([ONE_PERSON_TAG]));
   const onePersonPoses = makeRandomImageSrc(onePersonData, 6);
-  const funnyData = useRecoilValue(PoseSelector(['32448601534804195']));
+  const funnyData = useRecoilValue(PoseSelector([COMIC_TAG]));
   const funnyPoses = makeRandomImageSrc(funnyData, 6);
 
   return (

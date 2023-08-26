@@ -6,7 +6,7 @@ import { RecoilRoot } from 'recoil';
 import App from './App';
 import Loading from './components/common/Loading';
 
-window.Kakao.init('3965165a81fbe4e5f8fb97def9c3a055');
+window.Kakao.init(process.env.REACT_APP_KAKAO_JS_KEY ?? '');
 
 function main() {
   const container = document.getElementById('root');
