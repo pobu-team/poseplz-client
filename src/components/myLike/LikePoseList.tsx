@@ -1,6 +1,7 @@
 import { useRecoilValue } from 'recoil';
 import { useReadLocalStorage } from 'usehooks-ts';
 import styled from 'styled-components';
+import { useState } from 'react';
 import { fetchLikesSelector } from '../../recoil/likeState';
 import { AllPoseSelector, PoseSelector } from '../../recoil/poseState';
 import EmptyPose from '../common/EmptyPose';
@@ -14,7 +15,8 @@ const Container = styled.div`
 
 export default function LikePoseList({ selectedTagId }: {selectedTagId: string}) {
   const storedAccessToken = useReadLocalStorage('accessToken') as string;
-  const likePoseIdArr = useRecoilValue(fetchLikesSelector(storedAccessToken));
+  const initialLikes = useRecoilValue(fetchLikesSelector(storedAccessToken));
+  const [likePoseIdArr, setLikePoseIdArr] = useState(initialLikes);
   const poses = selectedTagId === ALL_PEOPLE_TAG
     ? useRecoilValue(AllPoseSelector)
     : useRecoilValue(PoseSelector([selectedTagId]));
@@ -25,7 +27,11 @@ export default function LikePoseList({ selectedTagId }: {selectedTagId: string})
   if (filteredPoses.length > 0) {
     return (
       <Container>
-        <PoseList poses={filteredPoses} />
+        <PoseList
+          poses={filteredPoses}
+          likePoseIdArr={likePoseIdArr}
+          setLikePoseIdArr={setLikePoseIdArr}
+        />
       </Container>
     );
   }

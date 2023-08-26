@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom';
 import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { useReadLocalStorage } from 'usehooks-ts';
 import { isLogInModalShowingAtom } from '../recoil/loginState';
 
 const Backdrop = styled.div`
