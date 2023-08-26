@@ -25,6 +25,7 @@ const defaultTheme = {
     message: '#1F1E1F',
     subMessage: '#8A8A8A',
     modalBackground: '#FFFFFF',
+    modalCloseButtonBackground: '#EAEAF2',
   },
 
   sizes: {

@@ -27,6 +27,7 @@ const darkTheme: Theme = {
     message: '#FFFFFF',
     subMessage: '#9B9B9B',
     modalBackground: '#0F0F10',
+    modalCloseButtonBackground: '#1F1E1F',
   },
 
   sizes: {
