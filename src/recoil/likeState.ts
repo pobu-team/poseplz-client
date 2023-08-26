@@ -1,4 +1,4 @@
-import { atom, selectorFamily } from 'recoil';
+import { selectorFamily } from 'recoil';
 import likeApiService from '../service/LikeApiService';
 import { LikedPose } from '../types/LikePose';
 
@@ -13,25 +13,15 @@ export const addLikeSelector = selectorFamily({
   },
 });
 
-// fetchLikesSelector를 refetch 하기 위한 state
-export const likesReqIdState = atom({
-  key: 'likesReqIdStateAtom',
-  default: 1,
-});
-
 // 좋아요한 포즈 리스트를 불러오기
 export const fetchLikesSelector = selectorFamily<string[], string>({
   key: 'FetchLikesSelector',
-  get: (token: string) => async ({ get }) => {
+  get: (token: string) => async () => {
     if (!token || token.length <= 0) {
       return [];
     }
     const { data } = await likeApiService.fetchLikes(token);
-    get(likesReqIdState);
     return data.map((item:LikedPose) => item.poseId);
-  },
-  set: () => ({ set }) => {
-    set(likesReqIdState, (id) => id + 1);
   },
 });
 

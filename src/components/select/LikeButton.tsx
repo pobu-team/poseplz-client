@@ -27,10 +27,12 @@ export default function LikeButton({ likePoseIdArr, poseId, setLikePoseIdArr }: 
 
     if (active) {
       await likeApiService.deleteLike(poseId, storedAccessToken);
+      const newLikePoseIdArr = likePoseIdArr.filter((id) => id !== poseId);
+      setLikePoseIdArr(newLikePoseIdArr);
     } else {
       await likeApiService.addLike(poseId, storedAccessToken);
+      setLikePoseIdArr([...likePoseIdArr, poseId]);
     }
-    setLikePoseIdArr(likePoseIdArr);
   };
 
   return (

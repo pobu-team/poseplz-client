@@ -8,7 +8,7 @@ const CategoryContainer = styled.div`
   justify-content: space-between;
 `;
 
-const CategoryLink = styled(Link)`
+const CategoryLink = styled.a`
   display: flex;
   justify-content: center;
   width: 110px;
@@ -40,7 +40,7 @@ export default function Category() {
   return (
     <CategoryContainer>
       <CategoryLink
-        to="/category/people"
+        href="/category/people"
         onClick={() => { addGaEvent('Category People'); }}
       >
         <button type="button">
@@ -49,7 +49,7 @@ export default function Category() {
         </button>
       </CategoryLink>
       <CategoryLink
-        to="/category/theme"
+        href="/category/theme"
         onClick={() => { addGaEvent('Category Theme'); }}
       >
         <button type="button">
@@ -58,7 +58,7 @@ export default function Category() {
         </button>
       </CategoryLink>
       <CategoryLink
-        to="/category/popular"
+        href="/category/popular"
         onClick={() => { addGaEvent('Category Popular'); }}
       >
         <button type="button">
