@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styled from 'styled-components';
 
 import { useParams } from 'react-router';
 
 import { useRecoilValue } from 'recoil';
+import { useReadLocalStorage } from 'usehooks-ts';
 import { PoseSelector } from '../../recoil/poseState';
 
 import PoseList from '../common/PoseList';
@@ -16,6 +17,7 @@ import useFetchTagGroup from '../../hooks/useFetchTagGroup';
 import TopButton from '../../ui/TopButton';
 import LoginModal from '../../ui/LoginModal';
 import { isLogInModalShowingAtom } from '../../recoil/loginState';
+import { fetchLikesSelector } from '../../recoil/likeState';
 
 const Container = styled.div`
   display: flex;
@@ -63,7 +65,10 @@ export default function SelectPose() {
     tagArr = [`${id}인`, allTagData.name];
   }
 
+  const storedAccessToken = useReadLocalStorage('accessToken') as string;
   const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
+  const initialLikes = useRecoilValue(fetchLikesSelector(storedAccessToken));
+  const [likePoseIdArr, setLikePoseIdArr] = useState(initialLikes);
 
   return (
     <Container>
@@ -77,7 +82,11 @@ export default function SelectPose() {
       </div>
       {poseArr.length ? (
         <React.Suspense fallback={<Loading />}>
-          <PoseList poses={poseArr} />
+          <PoseList
+            poses={poseArr}
+            likePoseIdArr={likePoseIdArr}
+            setLikePoseIdArr={setLikePoseIdArr}
+          />
         </React.Suspense>
 
       ) : (
