@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
-
+import React from 'react';
 import styled from 'styled-components';
-
 import { useParams } from 'react-router';
-
 import { useRecoilValue } from 'recoil';
-import { useReadLocalStorage } from 'usehooks-ts';
 import { PoseSelector } from '../../recoil/poseState';
-
 import PoseList from '../common/PoseList';
 import EmptyPose from '../common/EmptyPose';
 import Loading from '../common/Loading';
-
 import useRecommendPose from '../../hooks/useRecommendPose';
 import useFetchTagGroup from '../../hooks/useFetchTagGroup';
 import TopButton from '../../ui/TopButton';
 import LoginModal from '../../ui/LoginModal';
 import { isLogInModalShowingAtom } from '../../recoil/loginState';
-import { fetchLikesSelector } from '../../recoil/likeState';
+import useFetchLikeList from '../../hooks/useFetchLikeList';
 
 const Container = styled.div`
   display: flex;
@@ -65,10 +59,8 @@ export default function SelectPose() {
     tagArr = [`${id}인`, allTagData.name];
   }
 
-  const storedAccessToken = useReadLocalStorage('accessToken') as string;
   const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
-  const initialLikes = useRecoilValue(fetchLikesSelector(storedAccessToken));
-  const [likePoseIdArr, setLikePoseIdArr] = useState(initialLikes);
+  const { likePoseIdArr, setLikePoseIdArr } = useFetchLikeList();
 
   return (
     <Container>
