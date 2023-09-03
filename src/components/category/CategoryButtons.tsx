@@ -8,7 +8,8 @@ import addGaEvent from '../../utils/addGaEvent';
 const ButtonContainer = styled.div`
   overflow: scroll;
   position: fixed;
-  top: 5.76rem;
+  width: 100%;
+  top: 5.5rem;
   z-index: 99;
   white-space: nowrap;
   scroll-snap-type: none;
