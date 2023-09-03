@@ -15,7 +15,8 @@ const Container = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
   z-index: 99;
   background-color: ${(props) => props.theme.colors.containerBackground};
