@@ -10,7 +10,7 @@ import { PoseInfo } from '../../types/PoseType';
 import { Tag } from '../../types/Tag';
 
 import sortTag from '../../utils/sortTag';
-import shareKaKao from '../../utils/share';
+import shareLink from '../../utils/share';
 
 import TagButton from '../../ui/TagButton';
 import addGaEvent from '../../utils/addGaEvent';
@@ -62,8 +62,8 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
           </button>
           <button
             type="button"
-            onClick={() => {
-              shareKaKao(poseInfo.imageUrl, poseInfo.poseId);
+            onClick={async () => {
+              await shareLink(poseInfo.imageUrl, poseInfo.poseId);
               addGaEvent('Share Pose');
             }}
           >
