@@ -15,6 +15,7 @@ const Container = styled.div`
 const HeaderContainer = styled.div`
   position: fixed;
   width: 100%;
+  max-width: 430px;
   top: 0;
   z-index: 99;
   background-color: ${(props) => props.theme.colors.myPageHeader};
