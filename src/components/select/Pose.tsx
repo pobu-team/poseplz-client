@@ -76,6 +76,7 @@ export default function Pose({ poseId, likePoseIdArr, setLikePoseIdArr }: PosePr
         likePoseIdArr={likePoseIdArr}
         poseId={poseId}
         setLikePoseIdArr={setLikePoseIdArr}
+        type="DEFAULT"
       />
     </Container>
   );

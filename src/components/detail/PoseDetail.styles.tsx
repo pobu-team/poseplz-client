@@ -4,10 +4,11 @@ export const PoseContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   height: 100%;
   background-color: ${(props) => props.theme.colors.detailBackground};
 
-  div:first-child {
+  div {
     display: flex;
     border-radius: 16px;
     align-items: center;
@@ -26,6 +27,12 @@ export const PoseContainer = styled.div`
       object-fit: scale-down;
       border-radius: 16px;
     }
+  }
+
+  button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
   }
 `;
 
