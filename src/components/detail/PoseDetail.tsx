@@ -29,7 +29,7 @@ const Container = styled.div`
 `;
 
 function PoseImage({ poseInfo } : {poseInfo: PoseInfo}) {
-  const { likePoseIdArr, setLikePoseIdArr } = useFetchLikeList();
+  const likePoseIdArr = useFetchLikeList();
 
   return (
     <PoseContainer>
@@ -39,7 +39,6 @@ function PoseImage({ poseInfo } : {poseInfo: PoseInfo}) {
       <LikeButton
         likePoseIdArr={likePoseIdArr}
         poseId={poseInfo.poseId}
-        setLikePoseIdArr={setLikePoseIdArr}
         type="DETAIL"
       />
     </PoseContainer>

@@ -12,7 +12,6 @@ import { fetchLikesSelector } from '../../recoil/likeState';
 type LikeButtonProps = {
   likePoseIdArr: string[];
   poseId: string;
-  setLikePoseIdArr: (value: string[]) => void;
   type: LikeButtonType;
 }
 
@@ -24,7 +23,7 @@ const Button = styled.button`
 `;
 
 export default function LikeButton({
-  likePoseIdArr, poseId, setLikePoseIdArr, type,
+  likePoseIdArr, poseId, type,
 }: LikeButtonProps) {
   const setIsLogInModalShowing = useSetRecoilState(isLogInModalShowingAtom);
   const storedAccessToken = useReadLocalStorage('accessToken') as string;
@@ -44,11 +43,8 @@ export default function LikeButton({
 
     if (active) {
       await likeApiService.deleteLike(poseId, storedAccessToken);
-      const newLikePoseIdArr = likePoseIdArr.filter((id) => id !== poseId);
-      setLikePoseIdArr(newLikePoseIdArr);
     } else {
       await likeApiService.addLike(poseId, storedAccessToken);
-      setLikePoseIdArr([...likePoseIdArr, poseId]);
     }
 
     startTransition(() => {

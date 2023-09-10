@@ -12,7 +12,7 @@ const Container = styled.div`
 `;
 
 export default function LikePoseList({ selectedTagId }: {selectedTagId: string}) {
-  const { likePoseIdArr, setLikePoseIdArr } = useFetchLikeList();
+  const likePoseIdArr = useFetchLikeList();
 
   const poses = selectedTagId === ALL_PEOPLE_TAG
     ? useRecoilValue(AllPoseSelector)
@@ -27,7 +27,6 @@ export default function LikePoseList({ selectedTagId }: {selectedTagId: string})
         <PoseList
           poses={filteredPoses}
           likePoseIdArr={likePoseIdArr}
-          setLikePoseIdArr={setLikePoseIdArr}
         />
       </Container>
     );

@@ -60,7 +60,7 @@ export default function SelectPose() {
   }
 
   const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
-  const { likePoseIdArr, setLikePoseIdArr } = useFetchLikeList();
+  const likePoseIdArr = useFetchLikeList();
 
   return (
     <Container>
@@ -77,7 +77,6 @@ export default function SelectPose() {
           <PoseList
             poses={poseArr}
             likePoseIdArr={likePoseIdArr}
-            setLikePoseIdArr={setLikePoseIdArr}
           />
         </React.Suspense>
 

@@ -15,14 +15,13 @@ const Container = styled.div`
 
 export default function CategoryPoseList({ category, selectedTagId }: CategoryPoseListProps) {
   const poses = useFetchCategoryPoses(category, selectedTagId);
-  const { likePoseIdArr, setLikePoseIdArr } = useFetchLikeList();
+  const likePoseIdArr = useFetchLikeList();
 
   return (
     <Container>
       <PoseList
         poses={poses}
         likePoseIdArr={likePoseIdArr}
-        setLikePoseIdArr={setLikePoseIdArr}
       />
     </Container>
   );
