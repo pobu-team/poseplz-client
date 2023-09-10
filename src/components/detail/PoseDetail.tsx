@@ -28,10 +28,27 @@ const Container = styled.div`
   }
 `;
 
+function PoseImage({ poseInfo } : {poseInfo: PoseInfo}) {
+  const { likePoseIdArr, setLikePoseIdArr } = useFetchLikeList();
+
+  return (
+    <PoseContainer>
+      <div>
+        <img src={`${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`} alt={poseInfo.imageUrl} />
+      </div>
+      <LikeButton
+        likePoseIdArr={likePoseIdArr}
+        poseId={poseInfo.poseId}
+        setLikePoseIdArr={setLikePoseIdArr}
+        type="DETAIL"
+      />
+    </PoseContainer>
+  );
+}
+
 export default function PoseDetail({ poseId }: PoseDetailProps) {
   const navigate = useNavigate();
   const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
-  const { likePoseIdArr, setLikePoseIdArr } = useFetchLikeList();
   const tagArr = poseInfo.tags.map((tag: Tag) => tag.selectorName);
   sortTag(tagArr);
 
@@ -45,17 +62,7 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
           />
         ))}
       </TagButtonContainer>
-      <PoseContainer>
-        <div>
-          <img src={`${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`} alt={poseInfo.imageUrl} />
-        </div>
-        <LikeButton
-          likePoseIdArr={likePoseIdArr}
-          poseId={poseInfo.poseId}
-          setLikePoseIdArr={setLikePoseIdArr}
-          type="DETAIL"
-        />
-      </PoseContainer>
+      <PoseImage poseInfo={poseInfo} />
       <ButtonContainer>
         <button
           type="button"

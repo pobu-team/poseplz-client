@@ -1,7 +1,7 @@
 // eslint-disable-next-line camelcase
 import { useRecoilRefresher_UNSTABLE, useSetRecoilState } from 'recoil';
 import { useReadLocalStorage } from 'usehooks-ts';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import styled from 'styled-components';
 import { isLogInModalShowingAtom } from '../../recoil/loginState';
 import likeApiService from '../../service/LikeApiService';
@@ -30,6 +30,7 @@ export default function LikeButton({
   const storedAccessToken = useReadLocalStorage('accessToken') as string;
   const [active, setActive] = useState(likePoseIdArr.includes(poseId));
   const refresh = useRecoilRefresher_UNSTABLE(fetchLikesSelector(storedAccessToken));
+  const [, startTransition] = useTransition();
 
   useEffect(() => {
     setActive(likePoseIdArr.includes(poseId));
@@ -50,7 +51,9 @@ export default function LikeButton({
       setLikePoseIdArr([...likePoseIdArr, poseId]);
     }
 
-    refresh();
+    startTransition(() => {
+      refresh();
+    });
   };
 
   return (
