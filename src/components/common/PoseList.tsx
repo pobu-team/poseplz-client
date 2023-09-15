@@ -17,10 +17,9 @@ const PoseContainer = styled.div`
   padding: .3rem;
 `;
 
-function HalfPoseContainer({ direction, likePoseIdArr, setLikePoseIdArr }: {
+function HalfPoseContainer({ direction, likePoseIdArr }: {
   direction: PoseType[];
   likePoseIdArr: string[];
-  setLikePoseIdArr: (value: string[]) => void;
 }) {
   return (
     <>
@@ -29,16 +28,14 @@ function HalfPoseContainer({ direction, likePoseIdArr, setLikePoseIdArr }: {
           key={pose.poseId}
           poseId={pose.poseId}
           likePoseIdArr={likePoseIdArr}
-          setLikePoseIdArr={setLikePoseIdArr}
         />
       ))}
     </>
   );
 }
-export default function PoseList({ poses, likePoseIdArr, setLikePoseIdArr }: {
+export default function PoseList({ poses, likePoseIdArr }: {
   poses:PoseType[],
   likePoseIdArr: string[];
-  setLikePoseIdArr: (value: string[]) => void;
 }) {
   const leftPoses = poses.filter((v, index) => index % 2 === 0).reverse();
   const rightPoses = poses.filter((v, index) => index % 2 !== 0).reverse();
@@ -49,14 +46,12 @@ export default function PoseList({ poses, likePoseIdArr, setLikePoseIdArr }: {
         <HalfPoseContainer
           direction={leftPoses}
           likePoseIdArr={likePoseIdArr}
-          setLikePoseIdArr={setLikePoseIdArr}
         />
       </PoseContainer>
       <PoseContainer>
         <HalfPoseContainer
           direction={rightPoses}
           likePoseIdArr={likePoseIdArr}
-          setLikePoseIdArr={setLikePoseIdArr}
         />
       </PoseContainer>
     </Container>

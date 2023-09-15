@@ -9,7 +9,6 @@ import LikeButton from './LikeButton';
 type PoseProps = {
   poseId: string;
   likePoseIdArr: string[];
-  setLikePoseIdArr: (value: string[]) => void;
 };
 
 const Container = styled.div<{active: boolean}>`
@@ -54,7 +53,7 @@ const Container = styled.div<{active: boolean}>`
   }
 `;
 
-export default function Pose({ poseId, likePoseIdArr, setLikePoseIdArr }: PoseProps) {
+export default function Pose({ poseId, likePoseIdArr }: PoseProps) {
   const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
   const [isLoading, setIsLoading] = useState(true);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -75,7 +74,7 @@ export default function Pose({ poseId, likePoseIdArr, setLikePoseIdArr }: PosePr
       <LikeButton
         likePoseIdArr={likePoseIdArr}
         poseId={poseId}
-        setLikePoseIdArr={setLikePoseIdArr}
+        type="DEFAULT"
       />
     </Container>
   );
