@@ -1,0 +1,5 @@
+{
+  "/api/v1/files": {
+    "target": "https://dev.server.poseplz.com/api/v1/files/"
+  }
+}
