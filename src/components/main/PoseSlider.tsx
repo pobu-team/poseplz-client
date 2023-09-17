@@ -2,7 +2,9 @@ import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
-import { Container, Content, Header } from './PoseSlider.styles';
+import {
+  Container, Content, Header, PoseButton,
+} from './PoseSlider.styles';
 import { PoseWithIdSelector } from '../../recoil/poseState';
 import { PoseInfo } from '../../types/PoseType';
 import useDragScroll from '../../hooks/useDragScroll';
@@ -19,7 +21,6 @@ export default function PoseSlider({ title, poseArr }: {
 }) {
   const navigate = useNavigate();
   const ref = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState(true);
   const isClick = useDragScroll(ref);
 
   const handleClick = (poseId: string) => {
@@ -35,13 +36,17 @@ export default function PoseSlider({ title, poseArr }: {
         <h1>{title}</h1>
       </Header>
       <Container>
-        <Content ref={ref} active={!isLoading}>
+        <Content ref={ref}>
           {poseArr.map((poseId: string) => {
             const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
             const imageSrc = poseInfo.imageUrl;
+            const [isLoading, setIsLoading] = useState(true);
             return (
-              <button
+              <PoseButton
                 key={poseId}
+                active={!isLoading}
+                width={poseInfo.file.width}
+                height={poseInfo.file.height}
                 type="button"
                 onClick={() => handleClick(poseId)}
               >
@@ -50,7 +55,7 @@ export default function PoseSlider({ title, poseArr }: {
                   alt={imageSrc}
                   onLoad={() => setIsLoading(false)}
                 />
-              </button>
+              </PoseButton>
             );
           })}
         </Content>

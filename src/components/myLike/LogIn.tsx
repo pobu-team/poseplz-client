@@ -4,10 +4,11 @@ import { useReadLocalStorage } from 'usehooks-ts';
 const Container = styled.div`
   display: flex;
   width: 100%;
+  height: 100%;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-top: 8rem;
+  padding-top: 10rem;
 
   img {
     width: 107px;

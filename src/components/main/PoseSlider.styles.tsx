@@ -30,7 +30,7 @@ export const Header = styled.div`
     }
 `;
 
-export const Content = styled.div<{active: boolean}>`
+export const Content = styled.div`
   height: 100%;
   width: auto;
   align-items: center;
@@ -44,8 +44,9 @@ export const Content = styled.div<{active: boolean}>`
   ::-webkit-scrollbar {
     display: none;
   }
-  
-  button {
+`;
+
+export const PoseButton = styled.button<{active: boolean, height: number, width: number}>`
     height: 100%;
     cursor: pointer;
     border: none;
@@ -53,20 +54,18 @@ export const Content = styled.div<{active: boolean}>`
     padding: 0;
 
     img {
-      width: 9.7rem;
       height: 100%;
+      aspect-ratio: ${(props) => `${props.width}/${props.height}`};
       margin-right: 2px;
       border-radius: 8px;
       background: rgba(0, 0, 0, 0.1);
-    }
       
     ${(props) => props.active && css`
-      img {
         height: 100%;
-        border-radius: 8px;
         width: auto;
+        aspect-ratio: initial;
+        border-radius: 8px;
         margin-right: 2px;
-      }
     `}
-  }
+    }
 `;
