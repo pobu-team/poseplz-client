@@ -1,20 +1,17 @@
-import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-
-import { useNavigate } from 'react-router';
-import { ButtonContainer, PoseContainer, TagButtonContainer } from './PoseDetail.styles';
+import { useRecoilValue } from 'recoil';
+import { ButtonContainer, TagButtonContainer } from './PoseDetail.styles';
 import { PoseWithIdSelector } from '../../recoil/poseState';
-
 import { PoseInfo } from '../../types/PoseType';
 import { Tag } from '../../types/Tag';
-
 import sortTag from '../../utils/sortTag';
 import shareLink from '../../utils/share';
-
 import TagButton from '../../ui/TagButton';
 import addGaEvent from '../../utils/addGaEvent';
-import LikeButton from '../select/LikeButton';
-import useFetchLikeList from '../../hooks/useFetchLikeList';
+import DownloadIcon from '../svg/DownloadIcon';
+import ShareIcon from '../svg/ShareIcon';
+import PoseImage from './PoseImage';
+import imageDownload from '../../utils/downloadImage';
 
 type PoseDetailProps = {
   poseId: (string | undefined);
@@ -28,28 +25,16 @@ const Container = styled.div`
   }
 `;
 
-function PoseImage({ poseInfo } : {poseInfo: PoseInfo}) {
-  const likePoseIdArr = useFetchLikeList();
-
-  return (
-    <PoseContainer>
-      <div>
-        <img src={`${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`} alt={poseInfo.imageUrl} />
-      </div>
-      <LikeButton
-        likePoseIdArr={likePoseIdArr}
-        poseId={poseInfo.poseId}
-        type="DETAIL"
-      />
-    </PoseContainer>
-  );
-}
-
 export default function PoseDetail({ poseId }: PoseDetailProps) {
-  const navigate = useNavigate();
   const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
   const tagArr = poseInfo.tags.map((tag: Tag) => tag.selectorName);
+
   sortTag(tagArr);
+
+  const imageUrl = `${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`;
+  const handleClickDownloadButton = () => {
+    imageDownload({ imageUrl, poseId: poseInfo.poseId });
+  };
 
   return (
     <Container>
@@ -65,12 +50,10 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
       <ButtonContainer>
         <button
           type="button"
-          onClick={() => {
-            navigate('/people');
-            addGaEvent('More Recommend');
-          }}
+          onClick={handleClickDownloadButton}
         >
-          포즈 더 추천받기
+          <DownloadIcon />
+          포즈 다운로드
         </button>
         <button
           type="button"
@@ -79,6 +62,7 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
             addGaEvent('Share Pose');
           }}
         >
+          <ShareIcon />
           포즈 공유하기
         </button>
       </ButtonContainer>

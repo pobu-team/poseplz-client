@@ -29,7 +29,6 @@ const shareLink = async (src: string, poseId: string) => {
   try {
     await navigator.share({
       title: '포즈를 부탁해',
-      text: '이 포즈로 인생네컷 같이 찍어요!',
       url: '',
       files: [],
     }).then(() => {

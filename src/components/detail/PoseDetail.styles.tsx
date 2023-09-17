@@ -42,6 +42,9 @@ export const ButtonContainer = styled.div`
   justify-content: space-between;
   
   button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     font-size: 17px;
     font-weight: 600;
@@ -57,6 +60,10 @@ export const ButtonContainer = styled.div`
     @media screen and (max-width: 340px) {
       font-size: 13px;
       height: 50px;
+    }
+    
+    svg {
+      margin-right: 10px;
     }
   }
 
