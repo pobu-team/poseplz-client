@@ -5,7 +5,7 @@ import TitleHeader from '../header/TitleHeader';
 const Container = styled.div`
   background-color: ${(props) => props.theme.colors.detailBackground};
   width: 100%;
-  max-width: 430px;
+  max-width: 375px;
   margin: auto;
   min-height: 100vh;
   max-height: fit-content;

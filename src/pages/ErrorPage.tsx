@@ -4,7 +4,7 @@ import MainHeader from '../components/header/MainHeader';
 
 const Container = styled.div`
   width: 100%;
-  max-width: 430px;
+  max-width: 375px;
   min-height: 100vh;
   margin: auto;
   position: relative;

@@ -7,7 +7,7 @@ import addGaEvent from '../../utils/addGaEvent';
 const Container = styled.div`
   position: fixed;
   bottom: 0;
-  max-width: 430px;
+  max-width: 375px;
   width: 100%;
   display: flex;
   flex-direction: row;
