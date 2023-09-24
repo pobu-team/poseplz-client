@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import HeaderLogo from './HeaderLogo';
-import ThemeSwitch from './ThemeSwitch';
+import InstagramLogo from './InstagramLogo';
 
 const Container = styled.header<{scroll: boolean}>`
   display: flex;
@@ -11,7 +11,7 @@ const Container = styled.header<{scroll: boolean}>`
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding-block: 1rem;
+  padding-block: 1.3rem;
   background-color: ${(props) => props.theme.colors.background};
   padding-inline: ${(props) => props.theme.sizes.contentPadding};
 
@@ -37,8 +37,8 @@ export default function MainHeader() {
 
   return (
     <Container scroll={scrollPosition < 30}>
-      <ThemeSwitch />
       <HeaderLogo />
+      <InstagramLogo />
     </Container>
   );
 }
