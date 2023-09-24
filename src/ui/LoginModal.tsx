@@ -72,6 +72,7 @@ const ModalContent = styled.div`
     font-weight: 600;
     font-size: 1.7rem;
     line-height: 2.4rem;
+    color: ${(props) => props.theme.colors.black};
     cursor: pointer;
 
     object {
