@@ -4,7 +4,7 @@ import LogoHeader from '../header/LogoHeader';
 
 const Container = styled.div`
   width: 100%;
-  max-width: 430px;
+  max-width: 375px;
   margin: auto;
   min-height: 100vh;
   max-height: fit-content;

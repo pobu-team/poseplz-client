@@ -6,7 +6,7 @@ const Container = styled.main`
   margin: auto;
   display: flex;
   width: 100vw;
-  max-width: 430px;
+  max-width: 375px;
   height: 100vh;
   background-color: ${(props) => props.theme.colors.splashBackground};
 `;
@@ -43,6 +43,8 @@ const StartButton = styled.button`
 `;
 
 export default function HomePage() {
+  // 다크모드 스위치 기능을 살릴때까지 로컬스토리지 다크모드를 임의로 true로 저장
+  localStorage.setItem('darkMode', 'true');
   const navigate = useNavigate();
 
   const handleClickStart = () => {
