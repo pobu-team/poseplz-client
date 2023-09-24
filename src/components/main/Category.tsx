@@ -11,7 +11,7 @@ const CategoryContainer = styled.div`
 const CategoryLink = styled(Link)`
   display: flex;
   justify-content: center;
-  width: 110px;
+  width: 100px;
   height: 100px;
   border-radius: 16px;
   background-color: ${(props) => props.theme.colors.containerBackground};
