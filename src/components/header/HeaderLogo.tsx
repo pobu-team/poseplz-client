@@ -1,12 +1,16 @@
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { useReadLocalStorage } from 'usehooks-ts';
 
-const Container = styled.div`
+const Container = styled.div<{isNotRouteMain: boolean}>`
   display: flex;
   justify-content: center;
+  
+  ${(props) => props.isNotRouteMain && css`
+    flex: 1;
+  `}
 `;
 
 const Logo = styled.button`
@@ -31,13 +35,15 @@ export default function HeaderLogo() {
   const navigate = useNavigate();
 
   const isDarkMode = useReadLocalStorage('darkMode');
+  const location = useLocation();
+  const isNotRouteMain = location.pathname !== '/main';
 
   const handleClickLogo = () => {
     navigate('/main');
   };
 
   return (
-    <Container>
+    <Container isNotRouteMain={isNotRouteMain}>
       <Logo onClick={handleClickLogo}>
         <img
           src={isDarkMode ? '/images/logo_D.svg' : '/images/logo.svg'}
