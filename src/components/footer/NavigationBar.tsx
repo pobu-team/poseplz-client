@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useLocation, useNavigate } from 'react-router';
 import Button from './Button';
-import StartButton from './StartButton';
 import addGaEvent from '../../utils/addGaEvent';
 
 const Container = styled.div`
@@ -20,6 +19,7 @@ export default function NavigationBar() {
   const navigate = useNavigate();
   const location = useLocation();
   const homeActive = location.pathname === '/main';
+  const searchActive = location.pathname === '/search';
   const myPageActive = location.pathname === '/mypage';
 
   const handleHomeButton = () => {
@@ -32,6 +32,11 @@ export default function NavigationBar() {
     addGaEvent('GNB My Page');
   };
 
+  const handleClickSearchButton = () => {
+    navigate('/main'); // 검색 기능 만들때까지는 메인화면으로 이동하도록
+    addGaEvent('GNB Search');
+  };
+
   return (
     <Container>
       <Button
@@ -40,7 +45,12 @@ export default function NavigationBar() {
         onClickFunc={handleHomeButton}
         active={homeActive}
       />
-      <StartButton />
+      <Button
+        text="검색"
+        imgSrc="search_default"
+        onClickFunc={handleClickSearchButton}
+        active={searchActive}
+      />
       <Button
         text="찜한포즈"
         imgSrc={myPageActive ? 'mypage_active' : 'mypage_disable'}
