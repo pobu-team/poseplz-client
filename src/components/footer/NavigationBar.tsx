@@ -12,7 +12,7 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: ${(props) => props.theme.colors.containerBackground};
+  background-color: ${(props) => props.theme.colors.mainBackground};
 `;
 
 export default function NavigationBar() {

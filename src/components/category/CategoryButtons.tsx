@@ -27,7 +27,7 @@ const ButtonContainer = styled.div`
 `;
 
 const CategoryButton = styled.button<{active: boolean}>`
-  background-color: ${(props) => props.theme.colors.containerBackground};
+  background-color: ${(props) => props.theme.colors.mainBackground};
   border: none;
   border-bottom: ${(props) => (props.active ? `2px solid ${props.theme.colors.text}` : 'none')};
   font-size: 1.6rem;

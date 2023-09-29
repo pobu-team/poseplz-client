@@ -3,16 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 import {
-  Container, Content, Header, PoseButton,
+  Container, Content, PoseButton,
 } from './PoseSlider.styles';
 import { PoseWithIdSelector } from '../../recoil/poseState';
 import { PoseInfo } from '../../types/PoseType';
 import useDragScroll from '../../hooks/useDragScroll';
+import PoseContainerTitle from './PoseContainerTitle';
 
 const OuterContainer = styled.div`
   background-color: ${(props) => props.theme.colors.containerBackground};
   padding: ${(props) => props.theme.sizes.contentPadding};
-  margin-bottom: 12px;
 `;
 
 export default function PoseSlider({ title, poseArr }: {
@@ -32,9 +32,7 @@ export default function PoseSlider({ title, poseArr }: {
 
   return (
     <OuterContainer>
-      <Header>
-        <h1>{title}</h1>
-      </Header>
+      <PoseContainerTitle title={title} />
       <Container>
         <Content ref={ref}>
           {poseArr.map((poseId: string) => {
