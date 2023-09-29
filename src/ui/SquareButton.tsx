@@ -8,6 +8,7 @@ const Button = styled.button<ButtonProps>`
     padding: 3rem 2.5rem 2rem;
     margin-bottom: 16px;
     width: 100%;
+    height: 18rem;
     border-radius: 16px;
     border: none;
     font-size: 1.8rem;

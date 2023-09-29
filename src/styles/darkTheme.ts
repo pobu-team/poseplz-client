@@ -2,7 +2,7 @@ import type Theme from './Theme';
 
 const darkTheme: Theme = {
   colors: {
-    background: '#000',
+    background: '#0F0F10',
     black: '#000',
     text: '#FFF',
     reverseText: '#000',
@@ -23,11 +23,13 @@ const darkTheme: Theme = {
     categoryBackground: '#333335',
     myPageHeader: '#0F0F10',
     containerBackground: '#1F1E1F',
+    lightContNormal: '#1F1F1F',
     splashBackground: '#F2F2F7',
     message: '#FFFFFF',
     subMessage: '#9B9B9B',
     modalBackground: '#0F0F10',
     modalCloseButtonBackground: '#1F1E1F',
+    divideLineBackground: '#333335',
   },
 
   sizes: {

@@ -20,12 +20,14 @@ const defaultTheme = {
     bannerBackground: '#DFDFE9',
     categoryBackground: '#EAEAF2',
     myPageHeader: '#FFFFFF',
+    lightContNormal: '#1F1F1F',
     containerBackground: '#FFFFFF',
     splashBackground: '#F9FFEA',
     message: '#1F1E1F',
     subMessage: '#8A8A8A',
     modalBackground: '#FFFFFF',
     modalCloseButtonBackground: '#EAEAF2',
+    divideLineBackground: '#333335',
   },
 
   sizes: {
@@ -36,7 +38,7 @@ const defaultTheme = {
   },
 
   img: {
-    splash: 'images/bg_splash_light.png',
+    splash: 'images/bg_splash.png',
   },
 };
 

@@ -4,7 +4,7 @@ import { useReadLocalStorage } from 'usehooks-ts';
 
 const ButtonContainer = styled.div<{ active: boolean}>`
   width: 100%;
-  height: 7.5rem;
+  height: 6.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@ const ButtonContainer = styled.div<{ active: boolean}>`
     border: none;
     text-align: center;
     color: ${(props) => (props.active ? props.theme.colors.text : props.theme.colors.navDisabledText)};
-    background-color: ${(props) => props.theme.colors.containerBackground};
+    background-color: ${(props) => props.theme.colors.mainBackground};
     font-size: 11px;
     font-weight: 700;
     cursor: pointer;

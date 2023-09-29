@@ -7,9 +7,9 @@ export const Container = styled.div`
   align-items: flex-start;
 
   h1 {
-    margin: 0 10px;
     font-size: 28px;
     font-weight: 600;
+    line-height: 38px;
     margin-bottom: 20px;
     @media screen and (max-width: 340px){
       font-size: 18px;
@@ -51,8 +51,8 @@ export const SubmitBtnContainer = styled.div`
 
   button:first-child {
     cursor: pointer;
-    color: ${(props) => props.theme.colors.background};
-    background-color: ${(props) => props.theme.colors.randomButton};
+    color: ${(props) => props.theme.colors.text};
+    background-color: ${(props) => props.theme.colors.startButton};
     flex: 2;
     margin-right: 5px;
   }

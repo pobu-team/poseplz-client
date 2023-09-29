@@ -29,7 +29,7 @@ export default function SelectTheme() {
 
   return (
     <Container>
-      <h1>원하시는 테마를 선택해주세요</h1>
+      <h1>원하는 테마를 선택해주세요</h1>
       <ButtonContainer>
         {Object.keys(themeObj).map((theme: string) => (
           <SquareButton

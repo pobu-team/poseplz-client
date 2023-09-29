@@ -32,7 +32,7 @@ const Container = styled.div`
       gap: 4px;
       margin: 6px 4px;
       color: ${(props) => props.theme.colors.text};
-      background-color: ${(props) => props.theme.colors.secondary};
+      background-color: ${(props) => props.theme.colors.lightContNormal};
     }
   }
 `;
