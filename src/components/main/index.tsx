@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 
 import PoseSlider from './PoseSlider';
-import makeRandomImageSrc from '../../utils/random';
 
 import { AllPoseSelector } from '../../recoil/poseState';
 
@@ -16,6 +15,8 @@ import useFetchLikeList from '../../hooks/useFetchLikeList';
 
 import PoseContainerTitle from './PoseContainerTitle';
 import Floating from './Floating';
+import LoginModal from '../../ui/LoginModal';
+import { isLogInModalShowingAtom } from '../../recoil/loginState';
 
 const Container = styled.div`
   padding: ${(props) => props.theme.sizes.contentPadding};
@@ -48,16 +49,17 @@ const DivideLine = styled.div`
 export default function Main() {
   // 모든 데이터를 불러온다.
   const allData = useRecoilValue(AllPoseSelector);
-  // 최신 포즈 20개를 제외하고, 포즈 중 6개의 포즈 아이디를 랜덤으로 받아온다.
-  const randomPoses = allData.slice(20);
-  const ramdomPoseIds = makeRandomImageSrc(randomPoses, 6);
-  // 최신 포즈 20개를 랜덤으로 섞고, 포즈 데이터를 불러온다.
+  // 21-26번째 포즈 아이디를 추출한다.(좋아요를 누를 때 리렌더링 방지 위해 데이터 고정)
+  const randomPoses = allData.slice(20, 26);
+  const ramdomPoseIds = randomPoses.map((item) => item.poseId);
+  // 최신 포즈 20개의 아이디를 추춘하고, 포즈 데이터를 불러온다.
   const recentPoses = allData.slice(0, 20);
-  const recentRandomPoseIds = makeRandomImageSrc(recentPoses, 20);
+  const recentRandomPoseIds = recentPoses.map((item) => item.poseId);
   const recentRandomPoses = useFetchPosesWithId(recentRandomPoseIds);
 
   const likePoseIdArr = useFetchLikeList();
 
+  const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
   return (
     <div style={{ marginBottom: '75px' }}>
       <Container>
@@ -72,6 +74,7 @@ export default function Main() {
         <PoseList poses={recentRandomPoses} likePoseIdArr={likePoseIdArr} />
       </PoseListContainer>
       <Floating />
+      {isLogInModalShowing && <LoginModal />}
     </div>
   );
 }
