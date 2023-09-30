@@ -46,11 +46,16 @@ const DivideLine = styled.div`
 `;
 
 export default function Main() {
+  // 모든 데이터를 불러온다.
   const allData = useRecoilValue(AllPoseSelector);
-  const ramdomPoses = makeRandomImageSrc(allData, 30);
-  const mostWatchPoses = ramdomPoses.slice(0, 6);
-  const todayRecommendPoseIds = ramdomPoses.slice(7);
-  const todayRecommendPoses = useFetchPosesWithId(todayRecommendPoseIds);
+  // 최신 포즈 20개를 제외하고, 포즈 중 6개의 포즈 아이디를 랜덤으로 받아온다.
+  const randomPoses = allData.slice(20);
+  const ramdomPoseIds = makeRandomImageSrc(randomPoses, 6);
+  // 최신 포즈 20개를 랜덤으로 섞고, 포즈 데이터를 불러온다.
+  const recentPoses = allData.slice(0, 20);
+  const recentRandomPoseIds = makeRandomImageSrc(recentPoses, 20);
+  const recentRandomPoses = useFetchPosesWithId(recentRandomPoseIds);
+
   const likePoseIdArr = useFetchLikeList();
 
   return (
@@ -60,11 +65,11 @@ export default function Main() {
         <Category />
       </Container>
       <RoundDiv />
-      <PoseSlider title="가장 많이 본 포즈에요" poseArr={mostWatchPoses} />
+      <PoseSlider title="오늘의 추천 포즈에요" poseArr={ramdomPoseIds} />
       <DivideLine />
       <PoseListContainer>
-        <PoseContainerTitle title="오늘의 추천 포즈에요" />
-        <PoseList poses={todayRecommendPoses} likePoseIdArr={likePoseIdArr} />
+        <PoseContainerTitle title="최근 올라온 포즈에요" />
+        <PoseList poses={recentRandomPoses} likePoseIdArr={likePoseIdArr} />
       </PoseListContainer>
       <Floating />
     </div>
