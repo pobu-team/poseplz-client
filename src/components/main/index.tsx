@@ -43,7 +43,7 @@ const PoseListContainer = styled.div`
 const DivideLine = styled.div`
   width: 100%;
   height: 12px;
-  background: ${(props) => props.theme.colors.divideLineBackground};
+  background: ${(props) => props.theme.colors.backgroundTertiary};
 `;
 
 export default function Main() {

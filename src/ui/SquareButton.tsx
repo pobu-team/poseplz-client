@@ -14,7 +14,7 @@ const Button = styled.button<ButtonProps>`
     font-size: 1.8rem;
     font-weight: 600;
     color: ${(props) => props.theme.colors.text};
-    background: ${(props) => props.theme.colors.buttonBackground};
+    background: ${(props) => props.theme.colors.backgroundSecondary};
     cursor: pointer;
 
     @media screen and (max-width: 340px) {

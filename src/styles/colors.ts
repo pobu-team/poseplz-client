@@ -60,8 +60,8 @@ export const darkThemeColors = {
     DISABLE: '#2A2A2A',
   },
   BACKGROUND: {
-    PRIMARY: '#1E1E1F',
-    SECONDARY: '#0F0F10',
+    PRIMARY: '#0F0F10',
+    SECONDARY: '#1E1E1F',
     TERTIARY: '#333335',
   },
   LINE: {

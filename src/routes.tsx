@@ -17,6 +17,9 @@ import SelectLayout from './components/layout/SelectLayout';
 import SelectResultLayout from './components/layout/SelectResultLayout';
 import ErrorPage from './pages/ErrorPage';
 import KakaoLogIn from './components/myLike/KakaoLogIn';
+import RegisterLayout from './components/layout/RegisterLayout';
+import RegisterPage from './pages/RegisterPage';
+import RegisterInfoPage from './pages/RegisterInfoPage';
 
 const routes = [
   {
@@ -63,6 +66,13 @@ const routes = [
     element: <MyPageLayout />,
     children: [
       { path: '/mypage', element: <MyLikePage /> },
+    ],
+  },
+  {
+    element: <RegisterLayout />,
+    children: [
+      { path: '/register', element: <RegisterPage /> },
+      { path: '/register/info', element: <RegisterInfoPage /> },
     ],
   },
   {

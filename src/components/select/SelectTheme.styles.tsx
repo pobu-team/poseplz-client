@@ -62,7 +62,7 @@ export const SubmitBtnContainer = styled.div`
     flex: 1.5;
     margin-left: 5px;
     color: ${(props) => props.theme.colors.black};
-    background-color: ${(props) => props.theme.colors.border};
+    background-color: ${(props) => props.theme.colors.primary};
   }
 
   button:disabled {

@@ -9,7 +9,7 @@ const Container = styled.div`
   margin: auto;
   min-height: 100vh;
   max-height: fit-content;
-  background-color: ${(props) => props.theme.colors.categoryBackground};
+  background-color: ${(props) => props.theme.colors.backgroundTertiary};
 `;
 
 const HeaderContainer = styled.div`
@@ -18,7 +18,7 @@ const HeaderContainer = styled.div`
   max-width: 375px;
   top: 0;
   z-index: 99;
-  background-color: ${(props) => props.theme.colors.myPageHeader};
+  background-color: ${(props) => props.theme.colors.background};
 `;
 
 export default function MyPageLayout() {
