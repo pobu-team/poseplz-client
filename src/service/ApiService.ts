@@ -38,6 +38,36 @@ export default class ApiService {
     return data;
   }
 
+  async addFile(formData: FormData) {
+    const { data } = await this.instance.post(
+      '/files',
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
+    return data;
+  }
+
+  async addPose(token: string, selectedPeopleNum:number, selectedTagIds: string[], file:string) {
+    const { data } = await this.instance.post(
+      '/poses',
+      {
+        peopleCount: selectedPeopleNum,
+        tagIds: selectedTagIds,
+        fileId: file,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    return data;
+  }
+
   async fetchPoseWithId(poseId?: string) {
     const { data } = await this.instance.get(`/poses/${poseId}`);
     return data;

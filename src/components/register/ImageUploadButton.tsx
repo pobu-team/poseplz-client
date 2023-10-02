@@ -13,7 +13,7 @@ const Button = styled.button`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2.4rem 2.4rem 4rem 2.4rem;
+  margin-bottom: 4rem;
   background-color: ${(props) => props.theme.colors.backgroundSecondary};
   border: 2px dashed ${(props) => props.theme.colors.lineNormal};
   border-radius: 20px;

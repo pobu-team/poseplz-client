@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useSetRecoilState } from 'recoil';
+import { useReadLocalStorage } from 'usehooks-ts';
 import * as S from './Floating.styles';
 import FloatingPlusButton from '../svg/FloatingPlusButton';
 import PoseRecommendIcon from '../svg/PoseRecommendIcon';
 import PoseRegisterIcon from '../svg/PoseRegisterIcon';
+import { isLogInModalShowingAtom } from '../../recoil/loginState';
 
 const FLOATING_CONTENTS = [
   {
@@ -24,8 +27,18 @@ function ToastButton({ text, imageUrl, routes }:{
   routes: string;
 }) {
   const navigate = useNavigate();
+  const setIsLogInModalShowing = useSetRecoilState(isLogInModalShowingAtom);
+  const storedAccessToken = useReadLocalStorage('accessToken') as string;
+
   return (
-    <S.ToastButton onClick={() => navigate(routes)}>
+    <S.ToastButton onClick={() => {
+      if (routes === '/register' && (!storedAccessToken || storedAccessToken.length <= 0)) {
+        setIsLogInModalShowing(true);
+        return;
+      }
+      navigate(routes);
+    }}
+    >
       {imageUrl}
       <S.Text>{text}</S.Text>
     </S.ToastButton>

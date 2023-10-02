@@ -1,10 +1,10 @@
 import { useCallback, useRef } from 'react';
 import styled from 'styled-components';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router';
 import ImageUploadButton from './ImageUploadButton';
 import ImagePreview from './ImagePreview';
-import imgAtom from '../../recoil/registerState';
+import { imgAtom, imgFileAtom } from '../../recoil/registerState';
 import NextButton from './NextButton';
 
 const Container = styled.div`
@@ -12,6 +12,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 2.4rem;
 `;
 
 const DisabledInput = styled.input`
@@ -21,6 +22,7 @@ const DisabledInput = styled.input`
 export default function AddImage() {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [imgFile, setImgFile] = useRecoilState(imgAtom);
+  const setFileData = useSetRecoilState(imgFileAtom);
   const navigator = useNavigate();
 
   const onUploadImage = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,6 +33,7 @@ export default function AddImage() {
       reader.readAsDataURL(file);
       reader.onloadend = () => {
         setImgFile(reader.result as string);
+        setFileData(file);
       };
     }
   }, []);

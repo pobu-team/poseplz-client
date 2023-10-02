@@ -1,8 +1,11 @@
 import { atom } from 'recoil';
 
-const imgAtom = atom({
+export const imgAtom = atom({
   key: 'imgAtom',
   default: '',
 });
 
-export default imgAtom;
+export const imgFileAtom = atom({
+  key: 'imgFileAtom',
+  default: { name: '' },
+});

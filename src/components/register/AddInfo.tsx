@@ -1,10 +1,12 @@
 import styled from 'styled-components';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useState } from 'react';
+import { useReadLocalStorage } from 'usehooks-ts';
 import NextButton from './NextButton';
 import { AtmosphereTagSelector } from '../../recoil/tagState';
 import { Tag } from '../../types/Tag';
-import imgAtom from '../../recoil/registerState';
+import { imgAtom, imgFileAtom } from '../../recoil/registerState';
+import { apiService } from '../../service/ApiService';
 
 const Container = styled.div`
   margin: 2.4rem;
@@ -61,9 +63,11 @@ const TagButton = styled.button<{active: boolean}>`
 
 export default function AddInfo() {
   const tagList:Tag[] = useRecoilValue(AtmosphereTagSelector);
-  const imgFile = useRecoilValue(imgAtom);
+  const setImgFile = useSetRecoilState(imgAtom);
+  const [fileData, setFileData] = useRecoilState(imgFileAtom);
   const [selectedPeopleNum, setSelectedPeopleNum] = useState(0);
-  const [selectedTagIds, setSelectedTagIds] = useState(new Set());
+  const [selectedTagIds, setSelectedTagIds] = useState(new Set<string>());
+  const storedAccessToken = useReadLocalStorage('accessToken') as string;
   const peopleTagList = ['인원을 선택해주세요.', '1', '2', '3', '4', '5', '6인 이상'];
 
   return (
@@ -100,9 +104,23 @@ export default function AddInfo() {
         ))}
       </ButtonList>
       <NextButton
-        active={imgFile.length > 0 && selectedPeopleNum > 0 && selectedTagIds.size > 0}
-        handleOnClick={() => {
-          // TODO
+        active={fileData.name.length > 0 && selectedPeopleNum > 0 && selectedTagIds.size > 0}
+        handleOnClick={async () => {
+          // 로그인정보와 같이 포즈등록 api 호출
+          const formData = new FormData();
+          formData.append('file', fileData as Blob);
+          const { data } = await apiService.addFile(formData);
+          const resp = await apiService.addPose(
+            storedAccessToken,
+            selectedPeopleNum,
+            Array.from(selectedTagIds),
+            data.fileId,
+          );
+          // 상태 초기화하기
+          setImgFile('');
+          setFileData({ name: '' });
+          // 끝나고 디테일로 보내기
+          window.location.href = `${window.location.origin}/pose/detail?poseId=${resp.data.poseId}`;
         }}
       >
         등록하기
