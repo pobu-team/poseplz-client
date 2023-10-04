@@ -3,7 +3,7 @@ import HomeLayout from './components/layout/HomeLayout';
 
 import HomePage from './pages/HomePage';
 import MainPage from './pages/MainPage';
-import MyLikePage from './pages/MyLikePage';
+import MyLikePage from './pages/MyPage';
 import PoseDetailPage from './pages/PoseDetailPage';
 import SelectPeoplePage from './pages/SelectPeoplePage';
 import SelectPosePage from './pages/SelectPosePage';
@@ -16,10 +16,12 @@ import CategoryPage from './pages/CategoryPage';
 import SelectLayout from './components/layout/SelectLayout';
 import SelectResultLayout from './components/layout/SelectResultLayout';
 import ErrorPage from './pages/ErrorPage';
-import KakaoLogIn from './components/myLike/KakaoLogIn';
+import KakaoLogIn from './components/mypage/myLike/KakaoLogIn';
 import RegisterLayout from './components/layout/RegisterLayout';
 import RegisterPage from './pages/RegisterPage';
 import RegisterInfoPage from './pages/RegisterInfoPage';
+import MyLike from './components/mypage/myLike';
+import Upload from './components/mypage/upload';
 
 const routes = [
   {
@@ -66,6 +68,8 @@ const routes = [
     element: <MyPageLayout />,
     children: [
       { path: '/mypage', element: <MyLikePage /> },
+      { path: '/mylike', element: <MyLike /> },
+      { path: '/upload', element: <Upload /> },
     ],
   },
   {

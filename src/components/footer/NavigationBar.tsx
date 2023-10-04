@@ -17,10 +17,11 @@ const Container = styled.div`
 
 export default function NavigationBar() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const homeActive = location.pathname === '/main';
-  const searchActive = location.pathname === '/search';
-  const myPageActive = location.pathname === '/mypage';
+  const { pathname } = useLocation();
+  const MYPAGES = ['/mypage', '/mylike', '/upload'];
+  const homeActive = pathname === '/main';
+  const searchActive = pathname === '/search';
+  const myPageActive = MYPAGES.includes(pathname);
 
   const handleHomeButton = () => {
     navigate('/main');
@@ -52,7 +53,7 @@ export default function NavigationBar() {
         active={searchActive}
       />
       <Button
-        text="찜한포즈"
+        text="마이페이지"
         imgSrc={myPageActive ? 'mypage_active' : 'mypage_disable'}
         onClickFunc={handleMyPageClick}
         active={myPageActive}

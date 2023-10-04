@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import NavigationBar from '../footer/NavigationBar';
 import TitleHeader from '../header/TitleHeader';
@@ -22,10 +22,16 @@ const HeaderContainer = styled.div`
 `;
 
 export default function MyPageLayout() {
+  const { pathname } = useLocation();
+  const Titles: Record<string, string> = {
+    '/mylike': '찜한 포즈',
+    '/upload': '업로드한 포즈',
+  };
+
   return (
     <Container>
       <HeaderContainer>
-        <TitleHeader title="찜한 포즈" />
+        <TitleHeader title={pathname === '/mypage' ? '마이페이지' : Titles[pathname]} />
       </HeaderContainer>
       <main>
         <Outlet />

@@ -113,6 +113,15 @@ export default class ApiService {
     const { data } = await this.instance.get('/poses/count');
     return data;
   }
+
+  async fetchMyPoses(token: string) {
+    const { data } = await this.instance.get('/members/me/poses', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
+  }
 }
 
 export const apiService = new ApiService();
