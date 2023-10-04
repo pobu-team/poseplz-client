@@ -77,6 +77,6 @@ export const ButtonContainer = styled.div`
 export const TagButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin-block: 1.6rem;
+  padding-block: 1.6rem;
   flex-wrap: wrap;
 `;

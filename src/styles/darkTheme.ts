@@ -37,7 +37,7 @@ const darkTheme: Theme = {
   },
 
   img: {
-    splash: 'images/bg_splash_dark.png',
+    splash: 'images/bg_splash.png',
   },
 };
 
