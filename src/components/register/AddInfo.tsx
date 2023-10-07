@@ -3,7 +3,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useState } from 'react';
 import { useReadLocalStorage } from 'usehooks-ts';
 import NextButton from './NextButton';
-import { AtmosphereTagSelector } from '../../recoil/tagState';
+import { AtmosphereTagSelector, PeopleTagSelector } from '../../recoil/tagState';
 import { Tag } from '../../types/Tag';
 import { imgAtom, imgFileAtom } from '../../recoil/registerState';
 import { apiService } from '../../service/ApiService';
@@ -63,6 +63,7 @@ const TagButton = styled.button<{active: boolean}>`
 
 export default function AddInfo() {
   const tagList:Tag[] = useRecoilValue(AtmosphereTagSelector);
+  const peopleTagIds:Tag[] = useRecoilValue(PeopleTagSelector);
   const setImgFile = useSetRecoilState(imgAtom);
   const [fileData, setFileData] = useRecoilState(imgFileAtom);
   const [selectedPeopleNum, setSelectedPeopleNum] = useState(0);
@@ -113,7 +114,8 @@ export default function AddInfo() {
           const resp = await apiService.addPose(
             storedAccessToken,
             selectedPeopleNum,
-            Array.from(selectedTagIds),
+            [...selectedTagIds,
+              peopleTagIds.find((item) => item.description === String(selectedPeopleNum))?.tagId ?? ''],
             data.fileId,
           );
           // 상태 초기화하기
