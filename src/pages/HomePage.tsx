@@ -26,7 +26,7 @@ const BackgroundImage = styled.div`
 
 const StartButton = styled.button`
   display: flex;
-  width: 40vh;
+  width: 100%;
   height: 7.5vh;
   font-size: 2.5vh;
   font-weight: 600;
