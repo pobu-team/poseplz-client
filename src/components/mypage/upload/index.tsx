@@ -12,6 +12,10 @@ const Container = styled.div`
   margin-block: 5.7rem;
 `;
 
+const EmptyPoseContainer = styled.div`
+  margin-top: 5.7rem;
+`;
+
 export default function Upload() {
   const storedAccessToken = useReadLocalStorage('accessToken') as string;
   if (!storedAccessToken) {
@@ -32,5 +36,9 @@ export default function Upload() {
       </Container>
     );
   }
-  return <EmptyPose text="등록한" />;
+  return (
+    <EmptyPoseContainer>
+      <EmptyPose text="등록한" />
+    </EmptyPoseContainer>
+  );
 }
