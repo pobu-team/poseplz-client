@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import TitleHeader from '../header/TitleHeader';
 
 const Container = styled.div`
-  background-color: ${(props) => props.theme.colors.detailBackground};
+  background-color: ${(props) => props.theme.colors.background};
   width: 100%;
   max-width: 375px;
   margin: auto;
