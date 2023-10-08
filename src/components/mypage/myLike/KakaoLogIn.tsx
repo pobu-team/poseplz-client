@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router';
 import { useRecoilValue } from 'recoil';
 import { useEffect } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
-import { kakaoTokenSelector } from '../../recoil/loginState';
+import { kakaoTokenSelector } from '../../../recoil/loginState';
 
 export default function KakaoLogIn() {
   const navigate = useNavigate();

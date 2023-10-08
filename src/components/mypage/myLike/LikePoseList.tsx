@@ -1,10 +1,10 @@
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { AllPoseSelector, PoseSelector } from '../../recoil/poseState';
-import EmptyPose from '../common/EmptyPose';
-import PoseList from '../common/PoseList';
-import { ALL_PEOPLE_TAG } from '../../constant/tagId';
-import useFetchLikeList from '../../hooks/useFetchLikeList';
+import { AllPoseSelector, PoseSelector } from '../../../recoil/poseState';
+import EmptyPose from '../../common/EmptyPose';
+import PoseList from '../../common/PoseList';
+import { ALL_PEOPLE_TAG } from '../../../constant/tagId';
+import useFetchLikeList from '../../../hooks/useFetchLikeList';
 
 const Container = styled.div`
   padding: ${(props) => props.theme.sizes.contentPadding};

@@ -5,7 +5,6 @@ import addGaEvent from '../utils/addGaEvent';
 const Container = styled.main`
   margin: auto;
   display: flex;
-  width: 100vw;
   max-width: 375px;
   height: 100vh;
   background-color: ${(props) => props.theme.colors.splashBackground};
@@ -19,6 +18,7 @@ const BackgroundImage = styled.div`
   justify-content: flex-end;
   padding-inline: ${(props) => props.theme.sizes.contentPadding};
   background-image: url(${(props) => props.theme.img.splash});
+  background-color: ${(props) => props.theme.colors.mainBackground};
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -26,8 +26,7 @@ const BackgroundImage = styled.div`
 
 const StartButton = styled.button`
   display: flex;
-  width: 40vh;
-  max-width: 400px;
+  width: 100%;
   height: 7.5vh;
   font-size: 2.5vh;
   font-weight: 600;
@@ -38,8 +37,8 @@ const StartButton = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  color: ${(props) => (props.theme.colors.text)};
-  background-color: ${(props) => (props.theme.colors.startButton)};
+  color: ${(props) => (props.theme.colors.black)};
+  background-color: ${(props) => (props.theme.colors.primary)};
 `;
 
 export default function HomePage() {

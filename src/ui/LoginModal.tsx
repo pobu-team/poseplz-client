@@ -15,7 +15,7 @@ const Modal = styled.div`
   bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: ${(props) => props.theme.colors.modalBackground};
+  background-color: ${(props) => props.theme.colors.background};
   border-radius: 2.4rem;
   width: 90vw;
   max-width: 375px;
@@ -122,7 +122,7 @@ export default function LoginModal() {
           </CloseButton>
           <ModalContent>
             <h2>
-              로그인하고 스크랩 기능을
+              로그인하고 더 많은 기능을
               <br />
               사용해보세요!
             </h2>

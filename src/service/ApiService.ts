@@ -34,7 +34,37 @@ export default class ApiService {
   }
 
   async fetchAllPose() {
-    const { data } = await this.instance.get('/poses?page=0&size=100');
+    const { data } = await this.instance.get('/poses?page=0&size=300');
+    return data;
+  }
+
+  async addFile(formData: FormData) {
+    const { data } = await this.instance.post(
+      '/files',
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
+    return data;
+  }
+
+  async addPose(token: string, selectedPeopleNum:number, selectedTagIds: string[], file:string) {
+    const { data } = await this.instance.post(
+      '/poses',
+      {
+        peopleCount: selectedPeopleNum,
+        tagIds: selectedTagIds,
+        fileId: file,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
     return data;
   }
 
@@ -81,6 +111,15 @@ export default class ApiService {
 
   async fetchCount() {
     const { data } = await this.instance.get('/poses/count');
+    return data;
+  }
+
+  async fetchMyPoses(token: string) {
+    const { data } = await this.instance.get('/members/me/poses', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return data;
   }
 }

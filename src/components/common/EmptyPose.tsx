@@ -19,7 +19,7 @@ const EmptyContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: ${(props) => props.theme.colors.disabledText};
+    color: ${(props) => props.theme.colors.textAlternative};
     font-size: 20px;
   }
 `;

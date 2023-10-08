@@ -3,18 +3,18 @@ import styled from 'styled-components';
 import TitleHeader from '../header/TitleHeader';
 
 const Container = styled.div`
-  background-color: ${(props) => props.theme.colors.background};
   width: 100%;
   max-width: 375px;
   margin: auto;
   min-height: 100vh;
   max-height: fit-content;
+  background-color: ${(props) => props.theme.colors.mainBackground};
 `;
 
-export default function DetailLayout() {
+export default function RegisterLayout() {
   return (
     <Container>
-      <TitleHeader title="이 포즈로 사진을 찍어보세요!" />
+      <TitleHeader title="포즈 등록하기" />
       <main>
         <Outlet />
       </main>

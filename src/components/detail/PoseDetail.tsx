@@ -12,6 +12,8 @@ import DownloadIcon from '../svg/DownloadIcon';
 import ShareIcon from '../svg/ShareIcon';
 import PoseImage from './PoseImage';
 import imageDownload from '../../utils/downloadImage';
+import LoginModal from '../../ui/LoginModal';
+import { isLogInModalShowingAtom } from '../../recoil/loginState';
 
 type PoseDetailProps = {
   poseId: (string | undefined);
@@ -19,6 +21,7 @@ type PoseDetailProps = {
 
 const Container = styled.div`
   padding-inline: ${(props) => props.theme.sizes.contentPadding};
+  background-color: ${(props) => props.theme.colors.background};
 
   @media screen and (max-width: 340px) {
     padding: 1.2rem;
@@ -27,6 +30,7 @@ const Container = styled.div`
 
 export default function PoseDetail({ poseId }: PoseDetailProps) {
   const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
+  const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
   const tagArr = poseInfo.tags.map((tag: Tag) => tag.selectorName);
 
   sortTag(tagArr);
@@ -66,6 +70,7 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
           포즈 공유하기
         </button>
       </ButtonContainer>
+      {isLogInModalShowing && <LoginModal />}
     </Container>
   );
 }

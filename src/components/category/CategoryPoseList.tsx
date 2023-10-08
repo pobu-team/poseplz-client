@@ -18,7 +18,6 @@ export default function CategoryPoseList({ category, selectedTagId }: CategoryPo
   const poses = useFetchCategoryPoses(category, selectedTagId);
   const likePoseIdArr = useFetchLikeList();
   const location = useLocation();
-  console.log(location);
 
   return (
     <Container isPopular={location.pathname === '/category/popular'}>

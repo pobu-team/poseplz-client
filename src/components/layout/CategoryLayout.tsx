@@ -11,7 +11,7 @@ const Container = styled.div`
   margin: auto;
   position: relative;
   max-height: fit-content;
-  background-color: ${(props) => props.theme.colors.categoryBackground};
+  background-color: ${(props) => props.theme.colors.backgroundTertiary};
 `;
 
 const HeaderContainer = styled.div`

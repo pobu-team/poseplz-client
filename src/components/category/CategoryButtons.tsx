@@ -33,7 +33,7 @@ const CategoryButton = styled.button<{active: boolean}>`
   font-size: 1.6rem;
   padding-block: ${(props) => props.theme.sizes.smallContentPadding};
   padding-inline: 1.6rem;
-  color: ${(props) => (props.active ? props.theme.colors.text : props.theme.colors.disabledText)};
+  color: ${(props) => (props.active ? props.theme.colors.text : props.theme.colors.textAlternative)};
   font-weight: 600;
   line-height: 1.63;
   cursor: pointer;

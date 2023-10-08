@@ -41,7 +41,7 @@ const Main = styled.div`
     line-height: 2.4rem;
     letter-spacing: -1.2%;
     text-align: center;
-    color: ${(props) => props.theme.colors.subMessage}
+    color: ${(props) => props.theme.colors.textAlternative}
   }
 
   button {
