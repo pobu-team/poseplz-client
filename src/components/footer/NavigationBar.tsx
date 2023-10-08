@@ -1,26 +1,27 @@
 import styled from 'styled-components';
 import { useLocation, useNavigate } from 'react-router';
 import Button from './Button';
-import StartButton from './StartButton';
 import addGaEvent from '../../utils/addGaEvent';
 
 const Container = styled.div`
   position: fixed;
   bottom: 0;
-  max-width: 430px;
+  max-width: 375px;
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: ${(props) => props.theme.colors.containerBackground};
+  background-color: ${(props) => props.theme.colors.mainBackground};
 `;
 
 export default function NavigationBar() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const homeActive = location.pathname === '/main';
-  const myPageActive = location.pathname === '/mypage';
+  const { pathname } = useLocation();
+  const MYPAGES = ['/mypage', '/mylike', '/upload'];
+  const homeActive = pathname === '/main';
+  const searchActive = pathname === '/search';
+  const myPageActive = MYPAGES.includes(pathname);
 
   const handleHomeButton = () => {
     navigate('/main');
@@ -28,8 +29,13 @@ export default function NavigationBar() {
   };
 
   const handleMyPageClick = () => {
-    window.location.href = '/mypage';
+    navigate('/mypage');
     addGaEvent('GNB My Page');
+  };
+
+  const handleClickSearchButton = () => {
+    navigate('/main'); // 검색 기능 만들때까지는 메인화면으로 이동하도록
+    addGaEvent('GNB Search');
   };
 
   return (
@@ -40,9 +46,14 @@ export default function NavigationBar() {
         onClickFunc={handleHomeButton}
         active={homeActive}
       />
-      <StartButton />
       <Button
-        text="찜한포즈"
+        text="검색"
+        imgSrc="search_default"
+        onClickFunc={handleClickSearchButton}
+        active={searchActive}
+      />
+      <Button
+        text="마이페이지"
         imgSrc={myPageActive ? 'mypage_active' : 'mypage_disable'}
         onClickFunc={handleMyPageClick}
         active={myPageActive}

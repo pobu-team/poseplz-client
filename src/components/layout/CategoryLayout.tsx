@@ -6,16 +6,18 @@ import TopButton from '../../ui/TopButton';
 
 const Container = styled.div`
   width: 100%;
-  max-width: 430px;
+  max-width: 375px;
   min-height: 100vh;
   margin: auto;
   position: relative;
   max-height: fit-content;
-  background-color: ${(props) => props.theme.colors.categoryBackground};
+  background-color: ${(props) => props.theme.colors.backgroundTertiary};
 `;
 
 const HeaderContainer = styled.div`
-  position: sticky;
+  position: fixed;
+  width: 100%;
+  max-width: 375px;
   top: 0;
   z-index: 99;
   background-color: ${(props) => props.theme.colors.containerBackground};

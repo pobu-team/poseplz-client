@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import addGaEvent from '../../utils/addGaEvent';
 
 const CategoryContainer = styled.div`
@@ -7,10 +8,10 @@ const CategoryContainer = styled.div`
   justify-content: space-between;
 `;
 
-const CategoryLink = styled.a`
+const CategoryLink = styled(Link)`
   display: flex;
   justify-content: center;
-  width: 110px;
+  width: 100px;
   height: 100px;
   border-radius: 16px;
   background-color: ${(props) => props.theme.colors.containerBackground};
@@ -39,7 +40,7 @@ export default function Category() {
   return (
     <CategoryContainer>
       <CategoryLink
-        href="/category/people"
+        to="/category/people"
         onClick={() => { addGaEvent('Category People'); }}
       >
         <button type="button">
@@ -48,7 +49,7 @@ export default function Category() {
         </button>
       </CategoryLink>
       <CategoryLink
-        href="/category/theme"
+        to="/category/theme"
         onClick={() => { addGaEvent('Category Theme'); }}
       >
         <button type="button">
@@ -57,7 +58,7 @@ export default function Category() {
         </button>
       </CategoryLink>
       <CategoryLink
-        href="/category/popular"
+        to="/category/popular"
         onClick={() => { addGaEvent('Category Popular'); }}
       >
         <button type="button">

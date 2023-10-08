@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import LogoHeader from '../header/LogoHeader';
 import NavigationBar from '../footer/NavigationBar';
 import TopButton from '../../ui/TopButton';
+import TitleHeader from '../header/TitleHeader';
 
 const Container = styled.div`
   width: 100%;
-  max-width: 430px;
+  max-width: 375px;
   margin: auto;
   min-height: 100vh;
   max-height: fit-content;
@@ -16,7 +16,7 @@ const Container = styled.div`
 export default function SelectResultLayout() {
   return (
     <Container>
-      <LogoHeader />
+      <TitleHeader title="포즈 추천 결과에요" />
       <main>
         <Outlet />
       </main>

@@ -1,31 +1,31 @@
+import { lightThemeColors } from './colors';
+
 const defaultTheme = {
   colors: {
-    background: '#FFF',
-    black: '#000',
-    text: '#000',
-    reverseText: '#FFF',
+    background: lightThemeColors.BACKGROUND.PRIMARY,
+    backgroundSecondary: lightThemeColors.BACKGROUND.SECONDARY,
+    backgroundTertiary: lightThemeColors.BACKGROUND.TERTIARY,
+    black: lightThemeColors.BLACK,
+    text: lightThemeColors.BLACK,
+    textNormal: lightThemeColors.TEXT.NORMAL,
+    textAlternative: lightThemeColors.TEXT.ALTERNATIVE,
+    reverseText: lightThemeColors.WHITE,
     layoutBackground: '#F1F3F5',
-    primary: '#BBFF65',
+    primary: lightThemeColors.PRIMARY.NORMAL,
     secondary: '#DEFFB4',
-    startButton: '#BBFF65',
-    border: '#BBFF65',
-    buttonBackground: '#F2F2F7',
-    detailButton: '#FFFFFF',
-    randomButton: '#000000',
-    arrowBackground: '#FFFFFF',
-    detailBackground: '#F2F2F7',
-    disabledText: '#8A8A8A',
+    startButton: lightThemeColors.PRIMARY.NORMAL,
+    detailButton: lightThemeColors.BACKGROUND.PRIMARY,
+    arrowBackground: lightThemeColors.BACKGROUND.PRIMARY,
+    detailBackground: lightThemeColors.BACKGROUND.SECONDARY,
     navDisabledText: '#BDBDC8',
-    mainBackground: '#F2F2F7',
+    mainBackground: lightThemeColors.BACKGROUND.SECONDARY,
     bannerBackground: '#DFDFE9',
-    categoryBackground: '#EAEAF2',
-    myPageHeader: '#FFFFFF',
-    containerBackground: '#FFFFFF',
+    lightContNormal: '#1F1F1F',
+    containerBackground: lightThemeColors.BACKGROUND.PRIMARY,
     splashBackground: '#F9FFEA',
     message: '#1F1E1F',
-    subMessage: '#8A8A8A',
-    modalBackground: '#FFFFFF',
-    modalCloseButtonBackground: '#EAEAF2',
+    modalCloseButtonBackground: lightThemeColors.BACKGROUND.TERTIARY,
+    lineNormal: lightThemeColors.LINE.NORMAL,
   },
 
   sizes: {
@@ -36,7 +36,7 @@ const defaultTheme = {
   },
 
   img: {
-    splash: 'images/bg_splash_light.png',
+    splash: 'images/bg_splash.png',
   },
 };
 

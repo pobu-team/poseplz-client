@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
-
+import React from 'react';
 import styled from 'styled-components';
-
 import { useParams } from 'react-router';
-
 import { useRecoilValue } from 'recoil';
-import { useReadLocalStorage } from 'usehooks-ts';
 import { PoseSelector } from '../../recoil/poseState';
-
 import PoseList from '../common/PoseList';
 import EmptyPose from '../common/EmptyPose';
 import Loading from '../common/Loading';
-
 import useRecommendPose from '../../hooks/useRecommendPose';
 import useFetchTagGroup from '../../hooks/useFetchTagGroup';
 import TopButton from '../../ui/TopButton';
 import LoginModal from '../../ui/LoginModal';
 import { isLogInModalShowingAtom } from '../../recoil/loginState';
-import { fetchLikesSelector } from '../../recoil/likeState';
+import useFetchLikeList from '../../hooks/useFetchLikeList';
 
 const Container = styled.div`
   display: flex;
@@ -38,7 +32,7 @@ const Container = styled.div`
       gap: 4px;
       margin: 6px 4px;
       color: ${(props) => props.theme.colors.text};
-      background-color: ${(props) => props.theme.colors.secondary};
+      background-color: ${(props) => props.theme.colors.lightContNormal};
     }
   }
 `;
@@ -65,10 +59,8 @@ export default function SelectPose() {
     tagArr = [`${id}인`, allTagData.name];
   }
 
-  const storedAccessToken = useReadLocalStorage('accessToken') as string;
   const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
-  const initialLikes = useRecoilValue(fetchLikesSelector(storedAccessToken));
-  const [likePoseIdArr, setLikePoseIdArr] = useState(initialLikes);
+  const likePoseIdArr = useFetchLikeList();
 
   return (
     <Container>
@@ -85,7 +77,6 @@ export default function SelectPose() {
           <PoseList
             poses={poseArr}
             likePoseIdArr={likePoseIdArr}
-            setLikePoseIdArr={setLikePoseIdArr}
           />
         </React.Suspense>
 

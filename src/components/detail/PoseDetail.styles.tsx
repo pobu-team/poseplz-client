@@ -4,10 +4,11 @@ export const PoseContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   height: 100%;
   background-color: ${(props) => props.theme.colors.detailBackground};
 
-  div:first-child {
+  div {
     display: flex;
     border-radius: 16px;
     align-items: center;
@@ -27,6 +28,12 @@ export const PoseContainer = styled.div`
       border-radius: 16px;
     }
   }
+
+  button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -35,6 +42,9 @@ export const ButtonContainer = styled.div`
   justify-content: space-between;
   
   button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     font-size: 17px;
     font-weight: 600;
@@ -51,6 +61,10 @@ export const ButtonContainer = styled.div`
       font-size: 13px;
       height: 50px;
     }
+    
+    svg {
+      margin-right: 10px;
+    }
   }
 
   button:last-child {
@@ -63,6 +77,6 @@ export const ButtonContainer = styled.div`
 export const TagButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin-block: 1.6rem;
+  padding-block: 1.6rem;
   flex-wrap: wrap;
 `;

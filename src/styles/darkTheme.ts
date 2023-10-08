@@ -1,33 +1,32 @@
 import type Theme from './Theme';
+import { darkThemeColors } from './colors';
 
 const darkTheme: Theme = {
   colors: {
-    background: '#000',
-    black: '#000',
-    text: '#FFF',
-    reverseText: '#000',
-    layoutBackground: '#000',
-    primary: '#BBFF65',
-    secondary: '#333335',
+    background: darkThemeColors.BACKGROUND.PRIMARY,
+    backgroundSecondary: darkThemeColors.BACKGROUND.SECONDARY,
+    backgroundTertiary: darkThemeColors.BACKGROUND.TERTIARY,
+    black: darkThemeColors.BLACK,
+    text: darkThemeColors.WHITE,
+    textNormal: darkThemeColors.TEXT.NORMAL,
+    textAlternative: darkThemeColors.TEXT.ALTERNATIVE,
+    reverseText: darkThemeColors.BLACK,
+    layoutBackground: darkThemeColors.BLACK,
+    primary: darkThemeColors.PRIMARY.NORMAL,
+    secondary: darkThemeColors.BACKGROUND.TERTIARY,
     startButton: '#1F1E1F',
-    border: '#BBFF65',
-    buttonBackground: '#1E1E1F',
-    detailButton: '#1E1E1F',
-    randomButton: '#FFFFFF',
-    arrowBackground: '#BBFF65',
-    detailBackground: '#000',
-    disabledText: '#9B9B9B',
+    detailButton: darkThemeColors.BACKGROUND.SECONDARY,
+    arrowBackground: darkThemeColors.PRIMARY.NORMAL,
+    detailBackground: darkThemeColors.BLACK,
     navDisabledText: '#707075',
-    mainBackground: '#0F0F10',
-    bannerBackground: '#333335',
-    categoryBackground: '#333335',
-    myPageHeader: '#0F0F10',
+    mainBackground: darkThemeColors.BACKGROUND.PRIMARY,
+    bannerBackground: darkThemeColors.BACKGROUND.TERTIARY,
     containerBackground: '#1F1E1F',
+    lightContNormal: '#1F1F1F',
     splashBackground: '#F2F2F7',
-    message: '#FFFFFF',
-    subMessage: '#9B9B9B',
-    modalBackground: '#0F0F10',
+    message: darkThemeColors.WHITE,
     modalCloseButtonBackground: '#1F1E1F',
+    lineNormal: darkThemeColors.LINE.NORMAL,
   },
 
   sizes: {
@@ -38,7 +37,7 @@ const darkTheme: Theme = {
   },
 
   img: {
-    splash: 'images/bg_splash_dark.png',
+    splash: 'images/bg_splash.png',
   },
 };
 

@@ -25,4 +25,19 @@ const shareKaKao = (src: string, poseId: string) => {
   });
 };
 
-export default shareKaKao;
+const shareLink = async (src: string, poseId: string) => {
+  try {
+    await navigator.share({
+      title: '포즈를 부탁해',
+      url: '',
+      files: [],
+    }).then(() => {
+      console.log('공유 성공');
+    });
+    console.log('공유 성공');
+  } catch (e) {
+    shareKaKao(src, poseId);
+  }
+};
+
+export default shareLink;

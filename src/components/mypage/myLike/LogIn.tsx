@@ -4,10 +4,11 @@ import { useReadLocalStorage } from 'usehooks-ts';
 const Container = styled.div`
   display: flex;
   width: 100%;
+  height: 100%;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-top: 8rem;
+  padding-top: 10rem;
 
   img {
     width: 107px;
@@ -53,9 +54,9 @@ export default function LogIn() {
         alt="require login"
       />
       <p>
-        로그인을 하시면
+        로그인하고 더 많은 기능을
         <br />
-        스크랩 하실 수 있어요!
+        사용해보세요!
       </p>
       <button
         type="button"

@@ -7,8 +7,10 @@ import addGaEvent from '../../utils/addGaEvent';
 
 const ButtonContainer = styled.div`
   overflow: scroll;
-  position: sticky;
-  top: 5.76rem;
+  position: fixed;
+  max-width: 375px;
+  width: 100%;
+  top: 5.5rem;
   z-index: 99;
   white-space: nowrap;
   scroll-snap-type: none;
@@ -25,13 +27,13 @@ const ButtonContainer = styled.div`
 `;
 
 const CategoryButton = styled.button<{active: boolean}>`
-  background-color: ${(props) => props.theme.colors.containerBackground};
+  background-color: ${(props) => props.theme.colors.mainBackground};
   border: none;
   border-bottom: ${(props) => (props.active ? `2px solid ${props.theme.colors.text}` : 'none')};
   font-size: 1.6rem;
   padding-block: ${(props) => props.theme.sizes.smallContentPadding};
   padding-inline: 1.6rem;
-  color: ${(props) => (props.active ? props.theme.colors.text : props.theme.colors.disabledText)};
+  color: ${(props) => (props.active ? props.theme.colors.text : props.theme.colors.textAlternative)};
   font-weight: 600;
   line-height: 1.63;
   cursor: pointer;

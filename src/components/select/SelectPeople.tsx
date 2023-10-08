@@ -29,7 +29,7 @@ export default function SelectPeople() {
 
   return (
     <Container>
-      <h1>몇 명이서 오셨나요?</h1>
+      <h1>몇명이서 오셨나요?</h1>
       <ButtonContainer>
         {personNumArr.map((person) => (
           <SquareButton
