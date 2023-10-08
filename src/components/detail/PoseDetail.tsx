@@ -21,6 +21,7 @@ type PoseDetailProps = {
 
 const Container = styled.div`
   padding-inline: ${(props) => props.theme.sizes.contentPadding};
+  background-color: ${(props) => props.theme.colors.background};
 
   @media screen and (max-width: 340px) {
     padding: 1.2rem;

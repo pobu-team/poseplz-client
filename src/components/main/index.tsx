@@ -52,7 +52,7 @@ export default function Main() {
   // 21-26번째 포즈 아이디를 추출한다.(좋아요를 누를 때 리렌더링 방지 위해 데이터 고정)
   const randomPoses = allData.slice(20, 26);
   const ramdomPoseIds = randomPoses.map((item) => item.poseId);
-  // 최신 포즈 20개의 아이디를 추춘하고, 포즈 데이터를 불러온다.
+  // 최신 포즈 20개의 아이디를 추출하고, 포즈 데이터를 불러온다.
   const recentPoses = allData.slice(0, 20);
   const recentRandomPoseIds = recentPoses.map((item) => item.poseId);
   const recentRandomPoses = useFetchPosesWithId(recentRandomPoseIds);
