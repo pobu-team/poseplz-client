@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useReadLocalStorage } from 'usehooks-ts';
+import LogIn from './myLike/LogIn';
 
 const Container = styled.div`
   margin-top: 5.7rem;
@@ -22,7 +24,7 @@ const CardContainer = styled.div`
   a {
     color: ${(props) => props.theme.colors.text};
     text-decoration: none;
-    width:  100%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -43,6 +45,11 @@ const CardContainer = styled.div`
 `;
 
 export default function MyPage() {
+  const storedAccessToken = useReadLocalStorage('accessToken') as string;
+  if (!storedAccessToken) {
+    return <LogIn />;
+  }
+
   return (
     <Container>
       <CardContainer>

@@ -54,9 +54,9 @@ export default function LogIn() {
         alt="require login"
       />
       <p>
-        로그인을 하시면
+        로그인하고 더 많은 기능을
         <br />
-        스크랩 하실 수 있어요!
+        사용해보세요!
       </p>
       <button
         type="button"

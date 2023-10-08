@@ -19,8 +19,8 @@ const Container = styled.div`
     justify-content: center;
     
     img {
-      width: 10rem;
-      height: 10rem;
+      width: 13rem;
+      height: 13rem;
     }
   }
 `;

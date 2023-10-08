@@ -122,7 +122,7 @@ export default function LoginModal() {
           </CloseButton>
           <ModalContent>
             <h2>
-              로그인하고 스크랩 기능을
+              로그인하고 더 많은 기능을
               <br />
               사용해보세요!
             </h2>

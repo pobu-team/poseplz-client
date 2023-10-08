@@ -5,6 +5,7 @@ import EmptyPose from '../../common/EmptyPose';
 import PoseList from '../../common/PoseList';
 import useFetchLikeList from '../../../hooks/useFetchLikeList';
 import { myPoseSelector } from '../../../recoil/registerState';
+import LogIn from '../myLike/LogIn';
 
 const Container = styled.div`
   padding: ${(props) => props.theme.sizes.contentPadding};
@@ -12,8 +13,13 @@ const Container = styled.div`
 `;
 
 export default function Upload() {
-  const likePoseIdArr = useFetchLikeList();
   const storedAccessToken = useReadLocalStorage('accessToken') as string;
+  if (!storedAccessToken) {
+    return (
+      <LogIn />
+    );
+  }
+  const likePoseIdArr = useFetchLikeList();
   const filteredPoses = useRecoilValue(myPoseSelector(storedAccessToken));
 
   if (filteredPoses.length > 0) {
@@ -26,5 +32,5 @@ export default function Upload() {
       </Container>
     );
   }
-  return <EmptyPose text="찜한" />;
+  return <EmptyPose text="등록한" />;
 }
