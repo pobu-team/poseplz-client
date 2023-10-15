@@ -29,13 +29,21 @@ const Container = styled.header`
   }
 `;
 
-export default function TitleHeader({ title }: {
-  title: string
-}) {
+interface TitleHeaderProps {
+  title: string,
+  backButton? : string,
+}
+
+export default function TitleHeader({ title, backButton }: TitleHeaderProps) {
+  const backButtonLocation = backButton ?? '';
   return (
     <Container>
-      <BackButton />
+      <BackButton location={backButtonLocation} />
       <h1>{title}</h1>
     </Container>
   );
 }
+
+TitleHeader.defaultProps = {
+  backButton: '',
+};

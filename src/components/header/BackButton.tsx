@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router';
+import { To, useNavigate } from 'react-router';
 
 import styled from 'styled-components';
 
@@ -8,7 +8,7 @@ const Container = styled.div`
   position: absolute;
   align-items: center;
   justify-content: flex-start;
-  
+
   div {
     width: 32px;
     height: 32px;
@@ -16,7 +16,7 @@ const Container = styled.div`
     justify-content: center;
     padding: 8px 11px;
   }
-  
+
   img {
     width: 9px;
     height: 16px;
@@ -33,17 +33,14 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export default function BackButton() {
+export default function BackButton({ location } : {location: string}) {
   const navigate = useNavigate();
 
   const isDarkMode = useReadLocalStorage('darkMode');
 
   return (
     <Container>
-      <Button onClick={() => {
-        navigate(-1);
-      }}
-      >
+      <Button onClick={() => (location.length > 0 ? navigate(location) : navigate(-1))}>
         <div>
           <img
             src={isDarkMode ? '/images/icon_back_D.svg' : '/images/icon_back_L.svg'}
