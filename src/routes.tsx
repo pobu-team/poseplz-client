@@ -59,12 +59,6 @@ const routes = [
     ],
   },
   {
-    element: <DetailLayout />,
-    children: [
-      { path: '/pose/detail', element: <PoseDetailPage /> },
-    ],
-  },
-  {
     element: <MyPageLayout />,
     children: [
       { path: '/mypage', element: <MyLikePage /> },
@@ -77,6 +71,18 @@ const routes = [
     children: [
       { path: '/register', element: <RegisterPage /> },
       { path: '/register/info', element: <RegisterInfoPage /> },
+    ],
+  },
+  {
+    element: <DetailLayout option="DETAIL" />,
+    children: [
+      { path: '/pose/detail', element: <PoseDetailPage /> },
+    ],
+  },
+  {
+    element: <DetailLayout option="RESULT" />,
+    children: [
+      { path: '/register/result', element: <PoseDetailPage /> },
     ],
   },
   {

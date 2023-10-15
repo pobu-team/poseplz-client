@@ -11,10 +11,14 @@ const Container = styled.div`
   max-height: fit-content;
 `;
 
-export default function DetailLayout() {
+export default function DetailLayout({ option }: {option:string}) {
   return (
     <Container>
-      <TitleHeader title="이 포즈로 사진을 찍어보세요!" />
+      {
+        option === 'DETAIL'
+          ? <TitleHeader title="이 포즈로 사진을 찍어보세요!" />
+          : <TitleHeader title="포즈가 등록되었어요." backButton="/main" />
+      }
       <main>
         <Outlet />
       </main>
