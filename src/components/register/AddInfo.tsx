@@ -17,7 +17,7 @@ const QuestionTitle = styled.h2`
   font-weight: 600;
   line-height: 2.6rem;
   margin-bottom: 1.6rem;
-  
+
   span {
     margin-left: 1rem;
     font-size: 1.4rem;
@@ -41,7 +41,7 @@ const SelectBox = styled.select`
   background-position: 95% 50%;
   -webkit-appearance: none; /* 네이티브 외형 감추기 */
   -moz-appearance: none;
-  appearance: none; 
+  appearance: none;
 `;
 
 const ButtonList = styled.div`
@@ -122,7 +122,7 @@ export default function AddInfo() {
           setImgFile('');
           setFileData({ name: '' });
           // 끝나고 디테일로 보내기
-          window.location.href = `${window.location.origin}/pose/detail?poseId=${resp.data.poseId}`;
+          window.location.href = `${window.location.origin}/register/result?poseId=${resp.data.poseId}`;
         }}
       >
         등록하기
