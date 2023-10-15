@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 const EmptyPoseContainer = styled.div`
-  margin-top: 5.7rem;
+  padding-top: 5.7rem;
 `;
 
 export default function Upload() {
