@@ -8,7 +8,7 @@ import { ALL_PEOPLE_TAG } from '../../../constant/tagId';
 import CATEGORY from '../../../types/CategoryType';
 
 const LikePoseLiseContainer = styled.div`
-  margin-top: 10rem;
+  padding-top: 10rem;
 `;
 
 export default function MyLike() {
