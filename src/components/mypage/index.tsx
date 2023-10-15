@@ -4,7 +4,6 @@ import { useReadLocalStorage } from 'usehooks-ts';
 import LogIn from './myLike/LogIn';
 
 const Container = styled.div`
-  margin-top: 5.7rem;
   padding: 2.4rem;
   height: 100vh;
   background-color: ${(props) => props.theme.colors.background};
@@ -41,6 +40,10 @@ const CardContainer = styled.div`
       margin-top: 2rem;
       display: flex;
     }
+  }
+
+  &:first-child {
+    margin-top: 5.7rem;
   }
 `;
 
