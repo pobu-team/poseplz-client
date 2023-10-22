@@ -22,6 +22,7 @@ import RegisterPage from './pages/RegisterPage';
 import RegisterInfoPage from './pages/RegisterInfoPage';
 import MyLike from './components/mypage/myLike';
 import Upload from './components/mypage/upload';
+import SearchPage from './pages/SearchPage';
 
 const routes = [
   {
@@ -83,6 +84,12 @@ const routes = [
     element: <DetailLayout option="RESULT" />,
     children: [
       { path: '/register/result', element: <PoseDetailPage /> },
+    ],
+  },
+  {
+    element: <HomeLayout />,
+    children: [
+      { path: '/search', element: <SearchPage /> },
     ],
   },
   {
