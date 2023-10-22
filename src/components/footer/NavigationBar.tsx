@@ -34,7 +34,7 @@ export default function NavigationBar() {
   };
 
   const handleClickSearchButton = () => {
-    navigate('/main'); // 검색 기능 만들때까지는 메인화면으로 이동하도록
+    navigate('/search');
     addGaEvent('GNB Search');
   };
 
