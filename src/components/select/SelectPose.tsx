@@ -73,7 +73,7 @@ export default function SelectPose() {
         ))}
       </div>
       {poseArr.length ? (
-        <React.Suspense fallback={<Loading />}>
+        <React.Suspense fallback={<div />}>
           <PoseList
             poses={poseArr}
             likePoseIdArr={likePoseIdArr}
