@@ -1,5 +1,6 @@
 import { atom, selectorFamily } from 'recoil';
 import { apiService } from '../service/ApiService';
+import { MyPoseType } from '../types/PoseType';
 
 export const imgAtom = atom({
   key: 'imgAtom',
@@ -11,7 +12,7 @@ export const imgFileAtom = atom({
   default: { name: '' },
 });
 
-export const myPoseSelector = selectorFamily({
+export const myPoseSelector = selectorFamily<MyPoseType[], string>({
   key: 'myPoseSelector',
   get: (token: string) => async () => {
     const { data } = await apiService.fetchMyPoses(token);

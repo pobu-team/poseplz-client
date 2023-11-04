@@ -56,6 +56,7 @@ module.exports = {
         '**/*.test.tsx',
       ],
     }],
+    'react/require-default-props': 'off',
     'import/extensions': ['error', 'ignorePackages', {
       js: 'never',
       jsx: 'never',

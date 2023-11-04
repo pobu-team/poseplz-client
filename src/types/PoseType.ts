@@ -29,3 +29,10 @@ export interface ResponseFetchPoses {
   data: PoseInfo[];
   pagination: Pagination;
 }
+export interface MyPoseType {
+  poseId: string;
+  thumbnailImageUrl: string;
+  file: File;
+  peopleCount: number;
+  archived: boolean;
+}
