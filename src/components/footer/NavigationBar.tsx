@@ -23,19 +23,9 @@ export default function NavigationBar() {
   const searchActive = pathname === '/search';
   const myPageActive = MYPAGES.includes(pathname);
 
-  const handleHomeButton = () => {
-    navigate('/main');
-    addGaEvent('GNB Home');
-  };
-
-  const handleMyPageClick = () => {
-    navigate('/mypage');
-    addGaEvent('GNB My Page');
-  };
-
-  const handleClickSearchButton = () => {
-    navigate('/search');
-    addGaEvent('GNB Search');
+  const handleNavClick = (location: string, eventName:string) => {
+    navigate(location);
+    addGaEvent(eventName);
   };
 
   return (
@@ -43,19 +33,31 @@ export default function NavigationBar() {
       <Button
         text="홈"
         imgSrc={homeActive ? 'home_active' : 'home_disable'}
-        onClickFunc={handleHomeButton}
+        onClickFunc={() => handleNavClick('/main', 'GNB Home')}
         active={homeActive}
       />
       <Button
-        text="검색"
-        imgSrc="search_default"
-        onClickFunc={handleClickSearchButton}
+        text="매장찾기"
+        imgSrc="shop_search"
+        onClickFunc={() => handleNavClick('/search', 'GNB Search')}
         active={searchActive}
       />
       <Button
-        text="마이페이지"
+        text="포즈추천"
+        imgSrc="recommend"
+        onClickFunc={() => handleNavClick('/people', 'GNB Home')}
+        active={searchActive}
+      />
+      <Button
+        text="포즈등록"
+        imgSrc="register"
+        onClickFunc={() => handleNavClick('/register', 'GNB Home')}
+        active={searchActive}
+      />
+      <Button
+        text="마이"
         imgSrc={myPageActive ? 'mypage_active' : 'mypage_disable'}
-        onClickFunc={handleMyPageClick}
+        onClickFunc={() => handleNavClick('/mypage', 'GNB My Page')}
         active={myPageActive}
       />
     </Container>

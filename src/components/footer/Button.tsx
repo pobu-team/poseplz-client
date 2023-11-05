@@ -23,6 +23,7 @@ const ButtonContainer = styled.div<{ active: boolean}>`
 
     img {
       display: flex;
+      margin-bottom: 4px;
     }
   }
 `;
