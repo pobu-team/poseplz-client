@@ -1,14 +1,14 @@
 import { useRecoilValue } from 'recoil';
 import { AllPoseSelector, PopularPoseSelector, PoseSelector } from '../recoil/poseState';
 import CATEGORY from '../types/CategoryType';
-import { PoseType } from '../types/PoseType';
+import { PoseInfo } from '../types/PoseType';
 import { ALL_PEOPLE_TAG } from '../constant/tagId';
 
 export default function useFetchCategoryPoses(
   category: CATEGORY,
   selectedTagId: string,
 )
-  :PoseType[] {
+  :PoseInfo[] {
   if (category === CATEGORY.PEOPLE && selectedTagId === ALL_PEOPLE_TAG) {
     return useRecoilValue(AllPoseSelector);
   }
