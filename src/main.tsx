@@ -12,11 +12,10 @@ const queryClient = new QueryClient();
 
 function main() {
   const container = document.getElementById('root');
-
   if (!container) {
     return;
   }
-
+  const queryClient = new QueryClient();
   const root = ReactDOM.createRoot(container);
 
   root.render(

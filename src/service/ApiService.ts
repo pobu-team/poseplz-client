@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ResponseFetchPoses } from '../types/PoseType';
+import { ResponseFetchPoses, PoseType } from '../types/PoseType';
 
 const API_BASE_URL = `${process.env.REACT_APP_API_BASE_URL}/api/v1` || 'https://server.poseplz.com/api/v1';
 
@@ -40,6 +40,12 @@ export default class ApiService {
   async fetchPopularPose() {
     const { data } = await this.instance.get('/poses?preparedPoseQuery=POPULAR&page=0&size=100');
     return data;
+  }
+
+  // FIXME
+  async fetchAllPoseTest() : Promise<PoseType[]> {
+    const { data } = await this.instance.get('/poses?page=0&size=300');
+    return data.data;
   }
 
   async fetchAllPose() {

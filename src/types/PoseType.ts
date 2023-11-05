@@ -9,6 +9,16 @@ export interface File {
   width: number;
   height: number;
 }
+export interface PoseType {
+  poseId: string;
+  thumbnailImageUrl: string;
+  imageUrl: string;
+  file: File;
+  tags: Tag[];
+  peopleCount: number;
+  archived: boolean;
+}
+
 export interface PoseInfo {
   poseId: string;
   thumbnailImageUrl: string;
