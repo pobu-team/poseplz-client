@@ -11,27 +11,23 @@ type PoseProps = {
   likePoseIdArr: string[];
 };
 
-const Container = styled.div<{active: boolean, height: number, width: number}>`
+const Container = styled.div<{active: boolean, ratio: string}>`
   position: relative;
-  width: 100%;
-  margin-bottom: 5px;
+  
   a {
-    aspect-ratio: ${(props) => `${props.width}/${props.height}`};
-    ${(props) => props.active && css`
-        width: 100%;
-        height: auto;
-      `}
     img {
       width: 100%;
-      aspect-ratio: ${(props) => `${props.width}/${props.height}`};
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.1);
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: ${(props) => props.ratio};
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.3);
+
       ${(props) => props.active && css`
         border-radius: 10px;
         width: 100%;
-        height: auto;
-        aspect-ratio: initial;
-        object-fit: contain;
+        height: 100%;
+        object-fit: cover;
       `}
     }
   }
@@ -54,9 +50,15 @@ export default function Pose({ poseId, likePoseIdArr }: PoseProps) {
   const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
   const [isLoading, setIsLoading] = useState(true);
   const linkTo = `/pose/detail?poseId=${poseInfo.poseId}`;
+  const { width, height } = poseInfo.file;
+  const poseStyle = height / width > 2 ? 'span 12' : 'span 6';
 
   return (
-    <Container active={!isLoading} height={poseInfo.file.height} width={poseInfo.file.width}>
+    <Container
+      style={{ gridRowEnd: poseStyle }}
+      active={!isLoading}
+      ratio={String(width / height)}
+    >
       <Link to={linkTo}>
         <img
           src={`${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`}
