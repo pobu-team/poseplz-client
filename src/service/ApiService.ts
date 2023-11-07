@@ -42,12 +42,6 @@ export default class ApiService {
     return data;
   }
 
-  // FIXME
-  async fetchAllPoseTest() : Promise<PoseType[]> {
-    const { data } = await this.instance.get('/poses?page=0&size=300');
-    return data.data;
-  }
-
   async fetchAllPose() {
     const { data } = await this.instance.get('/poses?page=0&size=300');
     return data;

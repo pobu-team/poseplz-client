@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
-import { useReadLocalStorage } from 'usehooks-ts';
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useEffect, useState } from 'react';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { useLocation, useNavigate } from 'react-router';
 import { ButtonContainer, TagButtonContainer } from './PoseDetail.styles';
 import { PoseWithIdSelector } from '../../recoil/poseState';
 import { PoseInfo } from '../../types/PoseType';
@@ -18,9 +18,9 @@ import imageDownload from '../../utils/downloadImage';
 import LoginModal from '../../ui/LoginModal';
 import { isLogInModalShowingAtom } from '../../recoil/loginState';
 import DeleteIcon from '../svg/DeleteIcon';
-import { authApiService } from '../../service/AuthApiService';
-import { myPoseSelector } from '../../recoil/registerState';
 import BoxModal from '../../ui/BoxModal';
+import { authPoseService } from '../../api/authPoseService';
+import Loading from '../common/Loading';
 
 type PoseDetailProps = {
   poseId: (string | undefined);
@@ -61,9 +61,19 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
   const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
   const [isDeleteModalShowing, setIsDeleteModalShowing] = useState(false);
   const tagArr = poseInfo.tags.map((tag: Tag) => tag.selectorName);
-  const storedAccessToken = useReadLocalStorage('accessToken') as string;
-  const myPoses = useRecoilValue(myPoseSelector(storedAccessToken));
+  const { isLoading, data: myPoses } = useQuery({ queryKey: ['myPoses'], queryFn: () => authPoseService.fetchMyPoses() });
+  const { mutate, isSuccess: isDeleteSuccess } = useMutation({
+    mutationFn: (id: string) => authPoseService.deletePose(id),
+  });
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (isDeleteSuccess) {
+      // eslint-disable-next-line no-unused-expressions
+      pathname.includes('register') ? navigate('/main') : navigate(-1);
+    }
+  }, [isDeleteSuccess]);
 
   sortTag(tagArr);
 
@@ -71,6 +81,10 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
   const handleClickDownloadButton = () => {
     imageDownload({ imageUrl, poseId: poseInfo.poseId });
   };
+
+  if (isLoading) {
+    <Loading />;
+  }
 
   return (
     <Container>
@@ -84,7 +98,7 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
       </TagButtonContainer>
       <PoseImage poseInfo={poseInfo} />
       <ButtonSection>
-        {myPoses.find((item) => item.poseId === poseId)
+        {myPoses?.find((item) => item.poseId === poseId)
         && (
           <DeleteButton onClick={() => setIsDeleteModalShowing(true)}>
             <DeleteIcon width={24} height={24} />
@@ -116,8 +130,7 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
         <BoxModal
           handleClose={() => setIsDeleteModalShowing(false)}
           handleClick={() => {
-            authApiService.deletePose(poseId ?? '');
-            navigate(-1);
+            mutate(poseId ?? '');
           }}
           text="등록한 포즈를 삭제하시겠어요?"
         />

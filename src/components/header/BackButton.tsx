@@ -33,7 +33,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export default function BackButton({ location } : {location: string}) {
+export default function BackButton({ location = '' } : {location?: string}) {
   const navigate = useNavigate();
 
   const isDarkMode = useReadLocalStorage('darkMode');
