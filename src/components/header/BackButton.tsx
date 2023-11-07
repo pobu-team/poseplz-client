@@ -1,4 +1,4 @@
-import { To, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 import styled from 'styled-components';
 
