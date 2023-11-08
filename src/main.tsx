@@ -22,12 +22,12 @@ function main() {
 
   root.render(
     <RecoilRoot>
-      <React.Suspense fallback={<Loading />}>
-        <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        <React.Suspense fallback={<Loading />}>
           <App />
           <ReactQueryDevtools />
-        </QueryClientProvider>
-      </React.Suspense>
+        </React.Suspense>
+      </QueryClientProvider>
     </RecoilRoot>,
   );
 }

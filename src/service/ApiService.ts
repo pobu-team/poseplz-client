@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ResponseFetchPoses } from '../types/PoseType';
 
 const API_BASE_URL = `${process.env.REACT_APP_API_BASE_URL}/api/v1` || 'https://server.poseplz.com/api/v1';
 
@@ -22,9 +23,17 @@ export default class ApiService {
     return data;
   }
 
-  async fetchPose(tagIds: string[]) {
+  async fetchPose(tagIds: string[], page?: number): Promise<ResponseFetchPoses> {
     const queryString = tagIds.join('&tagIds=');
-    const { data } = await this.instance.get(`/poses?tagIds=${queryString}&page=0&size=100`);
+    if (page === undefined) {
+      const { data } = await this.instance.get(`/poses?tagIds=${queryString}&page=0&size=100`);
+      return data;
+    }
+    if (tagIds.length === 0) {
+      const { data } = await this.instance.get(`/poses?page=${page}&size=10`);
+      return data;
+    }
+    const { data } = await this.instance.get(`/poses?tagIds=${queryString}&page=${page}&size=10`);
     return data;
   }
 

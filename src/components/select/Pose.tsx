@@ -1,17 +1,9 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { useRecoilValue } from 'recoil';
-import { useRef, useState } from 'react';
-import { PoseWithIdSelector } from '../../recoil/poseState';
-import { PoseInfo } from '../../types/PoseType';
 import LikeButton from './LikeButton';
+import { PoseInfo } from '../../types/PoseType';
 
-type PoseProps = {
-  poseId: string;
-  likePoseIdArr: string[];
-};
-
-const Container = styled.div<{active: boolean, ratio: string}>`
+const PoseContainer = styled.div<{active: boolean, ratio: string}>`
   position: relative;
   
   a {
@@ -31,7 +23,6 @@ const Container = styled.div<{active: boolean, ratio: string}>`
       `}
     }
   }
-
   button {
       bottom: 10px;
       right: 0;
@@ -46,33 +37,33 @@ const Container = styled.div<{active: boolean, ratio: string}>`
   }
 `;
 
-export default function Pose({ poseId, likePoseIdArr }: PoseProps) {
-  const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
-  const [isLoading, setIsLoading] = useState(true);
-  const linkTo = `/pose/detail?poseId=${poseInfo.poseId}`;
-  const { width, height } = poseInfo.file;
+export default function Pose({ pose, likePoseIdArr }: {
+  pose: PoseInfo;
+  likePoseIdArr: string[];
+}) {
+  const { poseId, file } = pose;
+  const { width, height, fileId } = file;
+  const linkTo = `/pose/detail?poseId=${poseId}`;
   const poseStyle = height / width > 2 ? 'span 12' : 'span 6';
-
   return (
-    <Container
+    <PoseContainer
+      key={poseId}
       style={{ gridRowEnd: poseStyle }}
-      active={!isLoading}
-      ratio={String(width / height)}
+      active
+      ratio={String(pose.file.width / pose.file.height)}
     >
       <Link to={linkTo}>
         <img
-          src={`${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`}
-          alt={poseInfo.imageUrl}
-          onLoad={() => {
-            setIsLoading(false);
-          }}
+          src={`${process.env.REACT_APP_API_BASE_URL}${pose.thumbnailImageUrl}`}
+          alt={fileId}
         />
       </Link>
       <LikeButton
         likePoseIdArr={likePoseIdArr}
-        poseId={poseId}
+        poseId={pose.poseId}
         type="DEFAULT"
       />
-    </Container>
+
+    </PoseContainer>
   );
 }

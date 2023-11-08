@@ -5,7 +5,6 @@ import { useRecoilValue } from 'recoil';
 import { PoseSelector } from '../../recoil/poseState';
 import PoseList from '../common/PoseList';
 import EmptyPose from '../common/EmptyPose';
-import Loading from '../common/Loading';
 import useRecommendPose from '../../hooks/useRecommendPose';
 import useFetchTagGroup from '../../hooks/useFetchTagGroup';
 import TopButton from '../../ui/TopButton';
