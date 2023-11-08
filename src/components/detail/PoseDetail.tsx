@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
-import { useEffect, useState } from 'react';
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { useLocation, useNavigate } from 'react-router';
+import { useState } from 'react';
 import { ButtonContainer, TagButtonContainer } from './PoseDetail.styles';
 import { PoseWithIdSelector } from '../../recoil/poseState';
 import { PoseInfo } from '../../types/PoseType';
@@ -19,8 +17,9 @@ import LoginModal from '../../ui/LoginModal';
 import { isLogInModalShowingAtom } from '../../recoil/loginState';
 import DeleteIcon from '../svg/DeleteIcon';
 import BoxModal from '../../ui/BoxModal';
-import { authPoseService } from '../../api/authPoseService';
 import Loading from '../common/Loading';
+import useFetchMyPoses from '../../hooks/useFetchMyPoses';
+import useDeletePose from '../../hooks/useDeletePose';
 
 type PoseDetailProps = {
   poseId: (string | undefined);
@@ -61,20 +60,8 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
   const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
   const [isDeleteModalShowing, setIsDeleteModalShowing] = useState(false);
   const tagArr = poseInfo.tags.map((tag: Tag) => tag.selectorName);
-  const { isLoading, data: myPoses } = useQuery({ queryKey: ['myPoses'], queryFn: () => authPoseService.fetchMyPoses() });
-  const { mutate, isSuccess: isDeleteSuccess } = useMutation({
-    mutationFn: (id: string) => authPoseService.deletePose(id),
-  });
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    if (isDeleteSuccess) {
-      // eslint-disable-next-line no-unused-expressions
-      pathname.includes('register') ? navigate('/main') : navigate(-1);
-    }
-  }, [isDeleteSuccess]);
-
+  const { isLoading, data: myPoses } = useFetchMyPoses();
+  const mutate = useDeletePose();
   sortTag(tagArr);
 
   const imageUrl = `${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`;

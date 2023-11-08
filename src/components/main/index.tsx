@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
-import { useQuery } from '@tanstack/react-query';
 import PoseSlider from './PoseSlider';
 import Heading from './Heading';
 import Category from './Category';
@@ -10,8 +9,8 @@ import PoseContainerTitle from './PoseContainerTitle';
 import Floating from './Floating';
 import LoginModal from '../../ui/LoginModal';
 import { isLogInModalShowingAtom } from '../../recoil/loginState';
-import { poseService } from '../../api/poseService';
 import Loading from '../common/Loading';
+import useFetchAllPoses from '../../hooks/useFetchAllPoses';
 
 const Container = styled.div`
   padding: ${(props) => props.theme.sizes.contentPadding};
@@ -43,7 +42,7 @@ const DivideLine = styled.div`
 
 export default function Main() {
   // 모든 데이터를 불러온다.
-  const { isLoading, data: allData } = useQuery({ queryKey: ['allPoses'], queryFn: () => poseService.fetchAllPoses() });
+  const { isLoading, data: allData } = useFetchAllPoses();
   const likePoseIdArr = useFetchLikeList();
   const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
 
