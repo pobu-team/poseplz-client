@@ -34,21 +34,20 @@ export default function CategoryPoseList({ category, selectedTagId }: CategoryPo
   const {
     data,
     fetchNextPage,
-  } = useInfiniteQuery(
-    ['poses', category, selectedTagId],
-    async ({ pageParam = 0 }) => {
+  } = useInfiniteQuery({
+    queryKey: ['poses', category, selectedTagId],
+    queryFn: async ({ pageParam = 0 }) => {
       const response = selectedTagId === ALL_PEOPLE_TAG
         ? (await apiService.fetchPose([], pageParam))
         : (await apiService.fetchPose([selectedTagId], pageParam));
       return response;
     },
-    {
-      getNextPageParam: (lastPage) => (
-        lastPage.pagination.hasNext
-          ? lastPage.pagination.page + 1
-          : undefined),
-    },
-  );
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => (
+      lastPage.pagination.hasNext
+        ? lastPage.pagination.page + 1
+        : undefined),
+  });
   const { bottomRef } = useIntersectionObserver(fetchNextPage);
 
   const poses = data?.pages.map((x) => x.data).flat();

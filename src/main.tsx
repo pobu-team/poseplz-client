@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom/client';
 import { RecoilRoot } from 'recoil';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools/build/lib/devtools';
 import App from './App';
 import Loading from './components/common/Loading';
 
@@ -25,7 +24,6 @@ function main() {
       <QueryClientProvider client={queryClient}>
         <React.Suspense fallback={<Loading />}>
           <App />
-          <ReactQueryDevtools />
         </React.Suspense>
       </QueryClientProvider>
     </RecoilRoot>,
