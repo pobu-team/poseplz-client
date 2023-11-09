@@ -30,9 +30,7 @@ export default function CategoryPose({ category }: {category:CATEGORY}) {
         category={category}
       />
       <PoseContainer>
-        <React.Suspense fallback={<div>Loading...</div>}>
-          <CategoryPoseList category={category} selectedTagId={selectedTagId} />
-        </React.Suspense>
+        <CategoryPoseList category={category} selectedTagId={selectedTagId} />
       </PoseContainer>
       {isLogInModalShowing && <LoginModal />}
     </Container>

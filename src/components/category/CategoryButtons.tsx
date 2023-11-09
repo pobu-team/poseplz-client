@@ -4,6 +4,7 @@ import useDragScroll from '../../hooks/useDragScroll';
 import useFetchCategoryTags from '../../hooks/useFetchCategoryTags';
 import CATEGORY from '../../types/CategoryType';
 import addGaEvent from '../../utils/addGaEvent';
+import { Tag } from '../../types/Tag';
 
 const ButtonContainer = styled.div`
   overflow: scroll;
@@ -56,13 +57,17 @@ export default function CategoryButtons({ selectedTagId, setSelectedTagId, categ
     addGaEvent(`Category Tab - ${selectorName}`);
   };
 
+  const handleClickButton = (tag:Tag) => {
+    handleClick(tag.tagId, tag.selectorName);
+  };
+
   return (
     <ButtonContainer ref={ref}>
       {tags.map((tag) => (
         <CategoryButton
           key={tag.tagId}
           type="button"
-          onClick={() => handleClick(tag.tagId, tag.selectorName)}
+          onClick={() => handleClickButton(tag)}
           active={selectedTagId === tag.tagId}
         >
           {tag.selectorName}
