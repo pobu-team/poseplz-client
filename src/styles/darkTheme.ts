@@ -22,7 +22,6 @@ const darkTheme: Theme = {
     mainBackground: darkThemeColors.BACKGROUND.PRIMARY,
     bannerBackground: darkThemeColors.BACKGROUND.TERTIARY,
     containerBackground: '#1F1E1F',
-    lightContNormal: '#1F1F1F',
     splashBackground: '#F2F2F7',
     message: darkThemeColors.WHITE,
     modalCloseButtonBackground: '#1F1E1F',

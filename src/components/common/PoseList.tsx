@@ -17,7 +17,7 @@ export default function PoseList({ poses, likePoseIdArr }: {
 }) {
   return (
     <Container>
-      {poses.map((pose: PoseInfo) => (
+      {poses.map((pose) => (
         <Pose
           key={pose.poseId}
           pose={pose}

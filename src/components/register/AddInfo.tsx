@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useState } from 'react';
 import { useReadLocalStorage } from 'usehooks-ts';
+import { useNavigate } from 'react-router';
 import NextButton from './NextButton';
 import { AtmosphereTagSelector, PeopleTagSelector } from '../../recoil/tagState';
 import { Tag } from '../../types/Tag';
@@ -70,6 +71,7 @@ export default function AddInfo() {
   const [selectedTagIds, setSelectedTagIds] = useState(new Set<string>());
   const storedAccessToken = useReadLocalStorage('accessToken') as string;
   const peopleTagList = ['인원을 선택해주세요.', '1', '2', '3', '4', '5', '6인 이상'];
+  const navigator = useNavigate();
 
   return (
     <Container>
@@ -121,8 +123,7 @@ export default function AddInfo() {
           // 상태 초기화하기
           setImgFile('');
           setFileData({ name: '' });
-          // 끝나고 디테일로 보내기
-          window.location.href = `${window.location.origin}/register/result?poseId=${resp.data.poseId}`;
+          navigator(`/register/result?poseId=${resp.data.poseId}`);
         }}
       >
         등록하기

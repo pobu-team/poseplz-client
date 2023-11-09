@@ -20,7 +20,6 @@ const defaultTheme = {
     navDisabledText: '#BDBDC8',
     mainBackground: lightThemeColors.BACKGROUND.SECONDARY,
     bannerBackground: '#DFDFE9',
-    lightContNormal: '#1F1F1F',
     containerBackground: lightThemeColors.BACKGROUND.PRIMARY,
     splashBackground: '#F9FFEA',
     message: '#1F1E1F',
