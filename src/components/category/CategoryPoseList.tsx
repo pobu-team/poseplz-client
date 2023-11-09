@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useLocation } from 'react-router';
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import CATEGORY from '../../types/CategoryType';
 import useFetchLikeList from '../../hooks/useFetchLikeList';
@@ -31,6 +31,12 @@ export default function CategoryPoseList({ category, selectedTagId }: CategoryPo
   const likePoseIdArr = useFetchLikeList();
   const location = useLocation();
 
+  useEffect(() => {
+    window.onbeforeunload = function pushRefresh() {
+      window.scrollTo(0, 0);
+    };
+  }, []);
+
   const {
     data,
     fetchNextPage,
@@ -49,7 +55,6 @@ export default function CategoryPoseList({ category, selectedTagId }: CategoryPo
         : undefined),
   });
   const { bottomRef } = useIntersectionObserver(fetchNextPage);
-
   const poses = data?.pages.map((x) => x.data).flat();
 
   useEffect(() => {
