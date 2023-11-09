@@ -71,7 +71,6 @@ export default function Main() {
         <PoseContainerTitle title="최근 올라온 포즈에요" />
         <PoseList poses={recentRandomPoses} likePoseIdArr={likePoseIdArr} />
       </PoseListContainer>
-      <Floating />
       {isLogInModalShowing && <LoginModal />}
     </div>
   );
