@@ -46,9 +46,8 @@ export default function Main() {
   const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
 
   const recentData = [...allData ?? []].reverse();
-  // 21-26번째 포즈 아이디를 추출한다.(좋아요를 누를 때 리렌더링 방지 위해 데이터 고정)
+  // 21-26번째를 추출한다.(좋아요를 누를 때 리렌더링 방지 위해 데이터 고정)
   const randomPoses = recentData.slice(20, 26);
-  const ramdomPoseIds = randomPoses.map((item) => item.poseId);
   // 최신 포즈 20개의 아이디를 추출하고, 포즈 데이터를 불러온다.
   const recentPoses = recentData.slice(0, 20);
   const recentRandomPoses = recentPoses.filter((item) => item.poseId);
@@ -64,7 +63,7 @@ export default function Main() {
         <Category />
       </Container>
       <RoundDiv />
-      <PoseSlider title="오늘의 추천 포즈에요" poseArr={ramdomPoseIds} />
+      <PoseSlider title="오늘의 추천 포즈에요" poseArr={randomPoses} />
       <DivideLine />
       <PoseListContainer>
         <PoseContainerTitle title="최근 올라온 포즈에요" />
