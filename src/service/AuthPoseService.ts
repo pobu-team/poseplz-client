@@ -9,18 +9,25 @@ const API_BASE_URL = `${process.env.REACT_APP_API_BASE_URL}/api/v1` || 'https://
 export default class AuthPoseService {
   private readonly instance = axios.create({
     baseURL: API_BASE_URL,
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('accessToken')?.replace(/^"|"$/g, '')}`,
-    },
   });
 
   async deletePose(poseId: string) {
-    await this.instance.delete(`/poses/${poseId}`);
+    const token = localStorage.getItem('accessToken')?.replace(/^"|"$/g, '');
+    await this.instance.delete(`/poses/${poseId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   }
 
   async fetchMyPoses() : Promise<PoseInfo[]> {
     try {
-      const { data } = await this.instance.get('/members/me/poses');
+      const token = localStorage.getItem('accessToken')?.replace(/^"|"$/g, '');
+      const { data } = await this.instance.get('/members/me/poses', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return data.data;
     } catch (error) {
       return [];
