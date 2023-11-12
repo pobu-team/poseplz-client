@@ -8,9 +8,10 @@ import { AtmosphereTagSelector, PeopleTagSelector } from '../../recoil/tagState'
 import { Tag } from '../../types/Tag';
 import { imgAtom, imgFileAtom } from '../../recoil/registerState';
 import { apiService } from '../../service/ApiService';
+import LogIn from '../mypage/myLike/LogIn';
 
 const Container = styled.div`
-  margin: 2.4rem;
+  padding: 2.4rem;
 `;
 
 const QuestionTitle = styled.h2`
@@ -72,6 +73,10 @@ export default function AddInfo() {
   const storedAccessToken = useReadLocalStorage('accessToken') as string;
   const peopleTagList = ['인원을 선택해주세요.', '1', '2', '3', '4', '5', '6인 이상'];
   const navigator = useNavigate();
+
+  if (!storedAccessToken) {
+    return <LogIn />;
+  }
 
   return (
     <Container>

@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import TitleHeader from '../header/TitleHeader';
+import FloatingHeader from '../../ui/FloatingHeader';
 
 const Container = styled.div`
   width: 100%;
@@ -14,7 +15,9 @@ const Container = styled.div`
 export default function RegisterLayout() {
   return (
     <Container>
-      <TitleHeader title="포즈 등록하기" />
+      <FloatingHeader>
+        <TitleHeader title="포즈 등록하기" />
+      </FloatingHeader>
       <main>
         <Outlet />
       </main>
