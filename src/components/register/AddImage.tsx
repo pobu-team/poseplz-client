@@ -2,10 +2,12 @@ import { useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router';
+import { useReadLocalStorage } from 'usehooks-ts';
 import ImageUploadButton from './ImageUploadButton';
 import ImagePreview from './ImagePreview';
 import { imgAtom, imgFileAtom } from '../../recoil/registerState';
 import NextButton from './NextButton';
+import LogIn from '../mypage/myLike/LogIn';
 
 const Container = styled.div`
   display: flex;
@@ -13,6 +15,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin: 2.4rem;
+  margin-top: 0;
+  padding-top: 8rem;
 `;
 
 const DisabledInput = styled.input`
@@ -24,6 +28,11 @@ export default function AddImage() {
   const [imgFile, setImgFile] = useRecoilState(imgAtom);
   const setFileData = useSetRecoilState(imgFileAtom);
   const navigator = useNavigate();
+
+  const storedAccessToken = useReadLocalStorage('accessToken') as string;
+  if (!storedAccessToken) {
+    return <LogIn />;
+  }
 
   const onUploadImage = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {

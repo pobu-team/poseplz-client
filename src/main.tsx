@@ -15,7 +15,6 @@ function main() {
   if (!container) {
     return;
   }
-  const queryClient = new QueryClient();
   const root = ReactDOM.createRoot(container);
 
   root.render(

@@ -19,7 +19,7 @@ import DeleteIcon from '../svg/DeleteIcon';
 import BoxModal from '../../ui/BoxModal';
 import Loading from '../common/Loading';
 import useFetchMyPoses from '../../hooks/useFetchMyPoses';
-import useDeletePose from '../../hooks/useDeletePose';
+import { useDeletePose } from '../../queries/poses';
 
 type PoseDetailProps = {
   poseId: (string | undefined);
@@ -35,9 +35,19 @@ const Container = styled.div`
 `;
 
 const ButtonSection = styled.section`
+  position: fixed;
+  left: 50%;
+  translate: -50%;
+  bottom: 0;
+  width: 100vw;
+  max-width: 375px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-inline: ${(props) => props.theme.sizes.contentPadding};
+  @media screen and (max-width: 340px) {
+    padding: 1.2rem;
+  }
 `;
 
 const DeleteButton = styled.button`

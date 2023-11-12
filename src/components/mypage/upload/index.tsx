@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import { useReadLocalStorage } from 'usehooks-ts';
-import { useQuery } from '@tanstack/react-query';
 import EmptyPose from '../../common/EmptyPose';
 import PoseList from '../../common/PoseList';
 import useFetchLikeList from '../../../hooks/useFetchLikeList';
 import LogIn from '../myLike/LogIn';
-import { authPoseService } from '../../../api/authPoseService';
+import useFetchMyPoses from '../../../hooks/useFetchMyPoses';
 
 const Container = styled.div`
   padding: ${(props) => props.theme.sizes.contentPadding};
@@ -24,7 +23,7 @@ export default function Upload() {
     );
   }
   const likePoseIdArr = useFetchLikeList();
-  const { isLoading, data: filteredPoses } = useQuery({ queryKey: ['myPoses'], queryFn: () => authPoseService.fetchMyPoses() });
+  const { isLoading, data: filteredPoses } = useFetchMyPoses();
 
   if (!isLoading && filteredPoses && filteredPoses.length > 0) {
     return (
