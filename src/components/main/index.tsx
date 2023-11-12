@@ -6,11 +6,10 @@ import Category from './Category';
 import PoseList from '../common/PoseList';
 import useFetchLikeList from '../../hooks/useFetchLikeList';
 import PoseContainerTitle from './PoseContainerTitle';
-import Floating from './Floating';
 import LoginModal from '../../ui/LoginModal';
 import { isLogInModalShowingAtom } from '../../recoil/loginState';
 import Loading from '../common/Loading';
-import useFetchAllPoses from '../../hooks/useFetchAllPoses';
+import { useFetchAllPose } from '../../queries/poses';
 
 const Container = styled.div`
   padding: ${(props) => props.theme.sizes.contentPadding};
@@ -42,7 +41,7 @@ const DivideLine = styled.div`
 
 export default function Main() {
   // 모든 데이터를 불러온다.
-  const { isLoading, data: allData } = useFetchAllPoses();
+  const { isLoading, data: allData } = useFetchAllPose();
   const likePoseIdArr = useFetchLikeList();
   const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
 

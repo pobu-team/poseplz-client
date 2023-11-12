@@ -5,7 +5,7 @@ import EmptyPose from '../../common/EmptyPose';
 import PoseList from '../../common/PoseList';
 import useFetchLikeList from '../../../hooks/useFetchLikeList';
 import LogIn from '../myLike/LogIn';
-import { authPoseService } from '../../../api/authPoseService';
+import { authPoseService } from '../../../service/AuthPoseService';
 
 const Container = styled.div`
   padding: ${(props) => props.theme.sizes.contentPadding};

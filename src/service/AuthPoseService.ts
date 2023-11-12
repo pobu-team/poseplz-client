@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { PoseType } from '../types/PoseType';
+import { PoseInfo } from '../types/PoseType';
 
 const API_BASE_URL = `${process.env.REACT_APP_API_BASE_URL}/api/v1` || 'https://server.poseplz.com/api/v1';
 
 /**
  * 인증이 필요한 포즈 관련 API
  */
-export default class AuthPoseervice {
+export default class AuthPoseService {
   private readonly instance = axios.create({
     baseURL: API_BASE_URL,
     headers: {
@@ -18,7 +18,7 @@ export default class AuthPoseervice {
     await this.instance.delete(`/poses/${poseId}`);
   }
 
-  async fetchMyPoses() : Promise<PoseType[]> {
+  async fetchMyPoses() : Promise<PoseInfo[]> {
     try {
       const { data } = await this.instance.get('/members/me/poses');
       return data.data;
@@ -28,4 +28,4 @@ export default class AuthPoseervice {
   }
 }
 
-export const authPoseService = new AuthPoseervice();
+export const authPoseService = new AuthPoseService();

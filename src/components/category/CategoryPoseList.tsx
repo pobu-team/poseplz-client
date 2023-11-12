@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useLocation } from 'react-router';
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import CATEGORY from '../../types/CategoryType';
 import useFetchLikeList from '../../hooks/useFetchLikeList';
