@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { AllPoseSelector } from '../../../recoil/poseState';
+import { AllPoseSelector, PoseSelector } from '../../../recoil/poseState';
 import EmptyPose from '../../common/EmptyPose';
 import PoseList from '../../common/PoseList';
 import { ALL_PEOPLE_TAG } from '../../../constant/tagId';
@@ -14,11 +14,11 @@ const Container = styled.div`
 
 export default function LikePoseList({ selectedTagId }: {selectedTagId: string}) {
   const likePoseIdArr = useFetchLikeList();
-  const { data } = useFetchPoses([selectedTagId]);
 
   const poses = selectedTagId === ALL_PEOPLE_TAG
     ? useRecoilValue(AllPoseSelector)
-    : data?.data;
+    : useRecoilValue(PoseSelector([selectedTagId]));
+
   const filteredPoses = poses && poses.filter(
     (pose) => likePoseIdArr.includes(pose.poseId),
   );
