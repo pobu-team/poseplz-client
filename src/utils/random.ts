@@ -1,8 +1,8 @@
-import { PoseType } from '../types/PoseType';
+import { PoseInfo } from '../types/PoseType';
 
 const makeRandomNumber = (length: number) => Math.floor((Math.random() * length));
 
-export default function makeRandomImageSrc(array: PoseType[], count: number) {
+export default function makeRandomImageSrc(array: PoseInfo[], count: number) {
   const randomNumbers: number[] = [];
   const { length } = array;
   const actualCount = length >= count ? count : length;

@@ -15,7 +15,7 @@ const Container = styled.div`
     border-radius: 10px;
     background: none;
     color: ${(props) => props.theme.colors.text};
-    background-color: ${(props) => props.theme.colors.lightContNormal};
+    background-color: ${(props) => props.theme.colors.backgroundSecondary};
   }
 `;
 

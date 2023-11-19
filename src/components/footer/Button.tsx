@@ -4,7 +4,8 @@ import { useReadLocalStorage } from 'usehooks-ts';
 
 const ButtonContainer = styled.div<{ active: boolean}>`
   width: 100%;
-  height: 6.4rem;
+  height: 7rem;
+  margin-bottom: .3rem;
   display: flex;
   justify-content: center;
   align-items: center;

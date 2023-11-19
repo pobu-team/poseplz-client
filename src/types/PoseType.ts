@@ -9,15 +9,6 @@ export interface File {
   width: number;
   height: number;
 }
-export interface PoseType {
-  poseId: string;
-  thumbnailImageUrl: string;
-  imageUrl: string;
-  filt: File;
-  tags: Tag[];
-  peopleCount: number;
-  archived: boolean;
-}
 
 export interface PoseInfo {
   poseId: string;
@@ -25,6 +16,26 @@ export interface PoseInfo {
   imageUrl: string;
   file: File;
   tags: Tag[];
+  peopleCount: number;
+  archived: boolean;
+}
+
+export interface Pagination {
+  hasNext: boolean;
+  totalCount: number;
+  page: number;
+  size: number;
+}
+
+export interface ResponseFetchPoses {
+  data: PoseInfo[];
+  pagination: Pagination;
+}
+
+export interface MyPoseType {
+  poseId: string;
+  thumbnailImageUrl: string;
+  file: File;
   peopleCount: number;
   archived: boolean;
 }

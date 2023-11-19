@@ -4,11 +4,11 @@ import { useReadLocalStorage } from 'usehooks-ts';
 const Container = styled.div`
   display: flex;
   width: 100%;
-  height: 100%;
-  justify-content: center;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   padding-top: 10rem;
+  background-color: ${(props) => props.theme.colors.secondary};
 
   img {
     width: 107px;

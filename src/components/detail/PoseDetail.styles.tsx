@@ -53,7 +53,7 @@ export const ButtonContainer = styled.div`
     width: 180px;
     padding: 0;
     height: 60px;
-    margin: 30px 0;
+    margin: 24px 0;
     color: ${(props) => props.theme.colors.text};
     background: ${(props) => props.theme.colors.detailButton};
 

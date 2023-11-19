@@ -2,13 +2,7 @@ import ReactDOM from 'react-dom';
 import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { isLogInModalShowingAtom } from '../recoil/loginState';
-
-const Backdrop = styled.div`
-  position: fixed;
-  z-index:50;
-  width: 100vw;
-  height: 100vh;
-`;
+import Backdrop from './Backdrop';
 
 const Modal = styled.div`
   position: fixed;
@@ -103,10 +97,7 @@ export default function LoginModal() {
 
   return (
     <>
-      { ReactDOM.createPortal(
-        <Backdrop onClick={() => setIsLogInModalShowing(false)} />,
-        document.getElementById('backdrop-root') as Element,
-      )}
+      <Backdrop handleClose={() => setIsLogInModalShowing(false)} />
       { ReactDOM.createPortal(
         <Modal>
           <CloseButton

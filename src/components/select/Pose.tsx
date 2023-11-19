@@ -1,41 +1,28 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { useRecoilValue } from 'recoil';
-import { useRef, useState } from 'react';
-import { PoseWithIdSelector } from '../../recoil/poseState';
-import { PoseInfo } from '../../types/PoseType';
 import LikeButton from './LikeButton';
+import { PoseInfo } from '../../types/PoseType';
 
-type PoseProps = {
-  poseId: string;
-  likePoseIdArr: string[];
-};
-
-const Container = styled.div<{active: boolean, height: number, width: number}>`
+const PoseContainer = styled.div<{active: boolean, ratio: string}>`
   position: relative;
-  width: 100%;
-  margin-bottom: 5px;
+  
   a {
-    aspect-ratio: ${(props) => `${props.width}/${props.height}`};
-    ${(props) => props.active && css`
-        width: 100%;
-        height: auto;
-      `}
     img {
       width: 100%;
-      aspect-ratio: ${(props) => `${props.width}/${props.height}`};
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.1);
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: ${(props) => props.ratio};
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.3);
+
       ${(props) => props.active && css`
         border-radius: 10px;
         width: 100%;
-        height: auto;
-        aspect-ratio: initial;
-        object-fit: contain;
+        height: 100%;
+        object-fit: cover;
       `}
     }
   }
-
   button {
       bottom: 10px;
       right: 0;
@@ -50,27 +37,33 @@ const Container = styled.div<{active: boolean, height: number, width: number}>`
   }
 `;
 
-export default function Pose({ poseId, likePoseIdArr }: PoseProps) {
-  const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
-  const [isLoading, setIsLoading] = useState(true);
-  const linkTo = `/pose/detail?poseId=${poseInfo.poseId}`;
-
+export default function Pose({ pose, likePoseIdArr }: {
+  pose: PoseInfo;
+  likePoseIdArr: string[];
+}) {
+  const { poseId, file } = pose;
+  const { width, height, fileId } = file;
+  const linkTo = `/pose/detail?poseId=${poseId}`;
+  const poseStyle = height / width > 2 ? 'span 12' : 'span 6';
   return (
-    <Container active={!isLoading} height={poseInfo.file.height} width={poseInfo.file.width}>
+    <PoseContainer
+      key={poseId}
+      style={{ gridRowEnd: poseStyle }}
+      active
+      ratio={String(pose.file.width / pose.file.height)}
+    >
       <Link to={linkTo}>
         <img
-          src={`${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`}
-          alt={poseInfo.imageUrl}
-          onLoad={() => {
-            setIsLoading(false);
-          }}
+          src={`${process.env.REACT_APP_API_BASE_URL}${pose.thumbnailImageUrl}`}
+          alt={fileId}
         />
       </Link>
       <LikeButton
         likePoseIdArr={likePoseIdArr}
-        poseId={poseId}
+        poseId={pose.poseId}
         type="DEFAULT"
       />
-    </Container>
+
+    </PoseContainer>
   );
 }

@@ -34,16 +34,11 @@ interface TitleHeaderProps {
   backButton? : string,
 }
 
-export default function TitleHeader({ title, backButton }: TitleHeaderProps) {
-  const backButtonLocation = backButton ?? '';
+export default function TitleHeader({ title, backButton = '' }: TitleHeaderProps) {
   return (
     <Container>
-      <BackButton location={backButtonLocation} />
+      <BackButton location={backButton} />
       <h1>{title}</h1>
     </Container>
   );
 }
-
-TitleHeader.defaultProps = {
-  backButton: '',
-};

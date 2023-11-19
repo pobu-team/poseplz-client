@@ -5,7 +5,6 @@ import { useRecoilValue } from 'recoil';
 import { PoseSelector } from '../../recoil/poseState';
 import PoseList from '../common/PoseList';
 import EmptyPose from '../common/EmptyPose';
-import Loading from '../common/Loading';
 import useRecommendPose from '../../hooks/useRecommendPose';
 import useFetchTagGroup from '../../hooks/useFetchTagGroup';
 import TopButton from '../../ui/TopButton';
@@ -32,7 +31,7 @@ const Container = styled.div`
       gap: 4px;
       margin: 6px 4px;
       color: ${(props) => props.theme.colors.text};
-      background-color: ${(props) => props.theme.colors.lightContNormal};
+      background-color: ${(props) => props.theme.colors.backgroundSecondary};
     }
   }
 `;
@@ -73,7 +72,7 @@ export default function SelectPose() {
         ))}
       </div>
       {poseArr.length ? (
-        <React.Suspense fallback={<Loading />}>
+        <React.Suspense>
           <PoseList
             poses={poseArr}
             likePoseIdArr={likePoseIdArr}

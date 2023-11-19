@@ -1,4 +1,4 @@
-import { To, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 import styled from 'styled-components';
 
@@ -33,7 +33,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export default function BackButton({ location } : {location: string}) {
+export default function BackButton({ location = '' } : {location?: string}) {
   const navigate = useNavigate();
 
   const isDarkMode = useReadLocalStorage('darkMode');

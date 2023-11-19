@@ -1,25 +1,38 @@
-import { useRecoilValue } from 'recoil';
-import { AllPoseSelector, PopularPoseSelector, PoseSelector } from '../recoil/poseState';
+import { useQuery } from '@tanstack/react-query';
 import CATEGORY from '../types/CategoryType';
-import { PoseType } from '../types/PoseType';
+import { PoseInfo } from '../types/PoseType';
 import { ALL_PEOPLE_TAG } from '../constant/tagId';
+import { apiService } from '../service/ApiService';
+import { useFetchAllPose } from '../queries/poses';
 
 export default function useFetchCategoryPoses(
   category: CATEGORY,
   selectedTagId: string,
 )
-  :PoseType[] {
+  :PoseInfo[] {
   if (category === CATEGORY.PEOPLE && selectedTagId === ALL_PEOPLE_TAG) {
-    return useRecoilValue(AllPoseSelector);
+    const { data } = useFetchAllPose();
+    return data ?? [];
   }
-  if (category === CATEGORY.PEOPLE) {
-    return useRecoilValue(PoseSelector([selectedTagId]));
-  }
-  if (category === CATEGORY.THEME) {
-    return useRecoilValue(PoseSelector([selectedTagId]));
+  if (category === CATEGORY.PEOPLE || category === CATEGORY.THEME) {
+    const { data } = useQuery({
+      queryKey: ['pose', selectedTagId],
+      queryFn: async () => {
+        const { data: poses } = await apiService.fetchPose([selectedTagId]);
+        return poses;
+      },
+    });
+    return data ?? [];
   }
   if (category === CATEGORY.POPULAR) {
-    return useRecoilValue(PopularPoseSelector);
+    const { data } = useQuery({
+      queryKey: ['popularPoses'],
+      queryFn: async () => {
+        const { data: poses } = await apiService.fetchPopularPose();
+        return poses;
+      },
+    });
+    return data ?? [];
   }
   return [];
 }

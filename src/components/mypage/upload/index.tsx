@@ -1,11 +1,10 @@
-import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { useReadLocalStorage } from 'usehooks-ts';
 import EmptyPose from '../../common/EmptyPose';
 import PoseList from '../../common/PoseList';
 import useFetchLikeList from '../../../hooks/useFetchLikeList';
-import { myPoseSelector } from '../../../recoil/registerState';
 import LogIn from '../myLike/LogIn';
+import useFetchMyPoses from '../../../hooks/useFetchMyPoses';
 
 const Container = styled.div`
   padding: ${(props) => props.theme.sizes.contentPadding};
@@ -24,9 +23,9 @@ export default function Upload() {
     );
   }
   const likePoseIdArr = useFetchLikeList();
-  const filteredPoses = useRecoilValue(myPoseSelector(storedAccessToken));
+  const { isLoading, data: filteredPoses } = useFetchMyPoses();
 
-  if (filteredPoses.length > 0) {
+  if (!isLoading && filteredPoses && filteredPoses.length > 0) {
     return (
       <Container>
         <PoseList
