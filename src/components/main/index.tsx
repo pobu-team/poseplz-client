@@ -8,7 +8,6 @@ import useFetchLikeList from '../../hooks/useFetchLikeList';
 import PoseContainerTitle from './PoseContainerTitle';
 import LoginModal from '../../ui/LoginModal';
 import { isLogInModalShowingAtom } from '../../recoil/loginState';
-import Loading from '../common/Loading';
 import { useFetchAllPose } from '../../queries/poses';
 
 const Container = styled.div`
@@ -41,7 +40,7 @@ const DivideLine = styled.div`
 
 export default function Main() {
   // 모든 데이터를 불러온다.
-  const { isLoading, data: allData } = useFetchAllPose();
+  const { data: allData } = useFetchAllPose();
   const likePoseIdArr = useFetchLikeList();
   const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
 
@@ -51,10 +50,6 @@ export default function Main() {
   // 최신 포즈 20개의 아이디를 추출하고, 포즈 데이터를 불러온다.
   const recentPoses = recentData.slice(0, 20);
   const recentRandomPoses = recentPoses.filter((item) => item.poseId);
-
-  if (isLoading) {
-    return <Loading />;
-  }
 
   return (
     <div style={{ marginBottom: '75px' }}>

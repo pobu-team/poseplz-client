@@ -16,6 +16,7 @@ interface CategoryPoseListProps {
 
 const Container = styled.div<{isPopular: boolean}>`
   margin-top: ${(props) => (props.isPopular ? '5.7rem' : '10rem')};
+  margin-bottom: 15px;
 `;
 
 const GridContainer = styled.div`
