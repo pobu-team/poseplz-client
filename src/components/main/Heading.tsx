@@ -1,5 +1,9 @@
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import {
+  animate, easeInOut, motion, useMotionValue, useTransform,
+} from 'framer-motion';
+import { useEffect } from 'react';
 import CountSelector from '../../recoil/countState';
 
 const HeadingContainer = styled.div`
@@ -19,8 +23,21 @@ const HeadingContainer = styled.div`
   }
 `;
 
+const Number = styled(motion.div)`
+  text-decoration: underline;
+  display: inline;
+`;
+
 export default function Heading() {
-  const count = useRecoilValue(CountSelector);
+  const poseCount = useRecoilValue(CountSelector);
+
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+
+  useEffect(() => {
+    const controls = animate(count, poseCount, { duration: 3 });
+    return controls.stop;
+  }, []);
 
   return (
     <HeadingContainer>
@@ -30,11 +47,10 @@ export default function Heading() {
         {' '}
         포즈가
         {' '}
-        <span style={{ textDecoration: 'underline' }}>
-          {count}
-          장
-        </span>
-        이 있어요!
+        <Number style={{ textDecoration: 'underline' }}>
+          {rounded}
+        </Number>
+        장이 있어요!
       </h1>
     </HeadingContainer>
   );
