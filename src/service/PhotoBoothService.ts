@@ -12,6 +12,11 @@ class PhotoBoothService {
     const { data } = await this.instance.get<PhotoBoothResponse>('/photo-booths');
     return data;
   }
+
+  async fetchBrands() {
+    const { data } = await this.instance.get('/brands');
+    return data;
+  }
 }
 
 const photoBoothService = new PhotoBoothService();
