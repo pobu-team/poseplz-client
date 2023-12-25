@@ -49,6 +49,7 @@ module.exports = {
     'key-spacing': ['error', { mode: 'strict' }],
     'arrow-spacing': ['error', { before: true, after: true }],
     'react/require-default-props': 'off',
+    'max-len': ['error', { code: 150 }],
     'import/extensions': ['error', 'ignorePackages', {
       js: 'never',
       jsx: 'never',

@@ -1,5 +1,5 @@
-import Map from '../components/search/Map';
+import Index from '../components/search';
 
 export default function SearchPage() {
-  return <Map />;
+  return <Index />;
 }

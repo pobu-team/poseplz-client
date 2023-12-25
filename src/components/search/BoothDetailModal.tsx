@@ -3,7 +3,7 @@ import { Brand } from '../../types/PhotoBooth';
 
 const Container = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 7rem;
   display: flex;
   justify-content: space-between;
 
@@ -20,7 +20,7 @@ const TextContainer = styled.div`
   display: flex;
   gap: 8px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 const BoothName = styled.h1`
@@ -40,7 +40,12 @@ const ImageContainer = styled.div`
   display: flex;
   width: 80px;
   height: 80px;
+  border-radius: 8px;
   object-fit: cover;
+`;
+
+const Image = styled.img`
+  border-radius: 8px;
 `;
 
 export type BoothDetailModalProps = {
@@ -57,7 +62,7 @@ function BoothDetailModal({ name, address, brand }: BoothDetailModalProps) {
         <Address>{address}</Address>
       </TextContainer>
       <ImageContainer>
-        <img src="/images/person-2.png" alt="booth" />
+        <Image src={brand?.logoUrl} alt={name} />
       </ImageContainer>
     </Container>
   );
