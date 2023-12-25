@@ -9,7 +9,7 @@ class PhotoBoothService {
   });
 
   async fetchPhotoBooths() {
-    const { data } = await this.instance.get<PhotoBoothResponse>('/photo-booths');
+    const { data } = await this.instance.get<PhotoBoothResponse>('/photo-booths', { params: { size: 5000 } });
     return data;
   }
 
