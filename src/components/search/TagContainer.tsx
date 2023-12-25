@@ -5,7 +5,7 @@ import useDragScroll from '../../hooks/useDragScroll';
 
 const BrandTagsContainer = styled.div`
   display: flex;
-  padding: 16px;
+  padding: 16px 8px;
   max-width: 1000px;
   align-items: center;
   gap: 10px;
