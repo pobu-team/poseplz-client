@@ -24,7 +24,7 @@ function MarkerItem({ tag, photoBoothInfo, setBoothModal }: MarkerItemProps) {
   };
 
   /**
-   *  마커를 디테일하게 커스텀하려면 아래처럼 HTML 콘텐츠를 전달하는 방법이 있어 이렇게 작성하였습니다.
+   *  마커를 디테일하게 커스텀하는 방법을 찾다 아래처럼 HTML 콘텐츠를 전달하는 방법이 있어 이렇게 작성하였습니다.
    *  @see https://stickode.tistory.com/937
    *  */
   const contentIcon = [

@@ -3,7 +3,7 @@ import { Brand } from '../../types/PhotoBooth';
 
 const Container = styled.div`
   position: absolute;
-  bottom: 7rem;
+  bottom: 4rem;
   display: flex;
   justify-content: space-between;
 
