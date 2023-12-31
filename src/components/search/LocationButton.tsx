@@ -37,9 +37,9 @@ const LocationIcon = styled.span`
   }
 `;
 
-function LocationBtn({ onClickLocationBtn }: {onClickLocationBtn: () => void}) {
+function LocationBtn({ onClickMyLocationBtn }: {onClickMyLocationBtn: () => void}) {
   return (
-    <LocationButton href="#" onClick={onClickLocationBtn}>
+    <LocationButton href="#" onClick={onClickMyLocationBtn}>
       <LocationIcon>NAVER 그린팩토리</LocationIcon>
     </LocationButton>
   );

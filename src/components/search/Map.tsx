@@ -9,11 +9,7 @@ import BoothDetailModal, { BoothDetailModalProps } from './BoothDetailModal';
 import TagContainer from './TagContainer';
 import MarkerItem from './MarkerItem';
 import LocationBtn from './LocationButton';
-
-type Coord = {
-  latitude: number;
-  longitude: number;
-}
+import useGetMyLocation from '../../hooks/useGetMyLocation';
 
 const Container = styled.div`
   position: relative;
@@ -21,44 +17,21 @@ const Container = styled.div`
 
 function Map() {
   const [tag, setTag] = useState('');
-  const { data: photoBoothQueryResponse } = useFetchPhotoBooth();
-  const navermaps = useNavermaps();
-
-  const [myLocation, setMyLocation] = useState<Coord>({ latitude: 37.5540053, longitude: 126.9223894 });
   const [map, setMap] = useState<naver.maps.Map | null>(null);
 
-  const success = (position: GeolocationPosition) => {
-    setMyLocation((prev) => ({
-      ...prev,
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude,
-    }));
-  };
+  const navermaps = useNavermaps();
+  const { myLocation } = useGetMyLocation();
+  const { data: photoBoothQueryResponse } = useFetchPhotoBooth();
 
-  const error = () => {
-    console.warn('사용자 위치 불러오기 실패');
-    setMyLocation({ latitude: 37.5540053, longitude: 126.9223894 });
-  };
-
-  const onClickLocationBtn = () => {
-    if (map) {
+  const onClickMyLocationBtn = () => {
+    if (map && myLocation.latitude && myLocation.longitude) {
       map.setCenter(new navermaps.LatLng(myLocation.latitude, myLocation.longitude));
       map.setZoom(15);
     }
   };
 
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error, {
-        enableHighAccuracy: true,
-        timeout: 1000 * 10,
-        maximumAge: 1000 * 3600 * 24,
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    if (map) {
+    if (map && myLocation.latitude && myLocation.longitude) {
       map.setCenter(new navermaps.LatLng(myLocation.latitude, myLocation.longitude));
       map.setZoom(15);
     }
@@ -76,21 +49,32 @@ function Map() {
         style={{ height: '90vh' }}
         onClick={() => setBoothModal(defaultBoothModal)}
       >
-        <NaverMap
-          defaultCenter={new navermaps.LatLng(myLocation.latitude, myLocation.longitude)}
-          defaultZoom={15}
-          ref={setMap}
-        >
-          {photoBoothQueryResponse?.data.map((photoBoothInfo) => (
-            <MarkerItem
-              key={photoBoothInfo.photoBoothId}
-              tag={tag}
-              photoBoothInfo={photoBoothInfo}
-              setBoothModal={setBoothModal}
-            />
-          ))}
-          <LocationBtn onClickLocationBtn={onClickLocationBtn} />
-        </NaverMap>
+        {/* 내 위치 불러오기 전까지 로딩화면 보여줌 */}
+        {!myLocation.latitude && (
+          <div style={{
+            width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center',
+          }}
+          >
+            <img width="130px" height="130px" src="/images/loading.gif" alt="loading" />
+          </div>
+        )}
+        {myLocation.latitude && myLocation.longitude && (
+          <NaverMap
+            defaultCenter={new navermaps.LatLng(myLocation.latitude, myLocation.longitude)}
+            defaultZoom={15}
+            ref={setMap}
+          >
+            {photoBoothQueryResponse?.data.map((photoBoothInfo) => (
+              <MarkerItem
+                key={photoBoothInfo.photoBoothId}
+                tag={tag}
+                photoBoothInfo={photoBoothInfo}
+                setBoothModal={setBoothModal}
+              />
+            ))}
+            <LocationBtn onClickMyLocationBtn={onClickMyLocationBtn} />
+          </NaverMap>
+        )}
       </MapDiv>
       {boothModal.visible && (
         <BoothDetailModal
