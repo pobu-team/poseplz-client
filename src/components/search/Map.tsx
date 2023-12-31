@@ -70,6 +70,7 @@ function Map() {
                 tag={tag}
                 photoBoothInfo={photoBoothInfo}
                 setBoothModal={setBoothModal}
+                clicked={boothModal.address === photoBoothInfo.address}
               />
             ))}
             <LocationBtn onClickMyLocationBtn={onClickMyLocationBtn} />
