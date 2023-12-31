@@ -53,6 +53,7 @@ function MarkerItem({
       icon={{
         content: clicked ? clickedContentIcon : contentIcon,
       }}
+      zIndex={clicked ? 100 : 1}
       onClick={(e) => handleClickPin(e)}
     />
   );
