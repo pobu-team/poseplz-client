@@ -16,12 +16,10 @@ import CategoryPage from './pages/CategoryPage';
 import SelectLayout from './components/layout/SelectLayout';
 import SelectResultLayout from './components/layout/SelectResultLayout';
 import ErrorPage from './pages/ErrorPage';
-import KakaoLogIn from './components/mypage/myLike/KakaoLogIn';
+import KakaoLogIn from './components/mypage/KakaoLogIn';
 import RegisterLayout from './components/layout/RegisterLayout';
 import RegisterPage from './pages/RegisterPage';
 import RegisterInfoPage from './pages/RegisterInfoPage';
-import MyLike from './components/mypage/myLike';
-import Upload from './components/mypage/upload';
 import SearchPage from './pages/SearchPage';
 
 const routes = [
@@ -63,8 +61,6 @@ const routes = [
     element: <MyPageLayout />,
     children: [
       { path: '/mypage', element: <MyLikePage /> },
-      { path: '/mylike', element: <MyLike /> },
-      { path: '/upload', element: <Upload /> },
     ],
   },
   {

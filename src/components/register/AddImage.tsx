@@ -7,7 +7,7 @@ import ImageUploadButton from './ImageUploadButton';
 import ImagePreview from './ImagePreview';
 import { imgAtom, imgFileAtom } from '../../recoil/registerState';
 import NextButton from './NextButton';
-import LogIn from '../mypage/myLike/LogIn';
+import LogIn from '../mypage/LogIn';
 
 const Container = styled.div`
   display: flex;
