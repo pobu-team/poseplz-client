@@ -19,7 +19,7 @@ const ProfileSection = styled.div`
   z-index: 99;
   background-color: ${(props) => props.theme.colors.background};
   width: 100%;
-  max-width: 360px;
+  max-width: 375px;
 `;
 
 const PoseSection = styled.div`
