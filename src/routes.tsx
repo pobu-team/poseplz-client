@@ -23,6 +23,7 @@ import RegisterInfoPage from './pages/RegisterInfoPage';
 import MyLike from './components/mypage/myLike';
 import Upload from './components/mypage/upload';
 import SearchPage from './pages/SearchPage';
+import SearchLayout from './components/layout/SearchLayout';
 
 const routes = [
   {
@@ -87,7 +88,7 @@ const routes = [
     ],
   },
   {
-    element: <HomeLayout />,
+    element: <SearchLayout />,
     children: [
       { path: '/search', element: <SearchPage /> },
     ],

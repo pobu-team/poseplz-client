@@ -38,7 +38,7 @@ export default function NavigationBar() {
       />
       <Button
         text="매장찾기"
-        imgSrc="shop_search"
+        imgSrc={searchActive ? 'shop_search_active' : 'shop_search_disable'}
         onClickFunc={() => handleNavClick('/search', 'GNB Search')}
         active={searchActive}
       />
@@ -46,13 +46,11 @@ export default function NavigationBar() {
         text="포즈추천"
         imgSrc="recommend"
         onClickFunc={() => handleNavClick('/people', 'GNB Home')}
-        active={searchActive}
       />
       <Button
         text="포즈등록"
         imgSrc="register"
         onClickFunc={() => handleNavClick('/register', 'GNB Home')}
-        active={searchActive}
       />
       <Button
         text="마이"

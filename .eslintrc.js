@@ -48,15 +48,8 @@ module.exports = {
     'object-curly-spacing': ['error', 'always'],
     'key-spacing': ['error', { mode: 'strict' }],
     'arrow-spacing': ['error', { before: true, after: true }],
-    'import/no-extraneous-dependencies': ['error', {
-      devDependencies: [
-        '**/*.test.js',
-        '**/*.test.jsx',
-        '**/*.test.ts',
-        '**/*.test.tsx',
-      ],
-    }],
     'react/require-default-props': 'off',
+    'max-len': ['error', { code: 150 }],
     'import/extensions': ['error', 'ignorePackages', {
       js: 'never',
       jsx: 'never',
