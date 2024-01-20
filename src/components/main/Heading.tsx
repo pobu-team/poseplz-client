@@ -35,7 +35,7 @@ export default function Heading() {
   const rounded = useTransform(count, (latest) => Math.round(latest));
 
   useEffect(() => {
-    const controls = animate(count, poseCount, { duration: 3 });
+    const controls = animate(count, poseCount, { duration: 1.5 });
     return controls.stop;
   }, []);
 

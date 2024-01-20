@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { Marker, useNavermaps } from 'react-naver-maps';
 import {
-  Dispatch, SetStateAction, useEffect, useState,
+  Dispatch, SetStateAction,
 } from 'react';
 import { PhotoBooth } from '../../types/PhotoBooth';
 import { BoothDetailModalProps } from './BoothDetailModal';
@@ -41,8 +41,8 @@ function MarkerItem({
 
   const clickedContentIcon = [
     '<div style="zIndex: 2; width: 38px; height: 46px; position: relative;">',
-    '<img src="/images/base_marker_icon.svg" alt="marker" style="position: absolute; left: 50%; translate: -50%; width: 50px; height: 50px;" />',
-    `<img src=${brand.logoUrl ? brand.logoUrl : '/images/default_brand_logo.svg'} alt="${brand.name ? brand.name : '기본이미지'}" style="position: absolute; width: 30px; height: 30px; border-radius: 30px; top: 5px; left: 50%; translate: -50%;" />`,
+    '<img src="/images/base_marker_icon.svg" alt="marker" style="position: absolute; left: 50%; translate: -50%; bottom: 10px; width: 50px; height: 50px;" />',
+    `<img src=${brand.logoUrl ? brand.logoUrl : '/images/default_brand_logo.svg'} alt="${brand.name ? brand.name : '기본이미지'}" style="position: absolute; width: 30px; height: 30px; border-radius: 30px; bottom: 24px; left: 50%; translate: -50%;" />`,
     '</div>',
   ].join('');
 

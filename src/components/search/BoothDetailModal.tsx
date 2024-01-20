@@ -2,8 +2,11 @@ import styled from 'styled-components';
 import { Brand } from '../../types/PhotoBooth';
 
 const Container = styled.div`
-  position: absolute;
-  bottom: 4rem;
+  position: fixed;
+  margin: auto;
+  width: 100%;
+  max-width: 375px;
+  bottom: 7.2rem;
   display: flex;
   justify-content: space-between;
 
