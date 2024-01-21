@@ -8,7 +8,7 @@ import { AtmosphereTagSelector, PeopleTagSelector } from '../../recoil/tagState'
 import { Tag } from '../../types/Tag';
 import { imgAtom, imgFileAtom } from '../../recoil/registerState';
 import { apiService } from '../../service/ApiService';
-import LogIn from '../mypage/myLike/LogIn';
+import LogIn from '../mypage/LogIn';
 
 const Container = styled.div`
   padding: 2.4rem;
