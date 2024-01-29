@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { MemberResponse } from '../types/MemberInfo';
 
 const API_BASE_URL = `${process.env.REACT_APP_API_BASE_URL}/api/v1` || 'https://server.poseplz.com/api/v1';
 
@@ -15,7 +16,7 @@ class LogInApiService {
     return data;
   }
 
-  async getMemberInfo(token: string) {
+  async getMemberInfo(token: string) : Promise<MemberResponse> {
     const { data } = await this.instance.get('/members/me', {
       headers: {
         Authorization: `Bearer ${token}`,
