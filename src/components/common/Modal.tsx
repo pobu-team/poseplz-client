@@ -3,10 +3,11 @@ import styled from "styled-components"
 
 const Dialog = styled.dialog`
   padding: 0;
-  width: 100%;
+  width: fit-content;
+  margin: auto;
   background: none;
   border: none;
-  
+
   &::backdrop{
     backdrop-filter: blur(2px);
     background-color: rgba(0, 0, 0, 0.3);

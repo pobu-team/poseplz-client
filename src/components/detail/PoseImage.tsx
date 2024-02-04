@@ -7,8 +7,16 @@ import LikeButton from '../select/LikeButton';
 import { PoseContainer } from './PoseDetail.styles';
 
 const FullImage = styled.div`
+  display: flex;
+  justify-content: center;
+  width: auto;
+  width: 100%;
+
   img {
     width: 100%;
+    height: 100%;
+    max-height: calc(100vh - 57px);
+    object-fit: contain;
   }
 `
 
