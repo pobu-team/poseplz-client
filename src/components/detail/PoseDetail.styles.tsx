@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const PoseContainer = styled.div`
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
