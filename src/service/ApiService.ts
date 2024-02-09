@@ -43,7 +43,7 @@ export default class ApiService {
   }
 
   async fetchAllPose() {
-    const { data } = await this.instance.get('/poses?page=0&size=300');
+    const { data } = await this.instance.get('/poses?page=0&size=500');
     return data;
   }
 

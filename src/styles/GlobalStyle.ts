@@ -32,6 +32,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .no-scroll {
+    overflow: hidden;
+  }  
+
   *{
     box-sizing: border-box;
     outline: none;
