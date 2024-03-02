@@ -24,6 +24,7 @@ const ProfileSection = styled.div`
 
 const PoseSection = styled.div`
   padding-top: 14.8rem;
+  padding-bottom: 7rem;
 `;
 
 export default function MyPage() {

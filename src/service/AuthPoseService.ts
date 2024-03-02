@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { PoseInfo } from '../types/PoseType';
+import { MAX_IMG_COUNT } from '../constant/pose';
 
 const API_BASE_URL = `${process.env.REACT_APP_API_BASE_URL}/api/v1` || 'https://server.poseplz.com/api/v1';
 
@@ -23,7 +24,7 @@ export default class AuthPoseService {
   async fetchMyPoses() : Promise<PoseInfo[]> {
     try {
       const token = localStorage.getItem('accessToken')?.replace(/^"|"$/g, '');
-      const { data } = await this.instance.get('/members/me/poses', {
+      const { data } = await this.instance.get(`/members/me/poses?page=0&size=${MAX_IMG_COUNT}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
