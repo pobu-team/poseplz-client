@@ -18,7 +18,7 @@ const FullImage = styled.div`
     max-height: calc(100vh - 57px);
     object-fit: contain;
   }
-`
+`;
 
 export default function PoseImage({ poseInfo } : {poseInfo: PoseInfo}) {
   const likePoseIdArr = useFetchLikeList();
@@ -27,20 +27,20 @@ export default function PoseImage({ poseInfo } : {poseInfo: PoseInfo}) {
   return (
     <>
       <PoseContainer>
-        <div>
-          <img onClick={openModal} src={`${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`} alt={poseInfo.imageUrl} />
+        <div role="button" onClick={openModal} tabIndex={0} onKeyDown={openModal}>
+          <img src={`${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`} alt={poseInfo.imageUrl} />
         </div>
         <LikeButton
           likePoseIdArr={likePoseIdArr}
           poseId={poseInfo.poseId}
           type="DETAIL"
-          />
+        />
       </PoseContainer>
       <Modal modalRef={modalRef} hide={closeModal} hideOnClickOutside>
-        <FullImage>
+        <FullImage onClick={closeModal}>
           <img src={`${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`} alt={poseInfo.imageUrl} />
         </FullImage>
       </Modal>
-     </>
+    </>
   );
 }
