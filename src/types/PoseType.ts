@@ -18,6 +18,8 @@ export interface PoseInfo {
   tags: Tag[];
   peopleCount: number;
   archived: boolean;
+  sourceTitle: string;
+  sourceUrl: string;
 }
 
 export interface Pagination {
