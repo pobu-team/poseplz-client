@@ -5,6 +5,7 @@ import { PoseInfo } from '../../types/PoseType';
 import Modal from '../common/Modal';
 import LikeButton from '../select/LikeButton';
 import { PoseContainer } from './PoseDetail.styles';
+import OpenInNew from '../svg/OpenInNew';
 
 const FullImage = styled.div`
   display: flex;
@@ -18,6 +19,21 @@ const FullImage = styled.div`
     max-height: calc(100vh - 57px);
     object-fit: contain;
   }
+`;
+
+export const StyledAnchor = styled.a`
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  text-decoration: none;
+  color: #fff;
+  font-size: 12px;
+  line-height: 14px;
 `;
 
 export default function PoseImage({ poseInfo } : {poseInfo: PoseInfo}) {
@@ -35,6 +51,12 @@ export default function PoseImage({ poseInfo } : {poseInfo: PoseInfo}) {
           poseId={poseInfo.poseId}
           type="DETAIL"
         />
+        {poseInfo.sourceUrl && (
+          <StyledAnchor href={poseInfo.sourceUrl} target="_blank">
+            이미지 출처
+            <OpenInNew />
+          </StyledAnchor>
+        )}
       </PoseContainer>
       <Modal modalRef={modalRef} hide={closeModal} hideOnClickOutside>
         <FullImage onClick={closeModal}>
