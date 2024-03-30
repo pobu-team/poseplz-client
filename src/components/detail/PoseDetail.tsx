@@ -20,7 +20,7 @@ import Loading from '../common/Loading';
 import useFetchMyPoses from '../../hooks/useFetchMyPoses';
 import { useDeletePose } from '../../queries/poses';
 import LinkCopyIcon from '../svg/LinkCopyIcon';
-import useSnackbar from '../common/toast/useSnackbar';
+import useSnackbar from '../common/SnackBar/useSnackbar';
 import CheckIcon from '../svg/CheckIcon';
 
 type PoseDetailProps = {
