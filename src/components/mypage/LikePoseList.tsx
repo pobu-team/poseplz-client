@@ -8,7 +8,6 @@ import useFetchLikeList from '../../hooks/useFetchLikeList';
 
 const Container = styled.div`
   padding: ${(props) => props.theme.sizes.contentPadding};
-  padding-bottom: 8rem;
 `;
 
 export default function LikePoseList({ selectedTagId }: {selectedTagId: string}) {
