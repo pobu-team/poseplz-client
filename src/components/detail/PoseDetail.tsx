@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 import { useState } from 'react';
+import { useLocation } from 'react-router';
 import { ButtonContainer, TagButtonContainer } from './PoseDetail.styles';
 import { PoseWithIdSelector } from '../../recoil/poseState';
 import { PoseInfo } from '../../types/PoseType';
@@ -9,10 +10,8 @@ import sortTag from '../../utils/sortTag';
 import shareLink from '../../utils/share';
 import TagButton from '../../ui/TagButton';
 import addGaEvent from '../../utils/addGaEvent';
-import DownloadIcon from '../svg/DownloadIcon';
 import ShareIcon from '../svg/ShareIcon';
 import PoseImage from './PoseImage';
-import imageDownload from '../../utils/downloadImage';
 import LoginModal from '../../ui/LoginModal';
 import { isLogInModalShowingAtom } from '../../recoil/loginState';
 import DeleteIcon from '../svg/DeleteIcon';
@@ -20,6 +19,9 @@ import BoxModal from '../../ui/BoxModal';
 import Loading from '../common/Loading';
 import useFetchMyPoses from '../../hooks/useFetchMyPoses';
 import { useDeletePose } from '../../queries/poses';
+import LinkCopyIcon from '../svg/LinkCopyIcon';
+import useSnackbar from '../common/SnackBar/useSnackbar';
+import CheckIcon from '../svg/CheckIcon';
 
 type PoseDetailProps = {
   poseId: (string | undefined);
@@ -65,7 +67,16 @@ const DeleteButton = styled.button`
   cursor: pointer;
 `;
 
+const LinkCopySnackBar = (
+  <>
+    <CheckIcon />
+    <p style={{ marginLeft: '8px' }}>링크가 복사되었습니다.</p>
+  </>
+);
+
 export default function PoseDetail({ poseId }: PoseDetailProps) {
+  const { pathname, search } = useLocation();
+
   const poseInfo: PoseInfo = useRecoilValue(PoseWithIdSelector(poseId));
   const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
   const [isDeleteModalShowing, setIsDeleteModalShowing] = useState(false);
@@ -73,10 +84,15 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
   const { isLoading, data: myPoses } = useFetchMyPoses();
   const mutate = useDeletePose();
   sortTag(tagArr);
+  const { snackbar, open } = useSnackbar(LinkCopySnackBar);
 
-  const imageUrl = `${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`;
-  const handleClickDownloadButton = () => {
-    imageDownload({ imageUrl, poseId: poseInfo.poseId });
+  const handleCopyClipBoard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      open();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   if (isLoading) {
@@ -105,10 +121,10 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
         <ButtonContainer>
           <button
             type="button"
-            onClick={handleClickDownloadButton}
+            onClick={() => handleCopyClipBoard(`www.poseplz.com/${pathname}/${search}`)}
           >
-            <DownloadIcon />
-            포즈 다운로드
+            <LinkCopyIcon />
+            포즈 링크복사
           </button>
           <button
             type="button"
@@ -133,6 +149,7 @@ export default function PoseDetail({ poseId }: PoseDetailProps) {
         />
       )}
       {isLogInModalShowing && <LoginModal />}
+      {snackbar}
     </Container>
   );
 }
