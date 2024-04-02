@@ -10,6 +10,8 @@ interface NextButtonProps {
 const Button = styled.button<{active: boolean}>`
   width: 32.7rem;
   height: 5.6rem;
+  position: fixed;
+  bottom: 20px;
   padding: 1.6rem 3.2rem 1.6rem 3.2rem;
   border-radius: 10px;
   border: none;

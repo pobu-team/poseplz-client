@@ -11,7 +11,7 @@ import { apiService } from '../../service/ApiService';
 import LogIn from '../mypage/LogIn';
 
 const Container = styled.div`
-  padding: 2.4rem;
+  padding: 5.8rem 2.4rem 2.4rem;
 `;
 
 const QuestionTitle = styled.h2`
