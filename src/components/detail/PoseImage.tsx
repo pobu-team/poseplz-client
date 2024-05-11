@@ -24,7 +24,7 @@ const FullImage = styled.div`
 export const StyledAnchor = styled.a`
   position: absolute;
   right: 12px;
-  bottom: 12px;
+  bottom: 16px;
 
   display: flex;
   align-items: center;
@@ -43,8 +43,15 @@ export default function PoseImage({ poseInfo } : {poseInfo: PoseInfo}) {
   return (
     <>
       <PoseContainer>
-        <div role="button" onClick={openModal} tabIndex={0} onKeyDown={openModal}>
-          <img src={`${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`} alt={poseInfo.imageUrl} />
+        <div>
+          <img
+            role="presentation"
+            onClick={openModal}
+            onKeyDown={openModal}
+            src={`${process.env.REACT_APP_API_BASE_URL}${poseInfo.imageUrl}`}
+            alt={poseInfo.imageUrl}
+          />
+
         </div>
         <LikeButton
           likePoseIdArr={likePoseIdArr}
