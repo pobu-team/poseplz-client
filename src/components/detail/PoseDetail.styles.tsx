@@ -16,12 +16,12 @@ export const PoseContainer = styled.div`
     justify-content: center;
     width: 100%;
     height: 488px;
+    padding: 60px 20px;
     background-color: ${(props) => props.theme.colors.detailButton};
     
     img {
       max-width: 300px;
       max-height: 600px;
-      padding: 24px;
       display: flex;
       width: 100%;
       height: 100%;
