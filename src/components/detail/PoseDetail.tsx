@@ -37,16 +37,11 @@ const Container = styled.div`
 `;
 
 const ButtonSection = styled.section`
-  position: fixed;
-  left: 50%;
-  translate: -50%;
-  bottom: 0;
-  width: 100vw;
+  width: 100%;
   max-width: 375px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-inline: ${(props) => props.theme.sizes.contentPadding};
   @media screen and (max-width: 340px) {
     padding: 1.2rem;
   }

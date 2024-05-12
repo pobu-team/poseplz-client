@@ -38,6 +38,10 @@ const CategoryButton = styled.button<{active: boolean}>`
   font-weight: 600;
   line-height: 1.63;
   cursor: pointer;
+  max-width: 120px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis
 `;
 
 interface CategoryButtonsProps {
