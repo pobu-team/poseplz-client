@@ -44,7 +44,7 @@ export default function Main() {
   const likePoseIdArr = useFetchLikeList();
   const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
 
-  const recentData = [...allData ?? []].reverse();
+  const recentData = allData ?? [];
   // 21-26번째를 추출한다.(좋아요를 누를 때 리렌더링 방지 위해 데이터 고정)
   const randomPoses = recentData.slice(20, 26);
   // 최신 포즈 20개의 아이디를 추출하고, 포즈 데이터를 불러온다.
