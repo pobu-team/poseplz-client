@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import NavigationBar from '../footer/NavigationBar';
+import ScrollToTop from '../../utils/ScrollToTop';
 
 const Container = styled.div`
   width: 100%;
@@ -14,6 +15,7 @@ const Container = styled.div`
 export default function MyPageLayout() {
   return (
     <Container>
+      <ScrollToTop />
       <main>
         <Outlet />
       </main>
