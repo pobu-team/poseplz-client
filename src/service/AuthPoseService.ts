@@ -24,6 +24,8 @@ export default class AuthPoseService {
   async fetchMyPoses() : Promise<PoseInfo[]> {
     try {
       const token = localStorage.getItem('accessToken')?.replace(/^"|"$/g, '');
+      if (!token) return [];
+
       const { data } = await this.instance.get(`/members/me/poses?page=0&size=${MAX_IMG_COUNT}`, {
         headers: {
           Authorization: `Bearer ${token}`,
