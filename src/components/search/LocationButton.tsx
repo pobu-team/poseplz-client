@@ -26,15 +26,10 @@ const LocationIcon = styled.span`
   color: transparent;
   vertical-align: top;
   background-image: url('https://map.naver.com/p/assets/sprites/common.png?e8b0d83');
-  background-size: 428px 403px;
-  background-position: -130px -114px;
+  background-size: 413px 384px;
+  background-position: -237px -308px;
   width: 35px;
   height: 35px;
-
-  &:active {
-    background-size: 428px 403px;
-    background-position: -87px -70px;
-  }
 `;
 
 function LocationBtn({ onClickMyLocationBtn }: {onClickMyLocationBtn: () => void}) {
