@@ -55,6 +55,7 @@ export default function CategoryButtons({ selectedTagId, setSelectedTagId, categ
   const ref = useRef<HTMLDivElement>(null);
   const isClick = useDragScroll(ref);
   const tags = useFetchCategoryTags(category);
+
   const handleClick = (tagId: string, selectorName: string) => {
     if (!isClick) return;
     setSelectedTagId(tagId);

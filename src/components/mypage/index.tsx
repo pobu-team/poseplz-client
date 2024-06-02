@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { useReadLocalStorage } from 'usehooks-ts';
-import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 import LogIn from './LogIn';
 import LikePoseList from './LikePoseList';
 import { ALL_PEOPLE_TAG } from '../../constant/tagId';
 import PoseTab from './PoseTab';
 import UserProfile from './UserProfile';
 import RegisteredPoseList from './RegisteredPoseList';
+import { myPageTabAtom } from '../../recoil/tabState';
 
 const Container = styled.div`
   height: 100vh;
@@ -32,8 +33,7 @@ export default function MyPage() {
   if (!storedAccessToken) {
     return <LogIn />;
   }
-
-  const [isShowingRegisteredPoses, setIsShowingRegisteredPoses] = useState(true);
+  const [isShowingRegisteredPoses, setIsShowingRegisteredPoses] = useRecoilState(myPageTabAtom);
 
   return (
     <Container>
