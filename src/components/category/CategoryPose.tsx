@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useRecoilValue } from 'recoil';
-import { ALL_PEOPLE_TAG, COMIC_TAG } from '../../constant/tagId';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import CATEGORY from '../../types/CategoryType';
 import CategoryButtons from './CategoryButtons';
 import CategoryPoseList from './CategoryPoseList';
 import LoginModal from '../../ui/LoginModal';
 import { isLogInModalShowingAtom } from '../../recoil/loginState';
+import { PeopleCategoryTabAtom, ThemeCategoryTabAtom } from '../../recoil/tabState';
 
 const Container = styled.div`
   position: relative;
@@ -18,19 +17,22 @@ const PoseContainer = styled.div`
 `;
 
 export default function CategoryPose({ category }: {category:CATEGORY}) {
-  const initialState = category === CATEGORY.PEOPLE ? ALL_PEOPLE_TAG : COMIC_TAG;
-  const [selectedTagId, setSelectedTagId] = useState(initialState);
   const isLogInModalShowing = useRecoilValue(isLogInModalShowingAtom);
+  const [peopleTab, setPeopleTab] = useRecoilState(PeopleCategoryTabAtom);
+  const [themeTab, setThemeTab] = useRecoilState(ThemeCategoryTabAtom);
 
   return (
     <Container>
       <CategoryButtons
-        selectedTagId={selectedTagId}
-        setSelectedTagId={setSelectedTagId}
+        selectedTagId={category === CATEGORY.PEOPLE ? peopleTab : themeTab}
+        setSelectedTagId={category === CATEGORY.PEOPLE ? setPeopleTab : setThemeTab}
         category={category}
       />
       <PoseContainer>
-        <CategoryPoseList category={category} selectedTagId={selectedTagId} />
+        <CategoryPoseList
+          category={category}
+          selectedTagId={category === CATEGORY.PEOPLE ? peopleTab : themeTab}
+        />
       </PoseContainer>
       {isLogInModalShowing && <LoginModal />}
     </Container>
