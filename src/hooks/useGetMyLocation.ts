@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
 
 type Coord = {
-  latitude: number | null;
-  longitude: number | null;
+  latitude: number;
+  longitude: number;
 }
 
+/** 내 위치 기본값은 사진관이 비교적 많은 연남동으로 지정했습니다 */
+const DEFAULT_LATITUDE = 37.5540053;
+const DEFAULT_LONGITUDE = 126.9223894;
+
 const useGetMyLocation = () => {
-  const [myLocation, setMyLocation] = useState<Coord>({ latitude: null, longitude: null });
+  const [myLocation, setMyLocation] = useState<Coord>({ latitude: DEFAULT_LATITUDE, longitude: DEFAULT_LONGITUDE });
 
   const success = (position: GeolocationPosition) => {
     setMyLocation((prev) => ({
@@ -18,7 +22,7 @@ const useGetMyLocation = () => {
 
   const error = () => {
     console.warn('사용자 위치 불러오기 실패');
-    setMyLocation({ latitude: 37.5540053, longitude: 126.9223894 });
+    setMyLocation({ latitude: DEFAULT_LATITUDE, longitude: DEFAULT_LONGITUDE });
   };
 
   useEffect(() => {
