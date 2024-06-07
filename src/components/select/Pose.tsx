@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import LikeButton from './LikeButton';
 import { PoseInfo } from '../../types/PoseType';
@@ -45,6 +45,12 @@ export default function Pose({ pose, likePoseIdArr }: {
   const { width, height, fileId } = file;
   const linkTo = `/pose/detail?poseId=${poseId}`;
   const poseStyle = height / width > 2 ? 'span 12' : 'span 6';
+  const navigate = useNavigate();
+
+  const handleError = async () => {
+    navigate('/error');
+  };
+
   return (
     <PoseContainer
       key={poseId}
@@ -56,6 +62,7 @@ export default function Pose({ pose, likePoseIdArr }: {
         <img
           src={`${process.env.REACT_APP_API_BASE_URL}${pose.thumbnailImageUrl}`}
           alt={fileId}
+          onError={handleError}
         />
       </Link>
       <LikeButton
