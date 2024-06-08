@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { useLocation, useNavigate } from 'react-router';
+import { useSetRecoilState } from 'recoil';
 import Button from './Button';
 import addGaEvent from '../../utils/addGaEvent';
+import { myPageTabAtom } from '../../recoil/tabState';
 
 const Container = styled.div`
   position: fixed;
@@ -22,6 +24,7 @@ export default function NavigationBar() {
   const homeActive = pathname === '/main';
   const searchActive = pathname === '/search';
   const myPageActive = MYPAGES.includes(pathname);
+  const setMyPageTab = useSetRecoilState(myPageTabAtom);
 
   const handleNavClick = (location: string, eventName:string) => {
     navigate(location);
@@ -55,7 +58,10 @@ export default function NavigationBar() {
       <Button
         text="마이"
         imgSrc={myPageActive ? 'mypage_active' : 'mypage_disable'}
-        onClickFunc={() => handleNavClick('/mypage', 'GNB My Page')}
+        onClickFunc={() => {
+          handleNavClick('/mypage', 'GNB My Page');
+          setMyPageTab(true);
+        }}
         active={myPageActive}
       />
     </Container>
