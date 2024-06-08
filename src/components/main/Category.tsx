@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 import addGaEvent from '../../utils/addGaEvent';
+import { PeopleCategoryTabAtom, ThemeCategoryTabAtom } from '../../recoil/tabState';
+import { ALL_PEOPLE_TAG, COMIC_TAG } from '../../constant/tagId';
 
 const CategoryContainer = styled.div`
   display: flex;
@@ -37,11 +40,16 @@ const CategoryLink = styled(Link)`
 `;
 
 export default function Category() {
+  const setPeopleCategory = useSetRecoilState(PeopleCategoryTabAtom);
+  const setThemeCategory = useSetRecoilState(ThemeCategoryTabAtom);
   return (
     <CategoryContainer>
       <CategoryLink
         to="/category/people"
-        onClick={() => { addGaEvent('Category People'); }}
+        onClick={() => {
+          addGaEvent('Category People');
+          setPeopleCategory(ALL_PEOPLE_TAG);
+        }}
       >
         <button type="button">
           <img src="/images/pose_person.svg" alt="인원별포즈" />
@@ -50,7 +58,10 @@ export default function Category() {
       </CategoryLink>
       <CategoryLink
         to="/category/theme"
-        onClick={() => { addGaEvent('Category Theme'); }}
+        onClick={() => {
+          addGaEvent('Category Theme');
+          setThemeCategory(COMIC_TAG);
+        }}
       >
         <button type="button">
           <img src="/images/pose_theme.svg" alt="테마별포즈" />
