@@ -5,8 +5,8 @@ const LocationButton = styled.a`
   overflow: hidden;
   display: inline-block;
   position: absolute;
-  bottom: 19rem;
-  left: 10px;
+  bottom: 25rem;
+  right: 10px;
   width: 35px;
   height: 35px;
   border: 1px solid rgba(58, 70, 88, 0.45);
