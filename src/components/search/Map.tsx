@@ -18,7 +18,7 @@ const Container = styled.div`
 
 function Map() {
   const [tag, setTag] = useState('');
-  const [map, setMap] = useState<naver.maps.Map | null>(null);
+  const [map, setMap] = useState<any | null>(null);
 
   const [photoBoothData, setPhotoBoothData] = useState<PhotoBoothResponse['data']>([]);
 
@@ -32,10 +32,10 @@ function Map() {
     }
   };
 
-  const loadData = async () => {
+  const loadData = async (latitude: number, longitude: number) => {
     const fetchParams = {
-      latitude: myLocation.latitude,
-      longitude: myLocation.longitude,
+      latitude,
+      longitude,
       size: 500,
       distance: 5000,
     };
@@ -47,7 +47,7 @@ function Map() {
     if (map && myLocation.latitude && myLocation.longitude) {
       map.setCenter(new navermaps.LatLng(myLocation.latitude, myLocation.longitude));
       map.setZoom(15);
-      loadData();
+      loadData(myLocation.latitude, myLocation.longitude);
     }
   }, [myLocation.latitude]);
 
@@ -55,6 +55,13 @@ function Map() {
     visible: false, name: '', address: '', brand: undefined,
   };
   const [boothModal, setBoothModal] = useState<BoothDetailModalProps & {visible: boolean}>(defaultBoothModal);
+
+  useEffect(() => {
+    if (map && map.data) {
+      const { data: { map: { center: { x, y } } } } = map;
+      loadData(y, x);
+    }
+  }, [map?.data.map.center.x, map?.data.map.center.y]);
 
   return (
     <Container>
