@@ -34,3 +34,13 @@ export type PhotoBoothResponse = {
   data: PhotoBooth[];
   pagination: Pagination;
 }
+
+export type PhotoBoothRequest = {
+    brandIds?: number[];
+    distance?: number;
+    latitude?: number;
+    longitude?: number;
+    page?: number;
+    size?: number;
+    sort?: 'asc' | 'desc';
+}

@@ -4,12 +4,13 @@ import {
   Container as MapDiv, NaverMap, useNavermaps,
 } from 'react-naver-maps';
 import styled from 'styled-components';
-import useFetchPhotoBooth from '../../hooks/photoBooth/useFetchPhotoBooth';
 import BoothDetailModal, { BoothDetailModalProps } from './BoothDetailModal';
 import TagContainer from './TagContainer';
 import MarkerItem from './MarkerItem';
 import LocationBtn from './LocationButton';
 import useGetMyLocation from '../../hooks/useGetMyLocation';
+import photoBoothService from '../../service/PhotoBoothService';
+import { PhotoBoothResponse } from '../../types/PhotoBooth';
 
 const Container = styled.div`
   position: relative;
@@ -17,11 +18,12 @@ const Container = styled.div`
 
 function Map() {
   const [tag, setTag] = useState('');
-  const [map, setMap] = useState<naver.maps.Map | null>(null);
+  const [map, setMap] = useState<any | null>(null);
+
+  const [photoBoothData, setPhotoBoothData] = useState<PhotoBoothResponse['data']>([]);
 
   const navermaps = useNavermaps();
   const { myLocation } = useGetMyLocation();
-  const { data: photoBoothQueryResponse } = useFetchPhotoBooth();
 
   const onClickMyLocationBtn = () => {
     if (map && myLocation.latitude && myLocation.longitude) {
@@ -30,10 +32,22 @@ function Map() {
     }
   };
 
+  const loadData = async (latitude: number, longitude: number) => {
+    const fetchParams = {
+      latitude,
+      longitude,
+      size: 500,
+      distance: 5000,
+    };
+    const { data } = await photoBoothService.fetchPhotoBooths({ params: fetchParams });
+    setPhotoBoothData(data);
+  };
+
   useEffect(() => {
     if (map && myLocation.latitude && myLocation.longitude) {
       map.setCenter(new navermaps.LatLng(myLocation.latitude, myLocation.longitude));
       map.setZoom(15);
+      loadData(myLocation.latitude, myLocation.longitude);
     }
   }, [myLocation.latitude]);
 
@@ -41,6 +55,13 @@ function Map() {
     visible: false, name: '', address: '', brand: undefined,
   };
   const [boothModal, setBoothModal] = useState<BoothDetailModalProps & {visible: boolean}>(defaultBoothModal);
+
+  useEffect(() => {
+    if (map && map.data) {
+      const { data: { map: { center: { x, y } } } } = map;
+      loadData(y, x);
+    }
+  }, [map?.data.map.center.x, map?.data.map.center.y]);
 
   return (
     <Container>
@@ -64,7 +85,7 @@ function Map() {
             defaultZoom={15}
             ref={setMap}
           >
-            {photoBoothQueryResponse?.data.map((photoBoothInfo) => (
+            {photoBoothData?.map((photoBoothInfo) => (
               <MarkerItem
                 key={photoBoothInfo.photoBoothId}
                 tag={tag}
