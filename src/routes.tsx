@@ -94,6 +94,10 @@ const routes = [
     element: <KakaoLogIn />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: '/error',
+    element: <ErrorPage />,
+  },
 ];
 
 export default routes;

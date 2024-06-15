@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { PhotoBoothResponse } from '../types/PhotoBooth';
+import { PhotoBoothRequest, PhotoBoothResponse } from '../types/PhotoBooth';
 
 const API_BASE_URL = `${process.env.REACT_APP_API_BASE_URL}/api/v1` || 'https://server.poseplz.com/api/v1';
 
@@ -8,8 +8,8 @@ class PhotoBoothService {
     baseURL: API_BASE_URL,
   });
 
-  async fetchPhotoBooths() {
-    const { data } = await this.instance.get<PhotoBoothResponse>('/photo-booths', { params: { size: 5000 } });
+  async fetchPhotoBooths({ params }: { params: PhotoBoothRequest }) {
+    const { data } = await this.instance.get<PhotoBoothResponse>('/photo-booths', { params });
     return data;
   }
 
