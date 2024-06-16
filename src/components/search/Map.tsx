@@ -11,6 +11,7 @@ import LocationBtn from './LocationButton';
 import useGetMyLocation from '../../hooks/useGetMyLocation';
 import photoBoothService from '../../service/PhotoBoothService';
 import { PhotoBoothResponse } from '../../types/PhotoBooth';
+import ResearchButton from './ResearchButton';
 
 const Container = styled.div`
   position: relative;
@@ -65,6 +66,7 @@ function Map() {
 
   return (
     <Container>
+      <ResearchButton />
       <TagContainer tag={tag} setTag={setTag} />
       <MapDiv
         style={{ height: '90vh' }}
