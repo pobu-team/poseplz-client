@@ -66,7 +66,7 @@ function Map() {
 
   return (
     <Container>
-      <ResearchButton />
+      <ResearchButton handleClickButton={() => setMap(null)} />
       <TagContainer tag={tag} setTag={setTag} />
       <MapDiv
         style={{ height: '90vh' }}

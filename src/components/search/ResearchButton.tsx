@@ -27,9 +27,9 @@ const Button = styled.button`
     color: ${({ theme: { colors } }) => colors.text};
 `;
 
-function ResearchButton() {
+function ResearchButton({ handleClickButton }: { handleClickButton: () => void }) {
   return (
-    <Button type="button">
+    <Button type="button" onClick={handleClickButton}>
       <ReplayIcon width={24} height={24} color="white" />
       현 지도에서 검색
     </Button>
