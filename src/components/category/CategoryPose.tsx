@@ -6,6 +6,7 @@ import CategoryPoseList from './CategoryPoseList';
 import LoginModal from '../../ui/LoginModal';
 import { isLogInModalShowingAtom } from '../../recoil/loginState';
 import { PeopleCategoryTabAtom, ThemeCategoryTabAtom } from '../../recoil/tabState';
+import PopularPoseList from './PopularPoseList';
 
 const Container = styled.div`
   position: relative;
@@ -21,6 +22,8 @@ export default function CategoryPose({ category }: {category:CATEGORY}) {
   const [peopleTab, setPeopleTab] = useRecoilState(PeopleCategoryTabAtom);
   const [themeTab, setThemeTab] = useRecoilState(ThemeCategoryTabAtom);
 
+  const isPopular = category === 'popular';
+
   return (
     <Container>
       <CategoryButtons
@@ -29,10 +32,14 @@ export default function CategoryPose({ category }: {category:CATEGORY}) {
         category={category}
       />
       <PoseContainer>
-        <CategoryPoseList
-          category={category}
-          selectedTagId={category === CATEGORY.PEOPLE ? peopleTab : themeTab}
-        />
+        {isPopular ? (
+          <PopularPoseList />
+        ) : (
+          <CategoryPoseList
+            category={category}
+            selectedTagId={category === CATEGORY.PEOPLE ? peopleTab : themeTab}
+          />
+        )}
       </PoseContainer>
       {isLogInModalShowing && <LoginModal />}
     </Container>

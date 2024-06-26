@@ -10,14 +10,6 @@ export const PoseSelector = selectorFamily<PoseInfo[], string[]>({
   },
 });
 
-export const PopularPoseSelector = selector<PoseInfo[]>({
-  key: 'PopularPoseSelector',
-  get: async () => {
-    const { data } = await apiService.fetchPopularPose();
-    return data;
-  },
-});
-
 export const AllPoseSelector = selector<PoseInfo[]>({
   key: 'AllPoseSelector',
   get: async () => {
