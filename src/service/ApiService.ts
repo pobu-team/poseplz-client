@@ -37,11 +37,6 @@ export default class ApiService {
     return data;
   }
 
-  async fetchPopularPose() {
-    const { data } = await this.instance.get('/poses?preparedPoseQuery=POPULAR&page=0&size=100');
-    return data;
-  }
-
   async fetchAllPose() {
     const { data } = await this.instance.get('/poses?page=0&size=500');
     return data;
@@ -129,6 +124,11 @@ export default class ApiService {
         Authorization: `Bearer ${token}`,
       },
     });
+    return data;
+  }
+
+  async fetchPopularPose({ page, size = 10 }: { page: number, size?: number}) {
+    const { data } = await this.instance.post(`/poses/popular?page=${page}&size=${size}`);
     return data;
   }
 }
